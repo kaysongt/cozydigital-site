@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import SocialProofPosts from "@/components/social-proof-posts";
 
 export const metadata: Metadata = {
   title: "Cozy Digital | Websites, Content & Lead Systems",
@@ -15,23 +16,91 @@ function ArrowIcon() {
   );
 }
 
+const platformLogos = [
+  { name: "Meta", logo: "/logos/platforms/meta.svg", glow: "shadow-blue-500/20" },
+  { name: "Instagram", logo: "/logos/platforms/instagram.svg", glow: "shadow-pink-500/20" },
+  { name: "Facebook", logo: "/logos/platforms/facebook.svg", glow: "shadow-blue-500/20" },
+  { name: "TikTok", logo: "/logos/platforms/tiktok.svg", glow: "shadow-cyan-500/20" },
+  { name: "Shopify", logo: "/logos/platforms/shopify.svg", glow: "shadow-emerald-500/20" },
+  { name: "Etsy", logo: "/logos/platforms/etsy.svg", glow: "shadow-orange-500/20" },
+  { name: "Google", logo: "/logos/platforms/google.svg", glow: "shadow-blue-500/20" },
+  { name: "YouTube", logo: "/logos/platforms/youtube.svg", glow: "shadow-red-500/20" },
+  { name: "Stripe", logo: "/logos/platforms/stripe.svg", glow: "shadow-violet-500/20" },
+  { name: "Mailchimp", logo: "/logos/platforms/mailchimp.svg", glow: "shadow-yellow-500/20" },
+];
+
+const clientProof = [
+  {
+    name: "Dr. Alicia",
+    label: "Live ecommerce + wellness brand",
+    summary: "A public Shopify storefront and supporting content scheduler built around self-care products, books, and repeatable social content planning.",
+    image: "/images/client-proof/dr-alicia-site.png",
+    alt: "Screenshot of the Dr. Alicia live website homepage",
+    href: "https://healingwithdralicia.com/",
+    cta: "Visit live website",
+    details: ["Live public storefront", "Self-care product flow", "Content scheduler support"],
+    privatePreview: false,
+    video: undefined,
+  },
+  {
+    name: "Dr. Alicia Content Scheduler",
+    label: "Client operating dashboard",
+    summary: "A polished planning dashboard that organizes platform rhythm, post status, creative notes, and next actions for ongoing content execution.",
+    image: "/images/client-proof/dr-alicia-scheduler-preview.svg",
+    alt: "Screenshot preview of the Dr. Alicia content scheduler dashboard",
+    href: "/cozy-booking/",
+    cta: "Ask about scheduler builds",
+    details: ["4-week content board", "Copy-ready post workflow", "Done/undo progress tracking"],
+    privatePreview: true,
+    video: undefined,
+  },
+  {
+    name: "AK Marlowe",
+    label: "Creator stats tracker",
+    summary: "A custom tracker for logging daily snapshots, sales, ad campaigns, reviews, and platform growth so marketing decisions have one clean source of truth.",
+    image: "/images/client-proof/ak-marlowe-stats-preview.png",
+    alt: "Screenshot of the AK Marlowe stats tracker dashboard",
+    href: "/ak-marlowe-stats.html",
+    cta: "Open tracker",
+    details: ["Sales + ad tracking", "Platform growth dashboard", "Export-ready data"],
+    privatePreview: false,
+    video: undefined,
+  },
+  {
+    name: "AK Marlowe",
+    label: "Short-form ad — produced by Cozy Digital",
+    summary: "A branded video ad built around a hook-first script — designed to stop the scroll and drive trust before the first call to action lands.",
+    image: undefined,
+    alt: "",
+    href: "/cozy-booking/",
+    cta: "Get an ad like this",
+    details: ["Hook-first scripting", "Brand-matched visuals", "Ready to post on reels/shorts"],
+    privatePreview: false,
+    video: { src: "/videos/client-ad.mp4", poster: "/videos/client-ad-poster.jpg" },
+  },
+];
+
 const services = [
-  { badge: "STARTER", name: "Social Ignite", price: "$297/mo", tagline: "Built for brands ready to show up consistently and convert attention.", items: ["Done-for-you content calendar", "Platform-specific strategy", "Weekly performance review", "Email support"], cta: "Get Started", highlight: false },
-  { badge: "RECOMMENDED", name: "Growth Partner", price: "$497/mo", tagline: "Turn social traffic, website views, and attention into a cleaner lead path.", items: ["Everything in Social Ignite", "4 branded video clips per month", "Ad creative grading", "Priority turnaround"], cta: "Book a Free Consultation", highlight: true },
-  { badge: "FULL SCALE", name: "Elite Retainer", price: "$797/mo", tagline: "A full growth system. We run the strategy, you run the business.", items: ["Everything in Growth Partner", "8 branded video clips per month", "Weekly ad + content optimization", "Monthly strategy review"], cta: "Let's Talk", highlight: false },
+  { badge: "ONE-TIME", name: "Full Build Package", price: "$3,000", tagline: "Everything built from scratch. You own all of it when we are done. Best option to get fully set up in 90 days.", items: ["Custom Website (5 pages + landing page)", "Direct Booking System Setup", "Google Business Profile Optimization", "Local SEO Foundation", "Social Media Branding & Content Templates", "Automated Follow-Up System", "Analytics & Reporting Dashboard"], cta: "Book a Free Consultation", highlight: false },
+  { badge: "ONGOING", name: "Monthly Retainer", price: "$900/mo", tagline: "We manage, update, and grow everything for you month to month. No long-term contract required.", items: ["Website Maintenance & Updates", "Local SEO & Google Profile Management", "Social Media Content (8 posts/month)", "Ad Management (Google or Meta)", "Monthly Analytics Report & Strategy Call"], cta: "Book a Free Consultation", highlight: true },
 ];
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pt-32 pb-20 md:pt-40 md:pb-28">
+      <section className="relative overflow-hidden px-6 pt-16 pb-20 md:pt-24 md:pb-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(34,211,238,0.15),transparent)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="text-left">
-            <Link href="/free-audit" className="mb-8 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-500/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-cyan-200 hover:bg-cyan-500/20">
-              Free first-impression audit <span aria-hidden="true">&#x2192;</span>
-            </Link>
+            <div className="mb-8 flex flex-wrap gap-3">
+              <Link href="/free-playbook/" className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-amber-300 hover:bg-amber-500/20">
+                ⬇ Free Brand Playbook
+              </Link>
+              <Link href="/free-audit/" className="inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-500/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-cyan-200 hover:bg-cyan-500/20">
+                Free audit <span aria-hidden="true">&#x2192;</span>
+              </Link>
+            </div>
             <h1 className="max-w-3xl text-5xl font-black leading-[0.98] tracking-tight text-white md:text-7xl">
               Turn first-time visitors into{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">booked clients.</span>
@@ -63,6 +132,79 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        <style>{`
+          @keyframes platform-marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+          .platform-track {
+            animation: platform-marquee 38s linear infinite;
+          }
+          .platform-marquee:hover .platform-track {
+            animation-play-state: paused;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .platform-track {
+              animation: none;
+              flex-wrap: wrap;
+              justify-content: center;
+            }
+          }
+        `}</style>
+
+        <div className="platform-marquee relative mx-auto mt-14 max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] py-5 text-center shadow-2xl shadow-black/20" aria-labelledby="platform-logos-label" role="region">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-zinc-950 via-zinc-950/80 to-transparent" />
+          <p id="platform-logos-label" className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-500">Built around channels customers already trust</p>
+          <div className="platform-track flex w-max items-center gap-8 px-8">
+            {[...platformLogos, ...platformLogos].map((logo, index) => (
+              <span
+                key={`${logo.name}-${index}`}
+                aria-label={logo.name}
+                className="group/logo inline-flex h-12 shrink-0 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-5 shadow-lg shadow-black/20 ring-1 ring-white/[0.03] transition duration-300 hover:border-cyan-200/30 hover:bg-white/[0.07] hover:opacity-100"
+              >
+                <span className={`flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.06] p-1.5 shadow-lg ${logo.glow}`}>
+                  <Image src={logo.logo} alt="" width={28} height={28} className="h-full w-full object-contain" aria-hidden="true" />
+                </span>
+                <span className="bg-gradient-to-r from-zinc-50 via-white to-zinc-300 bg-clip-text text-lg font-black tracking-tight text-transparent opacity-90 transition-opacity group-hover/logo:opacity-100 md:text-xl">
+                  {logo.name}
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SOCIAL PROOF */}
+      <section className="overflow-hidden py-16" aria-label="Social proof — real posts from Cozy Digital">
+        <style>{`
+          @keyframes social-marquee-fwd {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+          @keyframes social-marquee-rev {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+          }
+          .social-track-fwd { animation: social-marquee-fwd 40s linear infinite; }
+          .social-track-rev { animation: social-marquee-rev 44s linear infinite; }
+          .social-row:hover .social-track-fwd,
+          .social-row:hover .social-track-rev { animation-play-state: paused; }
+          @media (prefers-reduced-motion: reduce) {
+            .social-track-fwd, .social-track-rev {
+              animation: none;
+              flex-wrap: wrap;
+              justify-content: center;
+            }
+          }
+        `}</style>
+
+        <div className="mx-auto mb-6 max-w-6xl px-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-zinc-500">Real posts. Real traction.</p>
+        </div>
+
+        <SocialProofPosts />
       </section>
 
       {/* CAPABILITIES */}
@@ -87,28 +229,91 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CLIENT PROOF */}
+      <section id="clients" className="scroll-mt-20 border-y border-white/[0.06] bg-white/[0.02] px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Client Proof</p>
+            <h2 className="text-4xl font-black text-white md:text-5xl">Real client work, shown cleanly.</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
+              Screenshots and working systems from current Cozy Digital clients — no inflated claims, no fake logos, and no made-up results.
+            </p>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-4">
+            {clientProof.map((client, i) => (
+              <article key={`${client.name}-${i}`} className="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950/80 shadow-2xl shadow-black/25">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(34,211,238,0.13),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(217,70,239,0.10),transparent_30%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="relative h-52 overflow-hidden border-b border-white/10 bg-black">
+                  {client.video ? (
+                    <video
+                      src={client.video.src}
+                      poster={client.video.poster}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <>
+                      <Image src={client.image!} alt={client.alt} width={800} height={449} className={`h-full w-full object-cover transition duration-500 group-hover:scale-[1.03] ${client.privatePreview ? "opacity-80 blur-[1px]" : "opacity-95"}`} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/10 to-transparent" />
+                      {client.privatePreview && (
+                        <div className="absolute bottom-4 left-4 rounded-full border border-amber-300/25 bg-amber-500/15 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-amber-100">Interface preview</div>
+                      )}
+                    </>
+                  )}
+                </div>
+                <div className="relative flex flex-col p-6">
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-cyan-300">{client.label}</p>
+                  <h3 className="mt-3 text-2xl font-black text-white">{client.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-zinc-400">{client.summary}</p>
+                  <div className="mt-5 space-y-2">
+                    {client.details.map((detail) => (
+                      <div key={detail} className="flex gap-2 text-sm font-semibold text-zinc-200">
+                        <span className="text-cyan-300">&#x2713;</span>
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <a href={client.href} target={client.href.startsWith("http") ? "_blank" : undefined} rel={client.href.startsWith("http") ? "noreferrer" : undefined} className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-500/10 px-4 py-3 text-sm font-bold text-cyan-100 transition-colors hover:bg-cyan-500/20">
+                    {client.cta}
+                    <ArrowIcon />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 rounded-3xl border border-amber-300/20 bg-amber-500/10 p-5 text-sm leading-6 text-amber-50">
+            Want proof like this on your own site? Book the free consultation and we&apos;ll map which screenshots, reviews, offers, and lead paths should be visible before a visitor decides to trust you.
+          </div>
+        </div>
+      </section>
+
       {/* PACKAGES */}
       <section id="packages" className="scroll-mt-20 border-y border-white/[0.06] bg-white/[0.02] py-20 px-6">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-4xl">
           <div className="mb-14 text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Packages</p>
-            <h2 className="text-4xl font-black text-white md:text-5xl">Pick your pace</h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-400">Simple pricing. No lock-ins. Built around what actually moves your needle.</p>
+            <h2 className="text-4xl font-black text-white md:text-5xl">Two ways to work together</h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-400">One-time build or ongoing support — both come with clear deliverables and no lock-ins.</p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3 items-start">
+          <div className="grid gap-6 md:grid-cols-2 items-stretch">
             {services.map((s) => (
-              <div key={s.name} className={`flex flex-col rounded-3xl border p-8 ${s.highlight ? "border-cyan-300/40 bg-cyan-500/[0.04] shadow-lg shadow-cyan-950/15" : "border-white/10 bg-white/[0.03]"}` }>
-                <div className="mb-5 flex items-center justify-between">
+              <div key={s.name} className={`flex flex-col rounded-3xl border p-8 ${s.highlight ? "border-cyan-300/40 bg-cyan-500/[0.04] shadow-lg shadow-cyan-950/15" : "border-white/10 bg-white/[0.03]"}`}>
+                <div className="mb-4 flex items-center justify-between">
                   <p className="text-xs font-bold uppercase tracking-wider text-zinc-500">{s.badge}</p>
-                  <p className="text-xl font-black text-white">{s.price}</p>
+                  <p className="text-2xl font-black text-white">{s.price}</p>
                 </div>
                 <h3 className="text-2xl font-black text-white">{s.name}</h3>
-                <p className="mt-3 text-sm text-zinc-400 min-h-[40px]">{s.tagline}</p>
-                <ul className="my-6 space-y-3 flex-1">
+                <p className="mt-3 text-sm leading-relaxed text-zinc-400">{s.tagline}</p>
+                <ul className="my-6 flex-1 space-y-3">
                   {s.items.map((item) => (
-                    <li key={item} className="flex gap-2 text-sm text-zinc-300"><span className="text-cyan-400">&#x2713;</span> {item}</li>
+                    <li key={item} className="flex gap-2 text-sm text-zinc-300"><span className="text-cyan-400">&#x2713;</span>{item}</li>
                   ))}
                 </ul>
+                <Link href="/pricing" className="mb-2 text-center text-xs text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
+                  See full breakdown
+                </Link>
                 <Link href="/cozy-booking" className={`w-full rounded-xl py-3.5 text-sm font-bold text-center transition-colors ${s.highlight ? "bg-white text-black hover:bg-zinc-200" : "border border-white/20 text-white hover:bg-white/10"}`}>
                   {s.cta}
                 </Link>

@@ -3,44 +3,78 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Pricing | Cozy Digital",
-  description: "Cozy Digital packages for websites, content systems, and lead-path cleanup.",
+  description: "Cozy Digital pricing — full build packages and monthly retainer options.",
 };
 
-const plans = [
-  { badge: "STARTER", name: "Social Ignite", price: "$297/mo", tagline: "Built for brands ready to show up consistently and start converting.", items: ["Done-for-you content calendar", "Platform-specific posting strategy", "Weekly performance review", "Email support"], highlight: false },
-  { badge: "RECOMMENDED", name: "Growth Partner", price: "$497/mo", tagline: "For brands serious about turning social into a real lead channel.", items: ["Everything in Social Ignite", "4 branded video clips per month", "Ad creative grading + optimization", "Priority turnaround & support"], highlight: true },
-  { badge: "FULL SCALE", name: "Elite Retainer", price: "$797/mo", tagline: "Done-with-you growth system. We run the strategy, you run the business.", items: ["Everything in Growth Partner", "8 branded video clips per month", "Weekly ad + content optimization", "Monthly growth strategy review"], highlight: false },
+const buildItems = [
+  { service: "Custom Website (5 pages + custom landing page)", price: "$1,200" },
+  { service: "Direct Booking System Setup", price: "$300" },
+  { service: "Google Business Profile Optimization", price: "$250" },
+  { service: "Local SEO Foundation", price: "$400" },
+  { service: "Social Media Branding & Content Templates", price: "$350" },
+  { service: "Automated Follow-Up System (email or SMS)", price: "$300" },
+  { service: "Analytics & Reporting Dashboard", price: "$200" },
 ];
+
+const retainerItems = [
+  { service: "Website Maintenance & Updates", price: "$150/mo" },
+  { service: "Local SEO & Google Profile Management", price: "$200/mo" },
+  { service: "Social Media Content (8 posts/month)", price: "$250/mo" },
+  { service: "Ad Management (Google or Meta, ad budget separate)", price: "$200/mo" },
+  { service: "Monthly Analytics Report & Strategy Call", price: "$100/mo" },
+];
+
+function PricingTable({ items, total, totalLabel }: { items: { service: string; price: string }[]; total: string; totalLabel: string }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-white/10">
+      <div className="grid grid-cols-[1fr_auto] bg-zinc-800 px-5 py-3 text-xs font-bold uppercase tracking-wider text-zinc-300">
+        <span>Service</span>
+        <span>Price</span>
+      </div>
+      {items.map((item, i) => (
+        <div key={i} className={`grid grid-cols-[1fr_auto] gap-4 px-5 py-4 text-sm ${i % 2 === 0 ? "bg-white/[0.02]" : "bg-transparent"} border-t border-white/[0.06]`}>
+          <span className="text-zinc-300">{item.service}</span>
+          <span className="text-right font-medium text-zinc-200">{item.price}</span>
+        </div>
+      ))}
+      <div className="grid grid-cols-[1fr_auto] border-t-2 border-cyan-400/40 bg-cyan-500/[0.06] px-5 py-4">
+        <span className="font-black text-white">{totalLabel}</span>
+        <span className="text-right font-black text-cyan-400">{total}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function PricingPage() {
   return (
     <main className="min-h-screen px-6 py-12 text-zinc-100">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-10 text-center">
+      <div className="mx-auto max-w-4xl">
+        <div className="mb-12">
           <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">Packages</p>
-          <h1 className="text-4xl font-black text-white md:text-5xl">Pick your growth level</h1>
-          <p className="mx-auto mt-3 max-w-xl text-zinc-400">Simple packages. No fluff. Built around what actually moves the needle.</p>
+          <h1 className="text-4xl font-black text-white md:text-5xl">Transparent Pricing for Website &amp; Growth Services</h1>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {plans.map((p) => (
-            <div key={p.name} className={`relative flex flex-col rounded-2xl border p-6 ${p.highlight ? "border-cyan-300/40 bg-cyan-500/[0.04] shadow-lg" : "border-white/10 bg-white/[0.04]"}`}>
-              {p.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-cyan-300/40 bg-cyan-500 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black">Recommended</div>
-              )}
-              <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">{p.badge}</p>
-              <h2 className="mt-1.5 text-xl font-black text-white">{p.name}</h2>
-              <p className="mt-0.5 text-2xl font-black text-cyan-300">{p.price}</p>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">{p.tagline}</p>
-              <ul className="mt-5 flex-1 space-y-2">
-                {p.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-zinc-300"><span className="text-cyan-400">&#x2713;</span>{item}</li>
-                ))}
-              </ul>
-              <Link href="/cozy-booking" className={`mt-6 block w-full rounded-xl py-3 text-center text-sm font-bold transition-all ${p.highlight ? "bg-white text-black hover:bg-zinc-200" : "border border-white/15 bg-white/5 text-zinc-200 hover:bg-white/10"}`}>
-                Book a Free Audit
-              </Link>
-            </div>
-          ))}
+
+        {/* Option A */}
+        <div className="mb-12">
+          <h2 className="mb-1 text-xl font-black text-cyan-400">Option A &nbsp;|&nbsp; Full Build Package (One-Time)</h2>
+          <p className="mb-6 text-sm text-zinc-400">Everything built from scratch. You own all of it when we are done. Best option to get fully set up in 90 days.</p>
+          <PricingTable items={buildItems} total="$3,000" totalLabel="Full Build Total" />
+          <p className="mt-3 text-xs text-zinc-500">Recommended pricing. Final quote confirmed after kickoff call.</p>
+        </div>
+
+        {/* Option B */}
+        <div className="mb-12">
+          <h2 className="mb-1 text-xl font-black text-cyan-400">Option B &nbsp;|&nbsp; Monthly Retainer (Ongoing Support)</h2>
+          <p className="mb-6 text-sm text-zinc-400">We manage, update, and grow everything for you month to month. No long-term contract required.</p>
+          <PricingTable items={retainerItems} total="$900/mo" totalLabel="Monthly Retainer Total" />
+        </div>
+
+        <div className="rounded-2xl border border-cyan-300/20 bg-cyan-500/10 p-6 text-center">
+          <p className="mb-4 text-sm text-zinc-300">Ready to get started or have questions about which option fits you?</p>
+          <Link href="/cozy-booking" className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-4 text-sm font-bold text-white shadow-xl hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+            Book a Free Consultation
+          </Link>
+          <p className="mt-3 text-xs text-zinc-500">No pressure &mdash; leave with clear next steps.</p>
         </div>
       </div>
     </main>

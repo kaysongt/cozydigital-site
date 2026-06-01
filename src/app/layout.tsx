@@ -1,6 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import CozyPublicHeader from "@/components/cozy-public-header";
+import CozyPublicFooter from "@/components/cozy-public-footer";
+
+const description = "Practical growth systems for service brands — sharper websites, cleaner content, and booking paths that turn visitors into clients.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.cozydigital.org"),
@@ -8,26 +11,26 @@ export const metadata: Metadata = {
     default: "Cozy Digital | Websites, Content & Lead Systems",
     template: "%s",
   },
-  description: "Cozy Digital helps service brands improve websites, content, booking paths, and first impressions.",
+  description,
   openGraph: {
     title: "Cozy Digital | Websites, Content & Lead Systems",
-    description: "Sharper websites, cleaner content systems, and easier booking paths for service brands.",
+    description,
     url: "https://www.cozydigital.org",
     siteName: "Cozy Digital",
     type: "website",
   },
+  alternates: {
+    canonical: "https://www.cozydigital.org/",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen">
+      <body className="flex min-h-screen flex-col bg-zinc-950">
         <CozyPublicHeader />
-        {children}
+        <div className="flex-1">{children}</div>
+        <CozyPublicFooter />
       </body>
     </html>
   );

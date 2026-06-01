@@ -32,7 +32,7 @@ export default function ProcessPage() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <Link href="/free-audit" className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-500/10 px-8 py-4 text-sm font-bold text-cyan-100 hover:bg-cyan-500/20">
+          <Link href="/free-audit/" className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-4 text-sm font-bold text-white shadow-xl hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
             Start with a free audit
           </Link>
         </div>
