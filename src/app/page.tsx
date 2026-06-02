@@ -333,10 +333,10 @@ export default function HomePage() {
               No inflated claims, no fake logos — just screenshots and working systems from real clients.
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {clientProof.map((client, i) => (
-              <article key={`${client.name}-${i}`} className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] shadow-2xl shadow-black/30 transition-colors duration-300 hover:border-white/[0.14] hover:bg-white/[0.05]">
-                <div className="relative h-64 overflow-hidden bg-black">
+              <article key={`${client.name}-${i}`} className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] shadow-xl shadow-black/30 transition-colors duration-300 hover:border-white/[0.14] hover:bg-white/[0.05]">
+                <div className="relative h-44 overflow-hidden bg-black">
                   {client.video ? (
                     <video
                       src={client.video.src}
@@ -348,18 +348,18 @@ export default function HomePage() {
                     />
                   ) : (
                     <>
-                      <Image src={client.image!} alt={client.alt} width={900} height={506} className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]" />
+                      <Image src={client.image!} alt={client.alt} width={600} height={338} className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     </>
                   )}
                 </div>
-                <div className="flex flex-1 flex-col p-7">
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-cyan-400">{client.label}</p>
-                  <h3 className="mt-2 text-xl font-black text-white">{client.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-zinc-400">{client.summary}</p>
-                  <div className="mt-5 space-y-1.5">
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="text-[9px] font-black uppercase tracking-[0.2em] text-cyan-400">{client.label}</p>
+                  <h3 className="mt-1.5 text-base font-black text-white">{client.name}</h3>
+                  <p className="mt-2 text-xs leading-5 text-zinc-400">{client.summary}</p>
+                  <div className="mt-4 space-y-1">
                     {client.details.map((detail) => (
-                      <div key={detail} className="flex gap-2 text-sm text-zinc-300">
+                      <div key={detail} className="flex gap-1.5 text-xs text-zinc-300">
                         <span className="text-cyan-400">&#x2713;</span>
                         <span>{detail}</span>
                       </div>
@@ -369,7 +369,7 @@ export default function HomePage() {
                     href={client.href}
                     target={client.href.startsWith("http") ? "_blank" : undefined}
                     rel={client.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 transition-colors hover:text-cyan-100"
+                    className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-cyan-300 transition-colors hover:text-cyan-100"
                   >
                     {client.cta}
                     <ArrowIcon />
