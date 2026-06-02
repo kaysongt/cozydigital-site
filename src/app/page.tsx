@@ -207,56 +207,118 @@ export default function HomePage() {
         <SocialProofPosts />
       </section>
 
-      {/* CAPABILITIES */}
+      {/* WHAT WE FIX */}
       <section className="py-24 px-6">
-        <div className="mx-auto max-w-5xl">
-          <div className="mb-14 text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Capabilities</p>
-            <h2 className="text-4xl font-black text-white md:text-5xl">Fix the leaks, then grow.</h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-zinc-400">Most businesses don&apos;t have a traffic problem — they have a conversion problem. We fix what&apos;s blocking the booking, then build what drives growth.</p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                icon: "⬡",
-                label: "Website & Landing Pages",
-                desc: "Your homepage has 5 seconds to earn a click. We sharpen the headline, clarify the offer, and remove every reason a visitor has to leave without acting.",
-                stat: "5 sec",
-                statLabel: "to earn or lose trust",
-                color: "from-cyan-500/20 to-cyan-500/0",
-                border: "border-cyan-400/20",
-              },
-              {
-                icon: "⬡",
-                label: "Content Engine",
-                desc: "No more posting and hoping. We build a repeatable content rhythm — pillars, hooks, captions — so every post points toward a booking.",
-                stat: "8 posts",
-                statLabel: "per month, ready to publish",
-                color: "from-blue-500/20 to-blue-500/0",
-                border: "border-blue-400/20",
-              },
-              {
-                icon: "⬡",
-                label: "Booking & Inquiry Paths",
-                desc: "Interested visitors are already sold — until the booking flow loses them. We cut the friction so the people who click actually book.",
-                stat: "1 step",
-                statLabel: "from interest to booked",
-                color: "from-fuchsia-500/20 to-fuchsia-500/0",
-                border: "border-fuchsia-400/20",
-              },
-            ].map((f) => (
-              <div key={f.label} className={`group relative overflow-hidden rounded-3xl border ${f.border} bg-white/[0.03] p-8 transition-colors duration-300 hover:bg-white/[0.06]`}>
-                <div className={`absolute inset-0 bg-gradient-to-b ${f.color} opacity-60`} />
-                <div className="relative">
-                  <p className="mb-5 text-3xl font-black tabular-nums text-white">
-                    {f.stat}
-                    <span className="ml-2 text-xs font-bold uppercase tracking-widest text-zinc-500">{f.statLabel}</span>
-                  </p>
-                  <h3 className="text-lg font-black text-white">{f.label}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-zinc-400">{f.desc}</p>
-                </div>
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-16 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+
+            {/* Left — pitch */}
+            <div className="lg:sticky lg:top-28">
+              <p className="mb-4 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">What we fix</p>
+              <h2 className="text-4xl font-black leading-[1.05] text-white md:text-5xl">
+                We fix the parts of your business people actually{" "}
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-fuchsia-400 bg-clip-text text-transparent">
+                  see, click, and judge.
+                </span>
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-zinc-400">
+                We handle the details that drive first impressions, build trust, and turn interest into real bookings.
+              </p>
+              <Link
+                href="/free-audit/"
+                className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-7 py-4 text-sm font-black text-black transition-colors hover:bg-cyan-400"
+              >
+                Get my free audit <ArrowIcon />
+              </Link>
+              <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.03] px-5 py-4">
+                <svg className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <p className="text-sm leading-relaxed text-zinc-400">Built for service businesses that want more bookings, clearer messaging, and better follow-up.</p>
               </div>
-            ))}
+            </div>
+
+            {/* Right — 2-col feature grid */}
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {[
+                {
+                  icon: (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                  ),
+                  title: "Clear homepage messaging that makes people stay",
+                  desc: "We clarify your offer, headline, and value so visitors instantly get what you do.",
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" /></svg>
+                  ),
+                  title: "Stronger CTA and easier booking flow",
+                  desc: "We improve your calls-to-action and booking path to get more inquiries and appointments.",
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                  ),
+                  title: "Instagram / TikTok content direction that converts",
+                  desc: "We create a content plan that attracts the right people and supports your offers.",
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                  ),
+                  title: "High-converting landing pages and service pages",
+                  desc: "We design pages that are simple, clear, and built to turn visitors into clients.",
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                  ),
+                  title: "Free audit or guide capture path that actually grows your list",
+                  desc: "We build lead magnets and capture flows that bring in leads on autopilot.",
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  ),
+                  title: "Email / SMS follow-up messaging that books more jobs",
+                  desc: "We write follow-ups that build trust, answer questions, and bring leads back.",
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" /></svg>
+                  ),
+                  title: "Content templates and posting rhythm",
+                  desc: "We give you plug-and-play content and a posting plan you can actually stick to.",
+                },
+                {
+                  icon: (
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                  ),
+                  title: "Simple analytics and weekly next steps",
+                  desc: "We track what matters and tell you exactly what to do next each week.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="group rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5 transition-colors duration-200 hover:border-cyan-400/20 hover:bg-white/[0.06]"
+                >
+                  <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-500/10 text-cyan-400">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-sm font-black leading-snug text-white">{item.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom scroll cue */}
+          <div className="mt-16 flex items-center justify-center gap-3">
+            <span className="h-px flex-1 bg-white/[0.08]" />
+            <a href="#clients" className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-cyan-400">
+              <span>✦</span> See what that looks like <span>✦</span>
+            </a>
+            <span className="h-px flex-1 bg-white/[0.08]" />
           </div>
         </div>
       </section>
