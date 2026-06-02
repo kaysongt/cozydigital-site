@@ -66,6 +66,19 @@ body {
   cursor: pointer;
 }
 
+@keyframes socialScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.social-track-fwd {
+  animation: socialScroll 40s linear infinite;
+}
+
+.social-row:hover .social-track-fwd {
+  animation-play-state: paused;
+}
+
 @keyframes cozyFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

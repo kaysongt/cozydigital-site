@@ -46,12 +46,12 @@ const clientProof = [
     name: "Dr. Alicia Content Scheduler",
     label: "Client operating dashboard",
     summary: "A polished planning dashboard that organizes platform rhythm, post status, creative notes, and next actions for ongoing content execution.",
-    image: "/images/client-proof/dr-alicia-scheduler-preview.svg",
-    alt: "Screenshot preview of the Dr. Alicia content scheduler dashboard",
+    image: "/images/client-proof/dr-alicia-scheduler.png",
+    alt: "Screenshot of the Dr. Alicia content scheduler dashboard",
     href: "/cozy-booking/",
     cta: "Ask about scheduler builds",
     details: ["4-week content board", "Copy-ready post workflow", "Done/undo progress tracking"],
-    privatePreview: true,
+    privatePreview: false,
     video: undefined,
   },
   {
@@ -60,8 +60,8 @@ const clientProof = [
     summary: "A custom tracker for logging daily snapshots, sales, ad campaigns, reviews, and platform growth so marketing decisions have one clean source of truth.",
     image: "/images/client-proof/ak-marlowe-stats-preview.png",
     alt: "Screenshot of the AK Marlowe stats tracker dashboard",
-    href: "/ak-marlowe-stats.html",
-    cta: "Open tracker",
+    href: "/cozy-booking/",
+    cta: "Ask about custom trackers",
     details: ["Sales + ad tracking", "Platform growth dashboard", "Export-ready data"],
     privatePreview: false,
     video: undefined,
@@ -200,8 +200,8 @@ export default function HomePage() {
           }
         `}</style>
 
-        <div className="mx-auto mb-6 max-w-6xl px-6 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-zinc-500">Real posts. Real traction.</p>
+        <div className="mx-auto mb-10 max-w-6xl px-6 text-center">
+          <h2 className="text-4xl font-black text-white md:text-5xl">Real posts. Real traction.</h2>
         </div>
 
         <SocialProofPosts />
@@ -230,20 +230,19 @@ export default function HomePage() {
       </section>
 
       {/* CLIENT PROOF */}
-      <section id="clients" className="scroll-mt-20 border-y border-white/[0.06] bg-white/[0.02] px-6 py-20">
+      <section id="clients" className="scroll-mt-20 px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
+          <div className="mb-14 text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Client Proof</p>
             <h2 className="text-4xl font-black text-white md:text-5xl">Real client work, shown cleanly.</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
-              Screenshots and working systems from current Cozy Digital clients — no inflated claims, no fake logos, and no made-up results.
+            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-zinc-400">
+              No inflated claims, no fake logos — just screenshots and working systems from real clients.
             </p>
           </div>
-          <div className="grid gap-6 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-2">
             {clientProof.map((client, i) => (
-              <article key={`${client.name}-${i}`} className="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950/80 shadow-2xl shadow-black/25">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(34,211,238,0.13),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(217,70,239,0.10),transparent_30%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="relative h-52 overflow-hidden border-b border-white/10 bg-black">
+              <article key={`${client.name}-${i}`} className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] shadow-2xl shadow-black/30 transition-colors duration-300 hover:border-white/[0.14] hover:bg-white/[0.05]">
+                <div className="relative h-64 overflow-hidden bg-black">
                   {client.video ? (
                     <video
                       src={client.video.src}
@@ -255,27 +254,29 @@ export default function HomePage() {
                     />
                   ) : (
                     <>
-                      <Image src={client.image!} alt={client.alt} width={800} height={449} className={`h-full w-full object-cover transition duration-500 group-hover:scale-[1.03] ${client.privatePreview ? "opacity-80 blur-[1px]" : "opacity-95"}`} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/10 to-transparent" />
-                      {client.privatePreview && (
-                        <div className="absolute bottom-4 left-4 rounded-full border border-amber-300/25 bg-amber-500/15 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-amber-100">Interface preview</div>
-                      )}
+                      <Image src={client.image!} alt={client.alt} width={900} height={506} className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     </>
                   )}
                 </div>
-                <div className="relative flex flex-col p-6">
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-cyan-300">{client.label}</p>
-                  <h3 className="mt-3 text-2xl font-black text-white">{client.name}</h3>
+                <div className="flex flex-1 flex-col p-7">
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-cyan-400">{client.label}</p>
+                  <h3 className="mt-2 text-xl font-black text-white">{client.name}</h3>
                   <p className="mt-3 text-sm leading-6 text-zinc-400">{client.summary}</p>
-                  <div className="mt-5 space-y-2">
+                  <div className="mt-5 space-y-1.5">
                     {client.details.map((detail) => (
-                      <div key={detail} className="flex gap-2 text-sm font-semibold text-zinc-200">
-                        <span className="text-cyan-300">&#x2713;</span>
+                      <div key={detail} className="flex gap-2 text-sm text-zinc-300">
+                        <span className="text-cyan-400">&#x2713;</span>
                         <span>{detail}</span>
                       </div>
                     ))}
                   </div>
-                  <a href={client.href} target={client.href.startsWith("http") ? "_blank" : undefined} rel={client.href.startsWith("http") ? "noreferrer" : undefined} className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-500/10 px-4 py-3 text-sm font-bold text-cyan-100 transition-colors hover:bg-cyan-500/20">
+                  <a
+                    href={client.href}
+                    target={client.href.startsWith("http") ? "_blank" : undefined}
+                    rel={client.href.startsWith("http") ? "noreferrer" : undefined}
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 transition-colors hover:text-cyan-100"
+                  >
                     {client.cta}
                     <ArrowIcon />
                   </a>
@@ -283,9 +284,13 @@ export default function HomePage() {
               </article>
             ))}
           </div>
-          <div className="mt-8 rounded-3xl border border-amber-300/20 bg-amber-500/10 p-5 text-sm leading-6 text-amber-50">
-            Want proof like this on your own site? Book the free consultation and we&apos;ll map which screenshots, reviews, offers, and lead paths should be visible before a visitor decides to trust you.
-          </div>
+          <p className="mt-10 text-center text-sm text-zinc-500">
+            Want proof like this on your site?{" "}
+            <Link href="/cozy-booking" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
+              Book the free consultation
+            </Link>{" "}
+            and we&apos;ll map what should be visible before visitors decide to trust you.
+          </p>
         </div>
       </section>
 
