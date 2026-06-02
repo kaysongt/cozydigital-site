@@ -79,59 +79,59 @@ function CrownBadge() {
 function FakePostCard({ post }: { post: TemplatePost }) {
   const lines = post.headline.split("\n");
   return (
-    <div className="h-[220px] w-[124px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 shadow-lg" style={{ fontSize: "7px" }}>
+    <div className="h-[340px] w-[194px] shrink-0 overflow-hidden rounded-[22px] border border-white/10 bg-zinc-900 shadow-2xl shadow-black/30" style={{ fontSize: "8.5px" }}>
       {/* Status bar */}
-      <div className="flex items-center justify-between bg-black px-2 py-[2px] text-white" style={{ fontSize: "5.5px" }}>
+      <div className="flex items-center justify-between bg-black px-3 py-[4px] text-white" style={{ fontSize: "6px" }}>
         <span className="font-semibold">1:05</span>
         <span className="opacity-60">▲ ◆ 5G</span>
       </div>
       {/* IG header */}
-      <div className="flex items-center justify-between border-b border-white/[0.08] bg-black/80 px-2 py-[3px]">
-        <div className="flex items-center gap-1">
-          <div className="h-3.5 w-3.5 shrink-0 overflow-hidden rounded-full border border-amber-400/50">
-            <Image src="/brand/cozy-digital-logo.jpg" alt="" width={14} height={14} className="h-full w-full object-cover" />
+      <div className="flex items-center justify-between border-b border-white/[0.08] bg-black/80 px-3 py-2">
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full border border-amber-400/50">
+            <Image src="/brand/cozy-digital-logo.jpg" alt="" width={20} height={20} className="h-full w-full object-cover" />
           </div>
-          <span className="font-bold text-white" style={{ fontSize: "6.5px" }}>cozydig1tal</span>
+          <span className="font-bold text-white" style={{ fontSize: "7px" }}>cozydig1tal</span>
         </div>
-        <span className="text-white opacity-40" style={{ fontSize: "8px" }}>•••</span>
+        <span className="text-white opacity-40" style={{ fontSize: "10px" }}>•••</span>
       </div>
       {/* Content area */}
-      <div className={`relative flex h-[130px] flex-col justify-between p-2 ${post.bg}`}>
+      <div className={`relative flex h-[216px] flex-col justify-between p-3 ${post.bg}`}>
         <CrownBadge />
         {/* Headline */}
         <div>
           {lines.map((line, i) => (
-            <p key={i} className={`font-black leading-none ${post.headlineColor}`} style={{ fontSize: i === 0 ? "9.5px" : "9px", lineHeight: 1.1 }}>{line}</p>
+            <p key={i} className={`font-black leading-none ${post.headlineColor}`} style={{ fontSize: i === 0 ? "13px" : "12px", lineHeight: 1.02 }}>{line}</p>
           ))}
           {post.tagline && (
-            <p className={`mt-0.5 font-semibold italic ${post.taglineColor}`} style={{ fontSize: "5.5px" }}>{post.tagline}</p>
+            <p className={`mt-1 font-semibold italic ${post.taglineColor}`} style={{ fontSize: "7px" }}>{post.tagline}</p>
           )}
         </div>
         {/* Services */}
-        <div className="space-y-[2px]">
+        <div className="space-y-[3px]">
           {post.services.slice(0, 3).map((s) => (
-            <div key={s} className={`flex items-center gap-1 ${post.serviceColor}`} style={{ fontSize: "5.5px" }}>
+            <div key={s} className={`flex items-center gap-1.5 ${post.serviceColor}`} style={{ fontSize: "6.5px" }}>
               <span className="text-amber-400">✓</span>{s}
             </div>
           ))}
         </div>
         {/* CTA strip */}
         <div>
-          <div className={`rounded px-1.5 py-[2px] text-center font-black ${post.ctaBg} ${post.ctaText}`} style={{ fontSize: "6px" }}>{post.cta}</div>
-          {post.phone && <p className="mt-[2px] text-center font-bold text-zinc-400" style={{ fontSize: "5px" }}>{post.phone}</p>}
+          <div className={`rounded-md px-2 py-1 text-center font-black uppercase tracking-[0.15em] ${post.ctaBg} ${post.ctaText}`} style={{ fontSize: "7px" }}>{post.cta}</div>
+          {post.phone && <p className="mt-1 text-center font-bold text-zinc-400" style={{ fontSize: "5.5px" }}>{post.phone}</p>}
         </div>
       </div>
       {/* Action bar */}
-      <div className="flex items-center justify-between bg-black/70 px-2 py-[2px]">
-        <div className="flex items-center gap-2 text-zinc-500" style={{ fontSize: "5.5px" }}>
+      <div className="flex items-center justify-between bg-black/70 px-3 py-[5px]">
+        <div className="flex items-center gap-3 text-zinc-500" style={{ fontSize: "6px" }}>
           <span>♥ {post.likes}</span><span>💬 {post.comments}</span><span>↗ {post.shares}</span>
         </div>
-        <span className="rounded bg-blue-600 px-1 font-bold text-white" style={{ fontSize: "5px" }}>Boost</span>
+        <span className="rounded bg-blue-600 px-1.5 font-bold text-white" style={{ fontSize: "5.5px" }}>Boost</span>
       </div>
       {/* Caption */}
-      <div className="bg-black/80 px-2 py-[2px]" style={{ fontSize: "5.5px", lineHeight: 1.35 }}>
+      <div className="bg-black/80 px-3 py-2" style={{ fontSize: "6px", lineHeight: 1.35 }}>
         <span className="font-bold text-white">cozydig1tal </span>
-        <span className="text-zinc-400">{post.caption.replace("cozydig1tal ", "").slice(0, 55)}…</span>
+        <span className="text-zinc-400">{post.caption.replace("cozydig1tal ", "").slice(0, 68)}…</span>
       </div>
     </div>
   );
