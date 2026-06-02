@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import CozyPublicHeader from "@/components/cozy-public-header";
 import CozyPublicFooter from "@/components/cozy-public-footer";
+import AuditPopup from "@/components/audit-popup";
 
 const description = "Practical growth systems for service brands — sharper websites, cleaner content, and booking paths that turn visitors into clients.";
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CozyPublicHeader />
         <div className="flex-1">{children}</div>
         <CozyPublicFooter />
+        <AuditPopup />
       </body>
     </html>
   );

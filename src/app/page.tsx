@@ -208,21 +208,53 @@ export default function HomePage() {
       </section>
 
       {/* CAPABILITIES */}
-      <section className="py-20 px-6">
-        <div className="mx-auto mb-14 max-w-5xl">
-          <div className="mb-10 text-center">
+      <section className="py-24 px-6">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Capabilities</p>
             <h2 className="text-4xl font-black text-white md:text-5xl">Fix the leaks, then grow.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-base text-zinc-400">Most businesses don&apos;t have a traffic problem — they have a conversion problem. We fix what&apos;s blocking the booking, then build what drives growth.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { label: "Website & Landing Pages", desc: "Sharpen your homepage, clarify the offer, and create flows that answer visitor questions instantly." },
-              { label: "Content Engine", desc: "Organize ideas into pillars, hooks, captions, and rhythms so content supports offers without burnout." },
-              { label: "Booking & Inquiry Paths", desc: "Fix booking pages, inquiry forms, and social CTAs so interested people actually become leads." },
+              {
+                icon: "⬡",
+                label: "Website & Landing Pages",
+                desc: "Your homepage has 5 seconds to earn a click. We sharpen the headline, clarify the offer, and remove every reason a visitor has to leave without acting.",
+                stat: "5 sec",
+                statLabel: "to earn or lose trust",
+                color: "from-cyan-500/20 to-cyan-500/0",
+                border: "border-cyan-400/20",
+              },
+              {
+                icon: "⬡",
+                label: "Content Engine",
+                desc: "No more posting and hoping. We build a repeatable content rhythm — pillars, hooks, captions — so every post points toward a booking.",
+                stat: "8 posts",
+                statLabel: "per month, ready to publish",
+                color: "from-blue-500/20 to-blue-500/0",
+                border: "border-blue-400/20",
+              },
+              {
+                icon: "⬡",
+                label: "Booking & Inquiry Paths",
+                desc: "Interested visitors are already sold — until the booking flow loses them. We cut the friction so the people who click actually book.",
+                stat: "1 step",
+                statLabel: "from interest to booked",
+                color: "from-fuchsia-500/20 to-fuchsia-500/0",
+                border: "border-fuchsia-400/20",
+              },
             ].map((f) => (
-              <div key={f.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
-                <h3 className="text-xl font-black text-white">{f.label}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">{f.desc}</p>
+              <div key={f.label} className={`group relative overflow-hidden rounded-3xl border ${f.border} bg-white/[0.03] p-8 transition-colors duration-300 hover:bg-white/[0.06]`}>
+                <div className={`absolute inset-0 bg-gradient-to-b ${f.color} opacity-60`} />
+                <div className="relative">
+                  <p className="mb-5 text-3xl font-black tabular-nums text-white">
+                    {f.stat}
+                    <span className="ml-2 text-xs font-bold uppercase tracking-widest text-zinc-500">{f.statLabel}</span>
+                  </p>
+                  <h3 className="text-lg font-black text-white">{f.label}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-400">{f.desc}</p>
+                </div>
               </div>
             ))}
           </div>
