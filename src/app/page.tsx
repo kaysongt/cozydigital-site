@@ -48,7 +48,7 @@ const clientProof = [
     summary: "A polished planning dashboard that organizes platform rhythm, post status, creative notes, and next actions for ongoing content execution.",
     image: "/images/client-proof/dr-alicia-scheduler.png",
     alt: "Screenshot of the Dr. Alicia content scheduler dashboard",
-    href: "/cozy-booking/",
+    href: "/free-playbook",
     cta: "Ask about scheduler builds",
     details: ["4-week content board", "Copy-ready post workflow", "Done/undo progress tracking"],
     privatePreview: false,
@@ -60,7 +60,7 @@ const clientProof = [
     summary: "A custom tracker for logging daily snapshots, sales, ad campaigns, reviews, and platform growth so marketing decisions have one clean source of truth.",
     image: "/images/client-proof/ak-marlowe-stats-preview.png",
     alt: "Screenshot of the AK Marlowe stats tracker dashboard",
-    href: "/cozy-booking/",
+    href: "/free-playbook",
     cta: "Ask about custom trackers",
     details: ["Sales + ad tracking", "Platform growth dashboard", "Export-ready data"],
     privatePreview: false,
@@ -72,7 +72,7 @@ const clientProof = [
     summary: "A branded video ad built around a hook-first script — designed to stop the scroll and drive trust before the first call to action lands.",
     image: undefined,
     alt: "",
-    href: "/cozy-booking/",
+    href: "/free-playbook",
     cta: "Get an ad like this",
     details: ["Hook-first scripting", "Brand-matched visuals", "Ready to post on reels/shorts"],
     privatePreview: false,
@@ -109,7 +109,7 @@ export default function HomePage() {
               Watch the quick breakdown, then book a free consultation so we can map the website, content, and lead path that fits your business.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link href="/cozy-booking" className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-9 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+              <Link href="/free-playbook" className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-9 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
                 <span>Book a Free Consultation</span>
                 <ArrowIcon />
               </Link>
@@ -380,7 +380,7 @@ export default function HomePage() {
           </div>
           <p className="mt-10 text-center text-sm text-zinc-500">
             Want proof like this on your site?{" "}
-            <Link href="/cozy-booking" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
+            <Link href="/free-playbook" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
               Book the free consultation
             </Link>{" "}
             and we&apos;ll map what should be visible before visitors decide to trust you.
@@ -413,7 +413,7 @@ export default function HomePage() {
                 <Link href="/pricing" className="mb-2 text-center text-xs text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
                   See full breakdown
                 </Link>
-                <Link href="/cozy-booking" className={`w-full rounded-xl py-3.5 text-sm font-bold text-center transition-colors ${s.highlight ? "bg-white text-black hover:bg-zinc-200" : "border border-white/20 text-white hover:bg-white/10"}`}>
+                <Link href="/free-playbook" className={`w-full rounded-xl py-3.5 text-sm font-bold text-center transition-colors ${s.highlight ? "bg-white text-black hover:bg-zinc-200" : "border border-white/20 text-white hover:bg-white/10"}`}>
                   {s.cta}
                 </Link>
               </div>
@@ -428,7 +428,7 @@ export default function HomePage() {
           <h2 className="text-4xl font-black text-white md:text-6xl">Ready to clean up the noise?</h2>
           <p className="mt-6 text-zinc-400 text-lg">See what&apos;s blocking trust and bookings before you spend another dollar.</p>
           <div className="mt-10 flex justify-center">
-            <Link href="/cozy-booking" className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-10 py-4 text-base font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+            <Link href="/free-playbook" className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-10 py-4 text-base font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
               <span>Book a Free Consultation</span>
               <ArrowIcon />
             </Link>

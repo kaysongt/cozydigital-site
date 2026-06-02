@@ -79,19 +79,18 @@ export default function AuditPopup() {
       aria-modal="true"
       role="dialog"
       aria-label="Free growth audit request"
-      className={`fixed inset-x-0 bottom-0 z-50 transition-transform duration-[360ms] ease-out ${
-        visible ? "translate-y-0" : "translate-y-full"
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-[360ms] ease-out ${
+        visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      {/* backdrop — only on large screens */}
+      {/* backdrop */}
       <div
-        className="absolute inset-x-0 bottom-0 hidden h-screen bg-black/40 md:block"
-        style={{ top: "-100vh" }}
+        className="absolute inset-0 bg-black/60"
         onClick={dismiss}
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-3xl rounded-t-3xl border border-white/10 bg-zinc-950 px-6 pb-8 pt-6 shadow-2xl shadow-black/60 md:px-10">
+      <div className="relative w-full mx-auto max-w-3xl rounded-3xl border border-white/10 bg-zinc-950 px-6 pb-8 pt-6 shadow-2xl shadow-black/60 md:px-10">
         {/* Close pill */}
         <button
           onClick={dismiss}

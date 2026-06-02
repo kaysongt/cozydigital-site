@@ -1,169 +1,252 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
-// ─── SETUP ───────────────────────────────────────────────────────────────────
-// 1. Create a free account at https://app.convertkit.com
-// 2. Go to Grow → Landing Pages & Forms → Create Form → Inline
-// 3. From the form settings, copy your Form ID (in the URL or embed code)
-// 4. Create a .env.local file with:
-//      NEXT_PUBLIC_KIT_FORM_ID=your_form_id_here
-//      NEXT_PUBLIC_KIT_API_KEY=your_public_api_key_here   (found in Account → Settings → Developer)
-// 5. In Kit, set up an "Incentive" email that delivers the playbook link
-//    OR tag subscribers and send a sequence automatically
-// ─────────────────────────────────────────────────────────────────────────────
+const CRM_API_URL = "https://shadowcrm-ekcrkbu5.manus.space/api/trpc/leads.capture";
+const PDF_URL     = "https://shadowcrm-ekcrkbu5.manus.space/downloads/playbook.pdf";
+const CALENDLY    = "https://calendly.com/cozydigital-out/30min";
+const TOTAL       = 6;
 
-const KIT_FORM_ID = process.env.NEXT_PUBLIC_KIT_FORM_ID ?? "";
-const KIT_API_KEY = process.env.NEXT_PUBLIC_KIT_API_KEY ?? "";
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  howGettingClients: string;
+  onlinePresenceSatisfaction: string;
+  leadsPerMonth: string;
+};
 
-const playbookPoints = [
-  { icon: "📋", label: "Brand positioning framework", desc: "How to describe what you do in one sentence that makes people want to book." },
-  { icon: "🎯", label: "Booking-ready page checklist", desc: "The exact elements every page needs before you spend another dollar on ads." },
-  { icon: "💬", label: "CTA scripts that convert", desc: "Word-for-word button copy, captions, and DM replies that move people to act." },
-  { icon: "📱", label: "Content-to-booking system", desc: "A repeatable rhythm that turns social posts into real booked appointments." },
-  { icon: "⚡", label: "30-minute quick wins", desc: "Five changes you can make today that will visibly move the needle this week." },
-];
+const choices = {
+  czQ1: [
+    "Referrals / word of mouth",
+    "Social media (organic)",
+    "Paid ads",
+    "Networking / events",
+    "Not sure / not consistently",
+  ],
+  czQ2: [
+    "Very unsatisfied — it's hurting us",
+    "Not great — we need a real upgrade",
+    "Okay, but it could be much better",
+    "Pretty good, just needs fine-tuning",
+  ],
+  czQ3: ["0 – 5", "6 – 15", "16 – 30", "30+"],
+};
 
 export default function FreePlaybookPage() {
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [step, setStep] = useState(1);
+  const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [form, setForm] = useState<FormData>({
+    name: "", email: "", phone: "", company: "",
+    howGettingClients: "", onlinePresenceSatisfaction: "", leadsPerMonth: "",
+  });
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!KIT_FORM_ID || !KIT_API_KEY) {
-      // Fallback: direct download if Kit isn't configured yet
-      window.location.href = "/free-playbook/thank-you/?direct=1";
-      return;
-    }
-    setStatus("loading");
-    try {
-      const res = await fetch(
-        `https://api.convertkit.com/v3/forms/${KIT_FORM_ID}/subscribe`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            api_key: KIT_API_KEY,
-            first_name: firstName,
-            email,
-            tags: ["playbook-download"],
-          }),
-        }
-      );
-      if (!res.ok) throw new Error("Subscription failed");
-      setStatus("success");
-      setTimeout(() => {
-        window.location.href = "/free-playbook/thank-you/";
-      }, 800);
-    } catch {
-      setStatus("error");
-      setErrorMsg("Something went wrong. Try again or email us directly.");
-    }
+  const pct = Math.round(((step - 1) / TOTAL) * 100);
+
+  function set(key: keyof FormData, val: string) {
+    setForm((f) => ({ ...f, [key]: val }));
+    setErrors((e) => ({ ...e, [key]: "" }));
   }
 
+  function next() {
+    if (step === 1 && !form.name.trim()) {
+      setErrors({ name: "Please enter your name." }); return;
+    }
+    if (step === 2) {
+      if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+        setErrors({ email: "Please enter a valid email." }); return;
+      }
+    }
+    if (step === TOTAL) { submit(); return; }
+    setStep((s) => s + 1);
+  }
+
+  async function submit() {
+    setSending(true);
+    try {
+      await fetch(CRM_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ "0": { json: {
+          name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          company: form.company || undefined,
+          howGettingClients: form.howGettingClients,
+          onlinePresenceSatisfaction: form.onlinePresenceSatisfaction,
+          leadsPerMonth: form.leadsPerMonth,
+        }}}),
+      });
+    } catch (_) { /* still show thank-you */ }
+    setSending(false);
+    setDone(true);
+    setTimeout(() => window.open(PDF_URL, "_blank"), 600);
+  }
+
+  const inputClass =
+    "w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-900 placeholder-zinc-400 outline-none focus:border-zinc-900 transition";
+
+  const choiceClass = (selected: boolean) =>
+    `w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition cursor-pointer ${
+      selected
+        ? "border-zinc-900 bg-zinc-900 text-white"
+        : "border-zinc-200 bg-zinc-50 text-zinc-900 hover:border-zinc-900 hover:bg-zinc-100"
+    }`;
+
   return (
-    <main className="min-h-screen bg-zinc-950 px-6 py-12 text-zinc-100">
-      <div className="mx-auto max-w-5xl">
+    <main className="min-h-screen bg-zinc-950 px-6 py-16">
+      <div className="mx-auto max-w-3xl text-center mb-10">
+        <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-400">Free Resource</p>
+        <h1 className="text-4xl font-black text-white md:text-5xl">Get the Booking-Ready Brand Playbook</h1>
+        <p className="mx-auto mt-4 max-w-xl text-zinc-400">
+          Answer a few quick questions and we&apos;ll send you the playbook instantly — then you can book a free 30-min strategy call.
+        </p>
+      </div>
 
-        {/* Hero */}
-        <div className="mb-16 text-center">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-amber-300">
-            Free Download
-          </span>
-          <h1 className="mt-4 text-5xl font-black leading-tight text-white md:text-6xl">
-            The Booking-Ready<br />
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">Brand Playbook.</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-zinc-400">
-            The exact framework Cozy Digital uses to turn service brand websites and social profiles into consistent booking machines. Free. No fluff.
-          </p>
-        </div>
-
-        <div className="grid gap-10 lg:grid-cols-[1fr_420px]">
-
-          {/* What's inside */}
-          <div>
-            <p className="mb-6 text-xs font-bold uppercase tracking-widest text-zinc-500">What&apos;s inside</p>
-            <div className="space-y-4">
-              {playbookPoints.map((p) => (
-                <div key={p.label} className="flex gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5">
-                  <span className="text-2xl">{p.icon}</span>
-                  <div>
-                    <p className="font-black text-white">{p.label}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-zinc-400">{p.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 rounded-2xl border border-cyan-300/20 bg-cyan-500/[0.06] p-5 text-sm leading-relaxed text-zinc-300">
-              <span className="font-bold text-cyan-300">Who this is for:</span> Service business owners, creators, and local brands who are already posting and showing up — but not converting that attention into booked clients.
-            </div>
+      <div className="mx-auto max-w-lg rounded-2xl bg-white p-8 shadow-2xl">
+        {done ? (
+          <div className="text-center py-6">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-zinc-100 text-3xl">🎉</div>
+            <h2 className="text-2xl font-bold text-zinc-900">You&apos;re all set!</h2>
+            <p className="mt-2 text-sm text-zinc-500">
+              Your free <strong>Booking-Ready Brand Playbook</strong> is ready.<br />
+              Then grab a spot — the strategy call is free.
+            </p>
+            <a
+              href={PDF_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-block rounded-xl bg-zinc-900 px-8 py-3 text-sm font-bold text-white hover:bg-zinc-700 transition"
+            >
+              Download the Playbook
+            </a>
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 block text-sm text-zinc-500 underline hover:text-zinc-800"
+            >
+              Book your free 30-min strategy call →
+            </a>
           </div>
+        ) : (
+          <>
+            {/* Progress bar */}
+            <div className="mb-2 h-1.5 w-full overflow-hidden rounded-full bg-zinc-100">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 transition-all duration-500"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+            <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+              Step {step} of {TOTAL}
+            </p>
 
-          {/* Form */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 shadow-2xl shadow-black/30">
-              <p className="mb-1 text-xs font-bold uppercase tracking-widest text-cyan-400">Instant access</p>
-              <h2 className="mb-2 text-2xl font-black text-white">Get the free playbook</h2>
-              <p className="mb-6 text-sm text-zinc-400">Delivered to your inbox immediately. No spam — ever.</p>
+            {/* Step 1 */}
+            {step === 1 && (
+              <>
+                <h2 className="text-2xl font-bold text-zinc-900">What&apos;s your name?</h2>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Let&apos;s get acquainted.</p>
+                <input className={inputClass} type="text" placeholder="Jane Smith" value={form.name}
+                  onChange={(e) => set("name", e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && next()} />
+                {errors.name && <p className="mt-2 text-xs text-red-500">{errors.name}</p>}
+              </>
+            )}
 
-              {status === "success" ? (
-                <div className="rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-6 text-center">
-                  <p className="text-2xl">✅</p>
-                  <p className="mt-2 font-black text-white">You&apos;re in!</p>
-                  <p className="mt-1 text-sm text-zinc-400">Redirecting to your download…</p>
+            {/* Step 2 */}
+            {step === 2 && (
+              <>
+                <h2 className="text-2xl font-bold text-zinc-900">How can we reach you?</h2>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">We&apos;ll send the playbook here.</p>
+                <input className={inputClass} type="email" placeholder="jane@yourcompany.com" value={form.email}
+                  onChange={(e) => set("email", e.target.value)} />
+                <input className={`${inputClass} mt-3`} type="tel" placeholder="Phone (optional)" value={form.phone}
+                  onChange={(e) => set("phone", e.target.value)} />
+                {errors.email && <p className="mt-2 text-xs text-red-500">{errors.email}</p>}
+              </>
+            )}
+
+            {/* Step 3 */}
+            {step === 3 && (
+              <>
+                <h2 className="text-2xl font-bold text-zinc-900">What&apos;s your business called?</h2>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Optional — helps us tailor the call.</p>
+                <input className={inputClass} type="text" placeholder="Your Business LLC" value={form.company}
+                  onChange={(e) => set("company", e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && next()} />
+              </>
+            )}
+
+            {/* Step 4 */}
+            {step === 4 && (
+              <>
+                <h2 className="text-2xl font-bold text-zinc-900">How are you currently getting new clients?</h2>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Pick the one that fits best.</p>
+                <div className="flex flex-col gap-2">
+                  {choices.czQ1.map((c) => (
+                    <button key={c} className={choiceClass(form.howGettingClients === c)}
+                      onClick={() => set("howGettingClients", c)}>{c}</button>
+                  ))}
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-zinc-400" htmlFor="firstName">First Name</label>
-                    <input
-                      id="firstName"
-                      type="text"
-                      required
-                      placeholder="Your first name"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                      className="w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-zinc-400" htmlFor="email">Email Address</label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      placeholder="you@yourbusiness.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30"
-                    />
-                  </div>
-                  {status === "error" && (
-                    <p className="rounded-lg border border-red-400/30 bg-red-500/10 px-4 py-2 text-xs text-red-300">{errorMsg}</p>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={status === "loading"}
-                    className="w-full rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 py-4 text-sm font-black text-white shadow-xl shadow-cyan-900/25 transition-all hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500 disabled:opacity-60"
-                  >
-                    {status === "loading" ? "Sending…" : "Send Me The Playbook →"}
-                  </button>
-                  <p className="text-center text-xs text-zinc-600">No spam. Unsubscribe any time.</p>
-                </form>
-              )}
-            </div>
+              </>
+            )}
 
-            <div className="mt-4 text-center">
-              <p className="text-xs text-zinc-600">Already booked a call?{" "}
-                <Link href="/cozy-booking/" className="text-cyan-500 hover:text-cyan-300">Schedule here →</Link>
-              </p>
+            {/* Step 5 */}
+            {step === 5 && (
+              <>
+                <h2 className="text-2xl font-bold text-zinc-900">How happy are you with your current online presence?</h2>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Be honest — that&apos;s what the call is for.</p>
+                <div className="flex flex-col gap-2">
+                  {choices.czQ2.map((c) => (
+                    <button key={c} className={choiceClass(form.onlinePresenceSatisfaction === c)}
+                      onClick={() => set("onlinePresenceSatisfaction", c)}>{c}</button>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Step 6 */}
+            {step === 6 && (
+              <>
+                <h2 className="text-2xl font-bold text-zinc-900">How many inbound leads per month right now?</h2>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Ballpark is fine.</p>
+                <div className="flex flex-col gap-2">
+                  {choices.czQ3.map((c) => (
+                    <button key={c} className={choiceClass(form.leadsPerMonth === c)}
+                      onClick={() => set("leadsPerMonth", c)}>{c}</button>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Nav */}
+            <div className="mt-6 flex items-center justify-between gap-3">
+              {step > 1 ? (
+                <button onClick={() => setStep((s) => s - 1)}
+                  className="px-4 py-3 text-sm text-zinc-400 hover:text-zinc-900 transition">
+                  ← Back
+                </button>
+              ) : <span />}
+              <button
+                onClick={next}
+                disabled={
+                  sending ||
+                  (step === 4 && !form.howGettingClients) ||
+                  (step === 5 && !form.onlinePresenceSatisfaction) ||
+                  (step === 6 && !form.leadsPerMonth)
+                }
+                className="flex-1 rounded-xl bg-zinc-900 py-3 text-sm font-bold text-white hover:bg-zinc-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {sending ? "Sending…" : step === TOTAL ? "Get the Playbook →" : "Continue →"}
+              </button>
             </div>
-          </div>
-        </div>
+          </>
+        )}
+        <p className="mt-5 text-center text-xs text-zinc-300">We respect your privacy. No spam, ever.</p>
       </div>
     </main>
   );
