@@ -266,7 +266,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-14 text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Client Proof</p>
-            <h2 className="text-4xl font-black text-white md:text-5xl">Real client work, shown cleanly.</h2>
+            <h2 className="whitespace-nowrap text-3xl font-black text-white md:text-4xl">Real client work, shown cleanly.</h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-zinc-400">
               No inflated claims, no fake logos — just screenshots and working systems from real clients.
             </p>
