@@ -19,6 +19,13 @@ export const metadata: Metadata = {
     url: "https://www.cozydigital.org",
     siteName: "Cozy Digital",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Cozy Digital" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cozy Digital | Websites, Content & Lead Systems",
+    description,
+    images: ["/og-image.png"],
   },
   alternates: {
     canonical: "https://www.cozydigital.org/",
