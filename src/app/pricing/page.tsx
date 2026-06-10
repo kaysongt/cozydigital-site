@@ -14,6 +14,7 @@ const buildItems = [
   { service: "Social Media Branding & Content Templates", price: "$350" },
   { service: "Automated Follow-Up System (email or SMS)", price: "$300" },
   { service: "Analytics & Reporting Dashboard", price: "$200" },
+  { service: "Cozy Hub Client Portal — track your content, deliverables & results in one place", price: "Included" },
 ];
 
 const retainerItems = [
@@ -22,6 +23,7 @@ const retainerItems = [
   { service: "Social Media Content (8 posts/month)", price: "$250/mo" },
   { service: "Ad Management (Google or Meta, ad budget separate)", price: "$200/mo" },
   { service: "Monthly Analytics Report & Strategy Call", price: "$100/mo" },
+  { service: "Cozy Hub Client Portal — live access to your content, progress & reports", price: "Included" },
 ];
 
 function PricingTable({ items, total, totalLabel }: { items: { service: string; price: string }[]; total: string; totalLabel: string }) {
