@@ -32,13 +32,13 @@ const platformLogos = [
 const clientProof = [
   {
     name: "Dr. Alicia",
-    label: "Live ecommerce + wellness brand",
-    summary: "A public Shopify storefront and supporting content scheduler built around self-care products, books, and repeatable social content planning.",
+    label: "Therapy, coaching & wellness brand",
+    summary: "A full-service wellness platform covering therapy booking, private coaching, online courses, a Costa Rica retreat, and branded self-care products — all under one clean, premium brand.",
     image: "/images/client-proof/dr-alicia-site.png",
-    alt: "Screenshot of the Dr. Alicia live website homepage",
-    href: "https://healingwithdralicia.com/",
+    alt: "Screenshot of the Dr. Alicia Watkins website homepage",
+    href: "https://draliciawatkins.com/",
     cta: "Visit live website",
-    details: ["Live public storefront", "Self-care product flow", "Content scheduler support"],
+    details: ["Therapy & coaching booking flows", "Wellness products storefront", "Retreats, courses & digital resources"],
     privatePreview: false,
     video: undefined,
   },
