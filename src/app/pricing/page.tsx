@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 const buildItems = [
   { service: "Custom Website (5 pages + custom landing page)", price: "$1,200" },
+  { service: "AI Search Visibility (GEO) Setup — structured data + answer content so ChatGPT, Perplexity & Google AI can recommend you", price: "Included" },
   { service: "Direct Booking System Setup", price: "$300" },
   { service: "Google Business Profile Optimization", price: "$250" },
   { service: "Local SEO Foundation", price: "$400" },
@@ -19,6 +20,7 @@ const buildItems = [
 
 const retainerItems = [
   { service: "Website Maintenance & Updates", price: "$150/mo" },
+  { service: "AI Search Visibility (GEO) Monitoring — we track how AI describes your business and keep answer content current", price: "Included" },
   { service: "Local SEO & Google Profile Management", price: "$200/mo" },
   { service: "Social Media Content (8 posts/month)", price: "$250/mo" },
   { service: "Ad Management (Google or Meta, ad budget separate)", price: "$200/mo" },

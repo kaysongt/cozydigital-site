@@ -3,10 +3,12 @@ import Image from "next/image";
 
 const footerNav = [
   { label: "Services", href: "/services/" },
+  { label: "AI Search", href: "/ai-search/" },
   { label: "Process", href: "/process/" },
   { label: "Clients", href: "/#clients" },
   { label: "Pricing", href: "/pricing/" },
   { label: "About", href: "/about/" },
+  { label: "FAQ", href: "/faq/" },
   { label: "Free Audit", href: "/free-audit/" },
   { label: "Free Playbook ⬇", href: "/free-playbook/" },
 ];

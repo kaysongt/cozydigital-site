@@ -46,16 +46,20 @@ export default function FreeAuditPage() {
           ))}
         </div>
 
-        <div className="mb-10 grid gap-4 sm:grid-cols-2">
-          {testimonials.map((t) => (
-            <div key={t.name} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-              <p className="text-sm leading-relaxed text-zinc-300 italic">&ldquo;{t.quote}&rdquo;</p>
-              <div className="mt-4">
-                <p className="text-xs font-bold text-white">{t.name}</p>
-                <p className="text-xs text-zinc-500">{t.role}</p>
-              </div>
-            </div>
-          ))}
+        <div className="mb-10 space-y-3">
+          <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">What clients say</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {testimonials.map((t) => (
+              <figure key={t.name} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <span aria-hidden className="block text-3xl leading-none text-cyan-300/40">&ldquo;</span>
+                <blockquote className="mt-1 text-sm leading-relaxed text-zinc-300 italic">{t.quote}</blockquote>
+                <figcaption className="mt-4">
+                  <p className="text-xs font-bold text-white">{t.name}</p>
+                  <p className="text-xs text-zinc-500">{t.role}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
 
         <div className="rounded-2xl border border-cyan-300/20 bg-cyan-500/10 p-6 text-center">

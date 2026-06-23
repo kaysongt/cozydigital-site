@@ -81,8 +81,8 @@ const clientProof = [
 ];
 
 const services = [
-  { badge: "ONE-TIME", name: "Full Build Package", price: "$3,000", tagline: "Everything built from scratch. You own all of it when we are done. Best option to get fully set up in 90 days.", items: ["Custom Website (5 pages + landing page)", "Direct Booking System Setup", "Google Business Profile Optimization", "Local SEO Foundation", "Social Media Branding & Content Templates", "Automated Follow-Up System", "Analytics & Reporting Dashboard", "Cozy Hub Client Portal"], cta: "Book a Free Consultation", highlight: false },
-  { badge: "ONGOING", name: "Monthly Retainer", price: "$900/mo", tagline: "We manage, update, and grow everything for you month to month. No long-term contract required.", items: ["Website Maintenance & Updates", "Local SEO & Google Profile Management", "Social Media Content (8 posts/month)", "Ad Management (Google or Meta)", "Monthly Analytics Report & Strategy Call", "Cozy Hub Client Portal"], cta: "Book a Free Consultation", highlight: true },
+  { badge: "ONE-TIME", name: "Full Build Package", price: "$3,000", tagline: "Everything built from scratch. You own all of it when we are done. Best option to get fully set up in 90 days.", items: ["Custom Website (5 pages + landing page)", "AI Search Visibility (GEO) Setup", "Direct Booking System Setup", "Google Business Profile Optimization", "Local SEO Foundation", "Social Media Branding & Content Templates", "Automated Follow-Up System", "Analytics & Reporting Dashboard", "Cozy Hub Client Portal"], cta: "Book a Free Consultation", highlight: false },
+  { badge: "ONGOING", name: "Monthly Retainer", price: "$900/mo", tagline: "We manage, update, and grow everything for you month to month. No long-term contract required.", items: ["Website Maintenance & Updates", "AI Search Visibility (GEO) Monitoring", "Local SEO & Google Profile Management", "Social Media Content (8 posts/month)", "Ad Management (Google or Meta)", "Monthly Analytics Report & Strategy Call", "Cozy Hub Client Portal"], cta: "Book a Free Consultation", highlight: true },
 ];
 
 export default function HomePage() {
@@ -240,6 +240,19 @@ export default function HomePage() {
 
             {/* Right — 2-col feature grid */}
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {/* Featured — AI search / GEO */}
+              <Link href="/ai-search/" className="group/geo relative overflow-hidden rounded-2xl border border-cyan-300/30 bg-gradient-to-br from-cyan-500/[0.12] via-blue-500/[0.06] to-fuchsia-500/[0.10] p-5 transition-colors hover:border-cyan-300/50 sm:col-span-2">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">New · AI Search</p>
+                    <h3 className="mt-1.5 text-base font-black leading-snug text-white">Show up when customers ask ChatGPT, Perplexity &amp; Google AI</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-zinc-300">We make your business the answer AI recommends, not a competitor. Structured data, quotable content, and the trust signals answer engines actually cite.</p>
+                  </div>
+                  <span aria-hidden className="mt-1 shrink-0 text-cyan-300 transition-transform group-hover/geo:translate-x-0.5">
+                    <ArrowIcon />
+                  </span>
+                </div>
+              </Link>
               {[
                 {
                   icon: (

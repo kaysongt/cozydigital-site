@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 const buildItems = [
   { name: "Custom Website", detail: "5 pages + a custom landing page built around your offer" },
+  { name: "AI Search Visibility (GEO) Setup", detail: "Structured data and quotable answer content so ChatGPT, Perplexity, and Google AI can find and recommend you" },
   { name: "Direct Booking System Setup", detail: "Calendly or equivalent wired into your pages and social links" },
   { name: "Google Business Profile Optimization", detail: "Categories, hours, photos, and local SEO signals set correctly" },
   { name: "Local SEO Foundation", detail: "On-page structure and metadata so search engines understand what you do" },
@@ -18,6 +19,7 @@ const buildItems = [
 
 const retainerItems = [
   { name: "Website Maintenance & Updates", detail: "Copy, design, and offer changes handled as needed" },
+  { name: "AI Search Visibility (GEO) Monitoring", detail: "We track how AI assistants describe your business and keep your answer content current" },
   { name: "Local SEO & Google Profile Management", detail: "Monthly updates to keep rankings moving" },
   { name: "Social Media Content", detail: "8 posts per month — written, designed, and ready to publish" },
   { name: "Ad Management", detail: "Google or Meta campaigns managed for you (ad budget billed separately)" },
