@@ -16,7 +16,7 @@ const auditCovers = [
 
 const testimonials = [
   { quote: "We didn't realize how many friction points our booking page had until Cozy Digital walked us through it. Fixed in a week.", name: "Sarah J.", role: "Service brand owner" },
-  { quote: "The audit alone gave us a clear list of what to fix. Didn't feel like a sales pitch — felt like real feedback.", name: "Marcus C.", role: "Local business owner" },
+  { quote: "The audit alone gave us a clear list of what to fix. Didn't feel like a sales pitch, just real feedback.", name: "Marcus C.", role: "Local business owner" },
 ];
 
 export default function FreeAuditPage() {
@@ -67,7 +67,7 @@ export default function FreeAuditPage() {
           <Link href="/cozy-booking/" className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-4 text-sm font-bold text-white shadow-xl hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
             Book Your Free Audit
           </Link>
-          <p className="mt-3 text-xs text-zinc-500">No pressure &mdash; leave with clear next steps.</p>
+          <p className="mt-3 text-xs text-zinc-500">No pressure. Leave with clear next steps.</p>
         </div>
       </div>
     </main>

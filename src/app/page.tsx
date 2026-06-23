@@ -33,7 +33,7 @@ const clientProof = [
   {
     name: "Dr. Alicia",
     label: "Therapy, coaching & wellness brand",
-    summary: "A full-service wellness platform covering therapy booking, private coaching, online courses, a Costa Rica retreat, and branded self-care products — all under one clean, premium brand.",
+    summary: "A full-service wellness platform covering therapy booking, private coaching, online courses, a Costa Rica retreat, and branded self-care products, all under one clean, premium brand.",
     image: "/images/client-proof/dr-alicia-site.png",
     alt: "Screenshot of the Dr. Alicia Watkins website homepage",
     href: "https://draliciawatkins.com/",
@@ -68,8 +68,8 @@ const clientProof = [
   },
   {
     name: "AK Marlowe",
-    label: "Short-form ad — produced by Cozy Digital",
-    summary: "A branded video ad built around a hook-first script — designed to stop the scroll and drive trust before the first call to action lands.",
+    label: "Short-form ad, produced by Cozy Digital",
+    summary: "A branded video ad built around a hook-first script, designed to stop the scroll and drive trust before the first call to action lands.",
     image: undefined,
     alt: "",
     href: "/free-playbook",
@@ -81,8 +81,8 @@ const clientProof = [
 ];
 
 const services = [
-  { badge: "ONE-TIME", name: "Full Build Package", price: "$3,000", tagline: "Everything built from scratch. You own all of it when we are done. Best option to get fully set up in 90 days.", items: ["Custom Website (5 pages + landing page)", "AI Search Visibility (GEO) Setup", "Direct Booking System Setup", "Google Business Profile Optimization", "Local SEO Foundation", "Social Media Branding & Content Templates", "Automated Follow-Up System", "Analytics & Reporting Dashboard", "Cozy Hub Client Portal"], cta: "Book a Free Consultation", highlight: false },
-  { badge: "ONGOING", name: "Monthly Retainer", price: "$900/mo", tagline: "We manage, update, and grow everything for you month to month. No long-term contract required.", items: ["Website Maintenance & Updates", "AI Search Visibility (GEO) Monitoring", "Local SEO & Google Profile Management", "Social Media Content (8 posts/month)", "Ad Management (Google or Meta)", "Monthly Analytics Report & Strategy Call", "Cozy Hub Client Portal"], cta: "Book a Free Consultation", highlight: true },
+  { badge: "ONE-TIME", name: "Full Build Package", price: "$3,400", tagline: "Everything built from scratch. You own all of it when we are done. Best option to get fully set up in 90 days.", items: ["Custom Website (5 pages + landing page)", "AI Search Visibility (GEO) Setup", "Direct Booking System Setup", "Google Business Profile Optimization", "Local SEO Foundation", "Social Media Branding & Content Templates", "Automated Follow-Up System", "Analytics & Reporting Dashboard", "Cozy Hub Client Portal"], cta: "Book a Free Consultation", highlight: false },
+  { badge: "ONGOING", name: "Monthly Retainer", price: "$1,000/mo", tagline: "We manage, update, and grow everything for you month to month. No long-term contract required.", items: ["Website Maintenance & Updates", "AI Search Visibility (GEO) Monitoring", "Local SEO & Google Profile Management", "Social Media Content (8 posts/month)", "Ad Management (Google or Meta)", "Monthly Analytics Report & Strategy Call", "Cozy Hub Client Portal"], cta: "Book a Free Consultation", highlight: true },
 ];
 
 export default function HomePage() {
@@ -113,7 +113,7 @@ export default function HomePage() {
                 <span>Book a Free Consultation</span>
                 <ArrowIcon />
               </Link>
-              <span className="text-sm font-semibold text-zinc-500">No pressure &mdash; leave with clear next steps.</span>
+              <span className="text-sm font-semibold text-zinc-500">No pressure. Leave with clear next steps.</span>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-2xl">
@@ -177,7 +177,7 @@ export default function HomePage() {
       </section>
 
       {/* SOCIAL PROOF */}
-      <section className="overflow-hidden py-16" aria-label="Social proof — real posts from Cozy Digital">
+      <section className="overflow-hidden py-16" aria-label="Social proof: real posts from Cozy Digital">
         <style>{`
           @keyframes social-marquee-fwd {
             from { transform: translateX(0); }
@@ -343,7 +343,7 @@ export default function HomePage() {
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Client Proof</p>
             <h2 className="whitespace-nowrap text-3xl font-black text-white md:text-4xl">Real client work, shown cleanly.</h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-zinc-400">
-              No inflated claims, no fake logos — just screenshots and working systems from real clients.
+              No inflated claims, no fake logos, just screenshots and working systems from real clients.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -407,7 +407,7 @@ export default function HomePage() {
           <div className="mb-14 text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Packages</p>
             <h2 className="text-4xl font-black text-white md:text-5xl">Two ways to work together</h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-400">One-time build or ongoing support — both come with clear deliverables and no lock-ins.</p>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-400">One-time build or ongoing support, and both come with clear deliverables and no lock-ins.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 items-stretch">
             {services.map((s) => (

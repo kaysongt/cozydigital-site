@@ -20,7 +20,7 @@ export default function ProcessPage() {
         <div className="mb-12 text-center">
           <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">How it works</p>
           <h1 className="text-4xl font-black text-white md:text-5xl">Four sections. One cleaner path.</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">We move through the funnel in order so the page does not just look busy &mdash; it sells the next step.</p>
+          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">We move through the funnel in order so the page does not just look busy. It sells the next step.</p>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {steps.map((step) => (

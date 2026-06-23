@@ -112,7 +112,7 @@ export default function AuditPopup() {
               Want a free growth audit?
             </h2>
             <p className="mt-2 max-w-lg text-sm leading-relaxed text-zinc-400">
-              Drop your details and we&apos;ll send back a clear 3-point review of your website, content, and booking path — styled to match the Cozy Digital brand.
+              Drop your details and we&apos;ll send back a clear 3-point review of your website, content, and booking path, styled to match the Cozy Digital brand.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-3">
@@ -166,7 +166,7 @@ export default function AuditPopup() {
 
               {status === "error" && (
                 <p className="rounded-lg border border-red-400/30 bg-red-500/10 px-4 py-2 text-xs text-red-300">
-                  Something went wrong — try again or email us directly.
+                  Something went wrong. Try again or email us directly.
                 </p>
               )}
 

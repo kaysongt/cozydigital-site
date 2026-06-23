@@ -26,11 +26,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does a website from Cozy Digital cost?",
-    a: "The Full Build Package is a one-time $3,000. It includes a custom 5-page website plus a landing page, a direct booking system, Google Business Profile optimization, a local SEO foundation, social branding and content templates, an automated follow-up system, an analytics dashboard, and access to the Cozy Hub client portal. You own everything when it is done, and most builds launch within 90 days.",
+    a: "The Full Build Package is a one-time $3,400. It includes a custom 5-page website plus a landing page, AI search (GEO) setup, a direct booking system, Google Business Profile optimization, a local SEO foundation, social branding and content templates, an automated follow-up system, an analytics dashboard, and access to the Cozy Hub client portal. You own everything when it is done, and most builds launch within 90 days.",
   },
   {
     q: "Do you offer ongoing support after launch?",
-    a: "Yes. The Monthly Retainer is $900 per month and covers website maintenance and updates, local SEO and Google Business Profile management, 8 social posts per month, ad management on Google or Meta, and a monthly analytics report with a strategy call. There is no long-term contract, so you can scale up or pause as your business needs change.",
+    a: "Yes. The Monthly Retainer is $1,000 per month and covers website maintenance and updates, AI search (GEO) monitoring, local SEO and Google Business Profile management, 8 social posts per month, ad management on Google or Meta, and a monthly analytics report with a strategy call. There is no long-term contract, so you can scale up or pause as your business needs change.",
   },
   {
     q: "What is the free audit and what do I get?",

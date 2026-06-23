@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Services | Cozy Digital",
-  description: "Two ways to work with Cozy Digital — a full one-time build or ongoing monthly support. Clear deliverables, no lock-ins.",
+  description: "Two ways to work with Cozy Digital: a full one-time build or ongoing monthly support. Clear deliverables, no lock-ins.",
 };
 
 const buildItems = [
@@ -21,7 +21,7 @@ const retainerItems = [
   { name: "Website Maintenance & Updates", detail: "Copy, design, and offer changes handled as needed" },
   { name: "AI Search Visibility (GEO) Monitoring", detail: "We track how AI assistants describe your business and keep your answer content current" },
   { name: "Local SEO & Google Profile Management", detail: "Monthly updates to keep rankings moving" },
-  { name: "Social Media Content", detail: "8 posts per month — written, designed, and ready to publish" },
+  { name: "Social Media Content", detail: "8 posts per month, written, designed, and ready to publish" },
   { name: "Ad Management", detail: "Google or Meta campaigns managed for you (ad budget billed separately)" },
   { name: "Monthly Report & Strategy Call", detail: "Analytics review and next-step planning every month" },
 ];
@@ -58,10 +58,10 @@ export default function ServicesPage() {
                 <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">One-Time</p>
                 <h2 className="mt-1 text-2xl font-black text-white">Full Build Package</h2>
               </div>
-              <span className="shrink-0 text-3xl font-black text-white">$3,000</span>
+              <span className="shrink-0 text-3xl font-black text-white">$3,400</span>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-zinc-400">
-              Everything built from scratch in 90 days. You own all of it when we are done — no subscriptions, no ongoing fees unless you want them.
+              Everything built from scratch in 90 days. You own all of it when we are done, with no subscriptions and no ongoing fees unless you want them.
             </p>
             <ul className="flex-1 space-y-4">
               {buildItems.map((item) => (
@@ -89,10 +89,10 @@ export default function ServicesPage() {
                 <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">Ongoing</p>
                 <h2 className="mt-1 text-2xl font-black text-white">Monthly Retainer</h2>
               </div>
-              <span className="shrink-0 text-3xl font-black text-white">$900<span className="text-lg text-zinc-400">/mo</span></span>
+              <span className="shrink-0 text-3xl font-black text-white">$1,000<span className="text-lg text-zinc-400">/mo</span></span>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-zinc-400">
-              We manage, update, and grow everything for you month to month. No long-term contract required — cancel any time.
+              We manage, update, and grow everything for you month to month. No long-term contract required, so you can cancel any time.
             </p>
             <ul className="flex-1 space-y-4">
               {retainerItems.map((item) => (
@@ -118,7 +118,7 @@ export default function ServicesPage() {
         <div className="mt-10 flex flex-col items-center gap-3 rounded-3xl border border-white/[0.07] bg-white/[0.02] px-8 py-7 text-center sm:flex-row sm:text-left">
           <div className="flex-1">
             <p className="text-sm font-black text-white">Not sure which fits?</p>
-            <p className="mt-1 text-sm text-zinc-400">Start with a free 30-minute audit — we look at your site and socials and tell you exactly what to fix first, with no pitch at the end.</p>
+            <p className="mt-1 text-sm text-zinc-400">Start with a free 30-minute audit. We look at your site and socials and tell you exactly what to fix first, with no pitch at the end.</p>
           </div>
           <Link
             href="/free-audit/"

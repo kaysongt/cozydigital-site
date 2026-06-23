@@ -18,7 +18,7 @@ const organization = {
   logo: `${baseUrl}/brand/cozy-digital-logo.jpg`,
   image: `${baseUrl}/og-image.png`,
   description:
-    "Cozy Digital builds websites, content systems, and lead paths for service brands — including AI search (GEO) optimization so businesses show up when customers ask ChatGPT, Perplexity, and Google AI for a recommendation.",
+    "Cozy Digital builds websites, content systems, and lead paths for service brands, including AI search (GEO) optimization so businesses show up when customers ask ChatGPT, Perplexity, and Google AI for a recommendation.",
   slogan: "Turn first-time visitors into booked clients.",
   sameAs: [
     "https://instagram.com/cozydigital",
@@ -52,9 +52,9 @@ const organization = {
         "@type": "Service",
         name: "Full Build Package",
         description:
-          "A custom 5-page website plus landing page, direct booking system, Google Business Profile and local SEO setup, social branding, automated follow-up, and an analytics dashboard — built to launch in 90 days.",
+          "A custom 5-page website plus landing page, direct booking system, Google Business Profile and local SEO setup, social branding, automated follow-up, and an analytics dashboard, built to launch in 90 days.",
       },
-      price: "3000",
+      price: "3400",
       priceCurrency: "USD",
     },
     {
@@ -65,7 +65,7 @@ const organization = {
         description:
           "Ongoing website maintenance, local SEO and Google Profile management, 8 social posts per month, ad management, and a monthly analytics report and strategy call. No long-term contract.",
       },
-      price: "900",
+      price: "1000",
       priceCurrency: "USD",
     },
   ],

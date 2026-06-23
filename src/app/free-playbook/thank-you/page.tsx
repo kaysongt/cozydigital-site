@@ -18,7 +18,7 @@ export default function ThankYouPage() {
 
         <h1 className="text-4xl font-black text-white md:text-5xl">Your playbook is ready.</h1>
         <p className="mx-auto mt-4 max-w-md text-zinc-400">
-          Check your inbox — we sent it there too so you always have it. Click below to download it now.
+          Check your inbox. We sent it there too so you always have it. Click below to download it now.
         </p>
 
         <div className="mt-10">

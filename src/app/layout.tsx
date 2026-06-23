@@ -5,7 +5,7 @@ import CozyPublicFooter from "@/components/cozy-public-footer";
 import AuditPopup from "@/components/audit-popup";
 import StructuredData from "@/components/structured-data";
 
-const description = "Practical growth systems for service brands — sharper websites, cleaner content, and booking paths that turn visitors into clients.";
+const description = "Practical growth systems for service brands: sharper websites, cleaner content, and booking paths that turn visitors into clients.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.cozydigital.org"),

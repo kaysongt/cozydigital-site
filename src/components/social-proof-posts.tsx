@@ -7,17 +7,17 @@ type PostItem =
 const igCaptions = [
   "A healthy smile changes everything. Book your appointment today! 😁",
   "Your smile is worth it. Cosmetic dentistry that builds confidence.",
-  "Don't wait — your dream smile starts with one visit. 🦷",
+  "Don't wait. Your dream smile starts with one visit. 🦷",
   "Real results. Real patients. Real confidence. Book now!",
   "We make dental care easy, comfortable, and worth it. ✨",
   "Brighter smiles start here. Same-day appointments available.",
   "Your smile is our specialty. See what we can do for you.",
   "Confidence starts with your smile. Let us help. Book today!",
-  "From cleanings to implants — we handle it all. 🌟",
+  "From cleanings to implants, we handle it all. 🌟",
   "5-star care, every visit. See why patients love us.",
   "Ready for your best smile? We're ready for you. 😊",
   "Dental care that fits your life. Easy online booking.",
-  "Your smile deserves the best. We deliver — every time.",
+  "Your smile deserves the best. We deliver, every time.",
   "Book your free consultation today. Your smile won't wait. 🦷✨",
 ];
 
