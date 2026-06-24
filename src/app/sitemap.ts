@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 
+// Required for static export (output: "export").
+export const dynamic = "force-static";
+
 const baseUrl = "https://www.cozydigital.org";
 
 // Keep this list in sync with the routes under src/app. Priority/frequency are

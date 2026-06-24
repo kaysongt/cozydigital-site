@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 
+// Required for static export (output: "export").
+export const dynamic = "force-static";
+
 const baseUrl = "https://www.cozydigital.org";
 
 // Explicitly welcome the AI search crawlers that power answer engines and
