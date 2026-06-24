@@ -259,6 +259,22 @@ html.light .to-zinc-300 { --tw-gradient-to: #3f3f46 var(--tw-gradient-to-positio
 html.light .from-zinc-950 { --tw-gradient-from: #f6f7f9 var(--tw-gradient-from-position); }
 html.light .via-zinc-950\/80 { --tw-gradient-via: rgba(246, 247, 249, 0.85) var(--tw-gradient-via-position); }
 
+/* ---- Logo wordmark: deepen the pastel gradient for contrast on white.
+   These exact stops are used only on the header/footer wordmark. ---- */
+html.light .from-cyan-300 { --tw-gradient-from: #0891b2 var(--tw-gradient-from-position); }
+html.light .via-blue-300 { --tw-gradient-via: #2563eb var(--tw-gradient-via-position); }
+html.light .to-fuchsia-300 { --tw-gradient-to: #c026d3 var(--tw-gradient-to-position); }
+
+/* ---- Partner logo marquee: the platform SVGs are solid white and would
+   disappear on light tiles, so invert them to dark in light mode. ---- */
+html.light .platform-track img { filter: invert(1) brightness(0.92); }
+
+/* ---- Modal panel needs a real opaque surface. The audit popup used
+   bg-zinc-950, which becomes transparent above; this class keeps it
+   opaque in both themes. ---- */
+.cozy-modal-panel { background-color: #09090b; }
+html.light .cozy-modal-panel { background-color: #ffffff; }
+
 /* Smooth the switch */
 html.light body,
 html.light .bg-white\/\[0\.03\],
