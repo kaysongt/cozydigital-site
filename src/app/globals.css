@@ -160,3 +160,106 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+/* ============================================================
+   LIGHT THEME
+   The site is built dark-first with literal Tailwind color
+   utilities (text-white, bg-white/[0.03], border-white/10, ...).
+   Rather than refactor every page, we remap the recurring
+   surface / text / border / accent utilities under `html.light`.
+   `html.light .util` (specificity 0,2,0+) outranks the base
+   `.util`, so a single class toggle re-skins the whole site.
+   Bright solid buttons (bg-white / bg-cyan-500 + text-black) and
+   media frames are intentionally left as-is.
+   ============================================================ */
+html.light {
+  color-scheme: light;
+  background-color: #f6f7f9;
+}
+
+html.light body {
+  background:
+    radial-gradient(1100px 520px at 18% -12%, rgba(251, 146, 60, 0.16) 0%, transparent 60%),
+    radial-gradient(980px 520px at 82% -14%, rgba(168, 85, 247, 0.14) 0%, transparent 58%),
+    radial-gradient(880px 420px at 50% 110%, rgba(56, 189, 248, 0.1) 0%, transparent 64%),
+    transparent;
+  color: #18181b;
+}
+
+html.light ::selection { background: rgba(8, 145, 178, 0.22); color: #0b0b0c; }
+html.light * { scrollbar-color: rgba(113, 113, 122, 0.5) transparent; }
+
+/* ---- Surfaces ---- */
+html.light .bg-zinc-950 { background-color: transparent; }
+html.light .bg-zinc-900 { background-color: #f1f1f4; }
+html.light .bg-zinc-700 { background-color: #e4e4e7; }
+html.light .bg-black\/90 { background-color: rgba(255, 255, 255, 0.9); }
+html.light .bg-black\/95 { background-color: rgba(255, 255, 255, 0.92); }
+html.light .bg-black\/98 { background-color: rgba(255, 255, 255, 0.96); }
+
+/* ---- Translucent "glass" fills -> subtle dark tint ---- */
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.035\] { background-color: rgba(15, 23, 42, 0.035); }
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/\[0\.05\] { background-color: rgba(15, 23, 42, 0.05); }
+html.light .bg-white\/\[0\.06\],
+html.light .bg-white\/\[0\.07\] { background-color: rgba(15, 23, 42, 0.06); }
+html.light .bg-white\/\[0\.08\],
+html.light .bg-white\/\[0\.09\],
+html.light .bg-white\/10 { background-color: rgba(15, 23, 42, 0.08); }
+html.light .hover\:bg-white\/10:hover,
+html.light .hover\:bg-white\/\[0\.05\]:hover,
+html.light .hover\:bg-white\/\[0\.06\]:hover,
+html.light .hover\:bg-white\/\[0\.07\]:hover,
+html.light .hover\:bg-white\/\[0\.08\]:hover,
+html.light .hover\:bg-white\/\[0\.09\]:hover { background-color: rgba(15, 23, 42, 0.09); }
+
+/* ---- Borders ---- */
+html.light .border-white\/8,
+html.light .border-white\/\[0\.06\],
+html.light .border-white\/\[0\.07\],
+html.light .border-white\/\[0\.08\] { border-color: rgba(15, 23, 42, 0.1); }
+html.light .border-white\/10 { border-color: rgba(15, 23, 42, 0.12); }
+html.light .border-white\/\[0\.14\] { border-color: rgba(15, 23, 42, 0.14); }
+html.light .border-white\/15 { border-color: rgba(15, 23, 42, 0.16); }
+html.light .border-white\/20 { border-color: rgba(15, 23, 42, 0.2); }
+html.light .hover\:border-white\/\[0\.14\]:hover { border-color: rgba(15, 23, 42, 0.18); }
+html.light .ring-white\/\[0\.03\] { --tw-ring-color: rgba(15, 23, 42, 0.06); }
+
+/* ---- Text scale ---- */
+html.light .text-white { color: #18181b; }
+html.light .text-zinc-100,
+html.light .text-zinc-200 { color: #27272a; }
+html.light .text-zinc-300 { color: #3f3f46; }
+html.light .text-zinc-400 { color: #52525b; }
+html.light .text-zinc-500 { color: #6b6b73; }
+html.light .text-zinc-600 { color: #7c7c85; }
+html.light .hover\:text-white:hover,
+html.light .hover\:text-zinc-100:hover,
+html.light .hover\:text-zinc-200:hover { color: #18181b; }
+
+/* ---- Accent text darkened for contrast on white ---- */
+html.light .text-cyan-400 { color: #0891b2; }
+html.light .text-cyan-300,
+html.light .text-cyan-200 { color: #0e7490; }
+html.light .text-cyan-100 { color: #155e75; }
+html.light .text-fuchsia-300 { color: #a21caf; }
+html.light .text-fuchsia-100 { color: #86198f; }
+html.light .text-amber-300,
+html.light .text-amber-400 { color: #b45309; }
+html.light .text-amber-100 { color: #92400e; }
+
+/* ---- Gradient TEXT that was near-white (platform logo names) ---- */
+html.light .from-zinc-50 { --tw-gradient-from: #3f3f46 var(--tw-gradient-from-position); }
+html.light .via-white { --tw-gradient-via: #18181b var(--tw-gradient-via-position); }
+html.light .to-zinc-300 { --tw-gradient-to: #3f3f46 var(--tw-gradient-to-position); }
+
+/* ---- Marquee edge-fade masks should fade to the light base ---- */
+html.light .from-zinc-950 { --tw-gradient-from: #f6f7f9 var(--tw-gradient-from-position); }
+html.light .via-zinc-950\/80 { --tw-gradient-via: rgba(246, 247, 249, 0.85) var(--tw-gradient-via-position); }
+
+/* Smooth the switch */
+html.light body,
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.06\] { transition: background-color 0.2s ease, color 0.2s ease; }
