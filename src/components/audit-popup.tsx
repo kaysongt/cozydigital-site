@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 // Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
 const HUB_LEAD_URL =
@@ -16,6 +16,8 @@ export default function AuditPopup() {
   const [form, setForm] = useState({
     name: "", business: "", email: "", phone: "", website: "", problem: "",
   });
+  // Honeypot: hidden field; only bots fill it.
+  const hpRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (sessionStorage.getItem("audit-popup-gone")) {
@@ -53,6 +55,7 @@ export default function AuditPopup() {
           businessName: form.business,
           website: form.website,
           notes: form.problem,
+          hp: hpRef.current?.value ?? "",
           ...(HUB_WEBHOOK_SECRET ? { webhookSecret: HUB_WEBHOOK_SECRET } : {}),
         }),
       });
@@ -111,6 +114,16 @@ export default function AuditPopup() {
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-3">
+              {/* Honeypot — hidden from humans, catches bots. */}
+              <input
+                ref={hpRef}
+                type="text"
+                name="company_website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+              />
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <input
                   className={inputClass}

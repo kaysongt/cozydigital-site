@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 // Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
 const CRM_API_URL = "https://cozy-client-hub-production.up.railway.app/api/webhook/lead";
@@ -45,6 +45,8 @@ export default function FreePlaybookPage() {
     name: "", email: "", phone: "", company: "",
     howGettingClients: "", onlinePresenceSatisfaction: "", leadsPerMonth: "",
   });
+  // Honeypot: hidden field; only bots fill it.
+  const hpRef = useRef<HTMLInputElement>(null);
 
   const pct = Math.round(((step - 1) / TOTAL) * 100);
 
@@ -84,6 +86,7 @@ export default function FreePlaybookPage() {
           phone: form.phone || undefined,
           businessName: form.company || undefined,
           notes,
+          hp: hpRef.current?.value ?? "",
           ...(HUB_WEBHOOK_SECRET ? { webhookSecret: HUB_WEBHOOK_SECRET } : {}),
         }),
       });
@@ -141,6 +144,16 @@ export default function FreePlaybookPage() {
           </div>
         ) : (
           <>
+            {/* Honeypot — hidden from humans, catches bots. */}
+            <input
+              ref={hpRef}
+              type="text"
+              name="company_website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+            />
             {/* Progress bar */}
             <div className="mb-2 h-1.5 w-full overflow-hidden rounded-full bg-zinc-100">
               <div
