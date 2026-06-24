@@ -90,7 +90,7 @@ export default function AuditPopup() {
         aria-hidden="true"
       />
 
-      <div className="relative w-full mx-auto max-w-3xl rounded-3xl border border-white/10 bg-zinc-950 px-6 pb-8 pt-6 shadow-2xl shadow-black/60 md:px-10">
+      <div className="cozy-modal-panel relative w-full mx-auto max-w-3xl rounded-3xl border border-white/10 px-6 pb-8 pt-6 shadow-2xl shadow-black/60 md:px-10">
         {/* Close pill */}
         <button
           onClick={dismiss}
