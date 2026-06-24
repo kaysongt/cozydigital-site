@@ -259,9 +259,22 @@ html.light .to-zinc-300 { --tw-gradient-to: #3f3f46 var(--tw-gradient-to-positio
 html.light .from-zinc-950 { --tw-gradient-from: #f6f7f9 var(--tw-gradient-from-position); }
 html.light .via-zinc-950\/80 { --tw-gradient-via: rgba(246, 247, 249, 0.85) var(--tw-gradient-via-position); }
 
-/* ---- Platform marquee: brand logos are pure-white SVGs, so invert
-   them to dark on the light chips, otherwise they vanish (white on white). */
-html.light .platform-track img { filter: invert(1); }
+/* ---- Platform marquee (light mode) ----
+   Brand logos are pure-white SVGs, so on the light chips they'd vanish.
+   Give each badge a dark, brand-tinted surface so the white glyph stays
+   legible while picking up a hint of the platform's colour (--logo-tint,
+   set per-logo in page.tsx). */
+html.light .platform-logo-badge {
+  background-color: color-mix(in srgb, var(--logo-tint) 55%, #101013);
+  border-color: color-mix(in srgb, var(--logo-tint) 60%, transparent);
+}
+/* The platform NAME uses a near-white gradient clipped to the text, which
+   reads as transparent on white. Force a solid dark fill in light mode. */
+html.light .platform-logo-name {
+  background: none;
+  color: #27272a;
+  -webkit-text-fill-color: #27272a;
+}
 
 /* ---- Modal panel uses bg-zinc-950, which light mode remaps to transparent
    for page sections. The popup needs a real solid surface so it stays visible. */

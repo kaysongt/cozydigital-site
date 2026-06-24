@@ -17,16 +17,16 @@ function ArrowIcon() {
 }
 
 const platformLogos = [
-  { name: "Meta", logo: "/logos/platforms/meta.svg", glow: "shadow-blue-500/20" },
-  { name: "Instagram", logo: "/logos/platforms/instagram.svg", glow: "shadow-pink-500/20" },
-  { name: "Facebook", logo: "/logos/platforms/facebook.svg", glow: "shadow-blue-500/20" },
-  { name: "TikTok", logo: "/logos/platforms/tiktok.svg", glow: "shadow-cyan-500/20" },
-  { name: "Shopify", logo: "/logos/platforms/shopify.svg", glow: "shadow-emerald-500/20" },
-  { name: "Etsy", logo: "/logos/platforms/etsy.svg", glow: "shadow-orange-500/20" },
-  { name: "Google", logo: "/logos/platforms/google.svg", glow: "shadow-blue-500/20" },
-  { name: "YouTube", logo: "/logos/platforms/youtube.svg", glow: "shadow-red-500/20" },
-  { name: "Stripe", logo: "/logos/platforms/stripe.svg", glow: "shadow-violet-500/20" },
-  { name: "Mailchimp", logo: "/logos/platforms/mailchimp.svg", glow: "shadow-yellow-500/20" },
+  { name: "Meta", logo: "/logos/platforms/meta.svg", glow: "shadow-blue-500/20", tint: "#1877F2" },
+  { name: "Instagram", logo: "/logos/platforms/instagram.svg", glow: "shadow-pink-500/20", tint: "#E1306C" },
+  { name: "Facebook", logo: "/logos/platforms/facebook.svg", glow: "shadow-blue-500/20", tint: "#1877F2" },
+  { name: "TikTok", logo: "/logos/platforms/tiktok.svg", glow: "shadow-cyan-500/20", tint: "#25F4EE" },
+  { name: "Shopify", logo: "/logos/platforms/shopify.svg", glow: "shadow-emerald-500/20", tint: "#95BF47" },
+  { name: "Etsy", logo: "/logos/platforms/etsy.svg", glow: "shadow-orange-500/20", tint: "#F1641E" },
+  { name: "Google", logo: "/logos/platforms/google.svg", glow: "shadow-blue-500/20", tint: "#4285F4" },
+  { name: "YouTube", logo: "/logos/platforms/youtube.svg", glow: "shadow-red-500/20", tint: "#FF0000" },
+  { name: "Stripe", logo: "/logos/platforms/stripe.svg", glow: "shadow-violet-500/20", tint: "#635BFF" },
+  { name: "Mailchimp", logo: "/logos/platforms/mailchimp.svg", glow: "shadow-yellow-500/20", tint: "#FFE01B" },
 ];
 
 const clientProof = [
@@ -162,12 +162,13 @@ export default function HomePage() {
               <span
                 key={`${logo.name}-${index}`}
                 aria-label={logo.name}
+                style={{ ["--logo-tint" as string]: logo.tint }}
                 className="group/logo inline-flex h-12 shrink-0 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-5 shadow-lg shadow-black/20 ring-1 ring-white/[0.03] transition duration-300 hover:border-cyan-200/30 hover:bg-white/[0.07] hover:opacity-100"
               >
-                <span className={`flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.06] p-1.5 shadow-lg ${logo.glow}`}>
+                <span className={`platform-logo-badge flex h-7 w-7 items-center justify-center rounded-lg border border-white/10 bg-white/[0.06] p-1.5 shadow-lg ${logo.glow}`}>
                   <Image src={logo.logo} alt="" width={28} height={28} className="h-full w-full object-contain" aria-hidden="true" />
                 </span>
-                <span className="bg-gradient-to-r from-zinc-50 via-white to-zinc-300 bg-clip-text text-lg font-black tracking-tight text-transparent opacity-90 transition-opacity group-hover/logo:opacity-100 md:text-xl">
+                <span className="platform-logo-name bg-gradient-to-r from-zinc-50 via-white to-zinc-300 bg-clip-text text-lg font-black tracking-tight text-transparent opacity-90 transition-opacity group-hover/logo:opacity-100 md:text-xl">
                   {logo.name}
                 </span>
               </span>
