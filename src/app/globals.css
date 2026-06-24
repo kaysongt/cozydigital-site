@@ -259,6 +259,18 @@ html.light .to-zinc-300 { --tw-gradient-to: #3f3f46 var(--tw-gradient-to-positio
 html.light .from-zinc-950 { --tw-gradient-from: #f6f7f9 var(--tw-gradient-from-position); }
 html.light .via-zinc-950\/80 { --tw-gradient-via: rgba(246, 247, 249, 0.85) var(--tw-gradient-via-position); }
 
+/* ---- Platform marquee: brand logos are pure-white SVGs, so invert
+   them to dark on the light chips, otherwise they vanish (white on white). */
+html.light .platform-track img { filter: invert(1); }
+
+/* ---- Modal panel uses bg-zinc-950, which light mode remaps to transparent
+   for page sections. The popup needs a real solid surface so it stays visible. */
+html.light .cozy-modal-panel {
+  background-color: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+}
+
 /* Smooth the switch */
 html.light body,
 html.light .bg-white\/\[0\.03\],
