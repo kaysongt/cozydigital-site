@@ -253,6 +253,18 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
+              <Link href="/ai-video/" className="group/vid relative overflow-hidden rounded-2xl border border-fuchsia-300/30 bg-gradient-to-br from-fuchsia-500/[0.12] via-blue-500/[0.06] to-cyan-500/[0.10] p-5 transition-colors hover:border-fuchsia-300/50 sm:col-span-2">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-fuchsia-300">New · AI Video</p>
+                    <h3 className="mt-1.5 text-base font-black leading-snug text-white">Branded ads, explainers &amp; trailers, produced with our open-source AI video engine</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-zinc-300">Real motion, narration, and captions, powered by OpenMontage. Studio-style video at a fraction of the time and cost of a shoot.</p>
+                  </div>
+                  <span aria-hidden className="mt-1 shrink-0 text-fuchsia-300 transition-transform group-hover/vid:translate-x-0.5">
+                    <ArrowIcon />
+                  </span>
+                </div>
+              </Link>
               {[
                 {
                   icon: (
