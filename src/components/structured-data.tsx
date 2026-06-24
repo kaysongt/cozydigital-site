@@ -21,8 +21,8 @@ const organization = {
     "Cozy Digital builds websites, content systems, and lead paths for service brands, including AI search (GEO) optimization so businesses show up when customers ask ChatGPT, Perplexity, and Google AI for a recommendation.",
   slogan: "Turn first-time visitors into booked clients.",
   sameAs: [
-    "https://instagram.com/cozydigital",
-    "https://facebook.com/cozydigital",
+    "https://www.instagram.com/cozydig1tal/",
+    "https://www.facebook.com/profile.php?id=61588838257133",
   ],
   knowsAbout: [
     "Web design",
