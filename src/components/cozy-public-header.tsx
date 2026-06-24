@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import ThemeToggle from "@/components/theme-toggle";
 
 const navLinks = [
   { label: "Services", href: "/services/" },
@@ -45,6 +46,7 @@ export default function CozyPublicHeader() {
         </nav>
 
         <div className="flex items-center justify-end gap-3">
+          <ThemeToggle className="hidden md:flex" />
           <Link
             href="/cozy-booking/"
             className={`rounded-md px-5 py-3 text-sm font-black text-white shadow-lg transition-all md:px-6 ${
@@ -86,6 +88,10 @@ export default function CozyPublicHeader() {
                 </Link>
               </li>
             ))}
+            <li className="mt-2 flex items-center justify-between rounded-lg px-3 py-2">
+              <span className="text-sm font-semibold text-zinc-300">Theme</span>
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
       )}
