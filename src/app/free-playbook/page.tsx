@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
-const CRM_API_URL = "https://shadowcrm-ekcrkbu5.manus.space/api/trpc/leads.capture";
+// Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
+const CRM_API_URL = "https://cozy-client-hub-production.up.railway.app/api/webhook/lead";
+const HUB_WEBHOOK_SECRET = process.env.NEXT_PUBLIC_HUB_WEBHOOK_SECRET ?? "";
 const PDF_URL     = "https://shadowcrm-ekcrkbu5.manus.space/downloads/playbook.pdf";
 const CALENDLY    = "https://calendly.com/cozydigital-out/30min";
 const TOTAL       = 6;
@@ -67,18 +69,23 @@ export default function FreePlaybookPage() {
   async function submit() {
     setSending(true);
     try {
+      const notes = [
+        `How they get clients now: ${form.howGettingClients || "—"}`,
+        `Online presence satisfaction: ${form.onlinePresenceSatisfaction || "—"}`,
+        `Leads per month: ${form.leadsPerMonth || "—"}`,
+      ].join("\n");
       await fetch(CRM_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ "0": { json: {
+        body: JSON.stringify({
+          leadSource: "Free Playbook",
           name: form.name,
           email: form.email,
           phone: form.phone || undefined,
-          company: form.company || undefined,
-          howGettingClients: form.howGettingClients,
-          onlinePresenceSatisfaction: form.onlinePresenceSatisfaction,
-          leadsPerMonth: form.leadsPerMonth,
-        }}}),
+          businessName: form.company || undefined,
+          notes,
+          ...(HUB_WEBHOOK_SECRET ? { webhookSecret: HUB_WEBHOOK_SECRET } : {}),
+        }),
       });
     } catch (_) { /* still show thank-you */ }
     setSending(false);

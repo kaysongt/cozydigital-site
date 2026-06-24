@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-const KIT_FORM_ID = process.env.NEXT_PUBLIC_KIT_AUDIT_FORM_ID ?? "";
-const KIT_API_KEY = process.env.NEXT_PUBLIC_KIT_API_KEY ?? "";
+// Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
+const HUB_LEAD_URL =
+  "https://cozy-client-hub-production.up.railway.app/api/webhook/lead";
+const HUB_WEBHOOK_SECRET = process.env.NEXT_PUBLIC_HUB_WEBHOOK_SECRET ?? "";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -40,28 +42,21 @@ export default function AuditPopup() {
     e.preventDefault();
     setStatus("loading");
     try {
-      if (KIT_FORM_ID && KIT_API_KEY) {
-        const res = await fetch(
-          `https://api.convertkit.com/v3/forms/${KIT_FORM_ID}/subscribe`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              api_key: KIT_API_KEY,
-              first_name: form.name,
-              email: form.email,
-              tags: ["audit-request"],
-              fields: {
-                business: form.business,
-                phone: form.phone,
-                website: form.website,
-                problem: form.problem,
-              },
-            }),
-          }
-        );
-        if (!res.ok) throw new Error();
-      }
+      const res = await fetch(HUB_LEAD_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          leadSource: "Website Audit Popup",
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          businessName: form.business,
+          website: form.website,
+          notes: form.problem,
+          ...(HUB_WEBHOOK_SECRET ? { webhookSecret: HUB_WEBHOOK_SECRET } : {}),
+        }),
+      });
+      if (!res.ok) throw new Error();
       setStatus("success");
       setTimeout(() => dismiss(), 2800);
     } catch {
