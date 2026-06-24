@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const consultationSteps = [
   "We look at your current website, social presence, and online offer.",
   "We point out where people may be losing interest before they buy, book, or reach out.",
-  "We recommend the cleanest next step — no pressure, no confusing package pitch.",
+  "We recommend the cleanest next step, with no pressure and no confusing package pitch.",
 ];
 
 const calendlyUrl = "https://calendly.com/cozydigital-out/30min";
@@ -33,7 +33,7 @@ export default function CozyBookingPage() {
             Book a Cozy Digital growth consultation.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-zinc-300">
-            This page is for brands that want more traction online — clearer pages, stronger content, and a smoother path from attention to sales.
+            This page is for brands that want more traction online: clearer pages, stronger content, and a smoother path from attention to sales.
           </p>
         </div>
       </section>

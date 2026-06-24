@@ -26,8 +26,8 @@ const choices = {
     "Not sure / not consistently",
   ],
   czQ2: [
-    "Very unsatisfied — it's hurting us",
-    "Not great — we need a real upgrade",
+    "Very unsatisfied, it's hurting us",
+    "Not great, we need a real upgrade",
     "Okay, but it could be much better",
     "Pretty good, just needs fine-tuning",
   ],
@@ -102,7 +102,7 @@ export default function FreePlaybookPage() {
         <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-400">Free Resource</p>
         <h1 className="text-4xl font-black text-white md:text-5xl">Get the Booking-Ready Brand Playbook</h1>
         <p className="mx-auto mt-4 max-w-xl text-zinc-400">
-          Answer a few quick questions and we&apos;ll send you the playbook instantly — then you can book a free 30-min strategy call.
+          Answer a few quick questions and we&apos;ll send you the playbook instantly, then you can book a free 30-min strategy call.
         </p>
       </div>
 
@@ -113,7 +113,7 @@ export default function FreePlaybookPage() {
             <h2 className="text-2xl font-bold text-zinc-900">You&apos;re all set!</h2>
             <p className="mt-2 text-sm text-zinc-500">
               Your free <strong>Booking-Ready Brand Playbook</strong> is ready.<br />
-              Then grab a spot — the strategy call is free.
+              Then grab a spot. The strategy call is free.
             </p>
             <a
               href={PDF_URL}
@@ -174,7 +174,7 @@ export default function FreePlaybookPage() {
             {step === 3 && (
               <>
                 <h2 className="text-2xl font-bold text-zinc-900">What&apos;s your business called?</h2>
-                <p className="mt-1 mb-5 text-sm text-zinc-500">Optional — helps us tailor the call.</p>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Optional. Helps us tailor the call.</p>
                 <input className={inputClass} type="text" placeholder="Your Business LLC" value={form.company}
                   onChange={(e) => set("company", e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && next()} />
@@ -199,7 +199,7 @@ export default function FreePlaybookPage() {
             {step === 5 && (
               <>
                 <h2 className="text-2xl font-bold text-zinc-900">How happy are you with your current online presence?</h2>
-                <p className="mt-1 mb-5 text-sm text-zinc-500">Be honest — that&apos;s what the call is for.</p>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Be honest. That&apos;s what the call is for.</p>
                 <div className="flex flex-col gap-2">
                   {choices.czQ2.map((c) => (
                     <button key={c} className={choiceClass(form.onlinePresenceSatisfaction === c)}
