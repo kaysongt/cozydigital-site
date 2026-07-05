@@ -91,9 +91,9 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden px-6 pt-16 pb-20 md:pt-24 md:pb-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(34,211,238,0.15),transparent)]" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="text-left">
-            <div className="mb-8 flex flex-wrap gap-3">
+        <div className="relative mx-auto max-w-3xl text-center">
+          <div>
+            <div className="mb-8 flex flex-wrap justify-center gap-3">
               <Link href="/free-playbook/" className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-amber-300 hover:bg-amber-500/20">
                 ⬇ Free Brand Playbook
               </Link>
@@ -108,27 +108,12 @@ export default function HomePage() {
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
               Watch the quick breakdown, then book a free consultation so we can map the website, content, and lead path that fits your business.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link href="/free-playbook" className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-9 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
                 <span>Book a Free Consultation</span>
                 <ArrowIcon />
               </Link>
               <span className="text-sm font-semibold text-zinc-500">No pressure. Leave with clear next steps.</span>
-            </div>
-          </div>
-          <div className="relative mx-auto w-full max-w-2xl">
-            <div className="group relative overflow-hidden rounded-3xl border border-fuchsia-400/70 bg-zinc-950 shadow-2xl shadow-fuchsia-950/40 ring-1 ring-cyan-300/20">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-400/30 via-blue-500/20 to-fuchsia-500/30 opacity-70 blur-xl" />
-              <video
-                className="relative z-10 aspect-video w-full rounded-[1.35rem] bg-black object-cover"
-                controls
-                preload="metadata"
-                poster="/videos/vsl_final_heynow_fixed_captions-poster.jpg"
-                playsInline
-              >
-                <source src="/videos/vsl_final_heynow_fixed_captions.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
             </div>
           </div>
         </div>
