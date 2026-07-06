@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import CozyPublicHeader from "@/components/cozy-public-header";
 import CozyPublicFooter from "@/components/cozy-public-footer";
 import AuditPopup from "@/components/audit-popup";
@@ -45,6 +46,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <StructuredData />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-M5PYPZ1GSJ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-M5PYPZ1GSJ');
+          `}
+        </Script>
       </head>
       <body className="flex min-h-screen flex-col bg-zinc-950">
         <CozyPublicHeader />
