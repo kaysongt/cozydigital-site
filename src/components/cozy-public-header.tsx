@@ -8,15 +8,12 @@ import ThemeToggle from "@/components/theme-toggle";
 
 const navLinks = [
   { label: "Services", href: "/services/" },
-  { label: "AI Search", href: "/ai-search/" },
-  { label: "AI Video", href: "/ai-video/" },
-  { label: "Process", href: "/process/" },
-  { label: "Pricing", href: "/pricing/" },
+  { label: "AI Visibility", href: "/ai-search/" },
   { label: "About", href: "/about/" },
   { label: "Free Playbook ↓", href: "/free-playbook/" },
 ];
 
-const publicPrefixes = ["/", "/services", "/ai-search", "/ai-video", "/pricing", "/process", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook"];
+const publicPrefixes = ["/", "/services", "/ai-search", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook"];
 
 export default function CozyPublicHeader() {
   const pathname = usePathname();

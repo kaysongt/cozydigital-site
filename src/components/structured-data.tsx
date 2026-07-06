@@ -30,7 +30,6 @@ const organization = {
     "Local SEO",
     "Generative Engine Optimization (GEO)",
     "AI search visibility",
-    "AI video production",
     "Content strategy",
     "Lead generation systems",
   ],
@@ -45,17 +44,6 @@ const organization = {
         description:
           "Structured data, quotable answer content, consistent business identity, and trust signals that make AI answer engines like ChatGPT, Perplexity, and Google AI Overviews recommend your business.",
         url: `${baseUrl}/ai-search/`,
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "AI Video Production",
-        serviceType: "AI-assisted video production",
-        description:
-          "Short-form ads, explainers, and cinematic trailers produced with OpenMontage, an open-source agentic video engine: research, scripting, AI-generated motion clips, narration, captions, and final composition.",
-        url: `${baseUrl}/ai-video/`,
       },
     },
     {

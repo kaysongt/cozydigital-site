@@ -70,7 +70,7 @@ export default function AiSearchPage() {
       <section className="relative overflow-hidden px-6 pt-16 pb-16 md:pt-24">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(34,211,238,0.15),transparent)]" />
         <div className="relative mx-auto max-w-3xl text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">AI Search Visibility · GEO</p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">AI Visibility · GEO</p>
           <h1 className="text-4xl font-black leading-[1.02] text-white md:text-6xl">
             Be the business{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">AI recommends.</span>

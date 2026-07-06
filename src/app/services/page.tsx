@@ -120,18 +120,12 @@ export default function ServicesPage() {
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-fuchsia-300">AI-powered capabilities</p>
             <h2 className="text-2xl font-black text-white md:text-3xl">Built into every engagement</h2>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4">
             <Link href="/ai-search/" className="group flex flex-col rounded-3xl border border-cyan-300/25 bg-cyan-500/[0.05] p-7 transition-colors hover:border-cyan-300/45">
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">AI Search · GEO</p>
               <h3 className="mt-1.5 text-lg font-black text-white">Be the business AI recommends</h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-400">Structured data, quotable answers, and trust signals that get you cited by ChatGPT, Perplexity, and Google AI.</p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors group-hover:text-cyan-100">Explore AI Search <ArrowIcon /></span>
-            </Link>
-            <Link href="/ai-video/" className="group flex flex-col rounded-3xl border border-fuchsia-300/25 bg-fuchsia-500/[0.05] p-7 transition-colors hover:border-fuchsia-300/45">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-fuchsia-300">AI Video</p>
-              <h3 className="mt-1.5 text-lg font-black text-white">Branded video people actually watch</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-400">Ads, explainers, and trailers produced with OpenMontage, our open-source AI video engine, at a fraction of shoot cost.</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-fuchsia-300 transition-colors group-hover:text-fuchsia-100">Explore AI Video <ArrowIcon /></span>
             </Link>
           </div>
         </div>
