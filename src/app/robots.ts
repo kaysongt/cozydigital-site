@@ -25,10 +25,14 @@ const aiSearchCrawlers = [
 ];
 
 export default function robots(): MetadataRoute.Robots {
+  // The post-purchase delivery page is not for indexing — keep it out of search
+  // and out of AI answer engines.
+  const disallow = "/academy-access/";
+
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
-      ...aiSearchCrawlers.map((userAgent) => ({ userAgent, allow: "/" })),
+      { userAgent: "*", allow: "/", disallow },
+      ...aiSearchCrawlers.map((userAgent) => ({ userAgent, allow: "/", disallow })),
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,

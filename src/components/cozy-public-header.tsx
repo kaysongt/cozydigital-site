@@ -14,7 +14,7 @@ const navLinks = [
   { label: "Free Playbook ↓", href: "/free-playbook/" },
 ];
 
-const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook"];
+const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook"];
 
 export default function CozyPublicHeader() {
   const pathname = usePathname();
