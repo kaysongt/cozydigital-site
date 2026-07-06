@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 // commit). The button's PRICE and its post-payment redirect to /academy-access are
 // configured on the Buy Button itself in the Stripe dashboard — make sure that
 // price reads $29.99 to match this page, and that payments are un-paused.
-const STRIPE_BUY_BUTTON_ID = "buy_btn_1Tq4r92etPpEo8U8ujBPb1oj";
+const STRIPE_BUY_BUTTON_ID = "buy_btn_1TqBaV2etPpEo8U895o3UkUi";
 const STRIPE_PUBLISHABLE_KEY =
   "pk_live_51Tq3Fv2etPpEo8U8TMW9LBCNsSH30mQms7x7uwguVts8c7QUr1DbOVnIdNaPTiy2AiI60BBPpk1qtojNHhwhk8WO001TBLkUS2";
 const PRICE = "$29.99";
