@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,12 +9,18 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.cozydigital.org/ai-academy/" },
 };
 
-// Live Stripe Payment Link — handles the $29.99 charge. Course delivery happens via
-// the link's post-payment confirmation message (swap the placeholder download URL
-// in Stripe for the real course file link). NOTE: payment links must be un-paused
-// on the Stripe account before this can accept money.
-const CHECKOUT_URL = "https://buy.stripe.com/4gMfZacRdb2y89L1xGa7C00";
+// Embedded Stripe Buy Button. The publishable key is meant to be public (safe to
+// commit). The button's PRICE and its post-payment redirect to /academy-access are
+// configured on the Buy Button itself in the Stripe dashboard — make sure that
+// price reads $29.99 to match this page, and that payments are un-paused.
+const STRIPE_BUY_BUTTON_ID = "buy_btn_1Tq4r92etPpEo8U8ujBPb1oj";
+const STRIPE_PUBLISHABLE_KEY =
+  "pk_live_51Tq3Fv2etPpEo8U8TMW9LBCNsSH30mQms7x7uwguVts8c7QUr1DbOVnIdNaPTiy2AiI60BBPpk1qtojNHhwhk8WO001TBLkUS2";
 const PRICE = "$29.99";
+
+// Rendered via dangerouslySetInnerHTML so the <stripe-buy-button> custom element
+// doesn't need JSX typings; buy-button.js upgrades it once loaded.
+const buyButtonHtml = `<stripe-buy-button buy-button-id="${STRIPE_BUY_BUTTON_ID}" publishable-key="${STRIPE_PUBLISHABLE_KEY}"></stripe-buy-button>`;
 
 function ArrowIcon() {
   return (
@@ -91,6 +98,7 @@ export default function AiAcademyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
       />
+      <Script src="https://js.stripe.com/v3/buy-button.js" async strategy="afterInteractive" />
 
       {/* HERO */}
       <section className="relative overflow-hidden px-6 pt-16 pb-16 md:pt-24">
@@ -111,9 +119,7 @@ export default function AiAcademyPage() {
           </div>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <a
-              href={CHECKOUT_URL}
-              target="_blank"
-              rel="noopener"
+              href="#get-access"
               className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-fuchsia-500 via-violet-600 to-cyan-500 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-fuchsia-900/25 hover:from-fuchsia-400 hover:via-violet-500 hover:to-cyan-400"
             >
               <span>Get instant access — {PRICE}</span>
@@ -243,19 +249,21 @@ export default function AiAcademyPage() {
                 </li>
               ))}
             </ul>
-            <a
-              href={CHECKOUT_URL}
-              target="_blank"
-              rel="noopener"
-              className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 via-violet-600 to-cyan-500 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-fuchsia-900/25 hover:from-fuchsia-400 hover:via-violet-500 hover:to-cyan-400"
-            >
-              <span>Get instant access — {PRICE}</span>
-              <ArrowIcon />
-            </a>
+            <div className="mt-8 flex justify-center" dangerouslySetInnerHTML={{ __html: buyButtonHtml }} />
             <p className="mt-4 text-xs leading-relaxed text-zinc-500">
               14-day guarantee: do the work, and if it doesn&apos;t earn its keep, email us for a refund and keep the workbook.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* ACADEMY IS GROWING */}
+      <section className="px-6 pb-14">
+        <div className="mx-auto flex max-w-xl items-center justify-center gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.02] px-6 py-4 text-center">
+          <span aria-hidden className="text-fuchsia-300">&#x2726;</span>
+          <p className="text-sm text-zinc-400">
+            <span className="font-semibold text-zinc-200">This is the Academy&apos;s first course.</span> More practical, no-hype courses for small business owners are on the way.
+          </p>
         </div>
       </section>
 
