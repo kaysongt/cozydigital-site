@@ -30,6 +30,7 @@ const organization = {
     "Local SEO",
     "Generative Engine Optimization (GEO)",
     "AI search visibility",
+    "AI training for small businesses",
     "Content strategy",
     "Lead generation systems",
   ],
@@ -44,6 +45,19 @@ const organization = {
         description:
           "Structured data, quotable answer content, consistent business identity, and trust signals that make AI answer engines like ChatGPT, Perplexity, and Google AI Overviews recommend your business.",
         url: `${baseUrl}/ai-search/`,
+      },
+    },
+    {
+      "@type": "Offer",
+      price: "25",
+      priceCurrency: "USD",
+      itemOffered: {
+        "@type": "Course",
+        name: "The AI Advantage Blueprint",
+        description:
+          "Cozy Digital AI Academy's flagship course: a practical, self-paced AI implementation course for small business owners. Nine interactive modules and a built-in workbook covering an AI opportunity audit, prompting, marketing, customer communication, operations, no-code automations, privacy and compliance (HIPAA-aware), and a 30-day implementation plan.",
+        url: `${baseUrl}/ai-academy/`,
+        provider: { "@id": `${baseUrl}/#organization` },
       },
     },
     {

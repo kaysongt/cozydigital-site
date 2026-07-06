@@ -239,6 +239,18 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
+              <Link href="/ai-academy/" className="group/aca relative overflow-hidden rounded-2xl border border-fuchsia-300/30 bg-gradient-to-br from-fuchsia-500/[0.12] via-violet-500/[0.06] to-cyan-500/[0.10] p-5 transition-colors hover:border-fuchsia-300/50 sm:col-span-2">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-fuchsia-300">New · AI Academy · {"$25"}</p>
+                    <h3 className="mt-1.5 text-base font-black leading-snug text-white">Learn to put AI to work yourself, with The AI Advantage Blueprint</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-zinc-300">A no-hype, no-coding course for small business owners: 9 interactive modules and a built-in workbook that gets real AI systems running in 30 days.</p>
+                  </div>
+                  <span aria-hidden className="mt-1 shrink-0 text-fuchsia-300 transition-transform group-hover/aca:translate-x-0.5">
+                    <ArrowIcon />
+                  </span>
+                </div>
+              </Link>
               {[
                 {
                   icon: (

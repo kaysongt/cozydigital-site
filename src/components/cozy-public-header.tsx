@@ -9,11 +9,12 @@ import ThemeToggle from "@/components/theme-toggle";
 const navLinks = [
   { label: "Services", href: "/services/" },
   { label: "AI Visibility", href: "/ai-search/" },
+  { label: "AI Academy", href: "/ai-academy/" },
   { label: "About", href: "/about/" },
   { label: "Free Playbook ↓", href: "/free-playbook/" },
 ];
 
-const publicPrefixes = ["/", "/services", "/ai-search", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook"];
+const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook"];
 
 export default function CozyPublicHeader() {
   const pathname = usePathname();

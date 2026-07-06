@@ -4,6 +4,7 @@ import Image from "next/image";
 const footerNav = [
   { label: "Services", href: "/services/" },
   { label: "AI Visibility", href: "/ai-search/" },
+  { label: "AI Academy", href: "/ai-academy/" },
   { label: "Clients", href: "/#clients" },
   { label: "About", href: "/about/" },
   { label: "FAQ", href: "/faq/" },
