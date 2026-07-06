@@ -1,6 +1,11 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { usePathname } from "next/navigation";
+
+// Pages where the audit popup must never appear — the course purchase flow, so
+// nothing competes with the Buy button or the post-purchase delivery page.
+const SUPPRESSED_PREFIXES = ["/ai-academy", "/academy-access"];
 
 // Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
 const HUB_LEAD_URL =
@@ -18,8 +23,13 @@ export default function AuditPopup() {
   });
   // Honeypot: hidden field; only bots fill it.
   const hpRef = useRef<HTMLInputElement>(null);
+  const pathname = usePathname();
+  const suppressed = SUPPRESSED_PREFIXES.some(
+    (p) => pathname === p || pathname?.startsWith(`${p}/`)
+  );
 
   useEffect(() => {
+    if (suppressed) return;
     if (sessionStorage.getItem("audit-popup-gone")) {
       setGone(true);
       return;
@@ -30,7 +40,7 @@ export default function AuditPopup() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [suppressed]);
 
   const dismiss = useCallback(() => {
     setVisible(false);
@@ -67,7 +77,7 @@ export default function AuditPopup() {
     }
   }
 
-  if (gone) return null;
+  if (gone || suppressed) return null;
 
   const inputClass =
     "w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-zinc-500 outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30 transition";
