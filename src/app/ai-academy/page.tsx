@@ -3,19 +3,19 @@ import Script from "next/script";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cozy Digital AI Academy | The AI Advantage Blueprint ($29.99)",
+  title: "Cozy Digital AI Academy | The AI Advantage Blueprint ($30)",
   description:
-    "A practical AI implementation course for small business owners. No coding, no hype. Nine interactive modules, a built-in workbook, and real systems you can run in 30 days. Instant access for $29.99.",
+    "A practical AI implementation course for small business owners. No coding, no hype. Nine interactive modules, a built-in workbook, and real systems you can run in 30 days. Instant access for $30.",
   alternates: { canonical: "https://www.cozydigital.org/ai-academy/" },
 };
 
 // Embedded Stripe Buy Button. The publishable key is meant to be public (safe to
 // commit). The button's PRICE and its post-payment redirect to /academy-access are
 // configured on the Buy Button / payment link in the Stripe dashboard.
-const STRIPE_BUY_BUTTON_ID = "buy_btn_1TqBaV2etPpEo8U895o3UkUi";
+const STRIPE_BUY_BUTTON_ID = "buy_btn_1TqLCc2etPpEo8U8DutPjiOT";
 const STRIPE_PUBLISHABLE_KEY =
   "pk_live_51Tq3Fv2etPpEo8U8TMW9LBCNsSH30mQms7x7uwguVts8c7QUr1DbOVnIdNaPTiy2AiI60BBPpk1qtojNHhwhk8WO001TBLkUS2";
-const PRICE = "$29.99";
+const PRICE = "$30";
 
 // Rendered via dangerouslySetInnerHTML so the <stripe-buy-button> custom element
 // doesn't need JSX typings; buy-button.js upgrades it once loaded.
@@ -95,7 +95,7 @@ export default function AiAcademyPage() {
     teaches: "Practical AI implementation for small businesses",
     offers: {
       "@type": "Offer",
-      price: "29.99",
+      price: "30.00",
       priceCurrency: "USD",
       category: "One-time purchase",
       availability: "https://schema.org/InStock",

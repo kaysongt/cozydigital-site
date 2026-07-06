@@ -49,7 +49,7 @@ const organization = {
     },
     {
       "@type": "Offer",
-      price: "29.99",
+      price: "30.00",
       priceCurrency: "USD",
       itemOffered: {
         "@type": "Course",
