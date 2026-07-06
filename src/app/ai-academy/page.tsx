@@ -2,18 +2,18 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cozy Digital AI Academy | The AI Advantage Blueprint ($25)",
+  title: "Cozy Digital AI Academy | The AI Advantage Blueprint ($29.99)",
   description:
-    "A practical AI implementation course for small business owners. No coding, no hype. Nine interactive modules, a built-in workbook, and real systems you can run in 30 days. Instant access for $25.",
+    "A practical AI implementation course for small business owners. No coding, no hype. Nine interactive modules, a built-in workbook, and real systems you can run in 30 days. Instant access for $29.99.",
   alternates: { canonical: "https://www.cozydigital.org/ai-academy/" },
 };
 
-// Live Stripe Payment Link — handles the $25 charge. Course delivery happens via
+// Live Stripe Payment Link — handles the $29.99 charge. Course delivery happens via
 // the link's post-payment confirmation message (swap the placeholder download URL
 // in Stripe for the real course file link). NOTE: payment links must be un-paused
 // on the Stripe account before this can accept money.
 const CHECKOUT_URL = "https://buy.stripe.com/4gMfZacRdb2y89L1xGa7C00";
-const PRICE = "$25";
+const PRICE = "$29.99";
 
 function ArrowIcon() {
   return (
@@ -72,7 +72,7 @@ export default function AiAcademyPage() {
     teaches: "Practical AI implementation for small businesses",
     offers: {
       "@type": "Offer",
-      price: "25",
+      price: "29.99",
       priceCurrency: "USD",
       category: "One-time purchase",
       availability: "https://schema.org/InStock",
