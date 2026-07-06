@@ -25,9 +25,9 @@ const aiSearchCrawlers = [
 ];
 
 export default function robots(): MetadataRoute.Robots {
-  // The post-purchase delivery page is not for indexing — keep it out of search
-  // and out of AI answer engines.
-  const disallow = "/academy-access/";
+  // The post-purchase delivery page and the hosted paid course file are not for
+  // indexing — keep them out of search and out of AI answer engines.
+  const disallow = ["/academy-access/", "/academy/"];
 
   return {
     rules: [

@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI Advantage Blueprint — Interactive Course</title>
+<style>
+:root{
+  --bg:#faf7f1; --card:#ffffff; --ink:#22303a; --muted:#68727d;
+  --brand:#0e7466; --brand-deep:#0a5a50; --brand-ink:#0c3833;
+  --accent:#d97706; --accent-soft:#fdf1dc; --teal-soft:#e7f2f0;
+  --line:#e8e1d5; --danger:#b4483a; --danger-soft:#fbeae7;
+  --good:#177a51; --good-soft:#e5f4ec;
+  --r:14px; --shadow:0 1px 3px rgba(34,48,58,.07),0 8px 24px rgba(34,48,58,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.68;font-size:16.5px}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;line-height:1.25;color:var(--brand-ink);margin:0 0 .5em}
+h1{font-size:2rem}
+h2{font-size:1.45rem;margin-top:2.2em;padding-top:.4em}
+h2:first-of-type{margin-top:.8em}
+h3{font-size:1.12rem;margin-top:1.6em}
+p{margin:.75em 0}
+a{color:var(--brand)}
+ul,ol{padding-left:1.4em}
+li{margin:.35em 0}
+strong{color:var(--brand-ink)}
+
+/* ---------- layout ---------- */
+#app{display:flex;min-height:100vh}
+#sidebar{width:288px;flex-shrink:0;background:var(--brand-ink);color:#dcebe7;position:sticky;top:0;height:100vh;overflow-y:auto;padding:22px 16px 30px;scrollbar-width:thin}
+#main{flex:1;min-width:0;display:flex;flex-direction:column}
+.page-wrap{max-width:860px;margin:0 auto;padding:34px 40px 90px;width:100%}
+.page{display:none}
+.page.active{display:block;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- sidebar ---------- */
+.side-brand{padding:4px 10px 18px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:14px}
+.side-brand .kicker{font-size:.68rem;letter-spacing:.22em;color:#8fb5ac;text-transform:uppercase}
+.side-brand .title{font-family:Georgia,serif;font-size:1.28rem;color:#fff;line-height:1.2;margin-top:4px}
+.side-brand .sub{font-size:.78rem;color:#9dbfb7;margin-top:5px}
+.navgroup{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#7ca79d;margin:18px 10px 6px}
+.navlink{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;color:#d5e6e1;font:inherit;font-size:.92rem;padding:8px 10px;border-radius:9px;cursor:pointer;line-height:1.3}
+.navlink:hover{background:rgba(255,255,255,.08)}
+.navlink.active{background:#fff;color:var(--brand-ink);font-weight:600}
+.navlink .num{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.12);color:#bcd8d1;font-size:.72rem;display:flex;align-items:center;justify-content:center;font-weight:600}
+.navlink.active .num{background:var(--brand);color:#fff}
+.navlink .num.done{background:var(--good);color:#fff}
+.navlink .num.done::before{content:"✓"}
+.navlink .num.done span{display:none}
+.side-progress{margin:16px 10px 4px}
+.side-progress .lbl{display:flex;justify-content:space-between;font-size:.75rem;color:#9dbfb7;margin-bottom:5px}
+.pbar{height:7px;background:rgba(255,255,255,.14);border-radius:99px;overflow:hidden}
+.pbar>div{height:100%;background:linear-gradient(90deg,#2aa88f,#7ed3b2);border-radius:99px;width:0%;transition:width .4s ease}
+.side-foot{margin-top:26px;padding:14px 10px 0;border-top:1px solid rgba(255,255,255,.12);font-size:.75rem;color:#8fb0a8}
+.side-foot button{background:none;border:1px solid rgba(255,255,255,.25);color:#bcd8d1;border-radius:8px;padding:4px 10px;font-size:.72rem;cursor:pointer;margin-top:8px}
+.side-foot button:hover{background:rgba(255,255,255,.1)}
+
+/* ---------- topbar (mobile) ---------- */
+#topbar{display:none;position:sticky;top:0;z-index:40;background:var(--brand-ink);color:#fff;padding:10px 14px;align-items:center;gap:12px}
+#topbar .t{font-family:Georgia,serif;font-size:1rem}
+#menuBtn{background:rgba(255,255,255,.12);border:0;color:#fff;font-size:1.15rem;border-radius:8px;padding:4px 12px;cursor:pointer}
+
+/* ---------- content blocks ---------- */
+.kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lede{font-size:1.13rem;color:#3c4a55}
+.meta-strip{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.meta-chip{background:var(--teal-soft);color:var(--brand-deep);font-size:.8rem;font-weight:600;padding:5px 13px;border-radius:99px}
+.meta-chip.amber{background:var(--accent-soft);color:#92580a}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 24px;margin:18px 0;box-shadow:var(--shadow)}
+.callout{border-left:4px solid var(--brand);background:var(--teal-soft);border-radius:0 var(--r) var(--r) 0;padding:14px 20px;margin:20px 0}
+.callout.amber{border-color:var(--accent);background:var(--accent-soft)}
+.callout.red{border-color:var(--danger);background:var(--danger-soft)}
+.callout .ct{font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;color:var(--brand-deep)}
+.callout.amber .ct{color:#92580a}
+.callout.red .ct{color:var(--danger)}
+.rule-banner{background:linear-gradient(120deg,var(--brand-ink),var(--brand-deep));color:#fff;border-radius:var(--r);padding:22px 26px;margin:24px 0;text-align:center}
+.rule-banner .big{font-family:Georgia,serif;font-size:1.5rem;color:#fff}
+.rule-banner p{color:#c8ded8;margin:.4em 0 0;font-size:.95rem}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.goodbox,.badbox{border-radius:var(--r);padding:16px 20px;border:1px solid var(--line)}
+.goodbox{background:var(--good-soft)}
+.badbox{background:var(--danger-soft)}
+.goodbox h4{color:var(--good)}
+.badbox h4{color:var(--danger)}
+.goodbox ul,.badbox ul{margin:8px 0 0;padding-left:1.2em}
+table{border-collapse:collapse;width:100%;font-size:.92rem;margin:14px 0}
+th{background:var(--teal-soft);color:var(--brand-deep);text-align:left;padding:9px 12px;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top}
+tr:last-child td{border-bottom:0}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:4px 14px 10px;box-shadow:var(--shadow)}
+
+/* ---------- prompts / code ---------- */
+.promptcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin:16px 0;overflow:hidden;box-shadow:var(--shadow)}
+.promptcard .ph-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 18px;background:#f4efe6;border-bottom:1px solid var(--line)}
+.promptcard .ph-head .nm{font-weight:700;font-size:.92rem;color:var(--brand-ink)}
+.promptcard .ph-head .tag{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);background:var(--teal-soft);padding:3px 10px;border-radius:99px;white-space:nowrap}
+pre.prompt{margin:0;padding:16px 20px;font-family:Consolas,Menlo,monospace;font-size:.86rem;line-height:1.6;white-space:pre-wrap;word-break:break-word;background:var(--card);color:#2c3a46}
+pre.prompt .ph{background:var(--accent-soft);color:#92580a;border-radius:5px;padding:0 4px;font-weight:600}
+.copybtn{background:var(--brand);color:#fff;border:0;border-radius:8px;padding:6px 14px;font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.copybtn:hover{background:var(--brand-deep)}
+.copybtn.copied{background:var(--good)}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:0;border-radius:10px;padding:10px 20px;font-size:.92rem;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--brand-deep)}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+.btn.small{padding:6px 14px;font-size:.8rem;border-radius:8px}
+.btn.amber{background:var(--accent)}
+.btn.amber:hover{background:#b45f05}
+
+/* ---------- action steps / checklists ---------- */
+.steps{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 24px;margin:26px 0;box-shadow:var(--shadow)}
+.steps h3{margin-top:0;display:flex;align-items:center;gap:10px}
+.steps h3 .flag{background:var(--accent);color:#fff;font-family:"Segoe UI",sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:99px}
+.step{display:flex;gap:12px;align-items:flex-start;padding:10px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+.step:last-of-type{border-bottom:0}
+.step input{margin-top:5px;width:17px;height:17px;accent-color:var(--brand);cursor:pointer;flex-shrink:0}
+.step span{flex:1}
+.step.done span{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(104,114,125,.5)}
+.steps .hint{font-size:.8rem;color:var(--muted);margin:10px 0 0;font-style:italic}
+
+/* ---------- quiz ---------- */
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 24px;margin:22px 0;box-shadow:var(--shadow)}
+.quiz .qk{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
+.quiz .qq{font-weight:600;margin:0 0 12px;color:var(--brand-ink)}
+.qopt{display:block;width:100%;text-align:left;background:#f7f4ed;border:1.5px solid var(--line);border-radius:10px;padding:10px 15px;margin:8px 0;font:inherit;font-size:.93rem;cursor:pointer;color:var(--ink)}
+.qopt:hover{border-color:var(--brand)}
+.qopt.correct{background:var(--good-soft);border-color:var(--good);font-weight:600}
+.qopt.wrong{background:var(--danger-soft);border-color:var(--danger)}
+.qfb{display:none;margin:12px 0 0;font-size:.9rem;padding:12px 16px;border-radius:10px}
+.qfb.show{display:block}
+.qfb.ok{background:var(--good-soft);color:#115c3d}
+.qfb.no{background:var(--danger-soft);color:#7c3128}
+
+/* ---------- forms ---------- */
+input[type=text],input[type=number],textarea,select{font:inherit;font-size:.92rem;color:var(--ink);background:#fffdf9;border:1.5px solid var(--line);border-radius:9px;padding:8px 12px;width:100%}
+input:focus,textarea:focus,select:focus{outline:2px solid rgba(14,116,102,.3);border-color:var(--brand)}
+textarea{resize:vertical;min-height:64px}
+.fieldrow{margin:14px 0}
+.fieldrow label{display:block;font-weight:600;font-size:.88rem;margin-bottom:5px;color:var(--brand-ink)}
+.fieldrow .fnote{font-size:.78rem;color:var(--muted);margin-top:3px}
+.calc-out{background:var(--brand-ink);color:#fff;border-radius:var(--r);padding:18px 22px;margin-top:14px}
+.calc-out .line{display:flex;justify-content:space-between;padding:5px 0;font-size:.95rem;color:#c8ded8}
+.calc-out .line b{color:#fff;font-size:1.05rem}
+.calc-out .line.big b{color:#7ed3b2;font-size:1.5rem;font-family:Georgia,serif}
+
+/* ---------- pager ---------- */
+.pager{display:flex;justify-content:space-between;gap:14px;margin-top:46px;padding-top:22px;border-top:1px solid var(--line)}
+.pager button{flex:1;max-width:330px;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:13px 18px;font:inherit;cursor:pointer;text-align:left;box-shadow:var(--shadow)}
+.pager button:hover{border-color:var(--brand)}
+.pager button .dir{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pager button .pt{display:block;font-weight:600;color:var(--brand-ink);margin-top:2px}
+.pager button.next{text-align:right;margin-left:auto}
+.pager button[disabled]{visibility:hidden}
+
+/* ---------- audit + roi tables ---------- */
+.audit-table input,.roi-table input,.audit-table select{border-radius:7px;padding:6px 9px;font-size:.86rem}
+.audit-table td,.roi-table td{padding:6px 6px}
+.audit-table .tot,.roi-table .sav{font-weight:700;color:var(--brand-deep);text-align:center;font-size:1rem}
+tr.top3 td{background:var(--good-soft)}
+tr.top3 .tot{color:var(--good)}
+.delrow{background:none;border:0;color:#b9a99a;font-size:1.05rem;cursor:pointer;padding:2px 6px}
+.delrow:hover{color:var(--danger)}
+.rowbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+/* ---------- paste game ---------- */
+.pg-card{background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:18px 22px;margin:14px 0;box-shadow:var(--shadow)}
+.pg-card .scen{font-weight:600;color:var(--brand-ink)}
+.pg-btns{display:flex;gap:10px;margin-top:12px}
+.pg-btns button{flex:1;max-width:180px;font:inherit;font-size:.88rem;font-weight:600;border-radius:9px;padding:8px 10px;cursor:pointer;border:1.5px solid var(--line);background:#f7f4ed}
+.pg-btns button:hover{border-color:var(--brand)}
+.pg-card.answered .pg-btns button{pointer-events:none;opacity:.55}
+.pg-card.answered .pg-btns button.chosen{opacity:1}
+.pg-card .pg-fb{display:none;margin-top:12px;font-size:.9rem;padding:12px 16px;border-radius:10px}
+.pg-card.answered .pg-fb{display:block}
+.pg-card.right .pg-fb{background:var(--good-soft);color:#115c3d}
+.pg-card.wrongone .pg-fb{background:var(--danger-soft);color:#7c3128}
+.pg-card.right .pg-btns button.chosen{border-color:var(--good);background:var(--good-soft)}
+.pg-card.wrongone .pg-btns button.chosen{border-color:var(--danger);background:var(--danger-soft)}
+#pg-score{font-weight:700;color:var(--brand-deep)}
+
+/* ---------- workflow stepper ---------- */
+.wf-step{display:flex;gap:16px;margin:0;padding:14px 0;border-bottom:1px dashed var(--line)}
+.wf-step:last-child{border-bottom:0}
+.wf-step .n{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.wf-step .b{flex:1}
+.wf-step .b b{color:var(--brand-ink)}
+
+/* ---------- certificate ---------- */
+#cert{border:3px double var(--brand);border-radius:var(--r);background:#fffdf7;padding:44px 40px;text-align:center;margin:24px 0}
+#cert .c-k{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);font-weight:700}
+#cert h2{margin:14px 0 4px;font-size:1.9rem;border:0;padding:0}
+#cert .c-name{font-family:Georgia,serif;font-size:1.7rem;color:var(--brand-deep);border-bottom:2px solid var(--line);display:inline-block;min-width:320px;padding:8px 20px;margin:18px 0 10px}
+#cert .c-sub{color:var(--muted);font-size:.95rem;max-width:480px;margin:8px auto}
+#cert .c-date{margin-top:22px;font-size:.85rem;color:var(--muted)}
+
+/* ---------- toast ---------- */
+#toast{position:fixed;bottom:24px;right:24px;background:var(--brand-ink);color:#fff;padding:10px 20px;border-radius:10px;font-size:.85rem;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:99}
+#toast.show{opacity:1;transform:none}
+
+/* ---------- toc cards on welcome ---------- */
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.toc-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left;font:inherit;box-shadow:var(--shadow)}
+.toc-card:hover{border-color:var(--brand)}
+.toc-card .tn{font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--accent);text-transform:uppercase}
+.toc-card .tt{font-weight:600;color:var(--brand-ink);display:block;margin-top:2px;font-size:.95rem}
+
+@media (max-width:980px){
+  #topbar{display:flex}
+  #sidebar{position:fixed;left:0;top:0;bottom:0;z-index:50;transform:translateX(-100%);transition:transform .25s ease;width:290px}
+  #sidebar.open{transform:none;box-shadow:0 0 60px rgba(0,0,0,.4)}
+  .page-wrap{padding:24px 20px 70px}
+  .twocol,.toc-grid{grid-template-columns:1fr}
+  #cert .c-name{min-width:0;width:100%}
+}
+@media print{
+  #sidebar,#topbar,.pager,.copybtn,.btn,#toast,.quiz,.pg-btns{display:none!important}
+  body{background:#fff}
+  .page{display:none}
+  .page.active{display:block}
+  .card,.steps,.promptcard,.tablewrap{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="topbar"><button id="menuBtn" aria-label="Menu">☰</button><span class="t">The AI Advantage Blueprint</span></div>
+<div id="app">
+<aside id="sidebar">
+  <div class="side-brand">
+    <div class="kicker">Cozy Digital presents</div>
+    <div class="title">The AI Advantage Blueprint</div>
+    <div class="sub">Interactive course + workbook · 2026 Edition</div>
+  </div>
+  <div class="side-progress">
+    <div class="lbl"><span>Your progress</span><span id="progPct">0%</span></div>
+    <div class="pbar"><div id="progBar"></div></div>
+  </div>
+  <div class="navgroup">Course</div>
+  <button class="navlink" data-page="welcome"><span class="num" data-mod="welcome"><span>→</span></span>Welcome &amp; how to use this</button>
+  <button class="navlink" data-page="m1"><span class="num" data-mod="m1"><span>1</span></span>AI Foundations</button>
+  <button class="navlink" data-page="m2"><span class="num" data-mod="m2"><span>2</span></span>The AI Opportunity Audit</button>
+  <button class="navlink" data-page="m3"><span class="num" data-mod="m3"><span>3</span></span>Prompting That Works</button>
+  <button class="navlink" data-page="m4"><span class="num" data-mod="m4"><span>4</span></span>Marketing &amp; Content</button>
+  <button class="navlink" data-page="m5"><span class="num" data-mod="m5"><span>5</span></span>Customers &amp; Sales</button>
+  <button class="navlink" data-page="m6"><span class="num" data-mod="m6"><span>6</span></span>Operations &amp; Admin</button>
+  <button class="navlink" data-page="m7"><span class="num" data-mod="m7"><span>7</span></span>Simple Automations</button>
+  <button class="navlink" data-page="m8"><span class="num" data-mod="m8"><span>8</span></span>Privacy &amp; Compliance</button>
+  <button class="navlink" data-page="m9"><span class="num" data-mod="m9"><span>9</span></span>Your 30-Day Plan</button>
+  <button class="navlink" data-page="final"><span class="num" data-mod="final"><span>★</span></span>Final Word + Certificate</button>
+  <div class="navgroup">Interactive Workbook</div>
+  <button class="navlink" data-page="wb-audit"><span class="num"><span>A</span></span>Opportunity Audit tool</button>
+  <button class="navlink" data-page="wb-voice"><span class="num"><span>B</span></span>Brand Voice Builder</button>
+  <button class="navlink" data-page="wb-prompts"><span class="num"><span>C</span></span>25-Prompt Library</button>
+  <button class="navlink" data-page="wb-reviews"><span class="num"><span>D</span></span>Review Templates</button>
+  <button class="navlink" data-page="wb-policy"><span class="num"><span>E</span></span>Team AI Policy builder</button>
+  <button class="navlink" data-page="wb-30day"><span class="num"><span>F</span></span>30-Day Checklist</button>
+  <button class="navlink" data-page="wb-roi"><span class="num"><span>G</span></span>ROI Tracker</button>
+  <div class="side-foot">
+    Everything you type is saved privately in this browser — close the tab and pick up where you left off.<br>
+    <button id="resetBtn">Reset all progress</button>
+  </div>
+</aside>
+<main id="main">
+<div class="page-wrap">
+<!-- ============ WELCOME ============ -->
+<section class="page" id="page-welcome">
+  <div class="kicker">Cozy Digital presents</div>
+  <h1>The AI Advantage Blueprint</h1>
+  <p class="lede">A practical course for putting AI to work in your small business. No coding. No hype. Real systems you can run this month.</p>
+  <div class="meta-strip">
+    <span class="meta-chip">9 modules</span>
+    <span class="meta-chip">Interactive workbook built in</span>
+    <span class="meta-chip amber">2026 Edition</span>
+  </div>
+
+  <p>You have heard that AI is going to change your business. What nobody tells you is what to actually do on <em>Monday morning</em>. That is what this course is for.</p>
+  <p>This is a practical implementation course for owners and managers of small businesses: clinics, med spas, dental offices, salons, contractors, local shops, and service businesses of every kind. It assumes you are busy, you are not technical, and you do not have time to watch forty hours of YouTube to figure out what matters.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">What you will have by the end</h3>
+    <ul>
+      <li>One AI tool set up properly and working for you every day</li>
+      <li>A <strong>brand voice document</strong> that makes AI write like you instead of like a robot</li>
+      <li>A <strong>prompt library</strong> your whole team can use</li>
+      <li>A month of marketing content produced in a couple of hours</li>
+      <li>Templates for reviews, inquiries, and follow-ups</li>
+      <li>At least one working automation</li>
+      <li>A one-page <strong>AI policy</strong> that keeps your business and your customers safe</li>
+      <li>A 30-day plan that ties it all together</li>
+    </ul>
+  </div>
+
+  <h2>How to use this course</h2>
+  <p>Work through one module at a time and do the <strong>action steps</strong> at the end of each one before moving on. The action steps <em>are</em> the course. Reading about AI changes nothing; the systems you build are what save you time and make you money. Most modules take 30 to 60 minutes including the action steps.</p>
+  <p>This edition is fully interactive: check off action steps as you go, use the built-in worksheets and calculators, and copy any prompt with one click. Your progress and everything you type is saved privately in your browser, so you can close the tab and pick up exactly where you left off.</p>
+
+  <div class="rule-banner">
+    <div class="big">AI drafts. You decide.</div>
+    <p>The one rule that makes everything else safe and effective. AI does the first 80% of the work. You do the final 20%: the judgment, the facts, the approval. Nothing goes out the door unreviewed.</p>
+  </div>
+
+  <h2>Jump in</h2>
+  <div class="toc-grid">
+    <button class="toc-card" data-goto="m1"><span class="tn">Module 1</span><span class="tt">AI Foundations (Without the Hype)</span></button>
+    <button class="toc-card" data-goto="m2"><span class="tn">Module 2</span><span class="tt">The AI Opportunity Audit</span></button>
+    <button class="toc-card" data-goto="m3"><span class="tn">Module 3</span><span class="tt">Prompting That Actually Works</span></button>
+    <button class="toc-card" data-goto="m4"><span class="tn">Module 4</span><span class="tt">AI for Marketing and Content</span></button>
+    <button class="toc-card" data-goto="m5"><span class="tn">Module 5</span><span class="tt">Customer Communication &amp; Sales</span></button>
+    <button class="toc-card" data-goto="m6"><span class="tn">Module 6</span><span class="tt">AI for Operations and Admin</span></button>
+    <button class="toc-card" data-goto="m7"><span class="tn">Module 7</span><span class="tt">Simple Automations (No Coding)</span></button>
+    <button class="toc-card" data-goto="m8"><span class="tn">Module 8</span><span class="tt">Privacy, Compliance &amp; Your AI Policy</span></button>
+    <button class="toc-card" data-goto="m9"><span class="tn">Module 9</span><span class="tt">Your 30-Day Implementation Plan</span></button>
+    <button class="toc-card" data-goto="wb-prompts"><span class="tn">Workbook</span><span class="tt">The 25-Prompt Starter Library</span></button>
+  </div>
+</section>
+
+<!-- ============ MODULE 1 ============ -->
+<section class="page" id="page-m1">
+  <div class="kicker">Module 1</div>
+  <h1>AI Foundations (Without the Hype)</h1>
+  <div class="meta-strip">
+    <span class="meta-chip">⏱ About 30 minutes</span>
+    <span class="meta-chip amber">Goal: pick one tool and set it up properly</span>
+  </div>
+
+  <h2>1.1 What generative AI actually is</h2>
+  <p>The AI everyone is talking about (ChatGPT, Claude, Gemini, Copilot) is a category of software trained on enormous amounts of text. You type instructions in plain English, and it produces writing, answers, summaries, plans, and ideas in response. No code, no setup, just a conversation.</p>
+  <div class="callout">
+    <div class="ct">The mental model that makes everything click</div>
+    You have just hired an extremely fast, endlessly patient junior employee with an excellent vocabulary and <strong>zero knowledge of your business</strong>. It can produce a solid first draft of almost anything in seconds — but only if you brief it well, and it needs you to check its work. Everything in this course flows from that picture.
+  </div>
+
+  <h2>1.2 The main tools and what they cost</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Tool</th><th>Best known for</th></tr>
+    <tr><td><strong>ChatGPT</strong> (OpenAI)</td><td>The best known. Strong all-rounder with voice mode and image generation.</td></tr>
+    <tr><td><strong>Claude</strong> (Anthropic)</td><td>Excellent writer, strong with long documents, follows tone instructions well.</td></tr>
+    <tr><td><strong>Gemini</strong> (Google)</td><td>Ties into Gmail, Docs, and the rest of Google Workspace.</td></tr>
+    <tr><td><strong>Microsoft Copilot</strong></td><td>Built into Word, Excel, and Outlook. Makes sense if your business lives in Microsoft 365.</td></tr>
+  </table></div>
+  <p>All of them have free versions. The paid tiers run around <strong>$20 per month</strong> and are worth it for business use: you get the stronger models, file uploads, and longer conversations. For the price of one lunch a month, this is the cheapest capable employee you will ever hire.</p>
+  <div class="callout amber">
+    <div class="ct">The advice that saves you weeks</div>
+    Pick <strong>one</strong> tool, pay for it, and use it every day for 30 days. Tool-hopping is how people stay beginners forever. The skills in this course transfer to any of them, so the choice matters less than the commitment.
+  </div>
+  <p>Worth knowing about, but not required: Perplexity (AI-powered research and search), Canva's AI features (design), and meeting transcription tools like Otter, Fathom, or the recorder built into Zoom and Google Meet. We will touch these where relevant.</p>
+
+  <h3>Not sure which to pick? 20-second decision helper</h3>
+  <div class="card">
+    <div class="fieldrow">
+      <label>Where does your business's daily work mostly live?</label>
+      <select id="toolPickSel">
+        <option value="">— choose one —</option>
+        <option value="g">Gmail / Google Workspace (Docs, Sheets)</option>
+        <option value="m">Microsoft 365 (Outlook, Word, Excel)</option>
+        <option value="w">Lots of writing: marketing, long documents, tone matters</option>
+        <option value="x">A mix / not sure — I just want the popular default</option>
+      </select>
+    </div>
+    <div id="toolPickOut" class="callout" style="display:none;margin-bottom:0"></div>
+  </div>
+
+  <h2>1.3 What AI is genuinely good at</h2>
+  <div class="twocol">
+    <div class="goodbox">
+      <h4 style="margin:0">✓ Hand it these</h4>
+      <ul>
+        <li><strong>Drafting anything written</strong>: emails, posts, ads, pages, scripts, proposals, policies</li>
+        <li><strong>Summarizing long things</strong>: meetings, documents, email threads, reviews</li>
+        <li><strong>Rewriting</strong> for tone, length, or reading level</li>
+        <li><strong>Brainstorming</strong> options when you are staring at a blank page</li>
+        <li><strong>Extracting and organizing</strong> information from messy text</li>
+        <li>Answering questions about material you give it</li>
+        <li>Turning a rambling explanation into a clean checklist, plan, or procedure</li>
+      </ul>
+    </div>
+    <div class="badbox">
+      <h4 style="margin:0">✗ Where people get burned</h4>
+      <ul>
+        <li><strong>Knowing your business.</strong> It knows nothing about your services, prices, or customers until you tell it. Every bad output you have ever seen started with a bad brief.</li>
+        <li><strong>Facts.</strong> AI sometimes states wrong information with complete confidence ("hallucination"), and it never fully goes away. Verify names, numbers, prices, claims, and anything medical or legal.</li>
+        <li><strong>Current events.</strong> Unless the tool searches the web (many now can), its knowledge has a cutoff date.</li>
+        <li><strong>Judgment.</strong> It does not know your relationships, your risk tolerance, or your reputation. Those calls stay with you.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>1.4 The one rule</h2>
+  <div class="rule-banner">
+    <div class="big">AI drafts. You decide.</div>
+    <p>Treat every output as a first draft from a talented new hire on day one. You would never let a day-one employee send something to a customer unreviewed. Same rule here, forever. Businesses that get embarrassed by AI are businesses that skipped the review step — not businesses that used AI.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="qk">Check your understanding</div>
+    <p class="qq">Your AI tool writes a beautiful paragraph about your service that includes a price. What do you do before publishing?</p>
+    <button class="qopt" data-ok="0" data-fb="Not quite. AI states wrong information with complete confidence — a polished tone tells you nothing about accuracy.">Publish it — it sounds professional and confident</button>
+    <button class="qopt" data-ok="1" data-fb="Exactly. Facts, numbers, prices, names, and claims always get verified by a human. AI drafts, you decide.">Verify the price and every factual claim myself first</button>
+    <button class="qopt" data-ok="0" data-fb="Asking AI to check itself helps a little, but it can confidently 'confirm' its own mistake. Verification is your job.">Ask the AI to double-check its own work</button>
+    <p class="qfb"></p>
+  </div>
+
+  <div class="steps" data-mod="m1">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m1-1"><span><strong>Pick one tool</strong> (ChatGPT, Claude, Gemini, or Copilot) and subscribe to the paid tier.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m1-2"><span><strong>Have your first real conversation with it:</strong> paste in your website's home page text and ask it to explain your business back to you and suggest ten ways AI could help. You will learn how it thinks.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m1-3"><span><strong>Bookmark the tool on every device you use.</strong> Friction kills habits.</span></label>
+    <p class="hint">Checking all the boxes marks this module complete in the sidebar.</p>
+  </div>
+</section>
+
+<!-- ============ MODULE 2 ============ -->
+<section class="page" id="page-m2">
+  <div class="kicker">Module 2</div>
+  <h1>The AI Opportunity Audit</h1>
+  <div class="meta-strip">
+    <span class="meta-chip">⏱ About 45 minutes</span>
+    <span class="meta-chip amber">Goal: find where AI pays for itself fastest, pick your first three</span>
+    <span class="meta-chip">Workbook: Opportunity Audit tool</span>
+  </div>
+
+  <h2>2.1 Where the money actually is</h2>
+  <p>The value of AI in a small business is not some grand strategy. It is <strong>boring, repetitive tasks done faster</strong>. The unit of value is your time and your team's time.</p>
+  <p>Run the math once and it stops being abstract:</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">💰 Your money math — try your real numbers</h3>
+    <div class="twocol" style="margin:0">
+      <div class="fieldrow"><label>What is an hour of your time worth ($)?</label><input type="number" id="calcRate" data-field="calc-rate" min="0" placeholder="50"></div>
+      <div class="fieldrow"><label>Hours AI could save you per week</label><input type="number" id="calcHours" data-field="calc-hours" min="0" step="0.5" placeholder="5"></div>
+    </div>
+    <div class="calc-out">
+      <div class="line"><span>Per week</span><b id="calcWeek">$250</b></div>
+      <div class="line"><span>Per month</span><b id="calcMonth">$1,083</b></div>
+      <div class="line big"><span>Per year, one person</span><b id="calcYear">$13,000</b></div>
+    </div>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:0">Add a front desk employee saving three hours a week and the number grows. This course pays for itself the first week you use it — and that is the standard every task should meet: hours saved you can actually point to.</p>
+  </div>
+
+  <h2>2.2 The audit</h2>
+  <p>Open the <button class="btn small ghost" data-goto="wb-audit">Opportunity Audit tool →</button> and list every recurring task you and your team touch in a typical week. Do not filter yet, just list: answering the same inquiry emails, posting on social media, replying to reviews, writing appointment reminders, building quotes, updating the website, chasing invoices, onboarding a new hire, writing up meeting notes.</p>
+  <p>Then mark each task against three questions:</p>
+  <ol>
+    <li><strong>Is it repetitive?</strong> (You do roughly the same thing each time.)</li>
+    <li><strong>Does it mostly involve reading or writing?</strong></li>
+    <li><strong>Could it be done without you physically present?</strong></li>
+  </ol>
+  <p>Tasks that get three yeses are your AI candidates. Score each candidate 1 to 5 on <strong>time saved per week</strong> and 1 to 5 on <strong>how easy it would be to hand to AI</strong>, multiply the two numbers, and sort. Your top three scores are where you start. That is the whole method — and it is more than most businesses ever do. The audit tool in this course does the scoring and ranking for you.</p>
+
+  <h2>2.3 Common quick wins by business type</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Business type</th><th>Fastest wins</th></tr>
+    <tr><td><strong>Clinics, med spas, dental</strong></td><td>Review responses, recall and reactivation messages, social content, FAQ and service page copy, staff procedures, and pre- and post-visit instructions <em>(with clinical review before anything patient-facing goes out)</em></td></tr>
+    <tr><td><strong>Retail &amp; e-commerce</strong></td><td>Product descriptions, email campaigns, ad variations, seasonal promos</td></tr>
+    <tr><td><strong>Contractors &amp; trades</strong></td><td>Estimate follow-ups, job recap emails, review requests, before-and-after post captions</td></tr>
+    <tr><td><strong>Professional services</strong></td><td>Proposals, meeting recaps, scope documents, newsletter content</td></tr>
+  </table></div>
+
+  <h2>2.4 What NOT to hand to AI first</h2>
+  <div class="callout red">
+    <div class="ct">Keep these off the list for now</div>
+    <ul style="margin:6px 0 0">
+      <li>Anything involving <strong>sensitive customer or patient data</strong> (Module 8 covers how to handle this safely)</li>
+      <li><strong>High-stakes judgment calls</strong>: pricing a big job, handling a legal complaint, firing decisions</li>
+      <li><strong>Personal relationships with your best clients.</strong> Efficiency is not the goal there.</li>
+    </ul>
+  </div>
+
+  <div class="steps" data-mod="m2">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m2-1"><span><strong>Complete the Opportunity Audit</strong> with at least 10 tasks — <button class="btn small ghost" data-goto="wb-audit">open the audit tool</button></span></label>
+    <label class="step"><input type="checkbox" data-check="as-m2-2"><span><strong>Score and rank them.</strong> The tool circles your top three automatically.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m2-3"><span><strong>Write your top three somewhere visible.</strong> They are your projects for the next two weeks.</span></label>
+  </div>
+</section>
+
+<!-- ============ MODULE 3 ============ -->
+<section class="page" id="page-m3">
+  <div class="kicker">Module 3</div>
+  <h1>Prompting That Actually Works</h1>
+  <div class="meta-strip">
+    <span class="meta-chip">⏱ About 60 minutes</span>
+    <span class="meta-chip amber">Goal: the briefing skill + your two multiplier assets</span>
+    <span class="meta-chip">Workbook: Brand Voice Builder, Prompt Library</span>
+  </div>
+
+  <h2>3.1 Why the same tool gives one business gold and another business garbage</h2>
+  <p>The difference is never the tool. <strong>It is the brief.</strong> A vague request gets a generic answer; a specific brief gets work you can use. Prompting is not a technical skill, it is a <em>delegation</em> skill — and if you have ever trained an employee you already have it.</p>
+
+  <h2>3.2 The five-part prompt formula</h2>
+  <ol>
+    <li><strong>Role</strong> — who the AI should be. <em>"You are a social media copywriter for a med spa."</em></li>
+    <li><strong>Context</strong> — your business, audience, and goal. This is where most people give too little.</li>
+    <li><strong>Task</strong> — exactly what you want, including quantity. <em>"Write 3 caption options."</em></li>
+    <li><strong>Format</strong> — length, structure, and tone. <em>"Under 80 words, warm and confident, end with a booking call to action."</em></li>
+    <li><strong>Example</strong> — paste something you like. One good example beats three paragraphs of description.</li>
+  </ol>
+
+  <h3>See the difference in practice</h3>
+  <div class="twocol">
+    <div class="badbox">
+      <h4 style="margin:0">✗ Weak prompt</h4>
+      <pre class="prompt" style="background:transparent;padding:10px 0 0">Write an Instagram post about Botox.</pre>
+      <p style="font-size:.85rem;margin-bottom:0">Gets you something that could be for any med spa in America.</p>
+    </div>
+    <div class="goodbox">
+      <h4 style="margin:0">✓ Strong prompt</h4>
+      <pre class="prompt" style="background:transparent;padding:10px 0 0">You are a social media copywriter for a med spa in Sacramento.
+Our audience is women 30 to 55, professional, wellness-focused.
+Write 3 Instagram caption options announcing 20% off Botox
+consultations for new patients in July. Tone: warm and confident,
+no pushy sales language, no medical claims or guaranteed results.
+Under 80 words each. End each with a booking call to action.
+Here is a past caption our audience loved: [paste it]</pre>
+      <p style="font-size:.85rem;margin-bottom:0">Gets you three options you can lightly edit and schedule. Same tool, thirty extra seconds of briefing.</p>
+    </div>
+  </div>
+
+  <h3>🛠 Try it: build a five-part prompt for a real task</h3>
+  <div class="card">
+    <div class="fieldrow"><label>1. Role</label><input type="text" data-field="pb-role" class="pb-in" placeholder="You are a social media copywriter for a family dental office."></div>
+    <div class="fieldrow"><label>2. Context</label><textarea data-field="pb-context" class="pb-in" placeholder="Our patients are local families; we're known for being gentle with anxious kids. Goal: book more new-patient cleanings in September."></textarea></div>
+    <div class="fieldrow"><label>3. Task (include quantity)</label><input type="text" data-field="pb-task" class="pb-in" placeholder="Write 3 Facebook post options announcing our back-to-school cleaning special."></div>
+    <div class="fieldrow"><label>4. Format (length, structure, tone)</label><input type="text" data-field="pb-format" class="pb-in" placeholder="Under 80 words each, warm and reassuring, end with 'Book online' call to action. No medical claims."></div>
+    <div class="fieldrow"><label>5. Example (optional — paste something you like)</label><textarea data-field="pb-example" class="pb-in" placeholder="Here is a past post our audience loved: ..."></textarea></div>
+    <div class="promptcard" style="margin-bottom:0">
+      <div class="ph-head"><span class="nm">Your assembled prompt</span><button class="copybtn" id="pbCopy">Copy prompt</button></div>
+      <pre class="prompt" id="pbOut">Fill in the fields above and your prompt assembles itself here.</pre>
+    </div>
+  </div>
+
+  <h2>3.3 Iterate like a conversation, not a slot machine</h2>
+  <p>The first output is a starting point. Push back the way you would with a person: <em>"shorter," "less formal," "give me five more options," "combine the opening of option 2 with the ending of option 4," "now write the same thing for email."</em> Two or three rounds of direction usually gets you from decent to done.</p>
+  <div class="callout amber">
+    <div class="ct">Reality check</div>
+    People who accept the first output and complain that AI is mediocre are grading a first draft as a final.
+  </div>
+
+  <h2>3.4 Your brand voice document — the highest-leverage asset in this course</h2>
+  <p>A brand voice document is <strong>one page</strong> that describes your business, who you serve, how you sound, phrases you use, phrases you never use, your standing offers, and a sample of writing you like. You create it once, then paste it at the start of any marketing or communication conversation with AI. From that moment, everything it writes sounds like you.</p>
+  <p>This one page is the difference between AI content that reads like a robot wrote it and AI content your regulars cannot tell apart from your own writing. It takes about 20 minutes in the <button class="btn small ghost" data-goto="wb-voice">Brand Voice Builder →</button> — and once you build it there, this course will <strong>automatically attach it to every prompt you copy</strong> from the 25-prompt library. Do not skip it.</p>
+
+  <h2>3.5 Build a prompt library</h2>
+  <p>When a prompt produces something great, do not let it evaporate. Save it in a shared document with a clear name: "Monthly content batch," "Negative review reply," "Quote follow-up." Over a few weeks you build a library your whole team can run without you — which is the moment AI stops being your hobby and becomes a business system. The <button class="btn small ghost" data-goto="wb-prompts">25-prompt starter library →</button> seeds it.</p>
+
+  <h2>3.6 Quality control</h2>
+  <ul>
+    <li>Verify every fact, number, price, name, and claim before anything is published or sent.</li>
+    <li><strong>Read customer-facing text out loud once.</strong> Robotic phrasing is easier to hear than to see.</li>
+    <li>Anything medical, legal, or financial gets reviewed by a qualified person before it goes out. No exceptions.</li>
+  </ul>
+
+  <div class="quiz">
+    <div class="qk">Check your understanding</div>
+    <p class="qq">Your first output is decent but too formal and too long. What is the highest-leverage next move?</p>
+    <button class="qopt" data-ok="0" data-fb="That is the slot-machine approach — starting over throws away the direction you have already given.">Start a new chat and try a different prompt from scratch</button>
+    <button class="qopt" data-ok="0" data-fb="Editing by hand works, but you are doing work the AI can do in seconds — and you will do it by hand every time after this too.">Fix it by hand — AI got you close enough</button>
+    <button class="qopt" data-ok="1" data-fb="Right. Iterate like a conversation: 'shorter, less formal.' Two or three rounds of direction usually gets you from decent to done.">Reply "make it half the length and less formal" and keep directing</button>
+    <p class="qfb"></p>
+  </div>
+
+  <div class="steps" data-mod="m3">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m3-1"><span><strong>Complete the Brand Voice Builder</strong> — <button class="btn small ghost" data-goto="wb-voice">open it</button>. About 20 minutes, pays off in every module after this.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m3-2"><span><strong>Take one real task from your top three and run it twice:</strong> once with a lazy prompt, once with the five-part formula. Compare.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m3-3"><span><strong>Start your prompt library document</strong> and save your first three keepers.</span></label>
+  </div>
+</section>
+<!-- ============ MODULE 4 ============ -->
+<section class="page" id="page-m4">
+  <div class="kicker">Module 4</div>
+  <h1>AI for Marketing and Content</h1>
+  <div class="meta-strip">
+    <span class="meta-chip">⏱ About 60 min setup, then ~2 hrs/month</span>
+    <span class="meta-chip amber">Goal: a month of marketing in a couple of hours</span>
+    <span class="meta-chip">Workbook: prompts 1–8</span>
+  </div>
+
+  <h2>4.1 A month of social content in one sitting</h2>
+  <p><strong>Consistency beats brilliance</strong> on social media, and AI makes consistency cheap. Here is the workflow, start to finish:</p>
+  <div class="card">
+    <div class="wf-step"><div class="n">1</div><div class="b"><b>Brainstorm.</b> Paste your brand voice document and ask for 30 post ideas for your audience, mixing education, promotion, social proof, and personality. <em>(Prompt 1 in the library.)</em></div></div>
+    <div class="wf-step"><div class="n">2</div><div class="b"><b>Select.</b> Pick the 12 to 16 ideas that fit your month. You are the editor; this step is where your judgment enters.</div></div>
+    <div class="wf-step"><div class="n">3</div><div class="b"><b>Draft.</b> Have AI write captions for your selected ideas in batches, in your voice, with your calls to action. <em>(Prompt 2.)</em></div></div>
+    <div class="wf-step"><div class="n">4</div><div class="b"><b>Edit.</b> Tighten, fact-check, and add the specific details only you know. This is the 20% that makes it yours.</div></div>
+    <div class="wf-step"><div class="n">5</div><div class="b"><b>Visuals.</b> Pair captions with real photos of your business, your team, and your work. Real photos outperform stock and AI images for local businesses. Canva covers the design layer.</div></div>
+    <div class="wf-step"><div class="n">6</div><div class="b"><b>Schedule.</b> Load everything into your scheduler (Meta Business Suite is free) and be done with social media for the month.</div></div>
+  </div>
+  <div class="callout">
+    <div class="ct">The compounding effect</div>
+    First month this takes three hours. By month three it takes ninety minutes, because your prompt library and brand voice document are doing the heavy lifting.
+  </div>
+
+  <h2>4.2 Email: the channel small businesses underuse</h2>
+  <p>Your customer list is the marketing asset you <strong>fully own</strong>, and AI removes the main reason owners neglect it: writing takes too long. Use it for:</p>
+  <ul>
+    <li>Monthly newsletters <em>(Prompt 3)</em></li>
+    <li>Promotions <em>(Prompt 5)</em></li>
+    <li>Welcome sequences for new customers</li>
+    <li>Reactivation campaigns — "we have not seen you in six months, here is a reason to come back" <em>(Prompt 4)</em></li>
+  </ul>
+  <p>Reactivation emails in particular are close to <strong>free money</strong> for appointment-based businesses.</p>
+
+  <h2>4.3 Blogs, SEO, and getting recommended by AI</h2>
+  <p>AI is excellent at outlining and drafting the service pages and articles that bring in search traffic. The catch: search engines and readers both reward content with real expertise and local specifics, so your edit pass must add the things AI cannot know — your actual process, your real prices or ranges, your city, your answers to the questions customers ask you in person. Publish generic AI text and you will blend into the same beige paste as every competitor who did the same thing.</p>
+  <div class="callout amber">
+    <div class="ct">The shift worth knowing: GEO</div>
+    Your next customer may not Google you at all. More people now ask ChatGPT or similar tools for recommendations ("best med spa near me," "dentist in Sacramento that does same-day crowns"). Getting mentioned by AI tools rewards the same fundamentals: clear service pages, consistent business information everywhere online, strong reviews, and genuinely useful content. This is sometimes called <strong>GEO (generative engine optimization)</strong>, and doing the work in this module puts you ahead of most local competitors on it.
+  </div>
+
+  <h2>4.4 Ads: use AI as a variation machine</h2>
+  <p>Winning ads come from testing, and testing needs volume. Ask AI for ten headline options and five primary-text options from one offer <em>(Prompt 6)</em>, pick the strongest few, and test. What used to be an afternoon of copywriting becomes ten minutes of selecting.</p>
+
+  <h2>4.5 The repurposing system</h2>
+  <p>Never create one piece of content when you can create one <strong>asset</strong>. Every blog post or long piece becomes a family of content with one prompt:</p>
+  <div class="promptcard">
+    <div class="ph-head"><span class="nm">The repurposer</span><button class="copybtn">Copy prompt</button></div>
+    <pre class="prompt">Here is a blog post from my business: [paste post]
+Repurpose it into:
+1. Four short social captions, each with a different hook
+2. One email to my list summarizing the key point
+3. One FAQ answer for my website
+4. One 30-second video script I can film on my phone
+Match the voice and rules in my brand voice document above.</pre>
+  </div>
+
+  <h2>4.6 Mistakes that make AI marketing backfire</h2>
+  <ul>
+    <li><strong>Publishing unedited AI text.</strong> Audiences have learned the smell of it, and it quietly erodes trust.</li>
+    <li><strong>Letting every post sound the same.</strong> Vary hooks and formats; your brand voice document prevents drift, your editing prevents monotony.</li>
+    <li><strong>Making claims you cannot back up.</strong> AI will happily write "guaranteed results." You know better.</li>
+    <li><strong>Ignoring your industry's advertising rules.</strong> Aesthetics, healthcare, finance, and legal all have lines (before-and-after claims, testimonials, guarantees). Know yours; when in doubt, have the qualified person on your team review.</li>
+  </ul>
+
+  <div class="quiz">
+    <div class="qk">Check your understanding</div>
+    <p class="qq">In the six-step content workflow, which two steps can never be delegated to AI?</p>
+    <button class="qopt" data-ok="0" data-fb="Brainstorming and drafting are exactly what AI is best at — that is where the time savings come from.">Brainstorm and Draft</button>
+    <button class="qopt" data-ok="1" data-fb="Right. Selecting the ideas that fit your business and editing in the details only you know — that is the judgment layer, the 20% that makes it yours.">Select and Edit</button>
+    <button class="qopt" data-ok="0" data-fb="Scheduling is the most automatable step of all — that is what schedulers are for.">Schedule and Visuals</button>
+    <p class="qfb"></p>
+  </div>
+
+  <div class="steps" data-mod="m4">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m4-1"><span><strong>Run the six-step workflow</strong> and produce two weeks of social content, edited and scheduled.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m4-2"><span><strong>Draft one email to your list</strong> (promo, newsletter, or reactivation) and send it this week.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m4-3"><span><strong>Save your winning prompts</strong> to the library.</span></label>
+  </div>
+</section>
+
+<!-- ============ MODULE 5 ============ -->
+<section class="page" id="page-m5">
+  <div class="kicker">Module 5</div>
+  <h1>AI for Customer Communication and Sales</h1>
+  <div class="meta-strip">
+    <span class="meta-chip">⏱ About 60 minutes</span>
+    <span class="meta-chip amber">Goal: answer faster, follow up consistently, never lose a lead to a slow reply</span>
+    <span class="meta-chip">Workbook: prompts 9–19, review templates</span>
+  </div>
+
+  <h2>5.1 Reviews: respond to every single one</h2>
+  <p><strong>Review responses are marketing.</strong> Prospects read them to learn how you treat people, and search engines notice engaged profiles. AI removes the excuse for the graveyard of unanswered reviews: paste your brand voice document, paste the review, and ask for a reply in your voice. Thirty seconds per review.</p>
+  <p>For negative reviews, the formula is: <strong>thank them → acknowledge the frustration without arguing the details in public → state your standard → move it offline</strong> ("call or email us so we can make this right"). AI drafts it calmer than you feel, which is exactly what you want.</p>
+  <div class="callout red">
+    <div class="ct">One rule for healthcare businesses</div>
+    Never confirm that a reviewer is a patient or discuss any details of their visit in a public reply — <strong>even if they shared details themselves</strong>. Respond generically and take it offline. The healthcare-safe template is in the <button class="btn small ghost" data-goto="wb-reviews">Review Templates →</button>
+  </div>
+
+  <h2>5.2 Speed to lead</h2>
+  <p>When someone inquires, they are usually inquiring with two or three of your competitors at the same time. The business that responds first, with a helpful answer, wins a shocking share of those decisions. <strong>Speed is a sales strategy dressed up as an admin task.</strong></p>
+  <p><strong>Build your top-ten inquiry pack:</strong> list the ten questions you get most (pricing, availability, what to expect, insurance, parking, whatever your reality is), have AI draft a warm, complete reply to each in your voice <em>(Prompt 11)</em>, edit once, and save them as templates in your email and text tools. Your team now answers in two minutes what used to wait until "after lunch."</p>
+  <p>A step further: a website chat assistant that answers hours, services, and pricing-range questions around the clock. Plenty of affordable tools do this now; what matters is loading it with your real answers (your inquiry pack) and <strong>clearly labeling it as automated</strong>, with an easy path to a human.</p>
+
+  <h2>5.3 Follow-up sequences: where the forgotten money lives</h2>
+  <p>Most small businesses lose more revenue to weak follow-up than to weak advertising. Every one of these is a short message sequence AI can draft in minutes:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Moment</th><th>Sequence</th></tr>
+    <tr><td>Quote or consultation sent, no response</td><td>Check-in at day 3, value-add at day 7, polite close-the-loop at day 14 <em>(Prompt 12)</em></td></tr>
+    <tr><td>No-show or cancellation</td><td>Warm invite to rebook, one-tap link <em>(Prompt 13)</em></td></tr>
+    <tr><td>Post-visit</td><td>Thank you + review request</td></tr>
+    <tr><td>Lapsed customer</td><td>Reactivation at 3 or 6 months <em>(Prompt 4)</em></td></tr>
+  </table></div>
+  <p>Draft the sequences with AI once, load them into whatever booking, CRM, or email tool you already use, and they run forever.</p>
+
+  <h2>5.4 Scripts and cheat sheets for your front desk</h2>
+  <p>Your front desk or phone person handles the same hard moments over and over: the price objection, the "I need to think about it," the upset caller. Have AI draft response scripts for your top five hard moments <em>(Prompt 17)</em>, refine them with your team's real experience, and print the cheat sheet. New hires sound like seasoned staff in week one.</p>
+
+  <h2>5.5 The line you do not cross</h2>
+  <div class="callout red">
+    <div class="ct">Draft generic. Personalize in your own systems.</div>
+    Draft messages generically ("a patient asked about pricing for X," "a customer is unhappy about a delay"), and add names and personal details inside your own email, CRM, or practice management system — <strong>not inside the AI tool</strong>. Customer lists and patient information do not get pasted into consumer AI tools, period. Module 8 covers exactly why and what your safe options are.
+  </div>
+
+  <div class="quiz">
+    <div class="qk">Check your understanding</div>
+    <p class="qq">A negative Google review says: "I came in for a filling last Tuesday and waited 45 minutes." You run a dental office. Your public reply should…</p>
+    <button class="qopt" data-ok="0" data-fb="They mentioned the visit, but that changes nothing: confirming they are a patient in a public reply is a privacy violation. The rule holds even when the reviewer shared details first.">Apologize for the wait at their filling appointment last Tuesday</button>
+    <button class="qopt" data-ok="1" data-fb="Correct. Thank them, take feedback seriously, never confirm patient status or visit details, and move it offline. That is the healthcare-safe formula.">Thank them generically, avoid confirming any visit details, and invite them to contact you directly</button>
+    <button class="qopt" data-ok="0" data-fb="Ignoring negative reviews is what prospects notice most. Respond to every review — just respond safely.">Not exist — replying to negative reviews only draws attention</button>
+    <p class="qfb"></p>
+  </div>
+
+  <div class="steps" data-mod="m5">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m5-1"><span><strong>Customize the review response templates</strong> and reply to every unanswered review from the last 90 days.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m5-2"><span><strong>Build your top-ten inquiry pack</strong> and install the replies as templates where your team answers messages.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m5-3"><span><strong>Draft one follow-up sequence</strong> and load it into your booking or email system.</span></label>
+  </div>
+</section>
+
+<!-- ============ MODULE 6 ============ -->
+<section class="page" id="page-m6">
+  <div class="kicker">Module 6</div>
+  <h1>AI for Operations and Admin</h1>
+  <div class="meta-strip">
+    <span class="meta-chip">⏱ About 45 minutes</span>
+    <span class="meta-chip amber">Goal: get the invisible time-sinks off your plate</span>
+    <span class="meta-chip">Workbook: prompts 20–25</span>
+  </div>
+
+  <h2>6.1 Meetings that document themselves</h2>
+  <p>Record your meetings (with everyone's knowledge and consent), transcribe them with a tool like Otter, Fathom, or the recorder built into Zoom or Google Meet, and have AI produce a summary with three sections: <strong>decisions made, action items with owners, and open questions</strong> <em>(Prompt 20)</em>. Email it to attendees within the hour. This one habit ends the "wait, what did we decide" problem forever, and it takes two minutes.</p>
+
+  <h2>6.2 SOPs by talking</h2>
+  <p>Every owner knows they should document how the business runs, and almost nobody does — because writing procedures is miserable. Here is the cheat: <strong>explain the task out loud</strong> as if training a new hire, using your phone's voice memo or the AI tool's voice mode, then hand the transcript to AI:</p>
+  <div class="promptcard">
+    <div class="ph-head"><span class="nm">SOP from a voice ramble</span><button class="copybtn">Copy prompt</button></div>
+    <pre class="prompt">Below is a transcript of me explaining how we [task] at my business.
+Turn it into a clear step-by-step SOP a brand-new employee could
+follow without asking questions. Use numbered steps, bold any
+warnings or must-not-skip items, and list needed tools or logins
+at the top. Flag anything that seems unclear or missing.
+Transcript: [paste]</pre>
+  </div>
+  <p>Review it, fix what it got wrong, done. Ten minutes of talking becomes a real procedure. A documented business is easier to delegate, easier to scale, and worth more if you ever sell it. <strong>Do one per week and in six months your operations manual exists.</strong></p>
+
+  <h2>6.3 Hiring and training</h2>
+  <p>Job descriptions, interview question sets, onboarding checklists, and training guides are all first-draftable in minutes <em>(Prompts 22–23)</em>. Describe the role, your standards, and your culture; edit what comes back. The quality bar for these documents in most small businesses is low enough that AI plus twenty minutes of your editing beats what most competitors are working with.</p>
+
+  <h2>6.4 Making sense of your numbers</h2>
+  <p>Paste a spreadsheet export (with any sensitive columns like full names or card numbers removed) and ask plain-English questions: What are the trends here? Which service is growing? Which month underperformed and by how much? What should I be worried about? <em>(Prompt 24.)</em></p>
+  <div class="callout amber">
+    <div class="ct">Explanation: trust. Calculation: verify.</div>
+    AI is genuinely good at explaining data and spotting patterns. It is less reliable at precise arithmetic, so double-check any specific figure before you make a decision on it.
+  </div>
+
+  <h2>6.5 Email triage</h2>
+  <p>Three prompts cover most inbox pain:</p>
+  <ul>
+    <li>"Summarize this thread and tell me what they are actually asking for."</li>
+    <li>"Draft a polite reply that says X."</li>
+    <li>"Rewrite this so it is half as long and twice as clear."</li>
+  </ul>
+  <p>If your email lives in Gmail or Outlook, the built-in AI (Gemini or Copilot) puts this one click away.</p>
+
+  <div class="quiz">
+    <div class="qk">Check your understanding</div>
+    <p class="qq">You paste last quarter's sales export and AI says revenue grew 12.4% and Botox is your fastest-growing service. What can you take at face value?</p>
+    <button class="qopt" data-ok="0" data-fb="The precise figure is exactly what you should verify — AI is less reliable at arithmetic than at explanation.">Both — it did the math from my own data</button>
+    <button class="qopt" data-ok="1" data-fb="Right. Trust the pattern-spotting ('Botox is growing'), verify the precise number (12.4%) before you make a decision on it.">The trend, but verify the 12.4% myself</button>
+    <button class="qopt" data-ok="0" data-fb="That throws away what AI is genuinely good at. The explanation and trends are reliable enough to be useful — it is the precise arithmetic that needs checking.">Neither — AI cannot be trusted with numbers at all</button>
+    <p class="qfb"></p>
+  </div>
+
+  <div class="steps" data-mod="m6">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m6-1"><span><strong>Record and summarize one meeting this week,</strong> and send the summary to attendees.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m6-2"><span><strong>Create one SOP</strong> using the talk-then-transcribe method.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m6-3"><span><strong>Draft one hiring or training document</strong> you have been putting off.</span></label>
+  </div>
+</section>
+<!-- ============ MODULE 7 ============ -->
+<section class="page" id="page-m7">
+  <div class="kicker">Module 7</div>
+  <h1>Simple Automations (No Coding Required)</h1>
+  <div class="meta-strip">
+    <span class="meta-chip">⏱ About 60 minutes</span>
+    <span class="meta-chip amber">Goal: work that happens without anyone remembering to do it</span>
+  </div>
+
+  <h2>7.1 What automation actually means</h2>
+  <p>An automation is just a rule: <strong>when a trigger happens, actions follow.</strong> When a form is submitted, add the lead to a spreadsheet and notify me. When a meeting ends, save the transcript to a folder. Tools like Zapier and Make let you build these rules by clicking, not coding, and both have free tiers that cover a small business's first automations. Zapier is the easiest place to start.</p>
+
+  <h2>7.2 Where AI fits in the chain</h2>
+  <p>The magic happens when AI becomes a step in the <em>middle</em> of a rule:</p>
+  <div class="card">
+    <div class="wf-step"><div class="n">⚡</div><div class="b"><b>Trigger:</b> a new lead fills out your website form.</div></div>
+    <div class="wf-step"><div class="n">🤖</div><div class="b"><b>AI step:</b> summarize the inquiry, flag how urgent it looks, and draft a personalized reply.</div></div>
+    <div class="wf-step"><div class="n">👤</div><div class="b"><b>Action:</b> put the draft in front of a human for a ten-second approve-and-send.</div></div>
+  </div>
+  <p>You have compressed a task from ten minutes to ten seconds <strong>without removing the human judgment</strong>.</p>
+
+  <h2>7.3 Five starter automations — pick your first</h2>
+  <p>Choose the one that maps to the biggest pain from your Module 2 audit. Star it here so it stays chosen:</p>
+  <div class="card">
+    <label class="step"><input type="radio" name="autoPick" data-radio="auto-pick" value="1"><span><strong>1. New lead responder.</strong> Form submission triggers an AI-drafted reply for your approval, plus a notification to your phone.</span></label>
+    <label class="step"><input type="radio" name="autoPick" data-radio="auto-pick" value="2"><span><strong>2. Review reply drafter.</strong> New Google review triggers a drafted response in your voice, waiting in your inbox.</span></label>
+    <label class="step"><input type="radio" name="autoPick" data-radio="auto-pick" value="3"><span><strong>3. Meeting memory.</strong> Meeting ends, transcript is summarized, summary lands in a Drive folder and in attendees' email.</span></label>
+    <label class="step"><input type="radio" name="autoPick" data-radio="auto-pick" value="4"><span><strong>4. Invoice chaser.</strong> Invoice hits 7 days overdue, a friendly reminder is drafted for approval.</span></label>
+    <label class="step"><input type="radio" name="autoPick" data-radio="auto-pick" value="5"><span><strong>5. Weekly marketing recap.</strong> Every Friday, your social and email stats are pulled together and AI writes a three-line summary of what worked.</span></label>
+  </div>
+
+  <h2>7.4 Keep a human in the loop</h2>
+  <div class="callout">
+    <div class="ct">The automation rule</div>
+    For anything customer-facing, <strong>the automation drafts and a human approves</strong>. Reserve fully automatic steps for internal, low-stakes work like filing, notifying, and summarizing. Ninety percent of the time savings, none of the 3 a.m. horror stories.
+  </div>
+
+  <h2>7.5 Build it yourself vs. bring in help</h2>
+  <p>Two-step automations like the five above are absolutely a do-it-yourself job; Zapier's templates will walk you through most of them. The moment to consider help is when automations need to talk to your CRM, booking system, or practice management software, or when you have a dozen of them and nobody owns the system. That is a normal graduation point, not a failure. (It is also the kind of work a digital agency like Cozy Digital handles, if you would rather have it built for you.)</p>
+
+  <div class="quiz">
+    <div class="qk">Check your understanding</div>
+    <p class="qq">Which of these is safe to make fully automatic — no human approval step?</p>
+    <button class="qopt" data-ok="0" data-fb="Customer-facing = human approves. An automated reply that misreads a complaint is exactly the 3 a.m. horror story.">Sending AI-drafted replies straight to new leads</button>
+    <button class="qopt" data-ok="1" data-fb="Right. Internal, low-stakes work — filing, notifying, summarizing — is where fully automatic belongs.">Saving meeting summaries to a Drive folder</button>
+    <button class="qopt" data-ok="0" data-fb="Public and customer-facing. A review reply going out unreviewed is a reputation risk (and in healthcare, a compliance one).">Posting AI-drafted review replies as soon as they generate</button>
+    <p class="qfb"></p>
+  </div>
+
+  <div class="steps" data-mod="m7">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m7-1"><span><strong>Create a free Zapier account</strong> and build one automation from the starter list, end to end.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m7-2"><span><strong>Run it live for a week, then fix the annoying part.</strong> Every automation has one.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m7-3"><span><strong>Write down the next two automations you want.</strong> That is your queue.<br><textarea data-field="auto-queue" placeholder="Next up: …" style="margin-top:8px"></textarea></span></label>
+  </div>
+</section>
+
+<!-- ============ MODULE 8 ============ -->
+<section class="page" id="page-m8">
+  <div class="kicker">Module 8</div>
+  <h1>Privacy, Compliance, and Your AI Policy</h1>
+  <div class="meta-strip">
+    <span class="meta-chip">⏱ About 45 minutes</span>
+    <span class="meta-chip amber">Goal: guardrails so your whole team can use AI safely</span>
+    <span class="meta-chip">Workbook: Team AI Policy builder</span>
+  </div>
+  <div class="callout amber">
+    <div class="ct">Before we start</div>
+    This module is education, not legal advice; confirm your specific obligations with a qualified professional.
+  </div>
+
+  <h2>8.1 The golden rule</h2>
+  <div class="rule-banner">
+    <div class="big">If you would not post it on a public bulletin board,<br>do not paste it into a consumer AI tool.</div>
+    <p>That covers customer lists with contact details, anything about a person's health, financial records with account numbers, passwords and logins, and employee records. Consumer AI tools are general-purpose services; treat them like a very smart stranger, because that is what they are.</p>
+  </div>
+  <p>The good news: almost everything in this course works with <strong>generic drafting</strong>. "Write a follow-up for a customer whose project was delayed" needs no name attached. Draft generic in the AI tool, personalize inside your own systems. That single habit eliminates most of the risk.</p>
+
+  <h2>8.2 If you run a healthcare business, read this twice</h2>
+  <p>Med spas, dental offices, clinics, and anyone else handling patient information: patient health information (PHI) is protected under <strong>HIPAA</strong>, and this is the one area where casual AI use can create real legal exposure. The rules of the road:</p>
+  <ul>
+    <li><strong>PHI never goes into a consumer AI tool.</strong> Consumer versions of ChatGPT, Claude, Gemini, and similar tools do not offer the Business Associate Agreement (BAA) that HIPAA requires of vendors handling PHI.</li>
+    <li><strong>Names are not the only identifiers.</strong> Dates of birth, contact details, photos, and even specific combinations of details (treatment + date + neighborhood) can identify a person. When in doubt, leave it out.</li>
+    <li><strong>Safe uses are everywhere:</strong> marketing content, generic patient education materials (with clinical review), SOPs, review replies that never confirm patient status, staff training, and internal documents.</li>
+    <li><strong>If you genuinely need AI to touch PHI</strong> (for example, clinical documentation), that requires enterprise-grade tools where a BAA is in place, selected with guidance from a compliance professional. That is a deliberate procurement decision, never a paste into a chat window.</li>
+  </ul>
+
+  <h2>🎯 The "Can I paste this?" drill</h2>
+  <p>Eight real-world scenarios. For each one, decide: is it safe to paste into your consumer AI tool? This is the exact judgment your team needs to build.</p>
+  <div id="pasteGame"></div>
+  <p>Score: <span id="pg-score">0 / 0</span> <button class="btn small ghost" id="pg-reset" style="margin-left:10px">Reset drill</button></p>
+
+  <h2>8.3 Settings worth two minutes</h2>
+  <p>In whichever tool you chose, open the data settings and check how your conversations are used. Business and team tiers of the major tools generally commit to not training on your data — one more reason paid tiers are the right call for company use. Turn off anything that shares more than you want, and have your team do the same on their work accounts.</p>
+
+  <h2>8.4 Honesty rules that protect your reputation</h2>
+  <ul>
+    <li><strong>Expert-sounding content gets expert review before publishing.</strong> Health, legal, and financial advice with your name on it is your liability, not the AI's.</li>
+    <li><strong>Chatbots and automated messages get labeled as automated,</strong> with an easy path to a human.</li>
+    <li><strong>Your industry's advertising rules still apply to AI-written ads.</strong> The tool will not stop you from writing "guaranteed results." Your policy should.</li>
+  </ul>
+
+  <h2>8.5 Your one-page team AI policy</h2>
+  <p>The moment more than one person at your business uses AI, you need shared rules — because <strong>your risk is set by your least careful employee</strong>. The <button class="btn small ghost" data-goto="wb-policy">Team AI Policy builder →</button> generates a fill-in-the-blank policy covering: which tools are approved, what data never goes in, what requires review before it is sent or published, how AI-assisted work gets checked, and who to ask when unsure.</p>
+  <p>Fill it in, walk the team through it in a 20-minute meeting, have everyone acknowledge it, and revisit it twice a year. That puts you ahead of the vast majority of small businesses.</p>
+
+  <div class="steps" data-mod="m8">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m8-1"><span><strong>Check the data settings</strong> in your chosen tool and set them deliberately.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m8-2"><span><strong>Complete the Team AI Policy</strong> — <button class="btn small ghost" data-goto="wb-policy">open the builder</button></span></label>
+    <label class="step"><input type="checkbox" data-check="as-m8-3"><span><strong>Hold the 20-minute team meeting</strong> and collect acknowledgments.</span></label>
+  </div>
+</section>
+
+<!-- ============ MODULE 9 ============ -->
+<section class="page" id="page-m9">
+  <div class="kicker">Module 9</div>
+  <h1>Your 30-Day Implementation Plan</h1>
+  <div class="meta-strip">
+    <span class="meta-chip amber">Goal: turn eight modules into a schedule, and start measuring the return</span>
+    <span class="meta-chip">Workbook: 30-Day Checklist, ROI Tracker</span>
+  </div>
+
+  <p>Everything you have learned compresses into four weeks. The full interactive checklist lives in the <button class="btn small ghost" data-goto="wb-30day">30-Day Checklist →</button> — here is the shape of the month:</p>
+
+  <div class="card">
+    <div class="wf-step"><div class="n">W1</div><div class="b"><b>Foundations.</b> Choose your tool and subscribe (M1) · Complete the Opportunity Audit and circle your top three (M2) · Write your brand voice document (M3) · Start your prompt library.</div></div>
+    <div class="wf-step"><div class="n">W2</div><div class="b"><b>Quick wins.</b> Customize review templates and clear your unanswered reviews (M5) · Build the top-ten inquiry pack and install replies as templates (M5) · Knock out the first of your top-three audit tasks.</div></div>
+    <div class="wf-step"><div class="n">W3</div><div class="b"><b>The marketing engine.</b> Run the six-step workflow and schedule a month of social content (M4) · Send one email campaign to your list (M4) · Draft and load one follow-up sequence (M5).</div></div>
+    <div class="wf-step"><div class="n">W4</div><div class="b"><b>Operations and rollout.</b> Create one SOP and one meeting summary (M6) · Build your first automation (M7) · Finalize the AI policy and hold the team meeting (M8) · Start the ROI tracker.</div></div>
+  </div>
+
+  <h2>Measuring the return</h2>
+  <p>Keep the math honest and simple: each week, note which tasks moved to AI, the hours saved, and multiply by what an hour costs your business. Track it in the <button class="btn small ghost" data-goto="wb-roi">ROI Tracker →</button> for the first 90 days.</p>
+  <p>Alongside hours, watch the volume numbers that used to be aspirational: <strong>posts actually published, reviews actually answered, average time to respond to a lead</strong>. Those are the numbers customers feel.</p>
+
+  <h2>Staying current without drowning</h2>
+  <p>AI news is a firehose and almost none of it requires action from you. Ignore the daily noise. Once a month, spend 30 minutes on two questions:</p>
+  <ol>
+    <li>Has my main tool added anything that helps my top tasks?</li>
+    <li>Is anything on my audit list newly easy?</li>
+  </ol>
+  <p>The systems in this course (brand voice, prompt library, templates, one automation, one policy) are built on principles that outlast any individual model release. <strong>You are done chasing.</strong></p>
+
+  <div class="steps" data-mod="m9">
+    <h3><span class="flag">Do this now</span>Action steps</h3>
+    <label class="step"><input type="checkbox" data-check="as-m9-1"><span><strong>Open the 30-Day Checklist</strong> and schedule week 1 in your actual calendar — <button class="btn small ghost" data-goto="wb-30day">open it</button></span></label>
+    <label class="step"><input type="checkbox" data-check="as-m9-2"><span><strong>Start the ROI tracker</strong> with week 1 — even if the first entry is small.</span></label>
+    <label class="step"><input type="checkbox" data-check="as-m9-3"><span><strong>Put a monthly 30-minute "AI review" on your calendar,</strong> recurring. That is your entire ongoing commitment to keeping up.</span></label>
+  </div>
+</section>
+
+<!-- ============ FINAL WORD ============ -->
+<section class="page" id="page-final">
+  <div class="kicker">Final word</div>
+  <h1>What to do next</h1>
+  <p class="lede">You do not need to become an AI expert, and you should not try.</p>
+  <p>What your business needs is a small set of durable systems: a brand voice document, a prompt library, templates for the conversations you have every day, one automation, one policy, and the habit of reviewing before anything goes out.</p>
+  <p>That is what you have now. The owners who win with AI over the next few years will not be the ones who know the most about it. They will be the ones who quietly stacked an extra five or ten hours a week of capacity and spent it on customers, on growth, or on going home at a reasonable hour.</p>
+  <div class="rule-banner">
+    <div class="big">AI drafts. You decide. Go build.</div>
+  </div>
+
+  <h2>Your completion certificate</h2>
+  <p id="certStatus"></p>
+  <div class="fieldrow" style="max-width:420px"><label>Your name, as it should appear:</label><input type="text" data-field="cert-name" id="certName" placeholder="Jane Smith"></div>
+  <div id="cert">
+    <div class="c-k">Certificate of Completion</div>
+    <h2>The AI Advantage Blueprint</h2>
+    <div class="c-sub">This certifies that</div>
+    <div class="c-name" id="certNameOut">&nbsp;</div>
+    <div class="c-sub">has completed all nine modules of The AI Advantage Blueprint and built the systems to put AI to work in their business.</div>
+    <div class="c-date" id="certDate"></div>
+    <div class="c-sub" style="margin-top:18px;font-size:.8rem">Cozy Digital · The AI Advantage Blueprint · 2026 Edition</div>
+  </div>
+  <button class="btn" onclick="window.print()">🖨 Print certificate / save as PDF</button>
+
+  <div class="card" style="margin-top:34px">
+    <h3 style="margin-top:0">Want these systems built for you?</h3>
+    <p style="margin-bottom:0">This course was created by <strong>Cozy Digital</strong>, a digital marketing agency serving small businesses in the medical and wellness space and beyond. If you would rather have these systems built for you — content engines, follow-up sequences, automations, and websites built to be found by both Google and AI search — that is exactly what we do. Visit <a href="https://www.cozydigital.org" target="_blank" rel="noopener"><strong>cozydigital.org</strong></a> to see our work, or book a free consultation at <a href="https://www.cozydigital.org/cozy-booking/" target="_blank" rel="noopener"><strong>cozydigital.org/cozy-booking</strong></a>.</p>
+  </div>
+</section>
+<!-- ============ WB: AUDIT ============ -->
+<section class="page" id="page-wb-audit">
+  <div class="kicker">Interactive workbook · Module 2</div>
+  <h1>AI Opportunity Audit</h1>
+  <p>List every recurring task in a typical week — aim for at least 10. Mark the three questions (repetitive? reading/writing based? doable without you present?). For tasks with three yeses, score <strong>Time saved per week</strong> (1–5) and <strong>Ease of handing to AI</strong> (1–5). The tool multiplies, ranks, and highlights your top three automatically.</p>
+  <div class="callout">
+    <div class="ct">Need ideas?</div>
+    Answering the same inquiry emails · posting on social media · replying to reviews · writing appointment reminders · building quotes · updating the website · chasing invoices · onboarding a new hire · writing up meeting notes
+  </div>
+  <div class="tablewrap">
+    <table class="audit-table" id="auditTable">
+      <thead><tr><th style="min-width:220px">Task</th><th>Hrs/wk</th><th>Repetitive?</th><th>Read/write?</th><th>Time 1–5</th><th>Ease 1–5</th><th>Total</th><th></th></tr></thead>
+      <tbody id="auditBody"></tbody>
+    </table>
+  </div>
+  <div class="rowbtns">
+    <button class="btn" id="auditAdd">+ Add task</button>
+    <button class="btn amber" id="auditRank">⚡ Rank my tasks</button>
+    <button class="btn ghost" id="auditExample">Show me a filled example row</button>
+  </div>
+  <div id="auditTop3" class="callout" style="display:none"></div>
+  <div class="fieldrow" style="margin-top:26px">
+    <label>My top three, written out (these are your projects for the next two weeks):</label>
+    <textarea data-field="audit-top3" placeholder="1) …&#10;2) …&#10;3) …"></textarea>
+  </div>
+</section>
+
+<!-- ============ WB: BRAND VOICE ============ -->
+<section class="page" id="page-wb-voice">
+  <div class="kicker">Interactive workbook · Module 3</div>
+  <h1>Brand Voice Builder</h1>
+  <p>Fill this in once (about 20 minutes) and generate your brand voice document below. Update it when your offers change. Once it is built, the <strong>25-prompt library can attach it automatically to every prompt you copy</strong> — the single biggest quality upgrade in this course.</p>
+  <div class="card">
+    <div class="fieldrow"><label>Business name and what we do</label><input type="text" class="bv-in" data-field="bv-name" placeholder="Radiance Med Spa — aesthetic treatments and skincare in midtown"></div>
+    <div class="fieldrow"><label>City / area we serve</label><input type="text" class="bv-in" data-field="bv-area" placeholder="Sacramento, CA"></div>
+    <div class="fieldrow"><label>Who we serve (age, situation, what they care about)</label><textarea class="bv-in" data-field="bv-who" placeholder="Women 30–55, professional, wellness-focused; they care about natural-looking results and feeling taken care of"></textarea></div>
+    <div class="fieldrow"><label>How happy customers describe us <span style="font-weight:400">(steal from your reviews)</span></label><textarea class="bv-in" data-field="bv-desc" placeholder='"They never rush you," "I felt listened to," "the results look natural"'></textarea></div>
+    <div class="fieldrow"><label>Tone in 3 to 5 words</label><input type="text" class="bv-in" data-field="bv-tone" placeholder="warm, confident, plain-spoken"></div>
+    <div class="fieldrow"><label>Words and phrases we use</label><textarea class="bv-in" data-field="bv-use" placeholder='"glow," "your best skin," "no-pressure consult"'></textarea></div>
+    <div class="fieldrow"><label>Words and phrases we NEVER use</label><textarea class="bv-in" data-field="bv-never" placeholder='"anti-aging," "flaws," pushy urgency like "act now!"'></textarea></div>
+    <div class="fieldrow"><label>Our standing offers and calls to action</label><textarea class="bv-in" data-field="bv-offers" placeholder="Free 15-min consult; book online at …"></textarea></div>
+    <div class="fieldrow"><label>Claims we never make (guarantees, medical outcomes, etc.)</label><textarea class="bv-in" data-field="bv-claims" placeholder="No guaranteed results, no before/after promises, no medical claims"></textarea></div>
+    <div class="fieldrow"><label>Paste 1 or 2 samples of past writing we love</label><textarea class="bv-in" data-field="bv-samples" style="min-height:100px" placeholder="Paste a post, email, or page that sounds exactly like you"></textarea></div>
+  </div>
+  <div class="promptcard">
+    <div class="ph-head"><span class="nm">Your brand voice document</span><button class="copybtn" id="bvCopy">Copy document</button></div>
+    <pre class="prompt" id="bvOut">Fill in the fields above — your document assembles itself here.</pre>
+  </div>
+  <div class="callout">
+    <div class="ct">How to use it</div>
+    Start a conversation with <em>"Here is my brand voice document. Use it for everything in this conversation."</em> Then paste the whole thing, then make your request. Or just use the prompt library here — with the toggle on, it is prepended for you on every copy.
+  </div>
+</section>
+
+<!-- ============ WB: PROMPT LIBRARY ============ -->
+<section class="page" id="page-wb-prompts">
+  <div class="kicker">Interactive workbook · Modules 3–6</div>
+  <h1>The 25-Prompt Starter Library</h1>
+  <p>Every prompt assumes your brand voice document is pasted at the top of the conversation. Replace every <span style="background:var(--accent-soft);color:#92580a;border-radius:5px;padding:0 5px;font-weight:600">[bracket]</span>. When a prompt earns its keep, copy it into your own team prompt library and tweak from there.</p>
+  <div class="card" id="bvToggleCard">
+    <label class="step" style="border:0;padding:4px 0"><input type="checkbox" data-check="opt-bv-prepend" id="bvPrepend"><span><strong>Attach my brand voice document to every prompt I copy.</strong> <span id="bvPrependNote" style="color:var(--muted);font-size:.85rem"></span></span></label>
+  </div>
+  <div class="rowbtns" id="promptFilters" style="margin-bottom:6px">
+    <button class="btn small" data-cat="all">All 25</button>
+    <button class="btn small ghost" data-cat="mkt">Marketing &amp; content (1–8)</button>
+    <button class="btn small ghost" data-cat="cust">Customer communication (9–15)</button>
+    <button class="btn small ghost" data-cat="sales">Sales (16–19)</button>
+    <button class="btn small ghost" data-cat="ops">Operations &amp; admin (20–25)</button>
+  </div>
+
+  <div class="promptcard" data-cat="mkt"><div class="ph-head"><span class="nm">1 · Content idea generator</span><span class="tag">Marketing</span><button class="copybtn">Copy</button></div><pre class="prompt">Generate 30 social media post ideas for my business for [month].
+Mix: 40% educational, 25% promotional, 20% social proof and
+results, 15% behind-the-scenes personality. Consider anything
+seasonal about [month]. Present as a numbered list with a
+one-line description of each idea. No captions yet.</pre></div>
+
+  <div class="promptcard" data-cat="mkt"><div class="ph-head"><span class="nm">2 · Caption batch</span><span class="tag">Marketing</span><button class="copybtn">Copy</button></div><pre class="prompt">Write captions for these post ideas: [paste your selected ideas].
+Rules: under 100 words each, start with a hook line that stops
+the scroll, one idea per caption, end with our call to action,
+3 to 5 relevant hashtags. Vary the hook style across the batch
+(question, bold statement, myth-buster, mini-story).</pre></div>
+
+  <div class="promptcard" data-cat="mkt"><div class="ph-head"><span class="nm">3 · Email newsletter draft</span><span class="tag">Marketing</span><button class="copybtn">Copy</button></div><pre class="prompt">Draft our [month] email newsletter. Sections: a 2-sentence
+personal opening from the owner, one useful tip our audience
+will actually save, one promotion: [offer], one customer
+spotlight or result: [paste details]. Under 350 words total.
+Subject line: give me 5 options under 45 characters.</pre></div>
+
+  <div class="promptcard" data-cat="mkt"><div class="ph-head"><span class="nm">4 · Reactivation email</span><span class="tag">Marketing</span><button class="copybtn">Copy</button></div><pre class="prompt">Write a win-back email to customers we have not seen in
+[6] months. Warm, no guilt-tripping. Remind them what they
+loved, mention what is new: [anything new], include this
+incentive to return: [offer], end with a one-click booking
+call to action. Under 150 words. Give me 2 versions:
+one friendly, one short and direct.</pre></div>
+
+  <div class="promptcard" data-cat="mkt"><div class="ph-head"><span class="nm">5 · Promo announcement, multi-channel</span><span class="tag">Marketing</span><button class="copybtn">Copy</button></div><pre class="prompt">We are running this promotion: [details, dates, terms].
+Create: 1) an Instagram caption, 2) a Facebook post,
+3) an email to our list, 4) a text message under 160
+characters, 5) a script for a 20-second phone-camera video.
+Keep the offer details identical everywhere.</pre></div>
+
+  <div class="promptcard" data-cat="mkt"><div class="ph-head"><span class="nm">6 · Ad copy variations</span><span class="tag">Marketing</span><button class="copybtn">Copy</button></div><pre class="prompt">Write ad copy for this offer: [offer and audience].
+Give me 10 headline options under 40 characters and
+5 primary text options under 125 words. Vary the angle:
+pain point, aspiration, social proof, urgency, curiosity.
+No claims we cannot back up, no guaranteed results.</pre></div>
+
+  <div class="promptcard" data-cat="mkt"><div class="ph-head"><span class="nm">7 · Blog outline</span><span class="tag">Marketing</span><button class="copybtn">Copy</button></div><pre class="prompt">Outline a blog post titled '[working title]' for our audience.
+Goal: answer the real questions people ask before buying
+[service]. Give me an H2/H3 outline, the questions each
+section must answer, and where I should add my own expertise,
+local details, and real examples that AI cannot know.</pre></div>
+
+  <div class="promptcard" data-cat="mkt"><div class="ph-head"><span class="nm">8 · Blog repurposer</span><span class="tag">Marketing</span><button class="copybtn">Copy</button></div><pre class="prompt">Here is a blog post from my business: [paste post].
+Repurpose into: 1) four short social captions with different
+hooks, 2) one email to my list, 3) one FAQ answer for our
+website, 4) one 30-second video script I can film on my phone.</pre></div>
+
+  <div class="promptcard" data-cat="cust"><div class="ph-head"><span class="nm">9 · Positive review reply</span><span class="tag">Customers</span><button class="copybtn">Copy</button></div><pre class="prompt">Reply to this positive review in our voice: [paste review].
+Under 60 words, thank them by first name, reference one
+specific thing they mentioned, invite them back. Do not
+sound like a template.</pre></div>
+
+  <div class="promptcard" data-cat="cust"><div class="ph-head"><span class="nm">10 · Negative review reply</span><span class="tag">Customers</span><button class="copybtn">Copy</button></div><pre class="prompt">Reply to this negative review: [paste review]. Calm and
+professional: thank them, acknowledge the frustration without
+arguing details publicly, state our standard, invite them to
+contact [name/phone/email] so we can make it right. Under 80
+words. Do not admit fault for specifics we have not verified.
+If we are a healthcare business: do not confirm they are a
+patient or reference any visit details.</pre></div>
+
+  <div class="promptcard" data-cat="cust"><div class="ph-head"><span class="nm">11 · Top-ten inquiry pack</span><span class="tag">Customers</span><button class="copybtn">Copy</button></div><pre class="prompt">Here are the 10 questions we get asked most, with the raw
+answers: [list them]. Write a warm, complete reply template
+for each that we can save in our email and text tools.
+Each should answer fully, add one helpful extra detail,
+and end by inviting them to book or ask more.</pre></div>
+
+  <div class="promptcard" data-cat="cust"><div class="ph-head"><span class="nm">12 · Quote follow-up sequence</span><span class="tag">Customers</span><button class="copybtn">Copy</button></div><pre class="prompt">Write a 3-message follow-up sequence for someone who received
+a quote/consultation for [service] but has not responded.
+Message 1 (day 3): helpful check-in, offer to answer questions.
+Message 2 (day 7): add value (a tip, a relevant result we got
+for someone similar). Message 3 (day 14): polite close-the-loop
+with an easy yes/no. Friendly, zero pressure, each under 100 words.</pre></div>
+
+  <div class="promptcard" data-cat="cust"><div class="ph-head"><span class="nm">13 · No-show rebooking message</span><span class="tag">Customers</span><button class="copybtn">Copy</button></div><pre class="prompt">Write 2 versions of a message to someone who missed their
+appointment: one text under 160 characters, one short email.
+Warm, no shaming, make rebooking one tap: [booking link].</pre></div>
+
+  <div class="promptcard" data-cat="cust"><div class="ph-head"><span class="nm">14 · FAQ page copy</span><span class="tag">Customers</span><button class="copybtn">Copy</button></div><pre class="prompt">Using our top-ten inquiry pack above, write an FAQ page for
+our website. Clear question headings, conversational answers,
+2 to 4 sentences each, in our voice. Add 3 more questions
+you think buyers of [service] would want answered.</pre></div>
+
+  <div class="promptcard" data-cat="cust"><div class="ph-head"><span class="nm">15 · Appointment reminder set</span><span class="tag">Customers</span><button class="copybtn">Copy</button></div><pre class="prompt">Write our appointment reminder messages: 1 week before,
+1 day before, and 2 hours before. Texts under 160 characters
+each. Include what to bring or how to prepare: [details],
+and how to reschedule: [method]. Friendly, not robotic.</pre></div>
+
+  <div class="promptcard" data-cat="sales"><div class="ph-head"><span class="nm">16 · Proposal draft</span><span class="tag">Sales</span><button class="copybtn">Copy</button></div><pre class="prompt">Draft a proposal for [client name/type] for [service].
+Their situation: [notes]. Structure: their goal in their
+words, our recommended approach, scope and deliverables,
+timeline, investment: [price], next step. One page,
+confident, no filler or jargon.</pre></div>
+
+  <div class="promptcard" data-cat="sales"><div class="ph-head"><span class="nm">17 · Objection response sheet</span><span class="tag">Sales</span><button class="copybtn">Copy</button></div><pre class="prompt">Our team hears these objections: [list, e.g., 'too expensive,'
+'I need to think about it,' 'my cousin does this cheaper'].
+For each, write a respectful 2 to 3 sentence response that
+acknowledges the concern, reframes the value, and asks one
+good follow-up question. Format as a printable cheat sheet.</pre></div>
+
+  <div class="promptcard" data-cat="sales"><div class="ph-head"><span class="nm">18 · Upsell and cross-sell ideas</span><span class="tag">Sales</span><button class="copybtn">Copy</button></div><pre class="prompt">Here are our services and prices: [list]. For each service,
+suggest natural add-ons or follow-up services, when to offer
+them (at booking, at checkout, at follow-up), and a one-line
+way to offer each that feels helpful rather than salesy.</pre></div>
+
+  <div class="promptcard" data-cat="sales"><div class="ph-head"><span class="nm">19 · Case study from messy notes</span><span class="tag">Sales</span><button class="copybtn">Copy</button></div><pre class="prompt">Turn these rough notes about a customer result into a short
+case study: [paste notes]. Structure: the situation, what we
+did, the result, one quote we could ask them to approve.
+Under 250 words. Do not invent details or numbers; flag
+anything missing that I should fill in. Remove or genericize
+any identifying details until we have written permission.</pre></div>
+
+  <div class="promptcard" data-cat="ops"><div class="ph-head"><span class="nm">20 · Meeting summary</span><span class="tag">Operations</span><button class="copybtn">Copy</button></div><pre class="prompt">Summarize this meeting transcript in three sections:
+1) Decisions made, 2) Action items with owner and due date,
+3) Open questions. Keep it under one page.
+Transcript: [paste]</pre></div>
+
+  <div class="promptcard" data-cat="ops"><div class="ph-head"><span class="nm">21 · SOP from a voice ramble</span><span class="tag">Operations</span><button class="copybtn">Copy</button></div><pre class="prompt">Below is a transcript of me explaining how we [task].
+Turn it into a step-by-step SOP a brand-new employee could
+follow without asking questions. Numbered steps, bold any
+warnings or must-not-skip items, list tools and logins
+needed at the top, and flag anything unclear or missing.
+Transcript: [paste]</pre></div>
+
+  <div class="promptcard" data-cat="ops"><div class="ph-head"><span class="nm">22 · Job description</span><span class="tag">Operations</span><button class="copybtn">Copy</button></div><pre class="prompt">Write a job description for a [role] at my business.
+Responsibilities: [list]. Must-haves: [list]. Nice-to-haves:
+[list]. Pay range: [range]. Make the opening paragraph sell
+why working here is good, in our voice, without corporate
+buzzwords. Include a simple 'how to apply' that filters for
+people who read the whole post.</pre></div>
+
+  <div class="promptcard" data-cat="ops"><div class="ph-head"><span class="nm">23 · Interview question set</span><span class="tag">Operations</span><button class="copybtn">Copy</button></div><pre class="prompt">Create an interview guide for the [role] above: 8 questions
+mixing experience, judgment (give me 2 realistic scenarios
+from a business like ours), and values fit. For each question,
+add one line on what a strong answer sounds like.</pre></div>
+
+  <div class="promptcard" data-cat="ops"><div class="ph-head"><span class="nm">24 · Spreadsheet explainer</span><span class="tag">Operations</span><button class="copybtn">Copy</button></div><pre class="prompt">Here is data from my business with names and sensitive columns
+removed: [paste]. Explain in plain English: the 3 biggest
+trends, anything unusual worth investigating, and the one
+number you would watch next month. List any calculations you
+made so I can verify them.</pre></div>
+
+  <div class="promptcard" data-cat="ops"><div class="ph-head"><span class="nm">25 · Weekly report builder</span><span class="tag">Operations</span><button class="copybtn">Copy</button></div><pre class="prompt">Turn these raw numbers and notes from this week into a short
+owner's report: [paste]. Sections: what went well, what needs
+attention, decisions needed from me. Ten sentences maximum.</pre></div>
+</section>
+
+<!-- ============ WB: REVIEW TEMPLATES ============ -->
+<section class="page" id="page-wb-reviews">
+  <div class="kicker">Interactive workbook · Module 5</div>
+  <h1>Review Response Templates</h1>
+  <p>Customize once with your business name and voice, then save wherever your team replies to reviews. AI can personalize each reply from these bases (Prompts 9 and 10 in the library).</p>
+
+  <div class="promptcard"><div class="ph-head"><span class="nm">Positive review — warm</span><span class="tag">Positive</span><button class="copybtn">Copy</button></div><pre class="prompt">Thank you so much, [first name]! We loved [specific thing they
+mentioned], and the whole team will be thrilled to hear this.
+We can't wait to see you again.</pre></div>
+
+  <div class="promptcard"><div class="ph-head"><span class="nm">Positive review — short and personal</span><span class="tag">Positive</span><button class="copybtn">Copy</button></div><pre class="prompt">[First name], this made our day. Thank you for trusting us
+with [service]. See you next time!</pre></div>
+
+  <div class="promptcard"><div class="ph-head"><span class="nm">Negative review — general business</span><span class="tag">Negative</span><button class="copybtn">Copy</button></div><pre class="prompt">Thank you for the feedback, [first name]. This is not the
+experience we aim for, and I am sorry it fell short. We would
+like to understand what happened and make it right. Please
+reach out to [name] at [phone/email] so we can help directly.</pre></div>
+
+  <div class="promptcard"><div class="ph-head"><span class="nm">Negative review — healthcare-safe (never confirms patient status)</span><span class="tag" style="background:var(--danger-soft);color:var(--danger)">HIPAA-aware</span><button class="copybtn">Copy</button></div><pre class="prompt">Thank you for sharing this. Privacy rules prevent us from
+discussing any individual's care or visits here, but we take
+all feedback seriously and would welcome the chance to talk
+directly. Please contact [name] at [phone/email].</pre></div>
+
+  <div class="callout">
+    <div class="ct">Rules of thumb</div>
+    Reply to everything within 48 hours · never argue details in public · never copy-paste the identical reply down the page · take real problems offline fast.
+  </div>
+</section>
+
+<!-- ============ WB: POLICY ============ -->
+<section class="page" id="page-wb-policy">
+  <div class="kicker">Interactive workbook · Module 8</div>
+  <h1>Team AI Policy Builder</h1>
+  <p>Fill in the fields and your one-page policy generates below — copy it or print it, review it with your team in a 20-minute meeting, and have each person sign. Revisit twice a year.</p>
+  <div class="callout amber">
+    <div class="ct">Starting point, not legal advice</div>
+    Businesses with regulatory obligations (healthcare, finance, legal) should have a qualified professional review the finished policy.
+  </div>
+  <div class="card">
+    <div class="twocol" style="margin:0">
+      <div class="fieldrow"><label>Business name</label><input type="text" class="pol-in" data-field="pol-biz" placeholder="Radiance Med Spa"></div>
+      <div class="fieldrow"><label>Policy owner (who to ask)</label><input type="text" class="pol-in" data-field="pol-owner" placeholder="Dana (office manager)"></div>
+      <div class="fieldrow"><label>Effective date</label><input type="text" class="pol-in" data-field="pol-date" placeholder="August 1, 2026"></div>
+      <div class="fieldrow"><label>Approved tools and account type</label><input type="text" class="pol-in" data-field="pol-tools" placeholder="ChatGPT Team (work accounts only)"></div>
+    </div>
+    <label class="step" style="border:0"><input type="checkbox" class="pol-in" data-check="pol-health"><span><strong>We are a healthcare / regulated business</strong> (adds the PHI clause and clinical-review clause)</span></label>
+    <div class="fieldrow" id="polReviewerRow"><label>Qualified reviewer for clinical / legal / compliance content</label><input type="text" class="pol-in" data-field="pol-reviewer" placeholder="Dr. Patel"></div>
+  </div>
+  <div class="promptcard">
+    <div class="ph-head"><span class="nm">Your generated policy</span><span style="display:flex;gap:8px"><button class="copybtn" id="polCopy">Copy</button><button class="copybtn" style="background:var(--accent)" onclick="window.print()">Print</button></span></div>
+    <pre class="prompt" id="polOut"></pre>
+  </div>
+</section>
+
+<!-- ============ WB: 30-DAY ============ -->
+<section class="page" id="page-wb-30day">
+  <div class="kicker">Interactive workbook · Module 9</div>
+  <h1>30-Day Implementation Checklist</h1>
+  <p>Your whole month on one page. These boxes are the same systems you built module by module — checking them here is checking off the launch of AI in your business.</p>
+
+  <div class="steps"><h3 style="margin-top:0">Week 1 · Foundations <span id="w1pct" style="font-size:.8rem;color:var(--muted);font-weight:400"></span></h3>
+    <label class="step"><input type="checkbox" data-check="d30-1-1"><span>Tool chosen and paid subscription active</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-1-2"><span>First conversation done (AI understands my business)</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-1-3"><span>AI Opportunity Audit completed, top 3 circled</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-1-4"><span>Brand voice document written and saved</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-1-5"><span>Prompt library document created</span></label>
+  </div>
+  <div class="steps"><h3 style="margin-top:0">Week 2 · Quick wins <span id="w2pct" style="font-size:.8rem;color:var(--muted);font-weight:400"></span></h3>
+    <label class="step"><input type="checkbox" data-check="d30-2-1"><span>Review templates customized</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-2-2"><span>All reviews from the last 90 days answered</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-2-3"><span>Top-ten inquiry pack built and installed as templates</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-2-4"><span>First top-3 audit task moved to AI</span></label>
+  </div>
+  <div class="steps"><h3 style="margin-top:0">Week 3 · Marketing engine <span id="w3pct" style="font-size:.8rem;color:var(--muted);font-weight:400"></span></h3>
+    <label class="step"><input type="checkbox" data-check="d30-3-1"><span>Month of social content produced, edited, scheduled</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-3-2"><span>One email campaign sent to my list</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-3-3"><span>One follow-up sequence drafted and loaded</span></label>
+  </div>
+  <div class="steps"><h3 style="margin-top:0">Week 4 · Operations and rollout <span id="w4pct" style="font-size:.8rem;color:var(--muted);font-weight:400"></span></h3>
+    <label class="step"><input type="checkbox" data-check="d30-4-1"><span>One SOP created with the talk-then-transcribe method</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-4-2"><span>One meeting recorded, summarized, and shared</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-4-3"><span>First automation built and running</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-4-4"><span>AI data settings checked in my tool</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-4-5"><span>Team AI policy completed, meeting held, acknowledgments signed</span></label>
+    <label class="step"><input type="checkbox" data-check="d30-4-6"><span>ROI tracker started</span></label>
+  </div>
+</section>
+
+<!-- ============ WB: ROI ============ -->
+<section class="page" id="page-wb-roi">
+  <div class="kicker">Interactive workbook · Module 9</div>
+  <h1>ROI Tracker</h1>
+  <p>Each week for the first 90 days, log the tasks that moved to AI and the hours saved. Weekly savings = hours saved × what an hour costs your business (your loaded rate or the employee's). The tracker totals it and projects the annual number. Review at day 30, 60, and 90.</p>
+  <div class="tablewrap">
+    <table class="roi-table" id="roiTable">
+      <thead><tr><th>Wk</th><th style="min-width:200px">Task moved to AI</th><th>Hours saved</th><th>Hourly value ($)</th><th>Weekly savings</th><th style="min-width:140px">Notes</th></tr></thead>
+      <tbody id="roiBody"></tbody>
+    </table>
+  </div>
+  <div class="calc-out" style="margin-top:18px">
+    <div class="line"><span>Total saved so far (weeks logged)</span><b id="roiTotal">$0</b></div>
+    <div class="line"><span>Average per logged week</span><b id="roiAvg">$0</b></div>
+    <div class="line big"><span>Annualized at this pace</span><b id="roiAnnual">$0</b></div>
+  </div>
+  <div class="callout" style="margin-top:22px">
+    <div class="ct">Also track the numbers customers feel</div>
+    Posts published per month · percent of reviews answered · average minutes to first reply on a new lead.
+  </div>
+  <div class="fieldrow">
+    <label>Day-90 question: what am I doing with the reclaimed hours?</label>
+    <textarea data-field="roi-day90" placeholder="Growth, customers, or going home on time are all correct answers. 'More busywork' is not."></textarea>
+  </div>
+</section>
+</div><!-- /page-wrap -->
+</main>
+</div><!-- /app -->
+<div id="toast">Saved</div>
+<script>
+(function(){
+"use strict";
+/* ---------------- state ---------------- */
+var S;
+try{ S = JSON.parse(localStorage.getItem('aab_v1')||'{}'); }catch(e){ S = {}; }
+S.checks = S.checks||{}; S.fields = S.fields||{}; S.audit = S.audit||null; S.roi = S.roi||null; S.pg = S.pg||{};
+function save(){ try{ localStorage.setItem('aab_v1', JSON.stringify(S)); }catch(e){} }
+var toastT;
+function toast(msg){
+  var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove('show'); },1600);
+}
+function $(sel,root){ return (root||document).querySelector(sel); }
+function $all(sel,root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function fmt$(n){ return '$'+Math.round(n).toLocaleString('en-US'); }
+
+/* ---------------- navigation ---------------- */
+var ORDER = ['welcome','m1','m2','m3','m4','m5','m6','m7','m8','m9','final'];
+var TITLES = {welcome:'Welcome',m1:'Module 1 · AI Foundations',m2:'Module 2 · The Opportunity Audit',
+  m3:'Module 3 · Prompting That Works',m4:'Module 4 · Marketing & Content',m5:'Module 5 · Customers & Sales',
+  m6:'Module 6 · Operations & Admin',m7:'Module 7 · Simple Automations',m8:'Module 8 · Privacy & Compliance',
+  m9:'Module 9 · Your 30-Day Plan',final:'Final Word + Certificate'};
+function showPage(id){
+  if(!document.getElementById('page-'+id)) id = 'welcome';
+  $all('.page').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('page-'+id).classList.add('active');
+  $all('.navlink').forEach(function(n){ n.classList.toggle('active', n.getAttribute('data-page')===id); });
+  S.page = id; if(ORDER.indexOf(id)>=0) S.lastCourse = id; save();
+  $('#sidebar').classList.remove('open');
+  window.scrollTo(0,0);
+}
+/* build pagers */
+ORDER.forEach(function(id,i){
+  var pg = document.getElementById('page-'+id);
+  var div = document.createElement('div'); div.className = 'pager';
+  var prev = ORDER[i-1], next = ORDER[i+1];
+  div.innerHTML =
+    '<button class="prev" '+(prev?'data-goto="'+prev+'"':'disabled')+'><span class="dir">← Previous</span><span class="pt">'+(prev?TITLES[prev]:'')+'</span></button>'+
+    '<button class="next" '+(next?'data-goto="'+next+'"':'disabled')+'><span class="dir">Next →</span><span class="pt">'+(next?TITLES[next]:'')+'</span></button>';
+  pg.appendChild(div);
+});
+$all('.page[id^="page-wb-"]').forEach(function(pg){
+  var div = document.createElement('div'); div.className = 'pager';
+  div.innerHTML = '<button class="prev" data-goto="__back"><span class="dir">← Back</span><span class="pt">Return to the course</span></button>';
+  pg.appendChild(div);
+});
+document.addEventListener('click',function(e){
+  var b = e.target.closest('[data-goto]');
+  if(!b) return;
+  e.preventDefault(); e.stopPropagation();
+  var id = b.getAttribute('data-goto');
+  showPage(id==='__back' ? (S.lastCourse||'welcome') : id);
+});
+$all('.navlink').forEach(function(n){ n.addEventListener('click',function(){ showPage(n.getAttribute('data-page')); }); });
+$('#menuBtn').addEventListener('click',function(){ $('#sidebar').classList.toggle('open'); });
+
+/* ---------------- generic checkboxes ---------------- */
+$all('input[data-check]').forEach(function(cb){
+  var k = cb.getAttribute('data-check');
+  cb.checked = !!S.checks[k];
+  syncStep(cb);
+  cb.addEventListener('change',function(){
+    S.checks[k] = cb.checked; save(); syncStep(cb);
+    updateProgress(); update30day(); renderPolicy();
+  });
+});
+function syncStep(cb){
+  var lab = cb.closest('.step'); if(lab) lab.classList.toggle('done', cb.checked);
+}
+/* generic fields */
+$all('[data-field]').forEach(function(el){
+  var k = el.getAttribute('data-field');
+  if(S.fields[k]!=null) el.value = S.fields[k];
+  el.addEventListener('input',function(){
+    S.fields[k] = el.value; save();
+    if(el.classList.contains('bv-in')) renderBV();
+    if(el.classList.contains('pol-in')) renderPolicy();
+    if(el.classList.contains('pb-in')) renderPB();
+    if(k==='calc-rate'||k==='calc-hours') renderCalc();
+    if(k==='cert-name') renderCert();
+  });
+});
+/* radios */
+$all('input[data-radio]').forEach(function(r){
+  var k = r.getAttribute('data-radio');
+  if(S.fields[k]===r.value){ r.checked = true; }
+  r.addEventListener('change',function(){ if(r.checked){ S.fields[k]=r.value; save(); toast('Starter automation chosen ✓'); } });
+});
+
+/* ---------------- progress ---------------- */
+function moduleDone(m){
+  var boxes = $all('input[data-check^="as-'+m+'-"]');
+  return boxes.length>0 && boxes.every(function(b){ return b.checked; });
+}
+function updateProgress(){
+  var mods = ['m1','m2','m3','m4','m5','m6','m7','m8','m9'];
+  var all = $all('input[data-check^="as-"]');
+  var done = all.filter(function(b){ return b.checked; }).length;
+  var pct = all.length ? Math.round(done/all.length*100) : 0;
+  $('#progBar').style.width = pct+'%';
+  $('#progPct').textContent = pct+'%';
+  mods.forEach(function(m){
+    var badge = $('.num[data-mod="'+m+'"]');
+    if(badge) badge.classList.toggle('done', moduleDone(m));
+  });
+  renderCert();
+}
+
+/* ---------------- quizzes ---------------- */
+$all('.quiz').forEach(function(q){
+  var opts = $all('.qopt',q), fb = $('.qfb',q), locked = false;
+  opts.forEach(function(o){
+    o.addEventListener('click',function(){
+      if(locked) return;
+      var ok = o.getAttribute('data-ok')==='1';
+      opts.forEach(function(x){ x.classList.remove('wrong'); });
+      o.classList.add(ok?'correct':'wrong');
+      fb.textContent = (ok?'✓ ':'✗ ')+o.getAttribute('data-fb');
+      fb.className = 'qfb show '+(ok?'ok':'no');
+      if(ok) locked = true;
+    });
+  });
+});
+
+/* ---------------- copy buttons ---------------- */
+function doCopy(text, btn){
+  function done(){ if(btn){ var t=btn.textContent; btn.classList.add('copied'); btn.textContent='Copied ✓';
+    setTimeout(function(){ btn.classList.remove('copied'); btn.textContent=t; },1500); } toast('Copied to clipboard'); }
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done,function(){ fallback(); }); }
+  else fallback();
+  function fallback(){ var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta); }
+}
+$all('.promptcard').forEach(function(card){
+  var btn = $('.copybtn',card), pre = $('pre.prompt',card);
+  if(!btn||!pre||btn.id) return;
+  btn.addEventListener('click',function(){
+    var text = pre.textContent;
+    if(card.closest('#page-wb-prompts') && S.checks['opt-bv-prepend']){
+      var doc = bvDoc();
+      if(doc) text = 'Here is my brand voice document. Use it for everything in this conversation.\n\n'+doc+'\n\n---\n\n'+text;
+    }
+    doCopy(text, btn);
+  });
+});
+/* bracket highlighting */
+$all('pre.prompt').forEach(function(p){
+  if(p.id==='pbOut'||p.id==='bvOut'||p.id==='polOut') return;
+  p.innerHTML = p.innerHTML.replace(/\[[^\[\]<>]+\]/g,function(m){ return '<span class="ph">'+m+'</span>'; });
+});
+
+/* ---------------- M1 tool picker ---------------- */
+var TOOLPICK = {
+  g:'<div class="ct">Suggestion: Gemini</div>Your work already lives in Google Workspace, so Gemini meets you inside Gmail and Docs. ChatGPT or Claude are still fine choices — remember, commitment beats the choice.',
+  m:'<div class="ct">Suggestion: Microsoft Copilot</div>Copilot is built into Word, Excel, and Outlook, so it meets your team where they already work. Any of the big four works — pick one and commit for 30 days.',
+  w:'<div class="ct">Suggestion: Claude</div>Claude is an excellent writer, handles long documents well, and follows tone instructions closely — a strong fit when marketing and voice matter most. The skills transfer to any tool.',
+  x:'<div class="ct">Suggestion: ChatGPT</div>The popular default is a strong all-rounder and the easiest to find help for. Subscribe to the paid tier and use it every day for 30 days.'
+};
+var tp = $('#toolPickSel');
+if(S.fields['tool-pick']){ tp.value = S.fields['tool-pick']; }
+function renderToolPick(){
+  var v = tp.value, out = $('#toolPickOut');
+  if(v && TOOLPICK[v]){ out.style.display='block'; out.innerHTML = TOOLPICK[v]; } else { out.style.display='none'; }
+}
+tp.addEventListener('change',function(){ S.fields['tool-pick']=tp.value; save(); renderToolPick(); });
+renderToolPick();
+
+/* ---------------- M2 money calc ---------------- */
+function renderCalc(){
+  var r = parseFloat(S.fields['calc-rate']); if(isNaN(r)) r = 50;
+  var h = parseFloat(S.fields['calc-hours']); if(isNaN(h)) h = 5;
+  var wk = r*h;
+  $('#calcWeek').textContent = fmt$(wk);
+  $('#calcMonth').textContent = fmt$(wk*52/12);
+  $('#calcYear').textContent = fmt$(wk*52);
+}
+renderCalc();
+
+/* ---------------- M3 prompt builder ---------------- */
+function renderPB(){
+  var parts = [];
+  var role=S.fields['pb-role'], ctx=S.fields['pb-context'], task=S.fields['pb-task'], fm=S.fields['pb-format'], ex=S.fields['pb-example'];
+  if(role) parts.push(role.trim());
+  if(ctx) parts.push(ctx.trim());
+  if(task) parts.push(task.trim());
+  if(fm) parts.push('Format: '+fm.trim());
+  if(ex) parts.push('Here is an example I like:\n'+ex.trim());
+  $('#pbOut').textContent = parts.length ? parts.join('\n') : 'Fill in the fields above and your prompt assembles itself here.';
+}
+$('#pbCopy').addEventListener('click',function(){ doCopy($('#pbOut').textContent, this); });
+renderPB();
+
+/* ---------------- brand voice ---------------- */
+function bvLine(label,key){ var v = S.fields[key]; return v && v.trim() ? label+': '+v.trim() : null; }
+function bvDoc(){
+  var rows = [
+    bvLine('Business','bv-name'), bvLine('Area served','bv-area'), bvLine('Who we serve','bv-who'),
+    bvLine('How happy customers describe us','bv-desc'), bvLine('Tone','bv-tone'),
+    bvLine('Words and phrases we use','bv-use'), bvLine('Words and phrases we NEVER use','bv-never'),
+    bvLine('Standing offers and calls to action','bv-offers'), bvLine('Claims we never make','bv-claims')
+  ].filter(Boolean);
+  var samples = S.fields['bv-samples'];
+  if(!rows.length && !(samples&&samples.trim())) return '';
+  var doc = 'BRAND VOICE DOCUMENT\n'+rows.join('\n');
+  if(samples && samples.trim()) doc += '\n\nWriting samples we love:\n'+samples.trim();
+  return doc;
+}
+function renderBV(){
+  var d = bvDoc();
+  $('#bvOut').textContent = d || 'Fill in the fields above — your document assembles itself here.';
+  $('#bvPrependNote').textContent = d ? '(Your document is ready — '+d.length+' characters.)' : '(Build it first in the Brand Voice Builder — this toggle does nothing until then.)';
+}
+$('#bvCopy').addEventListener('click',function(){ var d = bvDoc(); if(d) doCopy(d,this); else toast('Fill in the builder first'); });
+renderBV();
+
+/* ---------------- audit table ---------------- */
+if(!S.audit){ S.audit = []; for(var i=0;i<6;i++) S.audit.push({task:'',hrs:'',rep:'',rw:'',time:'',ease:''}); }
+function auditTotal(r){
+  var t = parseInt(r.time,10), e = parseInt(r.ease,10);
+  if(r.rep==='Y' && r.rw==='Y' && t>0 && e>0) return t*e;
+  return null;
+}
+function selYN(val,cls,idx,field){
+  return '<select class="'+cls+'" data-i="'+idx+'" data-f="'+field+'"><option value=""></option>'+
+    '<option value="Y"'+(val==='Y'?' selected':'')+'>Yes</option><option value="N"'+(val==='N'?' selected':'')+'>No</option></select>';
+}
+function sel15(val,idx,field){
+  var o = '<select data-i="'+idx+'" data-f="'+field+'"><option value=""></option>';
+  for(var n=1;n<=5;n++) o += '<option value="'+n+'"'+(String(val)===String(n)?' selected':'')+'>'+n+'</option>';
+  return o+'</select>';
+}
+function renderAudit(){
+  var tb = $('#auditBody'); if(!tb) return;
+  var ranked = S.audit.map(function(r,i){ return {r:r,i:i,tot:auditTotal(r)}; })
+    .filter(function(x){ return x.tot!=null; })
+    .sort(function(a,b){ return b.tot-a.tot; })
+    .slice(0,3).map(function(x){ return x.i; });
+  tb.innerHTML = S.audit.map(function(r,i){
+    var tot = auditTotal(r);
+    return '<tr'+(ranked.indexOf(i)>=0&&tot?' class="top3"':'')+'>'+
+      '<td><input type="text" data-i="'+i+'" data-f="task" value="'+esc(r.task)+'" placeholder="Task…"></td>'+
+      '<td style="max-width:76px"><input type="number" min="0" step="0.5" data-i="'+i+'" data-f="hrs" value="'+esc(r.hrs)+'"></td>'+
+      '<td>'+selYN(r.rep,'',i,'rep')+'</td>'+
+      '<td>'+selYN(r.rw,'',i,'rw')+'</td>'+
+      '<td>'+sel15(r.time,i,'time')+'</td>'+
+      '<td>'+sel15(r.ease,i,'ease')+'</td>'+
+      '<td class="tot">'+(tot!=null?tot:'—')+'</td>'+
+      '<td><button class="delrow" data-del="'+i+'" title="Remove row">✕</button></td></tr>';
+  }).join('');
+  var top = ranked.map(function(i){ return S.audit[i]; }).filter(function(r){ return r.task.trim(); });
+  var box = $('#auditTop3');
+  if(top.length){
+    box.style.display='block';
+    box.innerHTML = '<div class="ct">🏆 Your top '+top.length+' — start here</div><ol style="margin:6px 0 0">'+
+      top.map(function(r){ return '<li><strong>'+esc(r.task)+'</strong> (score '+auditTotal(r)+')</li>'; }).join('')+'</ol>';
+  } else box.style.display='none';
+}
+$('#auditBody').addEventListener('input',function(e){
+  var el = e.target, i = el.getAttribute('data-i'), f = el.getAttribute('data-f');
+  if(i==null||!f) return;
+  S.audit[i][f] = el.value; save();
+  if(el.tagName==='SELECT') renderAudit();
+  else {
+    /* update totals + top3 without re-rendering text inputs (keeps focus) */
+    clearTimeout(renderAudit._t); renderAudit._t = setTimeout(function(){
+      var active = document.activeElement;
+      if(!active || active.tagName!=='INPUT' || !active.closest('#auditBody')) renderAudit();
+    },400);
+  }
+});
+$('#auditBody').addEventListener('change',function(){ save(); });
+$('#auditBody').addEventListener('click',function(e){
+  var d = e.target.getAttribute && e.target.getAttribute('data-del');
+  if(d!=null){ S.audit.splice(d,1); save(); renderAudit(); }
+});
+$('#auditAdd').addEventListener('click',function(){ S.audit.push({task:'',hrs:'',rep:'',rw:'',time:'',ease:''}); save(); renderAudit(); });
+$('#auditRank').addEventListener('click',function(){
+  S.audit.sort(function(a,b){ return (auditTotal(b)||0)-(auditTotal(a)||0); });
+  save(); renderAudit(); toast('Ranked — top three highlighted');
+});
+$('#auditExample').addEventListener('click',function(){
+  S.audit.unshift({task:'Example: replying to Google reviews',hrs:'1',rep:'Y',rw:'Y',time:'2',ease:'5'});
+  save(); renderAudit();
+});
+renderAudit();
+
+/* ---------------- ROI tracker ---------------- */
+if(!S.roi){ S.roi = []; for(var w=0;w<12;w++) S.roi.push({task:'',hours:'',rate:'',notes:''}); }
+function renderROI(){
+  var tb = $('#roiBody'); if(!tb) return;
+  tb.innerHTML = S.roi.map(function(r,i){
+    var h = parseFloat(r.hours)||0, rt = parseFloat(r.rate)||0, s = h*rt;
+    return '<tr><td style="color:var(--muted);font-weight:600">'+(i+1)+'</td>'+
+      '<td><input type="text" data-i="'+i+'" data-f="task" value="'+esc(r.task)+'" placeholder="e.g., review replies + social batch"></td>'+
+      '<td style="max-width:90px"><input type="number" min="0" step="0.5" data-i="'+i+'" data-f="hours" value="'+esc(r.hours)+'"></td>'+
+      '<td style="max-width:100px"><input type="number" min="0" data-i="'+i+'" data-f="rate" value="'+esc(r.rate)+'"></td>'+
+      '<td class="sav">'+(s>0?fmt$(s):'—')+'</td>'+
+      '<td><input type="text" data-i="'+i+'" data-f="notes" value="'+esc(r.notes)+'"></td></tr>';
+  }).join('');
+  var logged = S.roi.filter(function(r){ return (parseFloat(r.hours)||0)*(parseFloat(r.rate)||0)>0; });
+  var total = logged.reduce(function(a,r){ return a+(parseFloat(r.hours)||0)*(parseFloat(r.rate)||0); },0);
+  var avg = logged.length ? total/logged.length : 0;
+  $('#roiTotal').textContent = fmt$(total);
+  $('#roiAvg').textContent = fmt$(avg);
+  $('#roiAnnual').textContent = fmt$(avg*52);
+}
+$('#roiBody').addEventListener('input',function(e){
+  var el = e.target, i = el.getAttribute('data-i'), f = el.getAttribute('data-f');
+  if(i==null||!f) return;
+  S.roi[i][f] = el.value; save();
+  var logged = S.roi.filter(function(r){ return (parseFloat(r.hours)||0)*(parseFloat(r.rate)||0)>0; });
+  var total = logged.reduce(function(a,r){ return a+(parseFloat(r.hours)||0)*(parseFloat(r.rate)||0); },0);
+  var avg = logged.length ? total/logged.length : 0;
+  $('#roiTotal').textContent = fmt$(total); $('#roiAvg').textContent = fmt$(avg); $('#roiAnnual').textContent = fmt$(avg*52);
+  var row = el.closest('tr'); if(row && (f==='hours'||f==='rate')){
+    var h = parseFloat(S.roi[i].hours)||0, rt = parseFloat(S.roi[i].rate)||0;
+    $('.sav',row).textContent = h*rt>0 ? fmt$(h*rt) : '—';
+  }
+});
+renderROI();
+
+/* ---------------- policy builder ---------------- */
+function pv(key,fallback){ var v = S.fields[key]; return v && v.trim() ? v.trim() : fallback; }
+function renderPolicy(){
+  var out = $('#polOut'); if(!out) return;
+  var health = !!S.checks['pol-health'];
+  $('#polReviewerRow').style.display = health ? '' : 'none';
+  var biz = pv('pol-biz','[BUSINESS NAME]'), owner = pv('pol-owner','[policy owner]'),
+      date = pv('pol-date','[date]'), tools = pv('pol-tools','[list tools and account type, e.g., ChatGPT Team]'),
+      reviewer = pv('pol-reviewer','[qualified person/role]');
+  var t = 'AI USE POLICY — '+biz+'\nEffective date: '+date+'     Policy owner: '+owner+'\n\n';
+  t += '1. PURPOSE\nWe use AI tools to work faster and serve customers better. This policy sets the rules that keep our customers’ information and our reputation safe while we do it.\n\n';
+  t += '2. APPROVED TOOLS\nOnly these tools are approved for work use, on work accounts: '+tools+'. Want to use something new? Ask '+owner+' first.\n\n';
+  t += '3. WHAT NEVER GOES INTO AN AI TOOL\n• Customer or patient names, contact details, or account information\n';
+  if(health) t += '• Any patient health information (PHI), in any form\n';
+  t += '• Payment details, financial account numbers, passwords, or logins\n• Employee personal or HR records\n• Anything a customer told us in confidence\nWhen drafting about a real situation, describe it generically (“a customer asked about…”) and personalize inside our own systems.\n\n';
+  t += '4. REVIEW BEFORE IT LEAVES THE BUILDING\n• Everything AI-assisted that a customer will see gets reviewed by a person before sending or publishing.\n• Facts, prices, names, and claims get verified. AI is confidently wrong sometimes.\n';
+  if(health) t += '• Clinical, legal, or compliance-adjacent content is reviewed and approved by '+reviewer+' before use.\n';
+  t += '\n5. HONESTY\n• Automated chat or messaging is labeled as automated, with an easy path to a human.\n• We do not publish AI-generated reviews, testimonials, or fake results. Ever.\n\n';
+  t += '6. QUESTIONS\nNot sure whether something is okay? Ask '+owner+' before doing it. The question is always welcome; the cleanup is not.\n\n';
+  t += 'EMPLOYEE ACKNOWLEDGMENT\nI have read and understand this policy.\nName: ____________________   Signature: ____________________   Date: ____________';
+  out.textContent = t;
+}
+$('#polCopy').addEventListener('click',function(){ doCopy($('#polOut').textContent, this); });
+renderPolicy();
+
+/* ---------------- 30-day week % ---------------- */
+function update30day(){
+  [['d30-1-','w1pct'],['d30-2-','w2pct'],['d30-3-','w3pct'],['d30-4-','w4pct']].forEach(function(pair){
+    var boxes = $all('input[data-check^="'+pair[0]+'"]');
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    var el = document.getElementById(pair[1]);
+    if(el) el.textContent = '— '+done+' of '+boxes.length+(done===boxes.length&&boxes.length?' ✓ complete':'');
+  });
+}
+update30day();
+
+/* ---------------- paste game ---------------- */
+var SCEN = [
+  {s:'Paste your website’s home page text and ask for ten improvement ideas.', safe:true,
+   fb:'Safe. Your website is already public — this is exactly the Module 1 first conversation.'},
+  {s:'Paste a patient’s name and treatment history to draft their post-visit instructions.', safe:false,
+   fb:'Keep it out. That is PHI in a consumer tool — a HIPAA problem. Draft generic post-visit instructions instead, and personalize inside your practice management system.'},
+  {s:'Ask for a win-back email to “customers we have not seen in six months” — no names attached.', safe:true,
+   fb:'Safe. Generic drafting is the core habit: no names, no contact details, just the situation.'},
+  {s:'Paste your customer email list so AI can clean up the formatting.', safe:false,
+   fb:'Keep it out. A customer list with contact details is exactly what the golden rule covers. Clean it in your spreadsheet instead (AI can write you the spreadsheet formula!).'},
+  {s:'Paste a public negative Google review to draft a calm reply.', safe:true,
+   fb:'Safe — the review is already public. If you are a healthcare business, the reply itself must never confirm they are a patient or reference visit details.'},
+  {s:'Paste an employee’s performance review to make the wording more diplomatic.', safe:false,
+   fb:'Keep it out. Employee personal and HR records stay in your systems. Describe the situation generically (“an employee is struggling with punctuality”) and draft from that.'},
+  {s:'Paste last quarter’s revenue by service category — customer columns removed — and ask for trends.', safe:true,
+   fb:'Safe. Business data with sensitive columns removed is fine. Remember: trust the explanation, verify the arithmetic.'},
+  {s:'Describe an upset-customer situation generically (“a customer is unhappy about a delay”) and ask for a reply draft.', safe:true,
+   fb:'Safe — this is the draft-generic, personalize-in-your-own-systems habit working exactly as designed.'}
+];
+var pgWrap = $('#pasteGame');
+SCEN.forEach(function(sc,i){
+  var d = document.createElement('div'); d.className = 'pg-card'; d.setAttribute('data-i',i);
+  d.innerHTML = '<div class="scen">'+(i+1)+'. '+sc.s+'</div>'+
+    '<div class="pg-btns"><button data-a="1">✓ Safe to paste</button><button data-a="0">✋ Keep it out</button></div>'+
+    '<div class="pg-fb"></div>';
+  pgWrap.appendChild(d);
+});
+function pgScore(){
+  var keys = Object.keys(S.pg);
+  var right = keys.filter(function(k){ return S.pg[k].right; }).length;
+  $('#pg-score').textContent = right+' / '+keys.length+(keys.length===SCEN.length ? (right===SCEN.length?' — perfect. Your team should take this drill too.':' — review the ones you missed above.') : '');
+}
+function pgApply(card,i,ans){
+  var sc = SCEN[i], right = (ans==='1')===sc.safe;
+  card.classList.add('answered', right?'right':'wrongone');
+  $all('.pg-btns button',card).forEach(function(b){ b.classList.toggle('chosen', b.getAttribute('data-a')===ans); });
+  $('.pg-fb',card).textContent = (right?'✓ Correct. ':'✗ Not quite. ')+sc.fb;
+}
+pgWrap.addEventListener('click',function(e){
+  var b = e.target.closest('button[data-a]'); if(!b) return;
+  var card = b.closest('.pg-card'), i = +card.getAttribute('data-i');
+  if(card.classList.contains('answered')) return;
+  var ans = b.getAttribute('data-a');
+  S.pg[i] = {a:ans, right:(ans==='1')===SCEN[i].safe}; save();
+  pgApply(card,i,ans); pgScore();
+});
+Object.keys(S.pg).forEach(function(i){
+  var card = $('.pg-card[data-i="'+i+'"]'); if(card) pgApply(card,+i,S.pg[i].a);
+});
+pgScore();
+$('#pg-reset').addEventListener('click',function(){
+  S.pg = {}; save();
+  $all('.pg-card').forEach(function(c){ c.classList.remove('answered','right','wrongone'); $('.pg-fb',c).textContent='';
+    $all('.pg-btns button',c).forEach(function(b){ b.classList.remove('chosen'); }); });
+  pgScore();
+});
+
+/* ---------------- prompt filters ---------------- */
+$('#promptFilters').addEventListener('click',function(e){
+  var b = e.target.closest('button[data-cat]'); if(!b) return;
+  var cat = b.getAttribute('data-cat');
+  $all('#promptFilters button').forEach(function(x){ x.classList.toggle('ghost', x!==b); });
+  $all('#page-wb-prompts .promptcard[data-cat]').forEach(function(c){
+    c.style.display = (cat==='all'||c.getAttribute('data-cat')===cat) ? '' : 'none';
+  });
+});
+
+/* ---------------- certificate ---------------- */
+function renderCert(){
+  var name = (S.fields['cert-name']||'').trim();
+  var out = $('#certNameOut'); if(!out) return;
+  out.innerHTML = name ? esc(name) : '&nbsp;';
+  var mods = ['m1','m2','m3','m4','m5','m6','m7','m8','m9'];
+  var done = mods.filter(moduleDone).length;
+  var st = $('#certStatus');
+  st.innerHTML = done===9
+    ? '<strong style="color:var(--good)">✓ All nine modules complete — this certificate is earned.</strong>'
+    : 'You have completed <strong>'+done+' of 9</strong> modules (checked off all action steps). Finish the rest and this certificate means something.';
+  $('#certDate').textContent = 'Completed ' + new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+}
+renderCert();
+
+/* ---------------- reset ---------------- */
+$('#resetBtn').addEventListener('click',function(){
+  if(confirm('Reset all progress, checklists, and everything you have typed? This cannot be undone.')){
+    localStorage.removeItem('aab_v1'); location.reload();
+  }
+});
+
+/* ---------------- boot ---------------- */
+updateProgress();
+showPage(S.page||'welcome');
+})();
+</script>
+</body>
+</html>

@@ -8,9 +8,12 @@ import type { Metadata } from "next";
 // UNLISTED cloud link (Google Drive / Dropbox) that is NOT committed to this
 // public repo.
 //
-// TODO: upload AI_Advantage_Interactive_Course.html to Google Drive or Dropbox,
-// set sharing to "anyone with the link", and paste the direct download link here.
-const COURSE_FILE_URL = "#";
+// The self-contained interactive course, hosted at an unguessable path under
+// public/. NOTE: this repo is public, so the file is technically findable by
+// anyone browsing the GitHub repo — for airtight gating, move delivery to
+// Gumroad or a purchase-verified download later.
+const COURSE_FILE_URL =
+  "/academy/aab-fui6crgatq9k12zs/AI_Advantage_Interactive_Course.html";
 
 export const metadata: Metadata = {
   title: "Your Course Access | Cozy Digital AI Academy",
@@ -40,14 +43,16 @@ export default function AcademyAccessPage() {
           <p className="text-xs font-bold uppercase tracking-widest text-fuchsia-300">Payment received — you&apos;re in</p>
           <h1 className="mt-3 text-3xl font-black text-white md:text-4xl">Welcome to the AI Academy.</h1>
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-zinc-300">
-            Thanks for grabbing <strong className="text-white">The AI Advantage Blueprint</strong>. Download your course below, then double-click the file to open it in any browser.
+            Thanks for grabbing <strong className="text-white">The AI Advantage Blueprint</strong>. Open your course below — it runs right in your browser. Bookmark this page, or save the file to keep it forever.
           </p>
 
           <a
             href={COURSE_FILE_URL}
+            target="_blank"
+            rel="noopener"
             className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 via-violet-600 to-cyan-500 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-fuchsia-900/25 hover:from-fuchsia-400 hover:via-violet-500 hover:to-cyan-400"
           >
-            <span>Download your course</span>
+            <span>Open your course</span>
             <ArrowIcon />
           </a>
 
