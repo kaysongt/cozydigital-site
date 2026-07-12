@@ -3,13 +3,16 @@ import Image from "next/image";
 
 const footerNav = [
   { label: "Services", href: "/services/" },
+  { label: "Client Work", href: "/#client-work" },
   { label: "AI Visibility", href: "/ai-search/" },
   { label: "AI Academy", href: "/ai-academy/" },
-  { label: "Clients", href: "/#clients" },
   { label: "About", href: "/about/" },
   { label: "FAQ", href: "/faq/" },
-  { label: "Free Audit", href: "/free-audit/" },
-  { label: "Free Playbook ⬇", href: "/free-playbook/" },
+  { label: "Free Digital Presence Audit", href: "/free-audit/" },
+  { label: "Free Playbook", href: "/free-playbook/" },
+  { label: "Schedule a Call", href: "/cozy-booking/" },
+  { label: "Privacy Policy", href: "/privacy/" },
+  { label: "Terms", href: "/terms/" },
 ];
 
 const socialLinks = [
@@ -52,7 +55,7 @@ export default function CozyPublicFooter() {
               <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
               <span className="text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent">Cozy Digital</span>
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed">Websites, content systems, and lead paths for service brands ready to turn visitors into booked clients.</p>
+            <p className="max-w-xs text-sm leading-relaxed">Websites, content, booking systems, automation, and search visibility for service businesses ready to build a stronger digital presence.</p>
             <div className="mt-5 flex items-center gap-4">
               {socialLinks.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="text-zinc-500 transition-colors hover:text-cyan-300">
@@ -68,15 +71,15 @@ export default function CozyPublicFooter() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/free-playbook" className="mt-2 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
-              Schedule a Call
+            <Link href="/free-audit/" className="mt-2 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+              Get a Free Audit
             </Link>
           </nav>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-white/[0.06] pt-6 text-xs text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Cozy Digital. All rights reserved.</p>
-          <p>No long-term contracts. No fluff. Just work that moves the needle.</p>
+          <p>No long-term contracts. Clear deliverables. Work you own.</p>
         </div>
       </div>
     </footer>

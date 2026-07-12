@@ -78,7 +78,7 @@ export default function ServicesPage() {
               href="/cozy-booking/"
               className="group mt-8 inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
             >
-              Book a Free Consultation <ArrowIcon />
+              Schedule a Call <ArrowIcon />
             </Link>
           </div>
 
@@ -109,7 +109,7 @@ export default function ServicesPage() {
               href="/cozy-booking/"
               className="group mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 transition-all hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
             >
-              Book a Free Consultation <ArrowIcon />
+              Schedule a Call <ArrowIcon />
             </Link>
           </div>
         </div>
@@ -123,7 +123,7 @@ export default function ServicesPage() {
           <div className="grid gap-4">
             <Link href="/ai-search/" className="group flex flex-col rounded-3xl border border-cyan-300/25 bg-cyan-500/[0.05] p-7 transition-colors hover:border-cyan-300/45">
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">AI Search · GEO</p>
-              <h3 className="mt-1.5 text-lg font-black text-white">Be the business AI recommends</h3>
+              <h3 className="mt-1.5 text-lg font-black text-white">Easier for search and AI to recommend</h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-400">Structured data, quotable answers, and trust signals that get you cited by ChatGPT, Perplexity, and Google AI.</p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors group-hover:text-cyan-100">Explore AI Search <ArrowIcon /></span>
             </Link>

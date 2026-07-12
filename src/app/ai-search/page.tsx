@@ -72,15 +72,15 @@ export default function AiSearchPage() {
         <div className="relative mx-auto max-w-3xl text-center">
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">AI Visibility · GEO</p>
           <h1 className="text-4xl font-black leading-[1.02] text-white md:text-6xl">
-            Be the business{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">AI recommends.</span>
+            Be easier for search and{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">AI to recommend.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
-            Your customers are asking ChatGPT, Perplexity, and Google AI for a recommendation. We make sure your business is the answer they get back, not a competitor.
+            Your customers are asking ChatGPT, Perplexity, and Google AI for recommendations. We strengthen the information, structure, and trust signals that improve your business&apos;s ability to appear in those answers, as one part of your overall digital presence.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-9 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
-              <span>Get a free AI visibility check</span>
+              <span>Get a Free Digital Presence Audit</span>
               <ArrowIcon />
             </Link>
           </div>
@@ -111,7 +111,7 @@ export default function AiSearchPage() {
           </div>
           <div className="rounded-2xl border border-cyan-300/25 bg-cyan-500/[0.05] p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">GEO with Cozy Digital</p>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-300">Optimizes to get your business named inside the AI answer. The recommendation arrives already made.</p>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-300">Builds the structure and trust signals that improve your chances of being named inside the AI answer itself.</p>
           </div>
         </div>
       </section>
@@ -151,10 +151,10 @@ export default function AiSearchPage() {
       <section className="px-6 pb-28 pt-4 text-center">
         <div className="mx-auto max-w-2xl">
           <h2 className="text-3xl font-black text-white md:text-5xl">Find out what AI says about you.</h2>
-          <p className="mt-5 text-lg text-zinc-400">In a free check we test how today&apos;s assistants describe your business and show you where you are invisible.</p>
+          <p className="mt-5 text-lg text-zinc-400">Your free Digital Presence Audit includes a check of how today&apos;s assistants describe your business and where you&apos;re hard to find.</p>
           <div className="mt-9 flex justify-center">
             <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-10 py-4 text-base font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
-              <span>Get a free AI visibility check</span>
+              <span>Get a Free Digital Presence Audit</span>
               <ArrowIcon />
             </Link>
           </div>

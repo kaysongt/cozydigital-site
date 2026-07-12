@@ -6,17 +6,18 @@ import CozyPublicFooter from "@/components/cozy-public-footer";
 import AuditPopup from "@/components/audit-popup";
 import StructuredData from "@/components/structured-data";
 
-const description = "Practical growth systems for service brands: sharper websites, cleaner content, and booking paths that turn visitors into clients.";
+const description = "Cozy Digital helps service businesses improve their websites, messaging, content, booking paths, automation, and search visibility. Request a free Digital Presence Audit.";
+const siteTitle = "Digital Presence for Service Businesses | Cozy Digital";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.cozydigital.org"),
   title: {
-    default: "Cozy Digital | Websites, Content & Lead Systems",
+    default: siteTitle,
     template: "%s",
   },
   description,
   openGraph: {
-    title: "Cozy Digital | Websites, Content & Lead Systems",
+    title: siteTitle,
     description,
     url: "https://www.cozydigital.org",
     siteName: "Cozy Digital",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cozy Digital | Websites, Content & Lead Systems",
+    title: siteTitle,
     description,
     images: ["/og-image.png"],
   },

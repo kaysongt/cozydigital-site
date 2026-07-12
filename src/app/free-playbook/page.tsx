@@ -78,7 +78,10 @@ export default function FreePlaybookPage() {
       ].join("\n");
       await fetch(CRM_API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(HUB_WEBHOOK_SECRET ? { "x-webhook-secret": HUB_WEBHOOK_SECRET } : {}),
+        },
         body: JSON.stringify({
           leadSource: "Free Playbook",
           name: form.name,
@@ -87,7 +90,6 @@ export default function FreePlaybookPage() {
           businessName: form.company || undefined,
           notes,
           hp: hpRef.current?.value ?? "",
-          ...(HUB_WEBHOOK_SECRET ? { webhookSecret: HUB_WEBHOOK_SECRET } : {}),
         }),
       });
     } catch (_) { /* still show thank-you */ }

@@ -3,9 +3,11 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { usePathname } from "next/navigation";
 
-// Pages where the audit popup must never appear — the course purchase flow, so
-// nothing competes with the Buy button or the post-purchase delivery page.
-const SUPPRESSED_PREFIXES = ["/ai-academy", "/academy-access"];
+// Pages where the audit popup must never appear:
+//  - the course purchase flow, so nothing competes with the Buy button / delivery page
+//  - pages that already embed the full audit form (homepage + the audit page),
+//    where a popup of the same form would be redundant.
+const SUPPRESSED_PREFIXES = ["/ai-academy", "/academy-access", "/free-audit", "/"];
 
 // Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
 const HUB_LEAD_URL =
@@ -56,9 +58,12 @@ export default function AuditPopup() {
     try {
       const res = await fetch(HUB_LEAD_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(HUB_WEBHOOK_SECRET ? { "x-webhook-secret": HUB_WEBHOOK_SECRET } : {}),
+        },
         body: JSON.stringify({
-          leadSource: "Website Audit Popup",
+          leadSource: "Digital Presence Audit Popup",
           name: form.name,
           email: form.email,
           phone: form.phone,
@@ -66,7 +71,6 @@ export default function AuditPopup() {
           website: form.website,
           notes: form.problem,
           hp: hpRef.current?.value ?? "",
-          ...(HUB_WEBHOOK_SECRET ? { webhookSecret: HUB_WEBHOOK_SECRET } : {}),
         }),
       });
       if (!res.ok) throw new Error();
@@ -86,7 +90,7 @@ export default function AuditPopup() {
     <div
       aria-modal="true"
       role="dialog"
-      aria-label="Free growth audit request"
+      aria-label="Free Digital Presence Audit request"
       className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-[360ms] ease-out ${
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
@@ -112,15 +116,15 @@ export default function AuditPopup() {
           <div className="py-10 text-center">
             <p className="text-3xl">✅</p>
             <h2 className="mt-3 text-2xl font-black text-white">Audit request sent!</h2>
-            <p className="mt-2 text-sm text-zinc-400">We&apos;ll send back your 3-point review shortly. Closing in a moment…</p>
+            <p className="mt-2 text-sm text-zinc-400">We&apos;ll review your presence and send back your first three improvements. Closing in a moment…</p>
           </div>
         ) : (
           <>
-            <h2 className="max-w-xs text-3xl font-black leading-tight text-white md:text-4xl">
-              Want a free growth audit?
+            <h2 className="max-w-sm text-3xl font-black leading-tight text-white md:text-4xl">
+              Want a free Digital Presence Audit?
             </h2>
             <p className="mt-2 max-w-lg text-sm leading-relaxed text-zinc-400">
-              Drop your details and we&apos;ll send back a clear 3-point review of your website, content, and booking path, styled to match the Cozy Digital brand.
+              Drop your details and we&apos;ll review your website, messaging, content, booking path, and search visibility, then send back the first three improvements we&apos;d make.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-3">
@@ -163,7 +167,7 @@ export default function AuditPopup() {
                 <input
                   className={inputClass}
                   type="tel"
-                  placeholder="Phone for follow-up"
+                  placeholder="Phone (optional)"
                   value={form.phone}
                   onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                 />
@@ -177,7 +181,7 @@ export default function AuditPopup() {
               />
               <textarea
                 className={`${inputClass} min-h-[90px] resize-none`}
-                placeholder="What growth or conversion problem do you want help with?"
+                placeholder="What do you most want to improve?"
                 value={form.problem}
                 onChange={(e) => setForm((f) => ({ ...f, problem: e.target.value }))}
               />
@@ -193,8 +197,12 @@ export default function AuditPopup() {
                 disabled={status === "loading"}
                 className="w-full rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 py-4 text-sm font-black text-white shadow-xl shadow-cyan-900/25 transition-all hover:from-cyan-300 hover:via-blue-400 hover:to-fuchsia-400 disabled:opacity-60"
               >
-                {status === "loading" ? "Sending…" : "Request Free Growth Audit →"}
+                {status === "loading" ? "Sending…" : "Request My Free Audit →"}
               </button>
+              <p className="text-center text-[11px] leading-relaxed text-zinc-500">
+                We use your details only to prepare and send your audit.{" "}
+                <a href="/privacy/" className="underline underline-offset-2 hover:text-zinc-300">Privacy Policy</a>.
+              </p>
             </form>
           </>
         )}

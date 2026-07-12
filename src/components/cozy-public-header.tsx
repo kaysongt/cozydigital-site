@@ -8,13 +8,13 @@ import ThemeToggle from "@/components/theme-toggle";
 
 const navLinks = [
   { label: "Services", href: "/services/" },
+  { label: "Client Work", href: "/#client-work" },
   { label: "AI Visibility", href: "/ai-search/" },
   { label: "AI Academy", href: "/ai-academy/" },
   { label: "About", href: "/about/" },
-  { label: "Free Playbook ↓", href: "/free-playbook/" },
 ];
 
-const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook"];
+const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
 
 export default function CozyPublicHeader() {
   const pathname = usePathname();
@@ -25,7 +25,7 @@ export default function CozyPublicHeader() {
   );
   if (!show) return null;
 
-  const isBooking = pathname === "/cozy-booking" || pathname === "/cozy-booking/";
+  const isAudit = pathname === "/free-audit" || pathname === "/free-audit/";
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/95 backdrop-blur">
@@ -46,15 +46,15 @@ export default function CozyPublicHeader() {
         <div className="flex items-center justify-end gap-3">
           <ThemeToggle className="hidden md:flex" />
           <Link
-            href="/cozy-booking/"
-            className={`rounded-md px-5 py-3 text-sm font-black text-white shadow-lg transition-all md:px-6 ${
-              isBooking
+            href="/free-audit/"
+            className={`whitespace-nowrap rounded-md px-5 py-3 text-sm font-black text-white shadow-lg transition-all md:px-6 ${
+              isAudit
                 ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 ring-2 ring-cyan-300/40"
                 : "bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
             }`}
-            aria-current={isBooking ? "page" : undefined}
+            aria-current={isAudit ? "page" : undefined}
           >
-            Schedule a Call
+            Get a Free Audit
           </Link>
 
           <button

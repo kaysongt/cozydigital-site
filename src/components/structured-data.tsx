@@ -18,8 +18,8 @@ const organization = {
   logo: `${baseUrl}/brand/cozy-digital-logo.jpg`,
   image: `${baseUrl}/og-image.png`,
   description:
-    "Cozy Digital builds websites, content systems, and lead paths for service brands, including AI search (GEO) optimization so businesses show up when customers ask ChatGPT, Perplexity, and Google AI for a recommendation.",
-  slogan: "Turn first-time visitors into booked clients.",
+    "Cozy Digital helps service businesses improve their overall digital presence: websites and landing pages, brand messaging, content and social presence, booking and lead systems, follow-up and automation, local search and AI visibility, and analytics. AI search (GEO) optimization is offered as one part of that complete system.",
+  slogan: "Improve how customers find you, understand you, trust you, and take action online.",
   sameAs: [
     "https://www.instagram.com/cozydig1tal/",
     "https://www.facebook.com/profile.php?id=61588838257133",
@@ -43,7 +43,7 @@ const organization = {
         name: "AI Search Visibility (GEO)",
         serviceType: "Generative Engine Optimization",
         description:
-          "Structured data, quotable answer content, consistent business identity, and trust signals that make AI answer engines like ChatGPT, Perplexity, and Google AI Overviews recommend your business.",
+          "Structured data, quotable answer content, consistent business identity, and trust signals that improve a business's ability to appear in AI answer engines like ChatGPT, Perplexity, and Google AI Overviews.",
         url: `${baseUrl}/ai-search/`,
       },
     },

@@ -43,7 +43,7 @@ export default function ThankYouPage() {
               href="/cozy-booking/"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-3.5 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
             >
-              Book a Free Consultation
+              Schedule a Call
             </Link>
             <Link href="/" className="text-sm text-zinc-400 hover:text-zinc-200">
               Back to home →

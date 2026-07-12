@@ -19,6 +19,8 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/free-audit/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/free-playbook/", priority: 0.7, changeFrequency: "monthly" },
   { path: "/cozy-booking/", priority: 0.5, changeFrequency: "yearly" },
+  { path: "/privacy/", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/terms/", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
