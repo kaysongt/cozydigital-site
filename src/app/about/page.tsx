@@ -47,12 +47,12 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-12 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6">
-          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-zinc-500">A recent project</p>
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-zinc-500">Latest launch</p>
           <p className="text-sm leading-relaxed text-zinc-300">
-            For Dr. Alicia, we brought therapy, coaching, online courses, wellness products, and an international retreat together under one recognizable brand, with clear ways for visitors to understand each offer and take the next step.
+            For Dear Pastor&apos;s Wife, we brought free resources, global events, community, speaking invitations, and partnership giving into one warm digital home, with clear pathways for every woman who arrives.
           </p>
           <a
-            href="https://draliciawatkins.com/"
+            href="https://dearpastorswife.org/"
             target="_blank"
             rel="noreferrer"
             className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors hover:text-cyan-100"

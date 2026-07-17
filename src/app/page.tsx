@@ -90,6 +90,14 @@ const aliciaDeliverables = [
   "Built a responsive experience across desktop and mobile",
 ];
 
+const pastorsWifeDeliverables = [
+  "Created one digital home for resources, events, community, speaking, and giving",
+  "Designed an audience-first homepage that routes each visitor to the right next step",
+  "Built a searchable resource library and clear event discovery experience",
+  "Created partnership, donation, booking, and email signup pathways",
+  "Developed a responsive visual system that carries the mission across every page",
+];
+
 // "What we improve" grouped into a clear system instead of many equal cards.
 const improvementGroups = [
   {
@@ -260,46 +268,120 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURED CLIENT WORK — DR. ALICIA */}
+      {/* SELECTED CLIENT WORK */}
       <section id="client-work" className="scroll-mt-20 border-y border-white/[0.06] bg-white/[0.02] px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">Featured Client Work</p>
-          <h2 className="max-w-2xl text-3xl font-black leading-[1.1] text-white md:text-4xl">
-            From scattered offers to one connected wellness brand.
+          <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">Selected Client Work</p>
+          <h2 className="max-w-3xl text-3xl font-black leading-[1.1] text-white md:text-4xl">
+            Clear digital homes for brands with a lot to hold.
           </h2>
           <p className="mt-5 max-w-3xl text-base leading-relaxed text-zinc-400">
-            Dr. Alicia&apos;s business includes therapy, coaching, online courses, wellness products, private consultations, eBooks, and an international retreat. Cozy Digital brought those offers together in one polished digital home, giving visitors clear ways to understand the brand, explore each offer, and take the next step.
+            We organize the message, pages, and pathways around what each client needs people to understand and do, then shape the visuals to feel unmistakably like their brand.
           </p>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-start">
-            {/* Screenshot */}
-            <figure className="overflow-hidden rounded-3xl border border-white/[0.08] bg-black shadow-2xl shadow-black/40">
-              <Image
-                src="/images/client-proof/dr-alicia-site.png"
-                alt="Homepage of the Dr. Alicia Watkins website built by Cozy Digital, introducing her therapy, coaching, and wellness brand"
-                width={1200}
-                height={900}
-                priority
-                className="h-auto w-full object-cover"
-              />
-              <figcaption className="border-t border-white/[0.06] px-5 py-3 text-xs text-zinc-500">
-                A clear introduction to the complete Dr. Alicia brand.{" "}
-                <a href="https://draliciawatkins.com/" target="_blank" rel="noreferrer" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">draliciawatkins.com</a>
-              </figcaption>
-            </figure>
+          <div className="mt-14 space-y-20">
+            {/* Dear Pastor's Wife */}
+            <article className="grid gap-9 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+              <figure className="overflow-hidden rounded-3xl border border-[#a85f7e]/40 bg-[#2a0b18] shadow-2xl shadow-black/40">
+                <div className="flex items-center justify-between border-b border-white/10 px-5 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-[#efc8a1]">
+                  <span>Dear Pastor&apos;s Wife</span>
+                  <span className="text-white/55">Live</span>
+                </div>
+                <div className="grid grid-cols-2 items-start gap-3 px-4 py-5 sm:gap-5 sm:px-7 sm:py-7">
+                  <div className="relative aspect-[525/933] overflow-hidden rounded-2xl border border-white/15 bg-[#f7efe8] shadow-xl shadow-black/30">
+                    <Image
+                      src="/images/client-proof/dear-pastors-wife-home.jpg"
+                      alt="Dear Pastor's Wife mobile homepage showing the founder portrait and ministry brand introduction"
+                      fill
+                      sizes="(min-width: 1024px) 250px, 42vw"
+                      loading="lazy"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div className="relative mt-5 aspect-[525/933] overflow-hidden rounded-2xl border border-white/15 bg-[#f7efe8] shadow-xl shadow-black/30 sm:mt-8">
+                    <Image
+                      src="/images/client-proof/dear-pastors-wife-message.jpg"
+                      alt="Dear Pastor's Wife mobile homepage showing the resource hub message and visitor pathways"
+                      fill
+                      sizes="(min-width: 1024px) 250px, 42vw"
+                      loading="lazy"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                </div>
+                <figcaption className="border-t border-white/10 px-5 py-3 text-xs text-[#d8b9a7]">
+                  A welcoming resource hub for women in ministry.{" "}
+                  <a href="https://dearpastorswife.org/" target="_blank" rel="noreferrer" className="font-semibold text-[#f0bd65] underline underline-offset-2 hover:text-[#ffd68f]">dearpastorswife.org</a>
+                </figcaption>
+              </figure>
 
-            {/* Deliverables */}
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
-              <ul className="mt-4 space-y-3">
-                {aliciaDeliverables.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
-                    <span className="mt-0.5 shrink-0 text-cyan-400">&#x2713;</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#f0bd65]">Latest launch · Global ministry</p>
+                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">A wide-reaching mission, made easy to enter.</h3>
+                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                  Dear Pastor&apos;s Wife serves women through free resources, gatherings across three continents, community, speaking, and partnership giving. Cozy Digital shaped that full mission into a warm multi-page experience that helps every visitor quickly find where she belongs.
+                </p>
+                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
+                <ul className="mt-4 space-y-3">
+                  {pastorsWifeDeliverables.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
+                      <span className="mt-0.5 shrink-0 text-[#f0bd65]">&#x2713;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href="https://dearpastorswife.org/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#7d2148] px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-black/25 transition-colors hover:bg-[#982d59]"
+                  >
+                    Visit the Live Website <ArrowIcon />
+                  </a>
+                  <Link
+                    href="/free-audit/"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
+                  >
+                    Start Your Project
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* Dr. Alicia Watkins */}
+            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+              <figure className="overflow-hidden rounded-3xl border border-white/[0.08] bg-black shadow-2xl shadow-black/40">
+                <Image
+                  src="/images/client-proof/dr-alicia-site.png"
+                  alt="Homepage of the Dr. Alicia Watkins website built by Cozy Digital, introducing her therapy, coaching, and wellness brand"
+                  width={1200}
+                  height={900}
+                  loading="lazy"
+                  className="h-auto w-full object-cover"
+                />
+                <figcaption className="border-t border-white/[0.06] px-5 py-3 text-xs text-zinc-500">
+                  A clear introduction to the complete Dr. Alicia brand.{" "}
+                  <a href="https://draliciawatkins.com/" target="_blank" rel="noreferrer" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">draliciawatkins.com</a>
+                </figcaption>
+              </figure>
+
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">Website ecosystem · Wellness</p>
+                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">From scattered offers to one connected wellness brand.</h3>
+                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                  Dr. Alicia&apos;s business includes therapy, coaching, online courses, wellness products, private consultations, eBooks, and an international retreat. We brought those offers together in one polished digital home with clear ways to explore and take the next step.
+                </p>
+                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
+                <ul className="mt-4 space-y-3">
+                  {aliciaDeliverables.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
+                      <span className="mt-0.5 shrink-0 text-cyan-400">&#x2713;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="https://draliciawatkins.com/"
                   target="_blank"
@@ -314,13 +396,14 @@ export default function HomePage() {
                 >
                   Get a Digital Presence Like This
                 </Link>
+                </div>
               </div>
-            </div>
+            </article>
           </div>
 
           {/* Other client work — clearly labeled, no fabricated metrics */}
           <div className="mt-16">
-            <p className="mb-6 text-xs font-bold uppercase tracking-widest text-zinc-500">More client work</p>
+            <p className="mb-6 text-xs font-bold uppercase tracking-widest text-zinc-500">Supporting systems &amp; campaign work</p>
             <div className="grid gap-4 md:grid-cols-3">
               <article className="flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
                 <div className="relative h-40 overflow-hidden bg-black">
