@@ -280,77 +280,8 @@ export default function HomePage() {
           </p>
 
           <div className="mt-14 space-y-20">
-            {/* Dear Pastor's Wife */}
-            <article className="grid gap-9 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-              <figure className="overflow-hidden rounded-3xl border border-[#a85f7e]/40 bg-[#2a0b18] shadow-2xl shadow-black/40">
-                <div className="flex items-center justify-between border-b border-white/10 px-5 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-[#efc8a1]">
-                  <span>Dear Pastor&apos;s Wife</span>
-                  <span className="text-white/55">Live</span>
-                </div>
-                <div className="grid grid-cols-2 items-start gap-3 px-4 py-5 sm:gap-5 sm:px-7 sm:py-7">
-                  <div className="relative aspect-[525/933] overflow-hidden rounded-2xl border border-white/15 bg-[#f7efe8] shadow-xl shadow-black/30">
-                    <Image
-                      src="/images/client-proof/dear-pastors-wife-home.jpg"
-                      alt="Dear Pastor's Wife mobile homepage showing the founder portrait and ministry brand introduction"
-                      fill
-                      sizes="(min-width: 1024px) 250px, 42vw"
-                      loading="lazy"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                  <div className="relative mt-5 aspect-[525/933] overflow-hidden rounded-2xl border border-white/15 bg-[#f7efe8] shadow-xl shadow-black/30 sm:mt-8">
-                    <Image
-                      src="/images/client-proof/dear-pastors-wife-message.jpg"
-                      alt="Dear Pastor's Wife mobile homepage showing the resource hub message and visitor pathways"
-                      fill
-                      sizes="(min-width: 1024px) 250px, 42vw"
-                      loading="lazy"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                </div>
-                <figcaption className="border-t border-white/10 px-5 py-3 text-xs text-[#d8b9a7]">
-                  A welcoming resource hub for women in ministry.{" "}
-                  <a href="https://dearpastorswife.org/" target="_blank" rel="noreferrer" className="font-semibold text-[#f0bd65] underline underline-offset-2 hover:text-[#ffd68f]">dearpastorswife.org</a>
-                </figcaption>
-              </figure>
-
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#f0bd65]">Latest launch · Global ministry</p>
-                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">A wide-reaching mission, made easy to enter.</h3>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-                  Dear Pastor&apos;s Wife serves women through free resources, gatherings across three continents, community, speaking, and partnership giving. Cozy Digital shaped that full mission into a warm multi-page experience that helps every visitor quickly find where she belongs.
-                </p>
-                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
-                <ul className="mt-4 space-y-3">
-                  {pastorsWifeDeliverables.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
-                      <span className="mt-0.5 shrink-0 text-[#f0bd65]">&#x2713;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href="https://dearpastorswife.org/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#7d2148] px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-black/25 transition-colors hover:bg-[#982d59]"
-                  >
-                    Visit the Live Website <ArrowIcon />
-                  </a>
-                  <Link
-                    href="/free-audit/"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
-                  >
-                    Start Your Project
-                  </Link>
-                </div>
-              </div>
-            </article>
-
             {/* Dr. Alicia Watkins */}
-            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+            <article className="grid gap-9 lg:grid-cols-[1.2fr_1fr] lg:items-center">
               <figure className="overflow-hidden rounded-3xl border border-white/[0.08] bg-black shadow-2xl shadow-black/40">
                 <Image
                   src="/images/client-proof/dr-alicia-site.png"
@@ -396,6 +327,57 @@ export default function HomePage() {
                 >
                   Get a Digital Presence Like This
                 </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* Dear Pastor's Wife */}
+            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+              <figure className="overflow-hidden rounded-3xl border border-[#a85f7e]/35 bg-[#180812] shadow-2xl shadow-black/40">
+                <Image
+                  src="/images/client-proof/dear-pastors-wife-site.png"
+                  alt="Dear Pastor's Wife homepage built by Cozy Digital, showing the ministry's resource hub and founder"
+                  width={1200}
+                  height={900}
+                  loading="lazy"
+                  className="h-auto w-full object-cover"
+                />
+                <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
+                  A welcoming resource hub for women in ministry.{" "}
+                  <a href="https://dearpastorswife.org/" target="_blank" rel="noreferrer" className="font-semibold text-[#f0bd65] underline underline-offset-2 hover:text-[#ffd68f]">dearpastorswife.org</a>
+                </figcaption>
+              </figure>
+
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#f0bd65]">Latest launch · Global ministry</p>
+                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">A wide-reaching mission, made easy to enter.</h3>
+                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                  Dear Pastor&apos;s Wife serves women through free resources, gatherings across three continents, community, speaking, and partnership giving. Cozy Digital shaped that full mission into a warm multi-page experience that helps every visitor quickly find where she belongs.
+                </p>
+                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
+                <ul className="mt-4 space-y-3">
+                  {pastorsWifeDeliverables.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
+                      <span className="mt-0.5 shrink-0 text-[#f0bd65]">&#x2713;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href="https://dearpastorswife.org/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#7d2148] px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-black/25 transition-colors hover:bg-[#982d59]"
+                  >
+                    Visit the Live Website <ArrowIcon />
+                  </a>
+                  <Link
+                    href="/free-audit/"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
+                  >
+                    Start Your Project
+                  </Link>
                 </div>
               </div>
             </article>
