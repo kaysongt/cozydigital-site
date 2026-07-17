@@ -16,6 +16,12 @@ const navLinks = [
 
 const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
 
+function isActiveLink(pathname: string | null, href: string) {
+  if (!pathname || href.includes("#")) return false;
+  const clean = href.replace(/\/$/, "");
+  return pathname === clean || pathname === `${clean}/` || pathname.startsWith(`${clean}/`);
+}
+
 export default function CozyPublicHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,11 +42,21 @@ export default function CozyPublicHeader() {
         </Link>
 
         <nav className="hidden items-center justify-center gap-14 md:flex" aria-label="Main navigation">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm font-semibold text-zinc-100 transition-colors hover:text-cyan-300">
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = isActiveLink(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={`text-sm font-semibold transition-colors hover:text-cyan-300 ${
+                  active ? "text-cyan-300 underline decoration-cyan-400/60 decoration-2 underline-offset-8" : "text-zinc-100"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center justify-end gap-3">
@@ -75,17 +91,23 @@ export default function CozyPublicHeader() {
       {mobileOpen && (
         <nav aria-label="Mobile navigation" className="border-t border-white/10 bg-black/98 px-5 pb-5 pt-3 md:hidden">
           <ul className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block rounded-lg px-3 py-3 text-sm font-semibold text-zinc-100 hover:bg-white/[0.06] hover:text-cyan-300"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const active = isActiveLink(pathname, link.href);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={`block rounded-lg px-3 py-3 text-sm font-semibold hover:bg-white/[0.06] hover:text-cyan-300 ${
+                      active ? "bg-white/[0.06] text-cyan-300" : "text-zinc-100"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
             <li className="mt-2 flex items-center justify-between rounded-lg px-3 py-2">
               <span className="text-sm font-semibold text-zinc-300">Theme</span>
               <ThemeToggle />

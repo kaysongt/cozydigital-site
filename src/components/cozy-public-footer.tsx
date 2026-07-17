@@ -1,18 +1,33 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const footerNav = [
-  { label: "Services", href: "/services/" },
-  { label: "Client Work", href: "/#client-work" },
-  { label: "AI Visibility", href: "/ai-search/" },
-  { label: "AI Academy", href: "/ai-academy/" },
-  { label: "About", href: "/about/" },
-  { label: "FAQ", href: "/faq/" },
-  { label: "Free Digital Presence Audit", href: "/free-audit/" },
-  { label: "Free Playbook", href: "/free-playbook/" },
-  { label: "Schedule a Call", href: "/cozy-booking/" },
-  { label: "Privacy Policy", href: "/privacy/" },
-  { label: "Terms", href: "/terms/" },
+const footerNavGroups = [
+  {
+    heading: "Explore",
+    links: [
+      { label: "Services", href: "/services/" },
+      { label: "Client Work", href: "/#client-work" },
+      { label: "AI Visibility", href: "/ai-search/" },
+      { label: "AI Academy", href: "/ai-academy/" },
+      { label: "About", href: "/about/" },
+      { label: "FAQ", href: "/faq/" },
+    ],
+  },
+  {
+    heading: "Get started",
+    links: [
+      { label: "Free Digital Presence Audit", href: "/free-audit/" },
+      { label: "Free Playbook", href: "/free-playbook/" },
+      { label: "Schedule a Call", href: "/cozy-booking/" },
+    ],
+  },
+  {
+    heading: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy/" },
+      { label: "Terms", href: "/terms/" },
+    ],
+  },
 ];
 
 const socialLinks = [
@@ -49,7 +64,7 @@ export default function CozyPublicFooter() {
   return (
     <footer className="border-t border-white/[0.08] bg-zinc-950 px-6 py-14 text-zinc-400">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 md:grid-cols-[1fr_auto]">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_2fr]">
           <div>
             <Link href="/" className="mb-4 flex items-center gap-3">
               <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
@@ -63,17 +78,26 @@ export default function CozyPublicFooter() {
                 </a>
               ))}
             </div>
-          </div>
-
-          <nav aria-label="Footer navigation" className="flex flex-col gap-3">
-            {footerNav.map((link) => (
-              <Link key={link.href} href={link.href} className="text-sm text-zinc-400 transition-colors hover:text-zinc-100">
-                {link.label}
-              </Link>
-            ))}
-            <Link href="/free-audit/" className="mt-2 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+            <Link href="/free-audit/" className="mt-6 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
               Get a Free Audit
             </Link>
+          </div>
+
+          <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {footerNavGroups.map((group) => (
+              <div key={group.heading}>
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-zinc-500">{group.heading}</p>
+                <ul className="flex flex-col gap-3">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="text-sm text-zinc-400 transition-colors hover:text-zinc-100">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </nav>
         </div>
 

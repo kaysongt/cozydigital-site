@@ -61,8 +61,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body className="flex min-h-screen flex-col bg-zinc-950">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <CozyPublicHeader />
-        <div className="flex-1">{children}</div>
+        <div id="main-content" className="flex-1">{children}</div>
         <CozyPublicFooter />
         <AuditPopup />
       </body>
