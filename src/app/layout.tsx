@@ -5,6 +5,7 @@ import CozyPublicHeader from "@/components/cozy-public-header";
 import CozyPublicFooter from "@/components/cozy-public-footer";
 import AuditPopup from "@/components/audit-popup";
 import StructuredData from "@/components/structured-data";
+import SiteMotion from "@/components/site-motion";
 
 const description = "Cozy Digital helps service businesses improve their websites, messaging, content, booking paths, automation, and search visibility. Request a free Digital Presence Audit.";
 const siteTitle = "Digital Presence for Service Businesses | Cozy Digital";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body className="flex min-h-screen flex-col bg-zinc-950">
+        <SiteMotion />
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <CozyPublicHeader />
         <div id="main-content" className="flex-1">{children}</div>

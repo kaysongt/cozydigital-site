@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/theme-toggle";
 
 const navLinks = [
@@ -26,6 +26,10 @@ export default function CozyPublicHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   const show = publicPrefixes.some((p) =>
     p === "/" ? pathname === "/" : pathname === p || pathname?.startsWith(`${p}/`)
   );
@@ -35,10 +39,10 @@ export default function CozyPublicHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/95 backdrop-blur">
-      <div className="mx-auto grid h-[54px] max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-5 md:grid-cols-[1fr_auto_1fr] md:px-7">
+      <div className="mx-auto grid min-h-[62px] max-w-7xl grid-cols-[1fr_auto] items-center gap-2 px-4 md:grid-cols-[1fr_auto_1fr] md:gap-4 md:px-7">
         <Link href="/" className="flex min-w-0 items-center gap-3 text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent md:text-xl">
           <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 shadow-[0_0_18px_rgba(34,211,238,0.18)] object-cover" />
-          <span className="truncate">Cozy Digital</span>
+          <span className="hidden truncate min-[390px]:inline">Cozy Digital</span>
         </Link>
 
         <nav className="hidden items-center justify-center gap-14 md:flex" aria-label="Main navigation">
@@ -59,18 +63,18 @@ export default function CozyPublicHeader() {
           })}
         </nav>
 
-        <div className="flex items-center justify-end gap-3">
+        <div className="flex items-center justify-end gap-2 md:gap-3">
           <ThemeToggle className="hidden md:flex" />
           <Link
             href="/free-audit/"
-            className={`whitespace-nowrap rounded-md px-5 py-3 text-sm font-black text-white shadow-lg transition-all md:px-6 ${
+            className={`whitespace-nowrap rounded-lg px-3.5 py-2.5 text-xs font-black text-white shadow-lg transition-all min-[390px]:px-4 min-[390px]:text-sm md:px-6 md:py-3 ${
               isAudit
                 ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 ring-2 ring-cyan-300/40"
                 : "bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
             }`}
             aria-current={isAudit ? "page" : undefined}
           >
-            Get a Free Audit
+            <span className="hidden min-[440px]:inline">Get a </span>Free Audit
           </Link>
 
           <button

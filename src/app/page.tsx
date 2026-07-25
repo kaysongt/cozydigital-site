@@ -163,43 +163,88 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pt-16 pb-16 md:pt-24 md:pb-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(34,211,238,0.15),transparent)]" />
-        <div className="relative mx-auto max-w-3xl text-center">
-          <p className="mb-5 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">
-            Digital Presence for Service Businesses
-          </p>
-          <h1 className="text-4xl font-black leading-[1.02] tracking-tight text-white md:text-6xl">
-            Turn your scattered online presence into a system that{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">
-              builds trust and drives action.
-            </span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
-            Cozy Digital improves how customers find you, understand you, trust you, and take the next step, from your website and content to booking paths, follow-up systems, and AI visibility.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
-              <span>Get a Free Digital Presence Audit</span>
-              <ArrowIcon />
-            </Link>
-            <Link href="#client-work" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-white/15 px-8 py-4 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]">
-              See Our Client Work
-            </Link>
+      <section className="cozy-hero relative overflow-hidden px-6 pb-16 pt-14 md:pb-20 md:pt-20">
+        <div className="cozy-aurora cozy-aurora-cyan" aria-hidden="true" />
+        <div className="cozy-aurora cozy-aurora-fuchsia" aria-hidden="true" />
+        <div className="cozy-hero-grid" aria-hidden="true" />
+
+        <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-16">
+          <div data-hero-copy>
+            <p className="mb-5 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">
+              Digital Presence for Service Businesses
+            </p>
+            <h1 className="max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl">
+              Make every part of your online presence{" "}
+              <span className="cozy-gradient-text">work together.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
+              We connect your website, messaging, content, booking, follow-up, and search visibility into one clear system that helps customers trust you and take the next step.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-7 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+                <span>Get Your Free Audit</span>
+                <ArrowIcon />
+              </Link>
+              <Link href="#client-work" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]">
+                See Client Work
+              </Link>
+            </div>
+            <p className="mt-5 flex items-center gap-2 text-sm font-medium text-zinc-500">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-cyan-500/10 text-xs text-cyan-400" aria-hidden="true">✓</span>
+              Three practical recommendations. No required sales call.
+            </p>
           </div>
-          <p className="mt-5 text-sm font-medium text-zinc-500">
-            No pressure. Get clear, practical recommendations for what to improve first.
-          </p>
+
+          <div className="hero-visual relative mx-auto w-full max-w-xl" aria-label="Selected websites built by Cozy Digital" data-hero-visual data-tilt>
+            <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-cyan-500/10 via-transparent to-fuchsia-500/10 blur-2xl" />
+            <div className="hero-showcase relative rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-3 shadow-2xl shadow-black/40 backdrop-blur-sm">
+              <div className="overflow-hidden rounded-[1.15rem] border border-white/10 bg-black">
+                <div className="flex h-8 items-center gap-1.5 border-b border-white/10 bg-zinc-900 px-3" aria-hidden="true">
+                  <span className="h-2 w-2 rounded-full bg-rose-400/80" />
+                  <span className="h-2 w-2 rounded-full bg-amber-300/80" />
+                  <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
+                  <span className="ml-2 h-3.5 w-32 rounded-full bg-white/10" />
+                </div>
+                <Image
+                  src="/images/client-proof/dear-pastors-wife-site.png"
+                  alt="Dear Pastor's Wife website designed and built by Cozy Digital"
+                  width={1200}
+                  height={900}
+                  priority
+                  sizes="(min-width: 1024px) 42vw, 90vw"
+                  className="aspect-[4/3] w-full object-cover object-top"
+                />
+              </div>
+              <div className="mt-3 flex items-center justify-between gap-4 px-2 pb-1">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400">Latest launch</p>
+                  <p className="mt-1 text-sm font-bold text-white">Dear Pastor&apos;s Wife</p>
+                </div>
+                <Link href="#client-work" className="text-xs font-bold text-zinc-400 transition-colors hover:text-cyan-300">View the project ↓</Link>
+              </div>
+            </div>
+            <div className="hero-float-card absolute -bottom-8 -left-4 hidden w-44 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 p-2 shadow-xl shadow-black/50 sm:block lg:-left-10">
+              <Image
+                src="/images/client-proof/dr-alicia-site.png"
+                alt="Dr. Alicia Watkins website designed and built by Cozy Digital"
+                width={400}
+                height={300}
+                sizes="176px"
+                className="aspect-[4/3] w-full rounded-xl object-cover object-top"
+              />
+              <p className="px-1 pb-1 pt-2 text-[10px] font-bold text-zinc-300">Dr. Alicia Watkins</p>
+            </div>
+          </div>
         </div>
 
         {/* Trust / value strip */}
-        <div className="relative mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-3">
+        <div className="relative mx-auto mt-20 grid max-w-6xl gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3 lg:mt-24" data-reveal-list>
           {[
             { title: "Clearer messaging", desc: "Visitors instantly understand what you do and who it's for." },
             { title: "Stronger trust", desc: "Consistent, credible touchpoints that make you easy to believe." },
             { title: "Easier customer action", desc: "A clear, short path from interest to booking or purchase." },
           ].map((v) => (
-            <div key={v.title} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 text-left">
+            <div key={v.title} className="motion-card bg-zinc-950 p-5 text-left sm:p-6" data-reveal>
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-500/10 text-cyan-400">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.4}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
               </div>
@@ -213,7 +258,7 @@ export default function HomePage() {
       {/* WHAT DIGITAL PRESENCE MEANS */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-12 max-w-2xl">
+          <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">What we improve</p>
             <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
               Your digital presence is more than your website.
@@ -222,9 +267,9 @@ export default function HomePage() {
               Every page, social profile, search result, booking link, and follow-up message shapes whether customers trust your business. We help make those touchpoints feel connected, credible, and easy to act on.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-list>
             {presencePillars.map((pillar) => (
-              <div key={pillar.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-colors duration-200 hover:border-cyan-400/20 hover:bg-white/[0.06]">
+              <div key={pillar.title} className="motion-card rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-colors duration-200 hover:border-cyan-400/20 hover:bg-white/[0.06]" data-reveal>
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-500/10 text-cyan-400">
                   {pillar.icon}
                 </div>
@@ -246,7 +291,7 @@ export default function HomePage() {
               .platform-track { animation: none; flex-wrap: wrap; justify-content: center; }
             }
           `}</style>
-          <div className="platform-marquee relative mx-auto mt-12 max-w-6xl overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] py-5 text-center" aria-labelledby="platform-logos-label" role="region">
+          <div className="platform-marquee relative mx-auto mt-12 max-w-6xl overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] py-5 text-center" aria-labelledby="platform-logos-label" role="region" data-reveal>
             <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-zinc-950 via-zinc-950/80 to-transparent" />
             <p id="platform-logos-label" className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-500">We improve the platforms your customers already use</p>
@@ -270,7 +315,7 @@ export default function HomePage() {
 
       {/* SELECTED CLIENT WORK */}
       <section id="client-work" className="scroll-mt-20 border-y border-white/[0.06] bg-white/[0.02] px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-6xl" data-reveal>
           <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">Selected Client Work</p>
           <h2 className="max-w-3xl text-3xl font-black leading-[1.1] text-white md:text-4xl">
             Clear digital homes for brands with a lot to hold.
@@ -281,7 +326,7 @@ export default function HomePage() {
 
           <div className="mt-14 space-y-20">
             {/* Dr. Alicia Watkins */}
-            <article className="grid gap-9 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+            <article className="grid gap-9 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
               <figure className="overflow-hidden rounded-3xl border border-white/[0.08] bg-black shadow-2xl shadow-black/40">
                 <Image
                   src="/images/client-proof/dr-alicia-site.png"
@@ -332,7 +377,7 @@ export default function HomePage() {
             </article>
 
             {/* Dear Pastor's Wife */}
-            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
               <figure className="overflow-hidden rounded-3xl border border-[#a85f7e]/35 bg-[#180812] shadow-2xl shadow-black/40">
                 <Image
                   src="/images/client-proof/dear-pastors-wife-site.png"
@@ -425,7 +470,7 @@ export default function HomePage() {
       {/* WHAT WE IMPROVE — grouped system */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-start" data-reveal>
             <div className="lg:sticky lg:top-28">
               <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">The system</p>
               <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
@@ -487,7 +532,7 @@ export default function HomePage() {
       {/* FREE DIGITAL PRESENCE AUDIT — explanation + what you'll receive */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <div className="rounded-3xl border border-cyan-300/20 bg-cyan-500/[0.05] p-8 md:p-12">
+          <div className="motion-card rounded-3xl border border-cyan-300/20 bg-cyan-500/[0.05] p-8 md:p-12" data-reveal>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
                 <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">Free Digital Presence Audit</p>
@@ -524,9 +569,9 @@ export default function HomePage() {
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">How it works</p>
             <h2 className="text-3xl font-black text-white md:text-4xl">Three simple steps.</h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3" data-reveal-list>
             {process.map((p) => (
-              <div key={p.step} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6">
+              <div key={p.step} className="motion-card rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6" data-reveal>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-fuchsia-600 text-sm font-black text-white">{p.step}</span>
                 <h3 className="mt-4 text-base font-black text-white">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-400">{p.desc}</p>
@@ -541,7 +586,7 @@ export default function HomePage() {
 
       {/* FAQ */}
       <section className="border-t border-white/[0.06] px-6 py-24">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-3xl" data-reveal>
           <div className="mb-10 text-center">
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">FAQ</p>
             <h2 className="text-3xl font-black text-white md:text-4xl">Questions, answered clearly.</h2>
