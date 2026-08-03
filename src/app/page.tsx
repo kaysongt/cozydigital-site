@@ -188,6 +188,9 @@ export default function HomePage() {
               <Link href="#client-work" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]">
                 See Client Work
               </Link>
+              <Link href="/free-playbook/" className="inline-flex items-center justify-center gap-2 rounded-xl border border-amber-300/30 bg-amber-500/10 px-7 py-4 text-sm font-bold text-amber-200 transition-colors hover:border-amber-300/50 hover:bg-amber-500/15 hover:text-amber-100">
+                Get the Free Playbook
+              </Link>
             </div>
             <p className="mt-5 flex items-center gap-2 text-sm font-medium text-zinc-500">
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-cyan-500/10 text-xs text-cyan-400" aria-hidden="true">✓</span>
@@ -314,8 +317,8 @@ export default function HomePage() {
       </section>
 
       {/* SELECTED CLIENT WORK */}
-      <section id="client-work" className="scroll-mt-20 border-y border-white/[0.06] bg-white/[0.02] px-6 py-24">
-        <div className="mx-auto max-w-6xl" data-reveal>
+      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-24">
+        <div id="client-work" className="scroll-mt-16 mx-auto max-w-6xl" data-reveal>
           <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">Selected Client Work</p>
           <h2 className="max-w-3xl text-3xl font-black leading-[1.1] text-white md:text-4xl">
             Clear digital homes for brands with a lot to hold.

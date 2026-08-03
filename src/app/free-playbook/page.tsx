@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 // Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
 const CRM_API_URL = "https://cozy-client-hub-production.up.railway.app/api/webhook/lead";
 const HUB_WEBHOOK_SECRET = process.env.NEXT_PUBLIC_HUB_WEBHOOK_SECRET ?? "";
-const PDF_URL     = "https://shadowcrm-ekcrkbu5.manus.space/downloads/playbook.pdf";
+const PDF_URL     = "/downloads/cozy-digital-playbook.pdf";
 const CALENDLY    = "https://calendly.com/cozydigital-out/30min";
 const TOTAL       = 6;
 
