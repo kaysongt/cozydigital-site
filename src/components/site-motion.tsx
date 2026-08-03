@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function SiteMotion() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const root = document.documentElement;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -64,7 +67,7 @@ export default function SiteMotion() {
       cleanups.forEach((cleanup) => cleanup());
       root.classList.remove("motion-ready");
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

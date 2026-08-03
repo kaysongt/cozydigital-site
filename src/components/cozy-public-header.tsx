@@ -36,16 +36,17 @@ export default function CozyPublicHeader() {
   if (!show) return null;
 
   const isAudit = pathname === "/free-audit" || pathname === "/free-audit/";
+  const isPlaybook = pathname === "/free-playbook" || pathname === "/free-playbook/";
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/95 backdrop-blur">
-      <div className="mx-auto grid min-h-[62px] max-w-7xl grid-cols-[1fr_auto] items-center gap-2 px-4 md:grid-cols-[1fr_auto_1fr] md:gap-4 md:px-7">
+      <div className="mx-auto grid min-h-[62px] max-w-7xl grid-cols-[1fr_auto] items-center gap-2 px-4 lg:grid-cols-[1fr_auto_1fr] lg:gap-4 lg:px-7">
         <Link href="/" className="flex min-w-0 items-center gap-3 text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent md:text-xl">
           <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 shadow-[0_0_18px_rgba(34,211,238,0.18)] object-cover" />
-          <span className="hidden truncate min-[390px]:inline">Cozy Digital</span>
+          <span className="hidden truncate lg:inline">Cozy Digital</span>
         </Link>
 
-        <nav className="hidden items-center justify-center gap-14 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-10 2xl:gap-14" aria-label="Main navigation">
           {navLinks.map((link) => {
             const active = isActiveLink(pathname, link.href);
             return (
@@ -64,10 +65,22 @@ export default function CozyPublicHeader() {
         </nav>
 
         <div className="flex items-center justify-end gap-2 md:gap-3">
-          <ThemeToggle className="hidden md:flex" />
+          <ThemeToggle className="hidden lg:flex" />
+          <Link
+            href="/free-playbook/"
+            className={`whitespace-nowrap rounded-lg border px-2.5 py-2.5 text-xs font-black transition-colors min-[390px]:px-3 lg:px-4 lg:py-3 lg:text-sm ${
+              isPlaybook
+                ? "border-amber-300/60 bg-amber-500/15 text-amber-100"
+                : "border-amber-300/30 bg-amber-500/10 text-amber-200 hover:border-amber-300/50 hover:bg-amber-500/15 hover:text-amber-100"
+            }`}
+            aria-current={isPlaybook ? "page" : undefined}
+          >
+            <span className="xl:hidden">Playbook</span>
+            <span className="hidden xl:inline">Get the Free Playbook</span>
+          </Link>
           <Link
             href="/free-audit/"
-            className={`whitespace-nowrap rounded-lg px-3.5 py-2.5 text-xs font-black text-white shadow-lg transition-all min-[390px]:px-4 min-[390px]:text-sm md:px-6 md:py-3 ${
+            className={`whitespace-nowrap rounded-lg px-3.5 py-2.5 text-xs font-black text-white shadow-lg transition-all min-[390px]:px-4 min-[390px]:text-sm lg:px-6 lg:py-3 ${
               isAudit
                 ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 ring-2 ring-cyan-300/40"
                 : "bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
@@ -78,7 +91,7 @@ export default function CozyPublicHeader() {
           </Link>
 
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 text-zinc-300 hover:text-white md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 text-zinc-300 hover:text-white lg:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
@@ -93,7 +106,7 @@ export default function CozyPublicHeader() {
       </div>
 
       {mobileOpen && (
-        <nav aria-label="Mobile navigation" className="border-t border-white/10 bg-black/98 px-5 pb-5 pt-3 md:hidden">
+        <nav aria-label="Mobile navigation" className="border-t border-white/10 bg-black/98 px-5 pb-5 pt-3 lg:hidden">
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => {
               const active = isActiveLink(pathname, link.href);
