@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 
 // Post-purchase delivery page. Stripe redirects buyers here after a successful
 // $30 payment. It is intentionally kept out of the nav and sitemap and is
-// noindex'd + robots-disallowed so it is not discoverable — but note it is still
+// noindex'd + robots-disallowed so it is not discoverable, but note it is still
 // a public URL, so the real protection is that COURSE_FILE_URL below is an
 // UNLISTED cloud link (Google Drive / Dropbox) that is NOT committed to this
 // public repo.
 //
 // The self-contained interactive course, hosted at an unguessable path under
 // public/. NOTE: this repo is public, so the file is technically findable by
-// anyone browsing the GitHub repo — for airtight gating, move delivery to
+// anyone browsing the GitHub repo. For airtight gating, move delivery to
 // Gumroad or a purchase-verified download later.
 const COURSE_FILE_URL =
   "/academy/aab-fui6crgatq9k12zs/AI_Advantage_Interactive_Course.html";
@@ -40,10 +40,10 @@ export default function AcademyAccessPage() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <p className="text-xs font-bold uppercase tracking-widest text-fuchsia-300">Payment received — you&apos;re in</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-fuchsia-300">Payment received, you&apos;re in</p>
           <h1 className="mt-3 text-3xl font-black text-white md:text-4xl">Welcome to the AI Academy.</h1>
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-zinc-300">
-            Thanks for grabbing <strong className="text-white">The AI Advantage Blueprint</strong>. Open your course below — it runs right in your browser. Bookmark this page, or save the file to keep it forever.
+            Thanks for grabbing <strong className="text-white">The AI Advantage Blueprint</strong>. Open your course below. It runs right in your browser. Bookmark this page, or save the file to keep it forever.
           </p>
 
           <a
@@ -59,7 +59,7 @@ export default function AcademyAccessPage() {
           <div className="mt-8 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 text-left">
             <p className="text-xs font-black uppercase tracking-widest text-cyan-300">A few tips</p>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-              <li className="flex gap-2"><span className="text-fuchsia-300">&#x2713;</span> Save the file somewhere safe — it&apos;s yours to keep forever.</li>
+              <li className="flex gap-2"><span className="text-fuchsia-300">&#x2713;</span> Save the file somewhere safe. It&apos;s yours to keep forever.</li>
               <li className="flex gap-2"><span className="text-fuchsia-300">&#x2713;</span> It works completely offline. No login, nothing to install.</li>
               <li className="flex gap-2"><span className="text-fuchsia-300">&#x2713;</span> Your progress and everything you type saves privately in your browser.</li>
               <li className="flex gap-2"><span className="text-fuchsia-300">&#x2713;</span> Bookmark this page in case you need to re-download.</li>

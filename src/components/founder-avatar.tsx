@@ -6,6 +6,11 @@ const ring: Record<Founder["accent"], string> = {
   fuchsia: "border-fuchsia-300/30 shadow-[0_0_40px_-12px_rgba(217,70,239,0.55)]",
 };
 
+const glow: Record<Founder["accent"], string> = {
+  cyan: "shadow-[0_0_40px_-12px_rgba(34,211,238,0.55)]",
+  fuchsia: "shadow-[0_0_40px_-12px_rgba(217,70,239,0.55)]",
+};
+
 const monogram: Record<Founder["accent"], string> = {
   cyan: "bg-gradient-to-br from-cyan-500/25 via-blue-600/15 to-transparent text-cyan-200",
   fuchsia: "bg-gradient-to-br from-fuchsia-500/25 via-blue-600/15 to-transparent text-fuchsia-200",
@@ -13,7 +18,7 @@ const monogram: Record<Founder["accent"], string> = {
 
 /**
  * Renders a real headshot when `photo` is set on the founder, and a branded
- * monogram otherwise. The monogram is a deliberate design state — we never
+ * monogram otherwise. The monogram is a deliberate design state, and we never
  * substitute a stock photo of a different person.
  */
 export default function FounderAvatar({
@@ -27,6 +32,8 @@ export default function FounderAvatar({
 }) {
   const base = `shrink-0 rounded-2xl border object-cover ${ring[person.accent]} ${className}`;
 
+  // The photos ship with their own circular gradient ring and transparent
+  // corners, so they render round and borderless; only the glow is kept.
   if (person.photo) {
     return (
       <Image
@@ -35,7 +42,7 @@ export default function FounderAvatar({
         width={size}
         height={size}
         loading="lazy"
-        className={base}
+        className={`shrink-0 rounded-full object-cover ${glow[person.accent]} ${className}`}
         style={{ width: size, height: size }}
       />
     );

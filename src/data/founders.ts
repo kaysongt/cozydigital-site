@@ -3,12 +3,12 @@
  *
  * SOURCE OF TRUTH: every claim in this file comes from the founders' own
  * résumés. Do NOT add credentials, metrics, client outcomes, or awards that
- * aren't documented there — the rest of the site is deliberately claim-free
+ * aren't documented there. The rest of the site is deliberately claim-free
  * and this page carries the most trust weight.
  *
  * Photos: drop square headshots (~600x600) in /public/brand/team/ and set
  * `photo` below. Until then each card renders a branded monogram, which is an
- * intentional design state — never a stock photo of someone else.
+ * intentional design state, never a stock photo of someone else.
  */
 
 export type FounderAccent = "cyan" | "fuchsia";
@@ -46,16 +46,17 @@ export const founders: Founder[] = [
     focus: "Build & ship",
     location: "Plainfield, Illinois",
     email: "quincy@cozydigital.org",
+    photo: "/brand/team/quincy.png",
     initials: "Q",
     accent: "cyan",
     short:
-      "Builds and deploys the client work end to end — sites, hosting, ad campaigns, and the internal tools the studio runs on.",
+      "Builds and deploys the client work end to end: sites, hosting, ad campaigns, and the internal tools the studio runs on.",
     bio: [
       "Quincy started Cozy Digital in 2024 and still writes the code. He designs, builds, and deploys client websites end to end, including hosting, domain setup, and post-launch maintenance, then plans and runs the paid social and search campaigns that point traffic at them.",
       "He also builds the tools the studio runs on: Shadow Leads, an in-house lead-tracking CRM deployed on cloud infrastructure, and the Cozy Client Hub, a client-facing content scheduler and advertising strategy workspace. Alongside the agency he's a Computer Science senior and a student technician on his university's front-line IT support desk.",
     ],
     owns: [
-      "Website design, build, and deployment — including hosting, domains, and post-launch maintenance",
+      "Website design, build, and deployment, including hosting, domains, and post-launch maintenance",
       "Paid social and search campaigns, including AI-assisted video ad production",
       "Shadow Leads CRM, the in-house lead tracking system on cloud infrastructure",
       "The Cozy Client Hub content scheduler and ad strategy workspace",
@@ -65,7 +66,7 @@ export const founders: Founder[] = [
       {
         role: "Founder & Lead Developer",
         org: "Cozy Digital",
-        period: "2024 — Present",
+        period: "2024 to Present",
         detail:
           "Ships client systems end to end, from design through deployment and support, and leads a small intern team.",
       },
@@ -79,7 +80,7 @@ export const founders: Founder[] = [
       {
         role: "Radiological Control Technician Training",
         org: "UTTAA · U.S. Department of Energy sponsored program",
-        period: "May — July 2026",
+        period: "May to July 2026",
         detail:
           "250 hours of DOE RCT Core Fundamental instruction, passed the Core Fundamental Comprehensive Examination, plus 14 hours of professional development training.",
       },
@@ -133,10 +134,11 @@ export const founders: Founder[] = [
     location: "Chicago, Illinois",
     // Personal address intentionally left off the public site. Add a
     // cozydigital.org alias here and it renders automatically.
+    photo: "/brand/team/kayson.png",
     initials: "K",
     accent: "fuchsia",
     short:
-      "Maps the workflow before anything gets built, then tests what ships — requirements, integrations, data validation, and reporting.",
+      "Maps the workflow before anything gets built, then tests what ships: requirements, integrations, data validation, and reporting.",
     bio: [
       "Kayson is a business applications and data analyst who came to Cozy Digital from healthcare technology. At Sibel Health he supported healthcare applications and connected medical devices, using Python and SQL to investigate missing, duplicate, and anomalous records and running UI, API, functional, and regression testing against expected requirements.",
       "At Cozy Digital he does the part most agencies skip: analyzing how a client's customers and staff actually move through a process, defining the functional requirements, and only then translating them into booking, scheduling, lead-intake, and follow-up configurations. Then he tests the normal and the error paths, documents what the system is supposed to do, and fixes the logic that doesn't hold up.",
@@ -145,28 +147,28 @@ export const founders: Founder[] = [
       "Client workflow and user-needs analysis, requirements gathering, and process mapping",
       "Booking, scheduling, lead-intake, and automated follow-up configuration",
       "Integration testing across forms, spreadsheets, email, analytics, and CMS tools",
-      "Data validation — permissions, error handling, and expected user outcomes",
+      "Data validation: permissions, error handling, and expected user outcomes",
       "Documentation of requirements, test results, defects, and implementation decisions",
     ],
     timeline: [
       {
         role: "Founder & Analytics Consultant",
         org: "Cozy Digital",
-        period: "Nov 2025 — Present",
+        period: "Nov 2025 to Present",
         detail:
           "Translates client workflows into application configurations for websites, booking, lead intake, scheduling, and automated follow-up, then validates them and coordinates fixes with third-party platforms.",
       },
       {
         role: "Junior Software Engineer",
         org: "Sibel Health · Chicago, IL",
-        period: "Nov 2022 — Feb 2024",
+        period: "Nov 2022 to Feb 2024",
         detail:
           "Supported healthcare applications and connected medical devices across mobile, web, and device environments. Used Python and SQL to surface anomalous records and ran UI, API, functional, and regression testing.",
       },
       {
         role: "Shift Lead / Manager",
         org: "Walgreens · Glenview, IL",
-        period: "Jun 2025 — Present",
+        period: "Jun 2025 to Present",
         detail:
           "Supports pharmacy, fulfillment, and transaction-processing workflows, reconciles $20,000+ in daily transactions, and coordinates and trains 8+ employees through high-volume operations.",
       },
@@ -237,7 +239,7 @@ export const workSplit = [
     stage: "Build",
     lead: "Quincy",
     accent: "cyan" as FounderAccent,
-    detail: "Design, development, hosting, domains, and deployment — the site and the systems behind it.",
+    detail: "Design, development, hosting, domains, and deployment: the site and the systems behind it.",
   },
   {
     stage: "Connect",

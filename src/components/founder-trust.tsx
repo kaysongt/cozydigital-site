@@ -5,7 +5,7 @@ import { founders } from "@/data/founders";
 /**
  * Compact founder / team trust strip, shown on the homepage and About page.
  *
- * People and copy live in `src/data/founders.ts` — edit there, not here, so the
+ * People and copy live in `src/data/founders.ts`. Edit there, not here, so the
  * strip and the full /founders/ page never drift apart.
  */
 

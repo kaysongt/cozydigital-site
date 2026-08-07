@@ -128,7 +128,7 @@ export default function AuditPopup() {
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-3">
-              {/* Honeypot — hidden from humans, catches bots. */}
+              {/* Honeypot: hidden from humans, catches bots. */}
               <input
                 ref={hpRef}
                 type="text"

@@ -77,7 +77,7 @@ const included = [
   "All 9 interactive modules and the complete built-in workbook",
   "25 ready-to-use prompts with one-click copy",
   "Compliance drill, team AI policy generator & completion certificate",
-  "Works offline, saved privately on your device — yours to keep forever",
+  "Works offline, saved privately on your device, yours to keep forever",
 ];
 
 export default function AiAcademyPage() {
@@ -127,7 +127,7 @@ export default function AiAcademyPage() {
             <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-cyan-300 bg-clip-text text-transparent">in 30 days.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
-            <strong className="font-semibold text-zinc-200">The AI Advantage Blueprint</strong> is a practical, no-hype course for small business owners. No coding. No forty hours of YouTube. Just the real systems that save you time and make you money — built module by module.
+            <strong className="font-semibold text-zinc-200">The AI Advantage Blueprint</strong> is a practical, no-hype course for small business owners. No coding. No forty hours of YouTube. Just the real systems that save you time and make you money, built module by module.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 text-xs font-semibold">
             <span className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-zinc-300">9 interactive modules</span>
@@ -139,7 +139,7 @@ export default function AiAcademyPage() {
               href="#get-access"
               className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-gradient-to-r from-fuchsia-500 via-violet-600 to-cyan-500 px-9 py-4 text-sm font-bold text-white shadow-[0_10px_40px_-10px_rgba(217,70,239,0.6)] transition-all hover:shadow-[0_14px_50px_-8px_rgba(217,70,239,0.7)] hover:brightness-110"
             >
-              <span>Get instant access — {PRICE}</span>
+              <span>Get instant access for {PRICE}</span>
               <ArrowIcon />
             </a>
             <span className="text-sm text-zinc-500">One-time payment · instant access · yours to keep</span>
@@ -152,7 +152,7 @@ export default function AiAcademyPage() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-lg leading-relaxed text-zinc-300 md:text-xl md:leading-relaxed">
             You&apos;ve heard AI will change your business. Nobody tells you what to actually do on{" "}
-            <span className="font-semibold text-white">Monday morning</span>. Every module ends with action steps — and the action steps <span className="font-semibold text-white">are</span> the course.
+            <span className="font-semibold text-white">Monday morning</span>. Every module ends with action steps, and the action steps <span className="font-semibold text-white">are</span> the course.
           </p>
           <div className="mx-auto mt-8 inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full border border-fuchsia-300/25 bg-fuchsia-500/[0.07] px-6 py-2.5">
             <span className="text-sm font-black text-white">AI drafts. You decide.</span>
@@ -186,7 +186,7 @@ export default function AiAcademyPage() {
           <div className="mb-14 text-center">
             <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-fuchsia-300">The curriculum</p>
             <h2 className="text-3xl font-black tracking-tight text-white md:text-4xl">Nine modules. One clear path.</h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-zinc-400">Most modules take 30–60 minutes, including the action steps. Work at your own pace — your progress saves automatically.</p>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-zinc-400">Most modules take 30 to 60 minutes, including the action steps. Work at your own pace, and your progress saves automatically.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {modules.map((m) => (
@@ -209,7 +209,7 @@ export default function AiAcademyPage() {
             <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-fuchsia-300">Not a PDF you skim once</p>
             <h2 className="text-3xl font-black tracking-tight text-white md:text-4xl">A workbook that does the work with you.</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-zinc-400">
-              The entire course is one self-contained interactive file — it runs in any browser, works offline, and everything you type stays private on your own device.
+              The entire course is one self-contained interactive file. It runs in any browser, works offline, and everything you type stays private on your own device.
             </p>
           </div>
           <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
@@ -240,7 +240,7 @@ export default function AiAcademyPage() {
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-fuchsia-300">The edge most courses skip</p>
             <h3 className="mt-2.5 text-2xl font-black tracking-tight text-white">Compliance handled, healthcare too</h3>
             <p className="mt-3 text-sm leading-relaxed text-zinc-300">
-              Module 8 covers what you can and can&apos;t paste into AI tools, HIPAA-aware guidance for medical and wellness businesses, and a one-page team policy — the layer generic AI courses leave out. (Education, not legal advice.)
+              Module 8 covers what you can and can&apos;t paste into AI tools, HIPAA-aware guidance for medical and wellness businesses, and a one-page team policy, the layer generic AI courses leave out. (Education, not legal advice.)
             </p>
           </div>
         </div>
@@ -280,7 +280,7 @@ export default function AiAcademyPage() {
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">Would you rather have it built for you?</h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-400">
-            The Academy teaches you to build these systems yourself. If you&apos;d rather we do it — content engines, follow-up sequences, automations, and websites built to be found by both Google and AI search — that&apos;s exactly what Cozy Digital does.
+            The Academy teaches you to build these systems yourself. If you&apos;d rather we do it (content engines, follow-up sequences, automations, and websites built to be found by both Google and AI search), that&apos;s exactly what Cozy Digital does.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="/services/" className="group inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10">

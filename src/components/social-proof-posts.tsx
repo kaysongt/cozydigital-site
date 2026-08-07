@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 // Real content Cozy Digital has produced and posted from the @cozydig1tal
-// account. These are genuine screenshots — no fabricated engagement counts and
+// account. These are genuine screenshots, with no fabricated engagement counts and
 // no fake platform UI. They're shown as examples of the content work, not as
 // client performance metrics.
 const RAW_COUNT = 10;

@@ -4,7 +4,7 @@
  * This is the backbone of GEO (Generative Engine Optimization): answer engines
  * like ChatGPT Search, Perplexity, and Google AI Overviews read schema.org
  * markup to understand *what* Cozy Digital is, what it offers, and whether to
- * cite it. Every value here is factual — no invented stats, reviews, or
+ * cite it. Every value here is factual, with no invented stats, reviews, or
  * contact details. Add those only when they are real.
  */
 
@@ -102,7 +102,7 @@ export default function StructuredData() {
   return (
     <script
       type="application/ld+json"
-      // JSON-LD is data, not user input — safe to inline.
+      // JSON-LD is data, not user input, so it is safe to inline.
       dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
     />
   );

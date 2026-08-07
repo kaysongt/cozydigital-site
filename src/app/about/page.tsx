@@ -18,7 +18,7 @@ function ArrowIcon() {
 }
 
 // How we actually operate. Each of these is backed by something real on the
-// site — the pricing page's ownership and no-contract terms, or the way the
+// site: the pricing page's ownership and no-contract terms, or the way the
 // two founders split analysis and build. Don't add aspirational ones.
 const principles = [
   {
@@ -31,7 +31,7 @@ const principles = [
   },
   {
     label: "Tested before handoff",
-    body: "Integrations get run through their normal and error paths, documented, and fixed where the logic doesn't hold — before you're the one finding out.",
+    body: "Integrations get run through their normal and error paths, documented, and fixed where the logic doesn't hold, before you're the one finding out.",
   },
   {
     label: "You own what we build",
@@ -70,7 +70,7 @@ export default function AboutPage() {
             <span className="cozy-gradient-text">builds and tests its own work.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
-            Cozy Digital helps service businesses improve how customers find them, understand them, trust them, and take action online — the whole digital presence, not just one piece of it.
+            Cozy Digital helps service businesses improve how customers find them, understand them, trust them, and take action online: the whole digital presence, not just one piece of it.
           </p>
         </div>
       </section>
@@ -108,7 +108,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* HOW IT STARTED — the real story, from the founders' own backgrounds. */}
+      {/* HOW IT STARTED: the real story, from the founders' own backgrounds. */}
       <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 max-w-2xl" data-reveal>
@@ -123,7 +123,7 @@ export default function AboutPage() {
               <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">2024</p>
               <h3 className="mt-3 text-lg font-black text-white">Quincy started building.</h3>
               <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-                Quincy founded Cozy Digital in 2024 while finishing a Computer Science degree and working his university&apos;s front-line IT support desk. The premise was simple: small businesses needed websites that actually worked, and he could ship them end to end — design, hosting, domains, campaigns, and the maintenance afterward.
+                Quincy founded Cozy Digital in 2024 while finishing a Computer Science degree and working his university&apos;s front-line IT support desk. The premise was simple: small businesses needed websites that actually worked, and he could ship them end to end, from design and hosting through domains, campaigns, and the maintenance afterward.
               </p>
             </div>
 
@@ -131,7 +131,7 @@ export default function AboutPage() {
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fuchsia-300">November 2025</p>
               <h3 className="mt-3 text-lg font-black text-white">Kayson changed how we work.</h3>
               <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-                Kayson joined as the second founder after two years at Sibel Health supporting healthcare applications and connected medical devices — investigating bad production data with Python and SQL, running UI and API testing, and tracking defects to resolution. He brought that discipline with him.
+                Kayson joined as the second founder after two years at Sibel Health supporting healthcare applications and connected medical devices, investigating bad production data with Python and SQL, running UI and API testing, and tracking defects to resolution. He brought that discipline with him.
               </p>
             </div>
           </div>
@@ -227,7 +227,7 @@ export default function AboutPage() {
             Start with the free audit.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-zinc-400">
-            Send your website or social link and we&apos;ll review it the way a first-time customer would, then send back the first three improvements we&apos;d make — whether or not you hire us.
+            Send your website or social link and we&apos;ll review it the way a first-time customer would, then send back the first three improvements we&apos;d make, whether or not you hire us.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
             <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-7 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">

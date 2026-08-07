@@ -80,7 +80,7 @@ const presencePillars = [
 ];
 
 // Verifiable deliverables from the Dr. Alicia project. No metrics, no revenue
-// or booking claims — only what was actually built.
+// or booking claims: only what was actually built.
 const aliciaDeliverables = [
   "Unified multiple offers under one recognizable brand",
   "Created direct therapy and coaching booking paths",
@@ -282,7 +282,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Relabeled, secondary platform strip — accurate, not an endorsement. */}
+          {/* Relabeled, secondary platform strip: accurate, not an endorsement. */}
           <style>{`
             @keyframes platform-marquee {
               from { transform: translateX(0); }
@@ -431,7 +431,7 @@ export default function HomePage() {
             </article>
           </div>
 
-          {/* Other client work — clearly labeled, no fabricated metrics */}
+          {/* Other client work: clearly labeled, no fabricated metrics */}
           <div className="mt-16">
             <p className="mb-6 text-xs font-bold uppercase tracking-widest text-zinc-500">Supporting systems &amp; campaign work</p>
             <div className="grid gap-4 md:grid-cols-3">
@@ -470,7 +470,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHAT WE IMPROVE — grouped system */}
+      {/* WHAT WE IMPROVE: grouped system */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-start" data-reveal>
@@ -515,7 +515,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CONTENT EXAMPLES — honest framing */}
+      {/* CONTENT EXAMPLES: honest framing */}
       <section className="overflow-hidden py-8" aria-label="Examples of content produced by Cozy Digital">
         <style>{`
           @keyframes social-marquee-fwd { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -532,7 +532,7 @@ export default function HomePage() {
         <SocialProofPosts />
       </section>
 
-      {/* FREE DIGITAL PRESENCE AUDIT — explanation + what you'll receive */}
+      {/* FREE DIGITAL PRESENCE AUDIT: explanation + what you'll receive */}
       <section className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <div className="motion-card rounded-3xl border border-cyan-300/20 bg-cyan-500/[0.05] p-8 md:p-12" data-reveal>

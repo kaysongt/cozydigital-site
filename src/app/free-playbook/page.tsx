@@ -33,7 +33,7 @@ const choices = {
     "Okay, but it could be much better",
     "Pretty good, just needs fine-tuning",
   ],
-  czQ3: ["0 – 5", "6 – 15", "16 – 30", "30+"],
+  czQ3: ["0-5", "6-15", "16-30", "30+"],
 };
 
 export default function FreePlaybookPage() {
@@ -72,9 +72,9 @@ export default function FreePlaybookPage() {
     setSending(true);
     try {
       const notes = [
-        `How they get clients now: ${form.howGettingClients || "—"}`,
-        `Online presence satisfaction: ${form.onlinePresenceSatisfaction || "—"}`,
-        `Leads per month: ${form.leadsPerMonth || "—"}`,
+        `How they get clients now: ${form.howGettingClients || "Not provided"}`,
+        `Online presence satisfaction: ${form.onlinePresenceSatisfaction || "Not provided"}`,
+        `Leads per month: ${form.leadsPerMonth || "Not provided"}`,
       ].join("\n");
       await fetch(CRM_API_URL, {
         method: "POST",
@@ -146,7 +146,7 @@ export default function FreePlaybookPage() {
           </div>
         ) : (
           <>
-            {/* Honeypot — hidden from humans, catches bots. */}
+            {/* Honeypot: hidden from humans, catches bots. */}
             <input
               ref={hpRef}
               type="text"

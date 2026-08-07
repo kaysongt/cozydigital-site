@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Meet the Founders | Cozy Digital",
     description:
-      "The two people behind Cozy Digital — a developer who ships client systems end to end and a business applications analyst who maps and tests the workflows behind them.",
+      "The two people behind Cozy Digital: a developer who ships client systems end to end and a business applications analyst who maps and tests the workflows behind them.",
     url: "https://www.cozydigital.org/founders/",
   },
 };
@@ -86,7 +86,7 @@ export default function FoundersPage() {
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
       <script
         type="application/ld+json"
-        // JSON-LD built from a static local module — not user input.
+        // JSON-LD built from a static local module, not user input.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
@@ -363,7 +363,7 @@ export default function FoundersPage() {
             Bring us the thing that isn&apos;t working.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-zinc-400">
-            Send your website or social link and we&apos;ll review it the way a first-time customer would, then send back the first three improvements we&apos;d make — whether or not you hire us.
+            Send your website or social link and we&apos;ll review it the way a first-time customer would, then send back the first three improvements we&apos;d make, whether or not you hire us.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
             <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-7 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
