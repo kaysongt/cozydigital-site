@@ -15,6 +15,7 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/ai-academy/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/pricing/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/founders/", priority: 0.7, changeFrequency: "monthly" },
   { path: "/faq/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/free-audit/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/free-playbook/", priority: 0.7, changeFrequency: "monthly" },

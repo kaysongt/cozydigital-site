@@ -14,7 +14,7 @@ const navLinks = [
   { label: "About", href: "/about/" },
 ];
 
-const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/pricing", "/about", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
+const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/pricing", "/about", "/founders", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
 
 function isActiveLink(pathname: string | null, href: string) {
   if (!pathname || href.includes("#")) return false;

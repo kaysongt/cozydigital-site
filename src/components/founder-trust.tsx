@@ -1,102 +1,69 @@
-import Image from "next/image";
 import Link from "next/link";
+import FounderAvatar from "@/components/founder-avatar";
+import { founders } from "@/data/founders";
 
 /**
- * Founder / team trust section.
+ * Compact founder / team trust strip, shown on the homepage and About page.
  *
- * OWNER-SUPPLIED CONTENT: Add the real people behind Cozy Digital to the
- * `founders` array below. Do NOT invent names, roles, credentials, or photos.
- * Each entry renders a headshot, name, role, and a one-line description.
- *
- * Drop headshots in /public/brand/team/ (square, ~400x400, e.g. founder-name.jpg)
- * and fill in the fields. Until at least one real founder is added, the section
- * renders an honest studio blurb instead of placeholder people.
- *
- * type Founder = { name; role; photo; bio; }
+ * People and copy live in `src/data/founders.ts` — edit there, not here, so the
+ * strip and the full /founders/ page never drift apart.
  */
-type Founder = {
-  name: string;
-  role: string;
-  photo: string; // e.g. "/brand/team/first-last.jpg"
-  bio: string;
-};
 
-const founders: Founder[] = [
-  // TODO (owner): add real founders, e.g.
-  // { name: "Full Name", role: "Founder & Lead Designer", photo: "/brand/team/full-name.jpg",
-  //   bio: "Handles website design, messaging, and the overall client build." },
-];
+const accentText = {
+  cyan: "text-cyan-400",
+  fuchsia: "text-fuchsia-300",
+} as const;
 
 export default function FounderTrust() {
   return (
     <section className="px-6 py-20" aria-labelledby="team-heading">
       <div className="mx-auto max-w-5xl">
-        <div className="mb-10 text-center">
+        <div className="mb-10 text-center" data-reveal>
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">
-            The Team
+            The Founders
           </p>
           <h2 id="team-heading" className="text-3xl font-black text-white md:text-4xl">
             Meet the people behind the work.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-400">
-            Cozy Digital is a small, hands-on studio. You work directly with the
+            Cozy Digital is a two-founder studio. You work directly with the
             people building your website, content, and booking systems, not a
             rotating account team.
           </p>
         </div>
 
-        {founders.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {founders.map((person) => (
-              <div
-                key={person.name}
-                className="flex flex-col items-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center"
-              >
-                <Image
-                  src={person.photo}
-                  alt={`${person.name}, ${person.role} at Cozy Digital`}
-                  width={96}
-                  height={96}
-                  loading="lazy"
-                  className="h-24 w-24 rounded-full border border-cyan-300/20 object-cover"
-                />
-                <h3 className="mt-4 text-base font-black text-white">{person.name}</h3>
-                <p className="text-xs font-bold uppercase tracking-wide text-cyan-300">
-                  {person.role}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">{person.bio}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="mx-auto max-w-2xl rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 text-center">
-            <p className="text-sm leading-relaxed text-zinc-300">
-              Cozy Digital was built to fix a common gap: service businesses
-              spending on ads and content while their website, booking path, and
-              search presence quietly lost them customers. We handle the whole
-              digital presence so those pieces finally work together.
-            </p>
+        <div className="grid gap-5 sm:grid-cols-2" data-reveal-list>
+          {founders.map((person) => (
             <Link
-              href="/about/"
-              className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors hover:text-cyan-100"
+              key={person.slug}
+              href={`/founders/#${person.slug}`}
+              className="motion-card group flex flex-col items-center rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7 text-center transition-colors duration-200 hover:border-white/[0.14] hover:bg-white/[0.06]"
+              data-reveal
             >
-              More about Cozy Digital
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                />
-              </svg>
+              <FounderAvatar person={person} size={96} />
+              <h3 className="mt-5 text-lg font-black text-white">{person.name}</h3>
+              <p className={`mt-1 text-xs font-bold uppercase tracking-wide ${accentText[person.accent]}`}>
+                {person.role}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-400">{person.short}</p>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors group-hover:text-cyan-100">
+                Read the full profile
+                <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </span>
             </Link>
-          </div>
-        )}
+          ))}
+        </div>
+
+        <div className="mt-8 text-center" data-reveal>
+          <Link
+            href="/founders/"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
+          >
+            Meet the founders
+          </Link>
+        </div>
       </div>
     </section>
   );

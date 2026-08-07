@@ -10,6 +10,7 @@ const footerNavGroups = [
       { label: "AI Visibility", href: "/ai-search/" },
       { label: "AI Academy", href: "/ai-academy/" },
       { label: "About", href: "/about/" },
+      { label: "Meet the Founders", href: "/founders/" },
       { label: "FAQ", href: "/faq/" },
     ],
   },
