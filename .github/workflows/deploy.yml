@@ -28,9 +28,23 @@ jobs:
       # is public (it appears in page source), so a repo variable is the right
       # home for it — but read a secret of the same name as a fallback in case
       # it was added there instead.
+      #
+      # NEXT_PUBLIC_HUB_WEBHOOK_SECRET is sent by the audit form, the scroll
+      # popup and the playbook form as x-webhook-secret. It must match
+      # PLAYBOOK_WEBHOOK_SECRET on the hub, which rejects mismatches with 401
+      # once that variable is set there. ORDER MATTERS: deploy this side first,
+      # then set the hub's variable, or every real lead is turned away in
+      # between.
+      #
+      # Note this value is NOT secret in any meaningful sense — the site is a
+      # static export, so it is inlined into JavaScript every visitor
+      # downloads. It is a speed bump against scanners hitting the bare URL,
+      # not authentication. The rate limiting in server/rateLimit.ts is what
+      # actually protects the endpoint.
       - run: npm run build
         env:
           NEXT_PUBLIC_META_PIXEL_ID: ${{ vars.NEXT_PUBLIC_META_PIXEL_ID || secrets.NEXT_PUBLIC_META_PIXEL_ID }}
+          NEXT_PUBLIC_HUB_WEBHOOK_SECRET: ${{ secrets.NEXT_PUBLIC_HUB_WEBHOOK_SECRET || vars.NEXT_PUBLIC_HUB_WEBHOOK_SECRET }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
