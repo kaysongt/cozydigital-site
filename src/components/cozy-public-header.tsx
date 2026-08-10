@@ -6,20 +6,37 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/theme-toggle";
 
-const navLinks = [
+// `alsoActiveFor` keeps a tab highlighted on sibling pages it doesn't link to.
+// About points straight at Meet the Founders, but /about/ is still reachable
+// from the footer and from the founders page, so the tab lights up on both.
+const navLinks: Array<{
+  label: string;
+  href: string;
+  alsoActiveFor?: string[];
+}> = [
   { label: "Services", href: "/services/" },
   { label: "Client Work", href: "/#client-work" },
   { label: "AI Visibility", href: "/ai-search/" },
   { label: "AI Academy", href: "/ai-academy/" },
-  { label: "About", href: "/about/" },
+  { label: "About", href: "/founders/", alsoActiveFor: ["/about/"] },
 ];
 
 const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/pricing", "/about", "/founders", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
 
-function isActiveLink(pathname: string | null, href: string) {
-  if (!pathname || href.includes("#")) return false;
+function matchesPath(pathname: string, href: string) {
   const clean = href.replace(/\/$/, "");
   return pathname === clean || pathname === `${clean}/` || pathname.startsWith(`${clean}/`);
+}
+
+function isActiveLink(
+  pathname: string | null,
+  link: { href: string; alsoActiveFor?: string[] }
+) {
+  if (!pathname || link.href.includes("#")) return false;
+  return (
+    matchesPath(pathname, link.href) ||
+    (link.alsoActiveFor ?? []).some((p) => matchesPath(pathname, p))
+  );
 }
 
 export default function CozyPublicHeader() {
@@ -48,7 +65,7 @@ export default function CozyPublicHeader() {
 
         <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-10 2xl:gap-14" aria-label="Main navigation">
           {navLinks.map((link) => {
-            const active = isActiveLink(pathname, link.href);
+            const active = isActiveLink(pathname, link);
             return (
               <Link
                 key={link.href}
@@ -109,7 +126,7 @@ export default function CozyPublicHeader() {
         <nav aria-label="Mobile navigation" className="border-t border-white/10 bg-black/98 px-5 pb-5 pt-3 lg:hidden">
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => {
-              const active = isActiveLink(pathname, link.href);
+              const active = isActiveLink(pathname, link);
               return (
                 <li key={link.href}>
                   <Link

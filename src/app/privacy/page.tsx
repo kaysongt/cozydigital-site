@@ -8,10 +8,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.cozydigital.org/privacy/" },
 };
 
+const CONTACT_EMAIL = "quincy@cozydigital.org";
+
 const sections = [
   {
     heading: "What we collect",
-    body: "When you request a Digital Presence Audit, download the Free Playbook, or contact us, you may share your name, business name, email address, an optional phone number, your website or social links, and any notes about what you want to improve. We also collect basic, anonymous usage data through Google Analytics to understand how the site is used.",
+    body: "When you request a Digital Presence Audit, download the Free Playbook, or contact us, you may share your name, business name, email address, an optional phone number, your website or social links, and any notes about what you want to improve. We also collect basic, anonymous usage data through Google Analytics, and campaign information (such as which ad or link brought you here) so we know which of our own marketing is working.",
   },
   {
     heading: "How we use it",
@@ -19,7 +21,11 @@ const sections = [
   },
   {
     heading: "Where it goes",
-    body: "Form submissions are sent to our internal client management system so our team can respond. Analytics data is processed by Google Analytics. These providers process data on our behalf and are not permitted to use it for their own marketing.",
+    body: "Form submissions are sent to our internal client management system so our team can respond. Analytics data is processed by Google Analytics, and advertising measurement data is processed by Meta Platforms (Facebook and Instagram). These providers process data on our behalf and are not permitted to use it for their own marketing.",
+  },
+  {
+    heading: "Advertising",
+    body: "We advertise on Meta (Facebook and Instagram) and use the Meta Pixel on this site to measure whether our ads lead to real enquiries and to show our ads to relevant audiences. If you submit a lead form directly inside Facebook or Instagram, Meta passes those details to us and we handle them exactly as described in this policy. You can control ad personalisation in your Facebook or Instagram ad settings.",
   },
   {
     heading: "Marketing consent",
@@ -27,11 +33,15 @@ const sections = [
   },
   {
     heading: "Your choices",
-    body: "You can ask us to access, correct, or delete the personal information you've submitted. To make a request, reach us through the channels listed in the site footer.",
+    body: `You can ask us to access, correct, or delete the personal information you've submitted. To make a request, email us at ${CONTACT_EMAIL} and we will action it promptly.`,
   },
   {
     heading: "Cookies & analytics",
-    body: "This site uses Google Analytics, which may set cookies to measure page visits. You can block cookies in your browser settings without losing access to the site's content.",
+    body: "This site uses Google Analytics and the Meta Pixel, which may set cookies to measure page visits and ad performance. You can block cookies in your browser settings without losing access to the site's content.",
+  },
+  {
+    heading: "Contact us",
+    body: `Questions about this policy, or about the information we hold on you? Email ${CONTACT_EMAIL}.`,
   },
 ];
 

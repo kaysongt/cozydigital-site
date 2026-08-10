@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { formatAttribution, readAttribution } from "@/components/attribution";
+import { trackMetaLead } from "@/components/meta-pixel";
 
 // Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
 // Shared by the homepage, the /free-audit page, and the scroll popup so every
@@ -35,6 +37,25 @@ export default function AuditForm({
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("loading");
+
+    // How this visit started, captured on landing by <AttributionCapture />.
+    const attribution = readAttribution();
+    const attributionText = formatAttribution(attribution);
+    // The hub's leadSource column is varchar(100), so it carries only the
+    // low-cardinality channel (facebook, google, …) and stays groupable in the
+    // CRM. The full campaign detail rides along in notes, which is TEXT.
+    const channel =
+      attribution.utm_source ?? (attribution.fbclid ? "meta" : undefined);
+    const taggedSource = (
+      channel ? `${leadSource} · ${channel}` : leadSource
+    ).slice(0, 100);
+    const notes = [
+      form.improve ? `Wants to improve: ${form.improve}` : "",
+      attributionText ? `Attribution: ${attributionText}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
     try {
       const res = await fetch(HUB_LEAD_URL, {
         method: "POST",
@@ -43,19 +64,19 @@ export default function AuditForm({
           ...(HUB_WEBHOOK_SECRET ? { "x-webhook-secret": HUB_WEBHOOK_SECRET } : {}),
         },
         body: JSON.stringify({
-          leadSource,
+          leadSource: taggedSource,
           name: form.name,
           email: form.email,
           phone: form.phone || undefined,
           businessName: form.business || undefined,
           website: form.website || undefined,
-          notes: form.improve
-            ? `Wants to improve: ${form.improve}`
-            : undefined,
+          notes: notes || undefined,
           hp: hpRef.current?.value ?? "",
         }),
       });
       if (!res.ok) throw new Error();
+      // Only a genuinely saved lead counts as a conversion.
+      trackMetaLead();
       setStatus("success");
     } catch {
       setStatus("error");
