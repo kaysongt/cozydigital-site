@@ -198,44 +198,30 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="hero-visual relative mx-auto w-full max-w-xl" aria-label="Selected websites built by Cozy Digital" data-hero-visual data-tilt>
+          {/* VSL. Deliberately not data-tilt: a frame that moves under the
+              cursor fights you when you are trying to hit play. preload="none"
+              keeps the 20 MB file off first paint — the poster carries it. */}
+          <div className="hero-visual relative mx-auto w-full max-w-xl" data-hero-visual>
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-cyan-500/10 via-transparent to-fuchsia-500/10 blur-2xl" />
             <div className="hero-showcase relative rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-3 shadow-2xl shadow-black/40 backdrop-blur-sm">
               <div className="overflow-hidden rounded-[1.15rem] border border-white/10 bg-black">
-                <div className="flex h-8 items-center gap-1.5 border-b border-white/10 bg-zinc-900 px-3" aria-hidden="true">
-                  <span className="h-2 w-2 rounded-full bg-rose-400/80" />
-                  <span className="h-2 w-2 rounded-full bg-amber-300/80" />
-                  <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
-                  <span className="ml-2 h-3.5 w-32 rounded-full bg-white/10" />
-                </div>
-                <Image
-                  src="/images/client-proof/dear-pastors-wife-site.png"
-                  alt="Dear Pastor's Wife website designed and built by Cozy Digital"
-                  width={1200}
-                  height={900}
-                  priority
-                  sizes="(min-width: 1024px) 42vw, 90vw"
-                  className="aspect-[4/3] w-full object-cover object-top"
+                <video
+                  src="/videos/cozy-vsl.mp4"
+                  poster="/videos/cozy-vsl-poster.jpg"
+                  controls
+                  playsInline
+                  preload="none"
+                  aria-label="Why your search, site and booking have to match — Cozy Digital"
+                  className="aspect-video w-full"
                 />
               </div>
               <div className="mt-3 flex items-center justify-between gap-4 px-2 pb-1">
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400">Latest launch</p>
-                  <p className="mt-1 text-sm font-bold text-white">Dear Pastor&apos;s Wife</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-400">Watch first · 2 min</p>
+                  <p className="mt-1 text-sm font-bold text-white">One mismatch is enough to lose the booking.</p>
                 </div>
-                <Link href="#client-work" className="text-xs font-bold text-zinc-400 transition-colors hover:text-cyan-300">View the project ↓</Link>
+                <Link href="#client-work" className="shrink-0 text-xs font-bold text-zinc-400 transition-colors hover:text-cyan-300">See client work ↓</Link>
               </div>
-            </div>
-            <div className="hero-float-card absolute -bottom-8 -left-4 hidden w-44 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 p-2 shadow-xl shadow-black/50 sm:block lg:-left-10">
-              <Image
-                src="/images/client-proof/dr-alicia-site.png"
-                alt="Dr. Alicia Watkins website designed and built by Cozy Digital"
-                width={400}
-                height={300}
-                sizes="176px"
-                className="aspect-[4/3] w-full rounded-xl object-cover object-top"
-              />
-              <p className="px-1 pb-1 pt-2 text-[10px] font-bold text-zinc-300">Dr. Alicia Watkins</p>
             </div>
           </div>
         </div>
@@ -255,63 +241,6 @@ export default function HomePage() {
               <p className="mt-1.5 text-xs leading-relaxed text-zinc-400">{v.desc}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* VSL: sits directly under the hero, where attention is highest. Loads
-          nothing until played (preload="none") so a 20 MB file never taxes
-          first paint — the poster frame carries the visual weight. */}
-      <section className="relative px-6 py-20" aria-labelledby="vsl-heading">
-        <div className="mx-auto max-w-4xl">
-          <div className="mb-9 text-center" data-reveal>
-            <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">
-              Watch first · 2 min
-            </p>
-            <h2
-              id="vsl-heading"
-              className="text-3xl font-black leading-[1.1] text-white md:text-4xl"
-            >
-              One mismatch is enough to{" "}
-              <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent">
-                lose the booking
-              </span>
-              .
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-zinc-400">
-              Search, site, and booking have to tell the same story. Here is
-              what it costs when they don&apos;t, and how we fix it.
-            </p>
-          </div>
-
-          <div className="relative" data-reveal>
-            {/* Soft spotlight behind the frame, echoing the hero gradient. */}
-            <div
-              aria-hidden="true"
-              className="absolute -inset-3 rounded-[2rem] bg-gradient-to-r from-cyan-500/20 via-blue-500/10 to-fuchsia-500/20 blur-2xl md:-inset-5"
-            />
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl shadow-cyan-950/40">
-              <video
-                src="/videos/cozy-vsl.mp4"
-                poster="/videos/cozy-vsl-poster.jpg"
-                controls
-                playsInline
-                preload="none"
-                className="aspect-video w-full"
-              />
-            </div>
-          </div>
-
-          <div className="mt-9 text-center" data-reveal>
-            <Link
-              href="/free-audit/#audit-form"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-4 text-sm font-black text-white shadow-xl shadow-cyan-900/25 transition-all hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
-            >
-              Get my free audit →
-            </Link>
-            <p className="mt-3 text-xs text-zinc-500">
-              No pressure, no obligation. You keep the findings either way.
-            </p>
-          </div>
         </div>
       </section>
 
