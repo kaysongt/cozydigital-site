@@ -103,7 +103,7 @@ export default function FaqPage() {
         <div className="mt-10 rounded-2xl border border-cyan-300/20 bg-cyan-500/10 p-6 text-center">
           <p className="mb-4 text-sm text-zinc-300">Want to see what to improve first?</p>
           <Link
-            href="/free-audit/"
+            href="/free-audit/#audit-form"
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-4 text-sm font-bold text-white shadow-xl hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
           >
             Get a Free Digital Presence Audit

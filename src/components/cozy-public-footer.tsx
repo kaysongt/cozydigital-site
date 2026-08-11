@@ -79,7 +79,7 @@ export default function CozyPublicFooter() {
                 </a>
               ))}
             </div>
-            <Link href="/free-audit/" className="mt-6 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+            <Link href="/free-audit/#audit-form" className="mt-6 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
               Get a Free Audit
             </Link>
           </div>

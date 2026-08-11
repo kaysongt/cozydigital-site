@@ -95,8 +95,10 @@ export default function CozyPublicHeader() {
             <span className="xl:hidden">Playbook</span>
             <span className="hidden xl:inline">Get the Free Playbook</span>
           </Link>
+          {/* Anchored so the click lands on the form itself rather than the
+              top of the page — the form is what the CTA promises. */}
           <Link
-            href="/free-audit/"
+            href="/free-audit/#audit-form"
             className={`whitespace-nowrap rounded-lg px-3.5 py-2.5 text-xs font-black text-white shadow-lg transition-all min-[390px]:px-4 min-[390px]:text-sm lg:px-6 lg:py-3 ${
               isAudit
                 ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 ring-2 ring-cyan-300/40"

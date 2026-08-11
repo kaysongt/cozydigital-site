@@ -137,7 +137,7 @@ export default function ServicesPage() {
             <p className="mt-1 text-sm text-zinc-400">Start with a free 30-minute audit. We look at your site and socials and tell you exactly what to fix first, with no pitch at the end.</p>
           </div>
           <Link
-            href="/free-audit/"
+            href="/free-audit/#audit-form"
             className="shrink-0 rounded-xl border border-cyan-300/30 bg-cyan-500/10 px-6 py-3 text-sm font-bold text-cyan-100 transition-colors hover:bg-cyan-500/20"
           >
             Get the free audit

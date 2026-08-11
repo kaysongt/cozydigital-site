@@ -76,7 +76,7 @@ export default function PricingPage() {
         <div className="rounded-2xl border border-cyan-300/20 bg-cyan-500/10 p-6 text-center">
           <p className="mb-4 text-sm text-zinc-300">
             Not sure whether the one-time build or monthly support fits? A free{" "}
-            <Link href="/free-audit/" className="font-semibold text-cyan-300 underline underline-offset-2 hover:text-cyan-100">Digital Presence Audit</Link>{" "}
+            <Link href="/free-audit/#audit-form" className="font-semibold text-cyan-300 underline underline-offset-2 hover:text-cyan-100">Digital Presence Audit</Link>{" "}
             helps determine which option makes sense, with no high-pressure sales call.
           </p>
           <Link href="/cozy-booking/" className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-4 text-sm font-bold text-white shadow-xl hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">

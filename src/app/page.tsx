@@ -181,7 +181,7 @@ export default function HomePage() {
               We connect your website, messaging, content, booking, follow-up, and search visibility into one clear system that helps customers trust you and take the next step.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-7 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+              <Link href="/free-audit/#audit-form" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-7 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
                 <span>Get Your Free Audit</span>
                 <ArrowIcon />
               </Link>
@@ -370,7 +370,7 @@ export default function HomePage() {
                   View the Live Website <ArrowIcon />
                 </a>
                 <Link
-                  href="/free-audit/"
+                  href="/free-audit/#audit-form"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
                 >
                   Get a Digital Presence Like This
@@ -421,7 +421,7 @@ export default function HomePage() {
                     Visit the Live Website <ArrowIcon />
                   </a>
                   <Link
-                    href="/free-audit/"
+                    href="/free-audit/#audit-form"
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
                   >
                     Start Your Project
@@ -618,7 +618,7 @@ export default function HomePage() {
           <h2 className="text-4xl font-black text-white md:text-6xl">Ready to build a stronger digital presence?</h2>
           <p className="mt-6 text-lg text-zinc-400">Start with a free audit and see exactly what to improve first.</p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-10 py-4 text-base font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+            <Link href="/free-audit/#audit-form" className="group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-10 py-4 text-base font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
               <span>Get a Free Digital Presence Audit</span>
               <ArrowIcon />
             </Link>

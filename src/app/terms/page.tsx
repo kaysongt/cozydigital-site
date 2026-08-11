@@ -57,7 +57,7 @@ export default function TermsPage() {
         </div>
 
         <div className="mt-10 flex flex-wrap gap-4">
-          <Link href="/free-audit/" className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-500/10 px-6 py-3 text-sm font-bold text-cyan-100 hover:bg-cyan-500/20">
+          <Link href="/free-audit/#audit-form" className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-500/10 px-6 py-3 text-sm font-bold text-cyan-100 hover:bg-cyan-500/20">
             Request a Free Audit
           </Link>
           <Link href="/privacy/" className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 text-sm font-bold text-white hover:bg-white/[0.06]">

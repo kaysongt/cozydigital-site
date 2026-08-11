@@ -79,7 +79,7 @@ export default function AiSearchPage() {
             Your customers are asking ChatGPT, Perplexity, and Google AI for recommendations. We strengthen the information, structure, and trust signals that improve your business&apos;s ability to appear in those answers, as one part of your overall digital presence.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-9 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+            <Link href="/free-audit/#audit-form" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-9 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
               <span>Get a Free Digital Presence Audit</span>
               <ArrowIcon />
             </Link>
@@ -153,7 +153,7 @@ export default function AiSearchPage() {
           <h2 className="text-3xl font-black text-white md:text-5xl">Find out what AI says about you.</h2>
           <p className="mt-5 text-lg text-zinc-400">Your free Digital Presence Audit includes a check of how today&apos;s assistants describe your business and where you&apos;re hard to find.</p>
           <div className="mt-9 flex justify-center">
-            <Link href="/free-audit/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-10 py-4 text-base font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+            <Link href="/free-audit/#audit-form" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-10 py-4 text-base font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
               <span>Get a Free Digital Presence Audit</span>
               <ArrowIcon />
             </Link>
