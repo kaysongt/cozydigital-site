@@ -258,6 +258,63 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* VSL: sits directly under the hero, where attention is highest. Loads
+          nothing until played (preload="none") so a 20 MB file never taxes
+          first paint — the poster frame carries the visual weight. */}
+      <section className="relative px-6 py-20" aria-labelledby="vsl-heading">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-9 text-center" data-reveal>
+            <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">
+              Watch first · 2 min
+            </p>
+            <h2
+              id="vsl-heading"
+              className="text-3xl font-black leading-[1.1] text-white md:text-4xl"
+            >
+              One mismatch is enough to{" "}
+              <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent">
+                lose the booking
+              </span>
+              .
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-zinc-400">
+              Search, site, and booking have to tell the same story. Here is
+              what it costs when they don&apos;t, and how we fix it.
+            </p>
+          </div>
+
+          <div className="relative" data-reveal>
+            {/* Soft spotlight behind the frame, echoing the hero gradient. */}
+            <div
+              aria-hidden="true"
+              className="absolute -inset-3 rounded-[2rem] bg-gradient-to-r from-cyan-500/20 via-blue-500/10 to-fuchsia-500/20 blur-2xl md:-inset-5"
+            />
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl shadow-cyan-950/40">
+              <video
+                src="/videos/cozy-vsl.mp4"
+                poster="/videos/cozy-vsl-poster.jpg"
+                controls
+                playsInline
+                preload="none"
+                className="aspect-video w-full"
+              />
+            </div>
+          </div>
+
+          <div className="mt-9 text-center" data-reveal>
+            <Link
+              href="/free-audit/#audit-form"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-4 text-sm font-black text-white shadow-xl shadow-cyan-900/25 transition-all hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
+            >
+              Get my free audit →
+            </Link>
+            <p className="mt-3 text-xs text-zinc-500">
+              No pressure, no obligation. You keep the findings either way.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* WHAT DIGITAL PRESENCE MEANS */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
