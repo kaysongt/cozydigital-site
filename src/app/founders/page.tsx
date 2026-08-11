@@ -7,16 +7,16 @@ export const metadata: Metadata = {
   title: "Meet the Founders | Cozy Digital",
   description:
     "Cozy Digital is run by its two founders. Quincy builds and deploys the work; Kayson maps the workflows and tests what ships. Meet the people you'd actually be working with.",
-  alternates: { canonical: "https://www.cozydigital.org/founders/" },
+  alternates: { canonical: "https://cozydigital.org/founders/" },
   openGraph: {
     title: "Meet the Founders | Cozy Digital",
     description:
       "The two people behind Cozy Digital: a developer who ships client systems end to end and a business applications analyst who maps and tests the workflows behind them.",
-    url: "https://www.cozydigital.org/founders/",
+    url: "https://cozydigital.org/founders/",
   },
 };
 
-const baseUrl = "https://www.cozydigital.org";
+const baseUrl = "https://cozydigital.org";
 
 // Person schema so answer engines can attribute the work to real people.
 const personSchema = {

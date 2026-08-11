@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "FAQ | Cozy Digital",
   description:
     "Answers about Cozy Digital's websites, pricing, process, and AI search (GEO) optimization that helps service businesses get found by ChatGPT, Perplexity, and Google AI.",
-  alternates: { canonical: "https://www.cozydigital.org/faq/" },
+  alternates: { canonical: "https://cozydigital.org/faq/" },
 };
 
 // Plain question/answer pairs. Answers are written to be self-contained and
@@ -62,7 +62,7 @@ export default function FaqPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": "https://www.cozydigital.org/faq/#faqpage",
+    "@id": "https://cozydigital.org/faq/#faqpage",
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,

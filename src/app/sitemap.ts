@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 // Required for static export (output: "export").
 export const dynamic = "force-static";
 
-const baseUrl = "https://www.cozydigital.org";
+const baseUrl = "https://cozydigital.org";
 
 // Keep this list in sync with the routes under src/app. Priority/frequency are
 // hints for crawlers; the home, services, and FAQ pages carry the strongest

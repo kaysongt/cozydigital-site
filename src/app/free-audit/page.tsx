@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Free Digital Presence Audit | Cozy Digital",
   description:
     "Request a free Digital Presence Audit from Cozy Digital. We review your website, messaging, trust signals, content, booking path, and search visibility, then identify the first three improvements we'd make.",
-  alternates: { canonical: "https://www.cozydigital.org/free-audit/" },
+  alternates: { canonical: "https://cozydigital.org/free-audit/" },
 };
 
 const auditCovers = [

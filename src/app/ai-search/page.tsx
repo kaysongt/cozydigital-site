@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "AI Search Visibility (GEO) | Cozy Digital",
   description:
     "Get your business found and recommended by AI search like ChatGPT, Perplexity, and Google AI Overviews. Cozy Digital builds the structured data, answer content, and trust signals that make answer engines cite you.",
-  alternates: { canonical: "https://www.cozydigital.org/ai-search/" },
+  alternates: { canonical: "https://cozydigital.org/ai-search/" },
 };
 
 function ArrowIcon() {
@@ -49,14 +49,14 @@ export default function AiSearchPage() {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://www.cozydigital.org/ai-search/#service",
+    "@id": "https://cozydigital.org/ai-search/#service",
     name: "AI Search Visibility (GEO)",
     serviceType: "Generative Engine Optimization",
-    provider: { "@id": "https://www.cozydigital.org/#organization" },
+    provider: { "@id": "https://cozydigital.org/#organization" },
     areaServed: { "@type": "Place", name: "United States" },
     description:
       "Generative Engine Optimization for service businesses: structured data, quotable answer content, consistent business identity, and trust signals that make AI answer engines like ChatGPT, Perplexity, and Google AI Overviews recommend you.",
-    url: "https://www.cozydigital.org/ai-search/",
+    url: "https://cozydigital.org/ai-search/",
   };
 
   return (

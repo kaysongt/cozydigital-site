@@ -13,7 +13,7 @@ const description = "Cozy Digital helps service businesses improve their website
 const siteTitle = "Digital Presence for Service Businesses | Cozy Digital";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.cozydigital.org"),
+  metadataBase: new URL("https://cozydigital.org"),
   title: {
     default: siteTitle,
     template: "%s",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteTitle,
     description,
-    url: "https://www.cozydigital.org",
+    url: "https://cozydigital.org",
     siteName: "Cozy Digital",
     type: "website",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Cozy Digital" }],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   alternates: {
-    canonical: "https://www.cozydigital.org/",
+    canonical: "https://cozydigital.org/",
   },
 };
 

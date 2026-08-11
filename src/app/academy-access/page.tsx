@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Your Course Access | Cozy Digital AI Academy",
   description: "Download your copy of The AI Advantage Blueprint.",
   robots: { index: false, follow: false },
-  alternates: { canonical: "https://www.cozydigital.org/academy-access/" },
+  alternates: { canonical: "https://cozydigital.org/academy-access/" },
 };
 
 function ArrowIcon() {

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy | Cozy Digital",
   description:
     "How Cozy Digital collects, uses, and protects the information you submit through our forms.",
-  alternates: { canonical: "https://www.cozydigital.org/privacy/" },
+  alternates: { canonical: "https://cozydigital.org/privacy/" },
 };
 
 const CONTACT_EMAIL = "quincy@cozydigital.org";

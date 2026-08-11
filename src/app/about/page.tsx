@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "About | Cozy Digital",
   description:
     "Cozy Digital is a two-founder studio: a developer who ships client websites end to end and a business applications analyst who maps and tests the workflows behind them. Here's how it started and how we work.",
-  alternates: { canonical: "https://www.cozydigital.org/about/" },
+  alternates: { canonical: "https://cozydigital.org/about/" },
 };
 
 function ArrowIcon() {

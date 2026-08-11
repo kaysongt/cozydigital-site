@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Digital Presence for Service Businesses | Cozy Digital",
   description:
     "Cozy Digital helps service businesses improve their websites, messaging, content, booking paths, automation, and search visibility. Request a free Digital Presence Audit.",
-  alternates: { canonical: "https://www.cozydigital.org/" },
+  alternates: { canonical: "https://cozydigital.org/" },
 };
 
 function ArrowIcon() {

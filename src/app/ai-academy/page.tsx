@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Cozy Digital AI Academy | The AI Advantage Blueprint ($149)",
   description:
     "A practical AI implementation course for small business owners. No coding, no hype. Nine interactive modules, a built-in workbook, and real systems you can run in 30 days. Instant access for $149.",
-  alternates: { canonical: "https://www.cozydigital.org/ai-academy/" },
+  alternates: { canonical: "https://cozydigital.org/ai-academy/" },
 };
 
 // Embedded Stripe Buy Button. The publishable key is meant to be public (safe to
@@ -84,12 +84,12 @@ export default function AiAcademyPage() {
   const courseJsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
-    "@id": "https://www.cozydigital.org/ai-academy/#course",
+    "@id": "https://cozydigital.org/ai-academy/#course",
     name: "The AI Advantage Blueprint",
     description:
       "A practical, self-paced AI implementation course for small business owners: nine interactive modules and a built-in workbook covering AI foundations, an opportunity audit, prompting, marketing, customer communication, operations, no-code automations, privacy and compliance, and a 30-day implementation plan.",
-    url: "https://www.cozydigital.org/ai-academy/",
-    provider: { "@id": "https://www.cozydigital.org/#organization" },
+    url: "https://cozydigital.org/ai-academy/",
+    provider: { "@id": "https://cozydigital.org/#organization" },
     inLanguage: "en",
     educationalLevel: "Beginner",
     teaches: "Practical AI implementation for small businesses",
@@ -99,7 +99,7 @@ export default function AiAcademyPage() {
       priceCurrency: "USD",
       category: "One-time purchase",
       availability: "https://schema.org/InStock",
-      url: "https://www.cozydigital.org/ai-academy/",
+      url: "https://cozydigital.org/ai-academy/",
     },
     hasCourseInstance: {
       "@type": "CourseInstance",

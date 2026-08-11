@@ -8,7 +8,7 @@
  * contact details. Add those only when they are real.
  */
 
-const baseUrl = "https://www.cozydigital.org";
+const baseUrl = "https://cozydigital.org";
 
 const organization = {
   "@type": ["Organization", "ProfessionalService"],

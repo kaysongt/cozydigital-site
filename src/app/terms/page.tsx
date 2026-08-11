@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Terms of Use | Cozy Digital",
   description:
     "The terms that govern your use of the Cozy Digital website and the free resources offered on it.",
-  alternates: { canonical: "https://www.cozydigital.org/terms/" },
+  alternates: { canonical: "https://cozydigital.org/terms/" },
 };
 
 const sections = [
