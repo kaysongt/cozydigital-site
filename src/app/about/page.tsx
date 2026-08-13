@@ -52,6 +52,12 @@ const shipped = [
     detail: "Therapy, coaching, courses, products, and an international retreat unified under one brand with direct booking paths.",
     href: "https://draliciawatkins.com/",
   },
+  {
+    name: "Lavar Scott",
+    kind: "Motorsport",
+    detail: "A NASCAR driver's sponsorship deck rebuilt as a live site: his story, audience, community work, and partnership packages in one place brands can act on.",
+    href: "https://elvinlearning.github.io/lavar_scott/",
+  },
 ];
 
 export default function AboutPage() {
