@@ -90,10 +90,30 @@ const aliciaDeliverables = [
   "Built a responsive experience across desktop and mobile",
 ];
 
+const ktiDeliverables = [
+  "Built the full enrollment path: curriculum, pricing, checkout, and student accounts",
+  "Organized 32 courses and five certificates into modules that open on a published schedule",
+  "Created a student dashboard that unlocks each module as it is released",
+  "Added a searchable glossary and a community space for students",
+  "Set up promotional codes for enrollment campaigns",
+  "Built light and dark modes into one responsive design system",
+];
+
+// Mesha's booking and payment screens are still labeled "coming soon" on her
+// own site. Say designed, not live, until Cal.com and Stripe are connected.
+const meshaDeliverables = [
+  "Replaced a rented booking platform with a site she owns",
+  "Published all 15 services and packages with her real pricing and descriptions",
+  "Designed the direct booking and gift certificate flow, ready to connect to Cal.com and Stripe",
+  "Showed the studio through her own photography and video before anyone books",
+  "Brought her hours, suite location, and reviews into one place",
+  "Carried her lotus mark into a calm plum and terracotta brand system",
+];
+
 // Lavar Scott: what was actually built. No audience or sponsorship numbers
 // beyond the two figures the driver's own deck states.
 const lavarDeliverables = [
-  "Turned a static sponsorship deck into a live site brands can be sent to",
+  "Turned a static sponsorship deck into a website brands can be sent to",
   "Positioned him as a media platform, not only a driver: story, audience, community work, and the car in one narrative",
   "Laid out reach by platform and the content formats a partner's brand can appear in",
   "Presented partnership packages, what each includes, and a direct enquiry path",
@@ -427,6 +447,57 @@ export default function HomePage() {
               </div>
             </article>
 
+            {/* KingsWord Training Institute */}
+            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
+              <figure className="overflow-hidden rounded-3xl border border-[#d3a84c]/30 bg-[#12274a] shadow-2xl shadow-black/40">
+                <Image
+                  src="/images/client-proof/kti-site.jpg"
+                  alt="KingsWord Training Institute course site built by Cozy Digital, showing the Advanced Certificate program and its first module"
+                  width={1200}
+                  height={900}
+                  loading="lazy"
+                  className="h-auto w-full object-cover"
+                />
+                <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
+                  A full certificate program, enrollment and all.{" "}
+                  <a href="https://thekti.org/" target="_blank" rel="noreferrer" className="font-semibold text-[#e0bd6e] underline underline-offset-2 hover:text-[#f2d495]">thekti.org</a>
+                </figcaption>
+              </figure>
+
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#e0bd6e]">Latest launch · Christian education</p>
+                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">A certificate program students can enroll in themselves.</h3>
+                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                  KingsWord Training Institute teaches an Advanced Certificate in Biblical Studies: 32 courses across five certificates, released module by module. Cozy Digital built the program online end to end, from the curriculum a visitor browses to the checkout, account, and dashboard that carry a student through it.
+                </p>
+                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
+                <ul className="mt-4 space-y-3">
+                  {ktiDeliverables.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
+                      <span className="mt-0.5 shrink-0 text-[#e0bd6e]">&#x2713;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href="https://thekti.org/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#c69a3f] px-6 py-3.5 text-sm font-bold text-[#12274a] shadow-xl shadow-black/25 transition-colors hover:bg-[#d9ae52]"
+                  >
+                    Visit the Live Website <ArrowIcon />
+                  </a>
+                  <Link
+                    href="/free-audit/#audit-form"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
+                  >
+                    Start Your Project
+                  </Link>
+                </div>
+              </div>
+            </article>
+
             {/* Lavar Scott */}
             <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
               <figure className="overflow-hidden rounded-3xl border border-[#ffb300]/30 bg-[#0d0e11] shadow-2xl shadow-black/40">
@@ -439,16 +510,15 @@ export default function HomePage() {
                   className="h-auto w-full object-cover"
                 />
                 <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
-                  A sponsor-facing home for a NASCAR driver&apos;s 2026 season.{" "}
-                  <a href="https://elvinlearning.github.io/lavar_scott/" target="_blank" rel="noreferrer" className="font-semibold text-[#ffb300] underline underline-offset-2 hover:text-[#ffcb52]">View the site</a>
+                  A sponsor-facing home for a NASCAR driver&apos;s 2026 season.
                 </figcaption>
               </figure>
 
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffb300]">Latest launch · Motorsport</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffb300]">In build · Motorsport</p>
                 <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">A sponsorship deck, rebuilt as a platform.</h3>
                 <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-                  Lavar Scott drives the No. 45 for Alpha Prime Racing in the NASCAR O&apos;Reilly Auto Parts Series. Cozy Digital took the PDF he was emailing to brands and built the live version: the story, the audience, the community work, and the partnership packages in one place a sponsor can walk through and act on.
+                  Lavar Scott drives the No. 45 for Alpha Prime Racing in the NASCAR O&apos;Reilly Auto Parts Series. Cozy Digital took the PDF he was emailing to brands and built the web version: the story, the audience, the community work, and the partnership packages in one place a sponsor can walk through and act on.
                 </p>
                 <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
                 <ul className="mt-4 space-y-3">
@@ -459,15 +529,57 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href="https://elvinlearning.github.io/lavar_scott/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#ffb300] px-6 py-3.5 text-sm font-bold text-[#0d0e11] shadow-xl shadow-black/25 transition-colors hover:bg-[#ffc233]"
+                <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <span className="inline-flex items-center gap-2 rounded-xl border border-[#ffb300]/30 bg-[#ffb300]/[0.08] px-6 py-3.5 text-sm font-bold text-[#ffb300]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#ffb300]" aria-hidden="true" />
+                    Launching ahead of the 2026 season
+                  </span>
+                  <Link
+                    href="/free-audit/#audit-form"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
                   >
-                    View the Live Website <ArrowIcon />
-                  </a>
+                    Start Your Project
+                  </Link>
+                </div>
+              </div>
+            </article>
+
+            {/* Essential Massage by Mesha */}
+            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
+              <figure className="overflow-hidden rounded-3xl border border-[#7c6a92]/40 bg-[#2b2530] shadow-2xl shadow-black/40">
+                <Image
+                  src="/images/client-proof/mesha-massage-site.jpg"
+                  alt="Essential Massage by Mesha website built by Cozy Digital, showing the studio hero and booking call to action"
+                  width={1200}
+                  height={900}
+                  loading="lazy"
+                  className="h-auto w-full object-cover"
+                />
+                <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
+                  A calm, bookable home for a massage practice in Bolingbrook, Illinois.
+                </figcaption>
+              </figure>
+
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#e0a184]">In build · Massage therapy</p>
+                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">Off a rented booking page, onto her own.</h3>
+                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                  Essential Massage by Mesha holds a 5.0 rating across 45+ verified reviews, but her booking page, client list, and a cut of every session lived on someone else&apos;s platform. Cozy Digital built the home version: her full menu, her studio, her reviews, and a booking path that belongs to the practice.
+                </p>
+                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
+                <ul className="mt-4 space-y-3">
+                  {meshaDeliverables.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
+                      <span className="mt-0.5 shrink-0 text-[#e0a184]">&#x2713;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <span className="inline-flex items-center gap-2 rounded-xl border border-[#e0a184]/30 bg-[#e0a184]/[0.08] px-6 py-3.5 text-sm font-bold text-[#e0a184]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#e0a184]" aria-hidden="true" />
+                    Booking and payments wiring next
+                  </span>
                   <Link
                     href="/free-audit/#audit-form"
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"

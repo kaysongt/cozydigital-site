@@ -39,7 +39,9 @@ const principles = [
   },
 ];
 
-const shipped = [
+// `href` is omitted while a project has no public address to send people to yet.
+// Those cards render as plain cards with a status line instead of a link.
+const shipped: { name: string; kind: string; detail: string; href?: string; status?: string }[] = [
   {
     name: "Dear Pastor's Wife",
     kind: "Global ministry",
@@ -55,8 +57,20 @@ const shipped = [
   {
     name: "Lavar Scott",
     kind: "Motorsport",
-    detail: "A NASCAR driver's sponsorship deck rebuilt as a live site: his story, audience, community work, and partnership packages in one place brands can act on.",
-    href: "https://elvinlearning.github.io/lavar_scott/",
+    detail: "A NASCAR driver's sponsorship deck rebuilt as a website: his story, audience, community work, and partnership packages in one place brands can act on.",
+    status: "Launching ahead of the 2026 season",
+  },
+  {
+    name: "KingsWord Training Institute",
+    kind: "Christian education",
+    detail: "A 32-course biblical studies certificate taken online end to end: curriculum, enrollment, payment, and a student dashboard that opens each module on schedule.",
+    href: "https://thekti.org/",
+  },
+  {
+    name: "Essential Massage by Mesha",
+    kind: "Massage therapy",
+    detail: "A massage practice moved off a rented booking platform onto a site it owns, with the full service menu, studio, and reviews in one place.",
+    status: "Booking and payments wiring next",
   },
 ];
 
@@ -198,24 +212,48 @@ export default function AboutPage() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2" data-reveal-list>
-            {shipped.map((project) => (
-              <a
-                key={project.name}
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-                className="motion-card group rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-colors duration-200 hover:border-cyan-400/20 hover:bg-white/[0.06]"
-                data-reveal
-              >
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">{project.kind}</p>
-                <h3 className="mt-3 text-lg font-black text-white">{project.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-400">{project.detail}</p>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors group-hover:text-cyan-100">
-                  View the live website
-                  <ArrowIcon />
-                </span>
-              </a>
-            ))}
+            {shipped.map((project) => {
+              const body = (
+                <>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">{project.kind}</p>
+                  <h3 className="mt-3 text-lg font-black text-white">{project.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-400">{project.detail}</p>
+                </>
+              );
+
+              if (!project.href) {
+                return (
+                  <div
+                    key={project.name}
+                    className="motion-card rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6"
+                    data-reveal
+                  >
+                    {body}
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-zinc-500">
+                      <span className="h-1.5 w-1.5 rounded-full bg-zinc-500" aria-hidden="true" />
+                      {project.status}
+                    </span>
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={project.name}
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="motion-card group rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-colors duration-200 hover:border-cyan-400/20 hover:bg-white/[0.06]"
+                  data-reveal
+                >
+                  {body}
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors group-hover:text-cyan-100">
+                    View the live website
+                    <ArrowIcon />
+                  </span>
+                </a>
+              );
+            })}
           </div>
 
           <div className="mt-8" data-reveal>
