@@ -79,54 +79,117 @@ const presencePillars = [
   },
 ];
 
-// Verifiable deliverables from the Dr. Alicia project. No metrics, no revenue
-// or booking claims: only what was actually built.
-const aliciaDeliverables = [
-  "Unified multiple offers under one recognizable brand",
-  "Created direct therapy and coaching booking paths",
-  "Connected online courses and wellness products",
-  "Presented the Costa Rica retreat with packages, pricing, and reservation paths",
-  "Improved service organization and calls to action",
-  "Built a responsive experience across desktop and mobile",
-];
+// Client work. One project is featured with its full deliverable list; the rest
+// run as compact horizontal cards so the section reads as a portfolio instead
+// of five identical full-width blocks stacked down the page.
+//
+// Accent classes are written out in full because Tailwind scans source text:
+// building them from fragments at runtime would leave the classes ungenerated.
+// Claims stay at deliverable level throughout, with no metrics we can't source.
+type CaseStudy = {
+  name: string;
+  category: string;
+  headline: string;
+  blurb: string;
+  image: string;
+  alt: string;
+  tags: string[];
+  href?: string;
+  status?: string;
+  accentText: string;
+  accentBorder: string;
+  frameBorder: string;
+  frameBg: string;
+};
 
-const ktiDeliverables = [
-  "Built the full enrollment path: curriculum, pricing, checkout, and student accounts",
-  "Organized 32 courses and five certificates into modules that open on a published schedule",
-  "Created a student dashboard that unlocks each module as it is released",
-  "Added a searchable glossary and a community space for students",
-  "Set up promotional codes for enrollment campaigns",
-  "Built light and dark modes into one responsive design system",
-];
+const featured: CaseStudy & { caption: string; deliverables: string[] } = {
+  name: "KingsWord Training Institute",
+  category: "Latest launch · Christian education",
+  headline: "A certificate program students can enroll in themselves.",
+  blurb:
+    "KingsWord Training Institute teaches an Advanced Certificate in Biblical Studies: 32 courses across five certificates, released module by module. Cozy Digital built the program online end to end, from the curriculum a visitor browses to the checkout, account, and dashboard that carry a student through it.",
+  image: "/images/client-proof/kti-site.jpg",
+  alt: "KingsWord Training Institute course site built by Cozy Digital, showing the Advanced Certificate program and its first module",
+  caption: "A full certificate program, enrollment and all.",
+  tags: [],
+  href: "https://thekti.org/",
+  accentText: "text-[#e0bd6e]",
+  accentBorder: "border-[#e0bd6e]/30",
+  frameBorder: "border-[#d3a84c]/30",
+  frameBg: "bg-[#12274a]",
+  deliverables: [
+    "Built the full enrollment path: curriculum, pricing, checkout, and student accounts",
+    "Organized 32 courses and five certificates into modules that open on a published schedule",
+    "Created a student dashboard that unlocks each module as it is released",
+    "Added a searchable glossary and a community space for students",
+    "Set up promotional codes for enrollment campaigns",
+    "Built light and dark modes into one responsive design system",
+  ],
+};
 
-// Mesha's booking and payment screens are still labeled "coming soon" on her
-// own site. Say designed, not live, until Cal.com and Stripe are connected.
-const meshaDeliverables = [
-  "Replaced a rented booking platform with a site she owns",
-  "Published all 15 services and packages with her real pricing and descriptions",
-  "Designed the direct booking and gift certificate flow, ready to connect to Cal.com and Stripe",
-  "Showed the studio through her own photography and video before anyone books",
-  "Brought her hours, suite location, and reviews into one place",
-  "Carried her lotus mark into a calm plum and terracotta brand system",
-];
-
-// Lavar Scott: what was actually built. No audience or sponsorship numbers
-// beyond the two figures the driver's own deck states.
-const lavarDeliverables = [
-  "Turned a static sponsorship deck into a website brands can be sent to",
-  "Positioned him as a media platform, not only a driver: story, audience, community work, and the car in one narrative",
-  "Laid out reach by platform and the content formats a partner's brand can appear in",
-  "Presented partnership packages, what each includes, and a direct enquiry path",
-  "Built a concept merch storefront ready to connect to Shopify or Stripe at launch",
-  "Designed a race-inspired motion system that holds up on desktop and mobile",
-];
-
-const pastorsWifeDeliverables = [
-  "Created one digital home for resources, events, community, speaking, and giving",
-  "Designed an audience-first homepage that routes each visitor to the right next step",
-  "Built a searchable resource library and clear event discovery experience",
-  "Created partnership, donation, booking, and email signup pathways",
-  "Developed a responsive visual system that carries the mission across every page",
+const caseStudies: CaseStudy[] = [
+  {
+    name: "Dr. Alicia Watkins",
+    category: "Wellness",
+    headline: "From scattered offers to one connected wellness brand.",
+    blurb:
+      "Therapy, coaching, courses, products, consultations, eBooks, and an international retreat, brought together in one polished home with clear ways to take the next step.",
+    image: "/images/client-proof/dr-alicia-site.png",
+    alt: "Homepage of the Dr. Alicia Watkins website built by Cozy Digital, introducing her therapy, coaching, and wellness brand",
+    tags: ["Direct booking paths", "Course & product pages", "Retreat packages"],
+    href: "https://draliciawatkins.com/",
+    accentText: "text-cyan-400",
+    accentBorder: "border-cyan-400/30",
+    frameBorder: "border-white/[0.08]",
+    frameBg: "bg-black",
+  },
+  {
+    name: "Dear Pastor's Wife",
+    category: "Global ministry",
+    headline: "A wide-reaching mission, made easy to enter.",
+    blurb:
+      "Free resources, gatherings across three continents, community, speaking, and partnership giving, shaped into a warm multi-page experience that helps every visitor find where she belongs.",
+    image: "/images/client-proof/dear-pastors-wife-site.png",
+    alt: "Dear Pastor's Wife homepage built by Cozy Digital, showing the ministry's resource hub and founder",
+    tags: ["Resource library", "Event discovery", "Donation & signup paths"],
+    href: "https://dearpastorswife.org/",
+    accentText: "text-[#f0bd65]",
+    accentBorder: "border-[#f0bd65]/30",
+    frameBorder: "border-[#a85f7e]/35",
+    frameBg: "bg-[#180812]",
+  },
+  {
+    name: "Lavar Scott",
+    category: "In build · Motorsport",
+    headline: "A sponsorship deck, rebuilt as a platform.",
+    blurb:
+      "The No. 45 driver for Alpha Prime Racing was emailing brands a PDF. We built the web version: his story, audience, community work, and partnership packages in one place a sponsor can act on.",
+    image: "/images/client-proof/lavar-scott-site.png",
+    alt: "Lavar Scott partnership website built by Cozy Digital, showing the No. 45 driver's 2026 season hero and sponsorship call to action",
+    tags: ["Partnership packages", "Reach by platform", "Concept storefront"],
+    status: "Launching ahead of the 2026 season",
+    accentText: "text-[#ffb300]",
+    accentBorder: "border-[#ffb300]/30",
+    frameBorder: "border-[#ffb300]/30",
+    frameBg: "bg-[#0d0e11]",
+  },
+  {
+    // Booking and payments are still labeled "coming soon" on Mesha's own site.
+    // Say designed, not live, until Cal.com and Stripe are connected.
+    name: "Essential Massage by Mesha",
+    category: "In build · Massage therapy",
+    headline: "Off a rented booking page, onto her own.",
+    blurb:
+      "A 5.0-rated practice whose booking page, client list, and a cut of every session lived on someone else's platform. We built the home version: her full menu, studio, and reviews in one place.",
+    image: "/images/client-proof/mesha-massage-site.jpg",
+    alt: "Essential Massage by Mesha website built by Cozy Digital, showing the studio hero and booking call to action",
+    tags: ["Full service menu", "Booking flow design", "Studio gallery"],
+    status: "Booking and payments wiring next",
+    accentText: "text-[#e0a184]",
+    accentBorder: "border-[#e0a184]/30",
+    frameBorder: "border-[#7c6a92]/40",
+    frameBg: "bg-[#2b2530]",
+  },
 ];
 
 // "What we improve" grouped into a clear system instead of many equal cards.
@@ -258,7 +321,7 @@ export default function HomePage() {
         </div>
 
         {/* Trust / value strip */}
-        <div className="relative mx-auto mt-20 grid max-w-6xl gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3 lg:mt-24" data-reveal-list>
+        <div className="relative mx-auto mt-14 grid max-w-6xl gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3 lg:mt-16" data-reveal-list>
           {[
             { title: "Clearer messaging", desc: "Visitors instantly understand what you do and who it's for." },
             { title: "Stronger trust", desc: "Consistent, credible touchpoints that make you easy to believe." },
@@ -276,7 +339,7 @@ export default function HomePage() {
       </section>
 
       {/* WHAT DIGITAL PRESENCE MEANS */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">What we improve</p>
@@ -334,266 +397,127 @@ export default function HomePage() {
       </section>
 
       {/* SELECTED CLIENT WORK */}
-      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-24">
+      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-16 md:py-20">
         <div id="client-work" className="scroll-mt-16 mx-auto max-w-6xl" data-reveal>
-          <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">Selected Client Work</p>
-          <h2 className="max-w-3xl text-3xl font-black leading-[1.1] text-white md:text-4xl">
-            Clear digital homes for brands with a lot to hold.
-          </h2>
-          <p className="mt-5 max-w-3xl text-base leading-relaxed text-zinc-400">
-            We organize the message, pages, and pathways around what each client needs people to understand and do, then shape the visuals to feel unmistakably like their brand.
-          </p>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">Selected Client Work</p>
+              <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
+                Clear digital homes for brands with a lot to hold.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-relaxed text-zinc-400">
+              We organize the message, pages, and pathways around what each client needs people to understand and do, then shape the visuals to feel unmistakably like their brand.
+            </p>
+          </div>
 
-          <div className="mt-14 space-y-20">
-            {/* Dr. Alicia Watkins */}
-            <article className="grid gap-9 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
-              <figure className="overflow-hidden rounded-3xl border border-white/[0.08] bg-black shadow-2xl shadow-black/40">
-                <Image
-                  src="/images/client-proof/dr-alicia-site.png"
-                  alt="Homepage of the Dr. Alicia Watkins website built by Cozy Digital, introducing her therapy, coaching, and wellness brand"
-                  width={1200}
-                  height={900}
-                  loading="lazy"
-                  className="h-auto w-full object-cover"
-                />
-                <figcaption className="border-t border-white/[0.06] px-5 py-3 text-xs text-zinc-500">
-                  A clear introduction to the complete Dr. Alicia brand.{" "}
-                  <a href="https://draliciawatkins.com/" target="_blank" rel="noreferrer" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">draliciawatkins.com</a>
-                </figcaption>
-              </figure>
+          {/* Featured build: the newest launch, with the full deliverable list. */}
+          <article className="mt-10 grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-center" data-reveal>
+            <figure className={`overflow-hidden rounded-3xl border ${featured.frameBorder} ${featured.frameBg} shadow-2xl shadow-black/40`}>
+              <Image
+                src={featured.image}
+                alt={featured.alt}
+                width={1200}
+                height={900}
+                priority
+                className="h-auto w-full object-cover"
+              />
+              <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
+                {featured.caption}{" "}
+                <a href={featured.href} target="_blank" rel="noreferrer" className="font-semibold text-[#e0bd6e] underline underline-offset-2 hover:text-[#f2d495]">thekti.org</a>
+              </figcaption>
+            </figure>
 
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">Website ecosystem · Wellness</p>
-                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">From scattered offers to one connected wellness brand.</h3>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-                  Dr. Alicia&apos;s business includes therapy, coaching, online courses, wellness products, private consultations, eBooks, and an international retreat. We brought those offers together in one polished digital home with clear ways to explore and take the next step.
-                </p>
-                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
-                <ul className="mt-4 space-y-3">
-                  {aliciaDeliverables.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
-                      <span className="mt-0.5 shrink-0 text-cyan-400">&#x2713;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div>
+              <p className={`text-xs font-black uppercase tracking-[0.2em] ${featured.accentText}`}>{featured.category}</p>
+              <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">{featured.headline}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-zinc-400">{featured.blurb}</p>
+              <ul className="mt-6 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+                {featured.deliverables.map((item) => (
+                  <li key={item} className="flex gap-2.5 text-sm leading-relaxed text-zinc-300">
+                    <span className={`mt-0.5 shrink-0 ${featured.accentText}`}>&#x2713;</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="https://draliciawatkins.com/"
+                  href={featured.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#c69a3f] px-6 py-3.5 text-sm font-bold text-[#12274a] shadow-xl shadow-black/25 transition-colors hover:bg-[#d9ae52]"
                 >
-                  View the Live Website <ArrowIcon />
+                  Visit the Live Website <ArrowIcon />
                 </a>
                 <Link
                   href="/free-audit/#audit-form"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
                 >
-                  Get a Digital Presence Like This
+                  Start Your Project
                 </Link>
-                </div>
               </div>
-            </article>
+            </div>
+          </article>
 
-            {/* Dear Pastor's Wife */}
-            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
-              <figure className="overflow-hidden rounded-3xl border border-[#a85f7e]/35 bg-[#180812] shadow-2xl shadow-black/40">
-                <Image
-                  src="/images/client-proof/dear-pastors-wife-site.png"
-                  alt="Dear Pastor's Wife homepage built by Cozy Digital, showing the ministry's resource hub and founder"
-                  width={1200}
-                  height={900}
-                  loading="lazy"
-                  className="h-auto w-full object-cover"
-                />
-                <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
-                  A welcoming resource hub for women in ministry.{" "}
-                  <a href="https://dearpastorswife.org/" target="_blank" rel="noreferrer" className="font-semibold text-[#f0bd65] underline underline-offset-2 hover:text-[#ffd68f]">dearpastorswife.org</a>
-                </figcaption>
-              </figure>
-
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#f0bd65]">Website &amp; brand system · Global ministry</p>
-                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">A wide-reaching mission, made easy to enter.</h3>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-                  Dear Pastor&apos;s Wife serves women through free resources, gatherings across three continents, community, speaking, and partnership giving. Cozy Digital shaped that full mission into a warm multi-page experience that helps every visitor quickly find where she belongs.
-                </p>
-                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
-                <ul className="mt-4 space-y-3">
-                  {pastorsWifeDeliverables.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
-                      <span className="mt-0.5 shrink-0 text-[#f0bd65]">&#x2713;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href="https://dearpastorswife.org/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#7d2148] px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-black/25 transition-colors hover:bg-[#982d59]"
-                  >
-                    Visit the Live Website <ArrowIcon />
-                  </a>
-                  <Link
-                    href="/free-audit/#audit-form"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
-                  >
-                    Start Your Project
-                  </Link>
+          {/* The rest of the portfolio: horizontal cards, two per row. */}
+          <div className="mt-6 grid gap-5 lg:grid-cols-2" data-reveal-list>
+            {caseStudies.map((project) => (
+              <article
+                key={project.name}
+                className={`motion-card flex flex-col overflow-hidden rounded-2xl border ${project.frameBorder} bg-white/[0.03]`}
+                data-reveal
+              >
+                {/* A wide strip off the top of the screenshot. A portrait slot
+                    beside the text cropped these 4:3 captures to nonsense. */}
+                <div className={`relative h-44 overflow-hidden ${project.frameBg}`}>
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    loading="lazy"
+                    className="object-cover object-top"
+                  />
                 </div>
-              </div>
-            </article>
 
-            {/* KingsWord Training Institute */}
-            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
-              <figure className="overflow-hidden rounded-3xl border border-[#d3a84c]/30 bg-[#12274a] shadow-2xl shadow-black/40">
-                <Image
-                  src="/images/client-proof/kti-site.jpg"
-                  alt="KingsWord Training Institute course site built by Cozy Digital, showing the Advanced Certificate program and its first module"
-                  width={1200}
-                  height={900}
-                  loading="lazy"
-                  className="h-auto w-full object-cover"
-                />
-                <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
-                  A full certificate program, enrollment and all.{" "}
-                  <a href="https://thekti.org/" target="_blank" rel="noreferrer" className="font-semibold text-[#e0bd6e] underline underline-offset-2 hover:text-[#f2d495]">thekti.org</a>
-                </figcaption>
-              </figure>
+                <div className="flex flex-1 flex-col p-5">
+                  <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${project.accentText}`}>{project.category}</p>
+                  <h3 className="mt-1.5 text-lg font-black leading-snug text-white">{project.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-400">{project.blurb}</p>
 
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#e0bd6e]">Latest launch · Christian education</p>
-                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">A certificate program students can enroll in themselves.</h3>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-                  KingsWord Training Institute teaches an Advanced Certificate in Biblical Studies: 32 courses across five certificates, released module by module. Cozy Digital built the program online end to end, from the curriculum a visitor browses to the checkout, account, and dashboard that carry a student through it.
-                </p>
-                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
-                <ul className="mt-4 space-y-3">
-                  {ktiDeliverables.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
-                      <span className="mt-0.5 shrink-0 text-[#e0bd6e]">&#x2713;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href="https://thekti.org/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#c69a3f] px-6 py-3.5 text-sm font-bold text-[#12274a] shadow-xl shadow-black/25 transition-colors hover:bg-[#d9ae52]"
-                  >
-                    Visit the Live Website <ArrowIcon />
-                  </a>
-                  <Link
-                    href="/free-audit/#audit-form"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
-                  >
-                    Start Your Project
-                  </Link>
+                  <ul className="mt-3 flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <li key={tag} className="rounded-full border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-[11px] font-semibold text-zinc-400">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-auto pt-4">
+                    {project.href ? (
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`group/link inline-flex items-center gap-1.5 text-sm font-bold ${project.accentText}`}
+                      >
+                        Visit the live website <ArrowIcon />
+                      </a>
+                    ) : (
+                      <span className={`inline-flex items-center gap-2 rounded-lg border ${project.accentBorder} px-3 py-1.5 text-xs font-bold ${project.accentText}`}>
+                        <span className="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true" />
+                        {project.status}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </article>
-
-            {/* Lavar Scott */}
-            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
-              <figure className="overflow-hidden rounded-3xl border border-[#ffb300]/30 bg-[#0d0e11] shadow-2xl shadow-black/40">
-                <Image
-                  src="/images/client-proof/lavar-scott-site.png"
-                  alt="Lavar Scott partnership website built by Cozy Digital, showing the No. 45 driver's 2026 season hero and sponsorship call to action"
-                  width={1200}
-                  height={900}
-                  loading="lazy"
-                  className="h-auto w-full object-cover"
-                />
-                <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
-                  A sponsor-facing home for a NASCAR driver&apos;s 2026 season.
-                </figcaption>
-              </figure>
-
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ffb300]">In build · Motorsport</p>
-                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">A sponsorship deck, rebuilt as a platform.</h3>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-                  Lavar Scott drives the No. 45 for Alpha Prime Racing in the NASCAR O&apos;Reilly Auto Parts Series. Cozy Digital took the PDF he was emailing to brands and built the web version: the story, the audience, the community work, and the partnership packages in one place a sponsor can walk through and act on.
-                </p>
-                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
-                <ul className="mt-4 space-y-3">
-                  {lavarDeliverables.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
-                      <span className="mt-0.5 shrink-0 text-[#ffb300]">&#x2713;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-                  <span className="inline-flex items-center gap-2 rounded-xl border border-[#ffb300]/30 bg-[#ffb300]/[0.08] px-6 py-3.5 text-sm font-bold text-[#ffb300]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#ffb300]" aria-hidden="true" />
-                    Launching ahead of the 2026 season
-                  </span>
-                  <Link
-                    href="/free-audit/#audit-form"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
-                  >
-                    Start Your Project
-                  </Link>
-                </div>
-              </div>
-            </article>
-
-            {/* Essential Massage by Mesha */}
-            <article className="grid gap-9 border-t border-white/[0.08] pt-16 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-reveal>
-              <figure className="overflow-hidden rounded-3xl border border-[#7c6a92]/40 bg-[#2b2530] shadow-2xl shadow-black/40">
-                <Image
-                  src="/images/client-proof/mesha-massage-site.jpg"
-                  alt="Essential Massage by Mesha website built by Cozy Digital, showing the studio hero and booking call to action"
-                  width={1200}
-                  height={900}
-                  loading="lazy"
-                  className="h-auto w-full object-cover"
-                />
-                <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
-                  A calm, bookable home for a massage practice in Bolingbrook, Illinois.
-                </figcaption>
-              </figure>
-
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#e0a184]">In build · Massage therapy</p>
-                <h3 className="mt-3 text-2xl font-black leading-tight text-white md:text-3xl">Off a rented booking page, onto her own.</h3>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-                  Essential Massage by Mesha holds a 5.0 rating across 45+ verified reviews, but her booking page, client list, and a cut of every session lived on someone else&apos;s platform. Cozy Digital built the home version: her full menu, her studio, her reviews, and a booking path that belongs to the practice.
-                </p>
-                <p className="mt-7 text-xs font-bold uppercase tracking-widest text-zinc-500">What we built</p>
-                <ul className="mt-4 space-y-3">
-                  {meshaDeliverables.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
-                      <span className="mt-0.5 shrink-0 text-[#e0a184]">&#x2713;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-                  <span className="inline-flex items-center gap-2 rounded-xl border border-[#e0a184]/30 bg-[#e0a184]/[0.08] px-6 py-3.5 text-sm font-bold text-[#e0a184]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#e0a184]" aria-hidden="true" />
-                    Booking and payments wiring next
-                  </span>
-                  <Link
-                    href="/free-audit/#audit-form"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
-                  >
-                    Start Your Project
-                  </Link>
-                </div>
-              </div>
-            </article>
+              </article>
+            ))}
           </div>
 
           {/* Other client work: clearly labeled, no fabricated metrics */}
-          <div className="mt-16">
-            <p className="mb-6 text-xs font-bold uppercase tracking-widest text-zinc-500">Supporting systems &amp; campaign work</p>
+          <div className="mt-12">
+            <p className="mb-5 text-xs font-bold uppercase tracking-widest text-zinc-500">Supporting systems &amp; campaign work</p>
             <div className="grid gap-4 md:grid-cols-3">
               <article className="flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
                 <div className="relative h-40 overflow-hidden bg-black">
@@ -631,7 +555,7 @@ export default function HomePage() {
       </section>
 
       {/* WHAT WE IMPROVE: grouped system */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-start" data-reveal>
             <div className="lg:sticky lg:top-28">
@@ -693,7 +617,7 @@ export default function HomePage() {
       </section>
 
       {/* FREE DIGITAL PRESENCE AUDIT: explanation + what you'll receive */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <div className="motion-card rounded-3xl border border-cyan-300/20 bg-cyan-500/[0.05] p-8 md:p-12" data-reveal>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
@@ -726,7 +650,7 @@ export default function HomePage() {
       </section>
 
       {/* PROCESS */}
-      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-20">
+      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">How it works</p>
@@ -748,13 +672,15 @@ export default function HomePage() {
       <FounderTrust />
 
       {/* FAQ */}
-      <section className="border-t border-white/[0.06] px-6 py-24">
-        <div className="mx-auto max-w-3xl" data-reveal>
+      <section className="border-t border-white/[0.06] px-6 py-16 md:py-20">
+        <div className="mx-auto max-w-5xl" data-reveal>
           <div className="mb-10 text-center">
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">FAQ</p>
             <h2 className="text-3xl font-black text-white md:text-4xl">Questions, answered clearly.</h2>
           </div>
-          <div className="space-y-3">
+          {/* Two columns: six stacked accordions ran the page long on desktop.
+              items-start keeps an opened answer from stretching its neighbour. */}
+          <div className="grid items-start gap-3 md:grid-cols-2">
             {faqs.map((f) => (
               <details key={f.q} className="group rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 open:border-cyan-300/20 open:bg-white/[0.05]">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-zinc-100 marker:hidden">
@@ -773,7 +699,7 @@ export default function HomePage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="px-6 py-28 text-center">
+      <section className="px-6 py-20 text-center">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-4xl font-black text-white md:text-6xl">Ready to build a stronger digital presence?</h2>
           <p className="mt-6 text-lg text-zinc-400">Start with a free audit and see exactly what to improve first.</p>

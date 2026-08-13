@@ -163,7 +163,7 @@ export default function AiAcademyPage() {
       </section>
 
       {/* OUTCOMES */}
-      <section className="px-6 py-20 md:py-28">
+      <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-fuchsia-300">What you walk away with</p>
@@ -181,7 +181,7 @@ export default function AiAcademyPage() {
       </section>
 
       {/* CURRICULUM */}
-      <section className="border-y border-white/[0.06] bg-white/[0.015] px-6 py-20 md:py-28">
+      <section className="border-y border-white/[0.06] bg-white/[0.015] px-6 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 text-center">
             <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-fuchsia-300">The curriculum</p>
@@ -203,7 +203,7 @@ export default function AiAcademyPage() {
       </section>
 
       {/* WORKBOOK */}
-      <section className="px-6 py-20 md:py-28">
+      <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-fuchsia-300">Not a PDF you skim once</p>
@@ -276,7 +276,7 @@ export default function AiAcademyPage() {
       </section>
 
       {/* SERVICES BRIDGE */}
-      <section className="border-t border-white/[0.06] px-6 py-20 md:py-24">
+      <section className="border-t border-white/[0.06] px-6 py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">Would you rather have it built for you?</h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-400">

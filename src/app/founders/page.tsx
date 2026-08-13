@@ -321,7 +321,7 @@ export default function FoundersPage() {
       </section>
 
       {/* HOW THE WORK SPLITS */}
-      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-24">
+      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-16 md:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">How we split the work</p>
@@ -357,7 +357,7 @@ export default function FoundersPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center" data-reveal>
           <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
             Bring us the thing that isn&apos;t working.

@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       {/* HOW IT STARTED: the real story, from the founders' own backgrounds. */}
-      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-24">
+      <section className="border-y border-white/[0.06] bg-white/[0.02] px-6 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">How it started</p>
@@ -172,7 +172,7 @@ export default function AboutPage() {
       </section>
 
       {/* HOW WE WORK */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">How we work</p>
@@ -202,7 +202,7 @@ export default function AboutPage() {
       </div>
 
       {/* WHAT WE'VE SHIPPED */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">What we&apos;ve shipped</p>
@@ -211,7 +211,7 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2" data-reveal-list>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-list>
             {shipped.map((project) => {
               const body = (
                 <>
@@ -265,7 +265,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-white/[0.06] px-6 py-24">
+      <section className="border-t border-white/[0.06] px-6 py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center" data-reveal>
           <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
             Start with the free audit.
