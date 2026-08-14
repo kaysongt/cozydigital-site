@@ -286,10 +286,6 @@ export default function HomePage() {
                 Get the Free Playbook
               </Link>
             </div>
-            <p className="mt-5 flex items-center gap-2 text-sm font-medium text-zinc-500">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-cyan-500/10 text-xs text-cyan-400" aria-hidden="true">✓</span>
-              Three practical recommendations. No required sales call.
-            </p>
           </div>
 
           {/* VSL. Deliberately not data-tilt: a frame that moves under the
@@ -320,8 +316,41 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* Platform strip: accurate, not an endorsement. Sits in the hero in
+            place of the old audit reassurance line. */}
+        <style>{`
+          @keyframes platform-marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+          .platform-track { animation: platform-marquee 38s linear infinite; }
+          .platform-marquee:hover .platform-track { animation-play-state: paused; }
+          @media (prefers-reduced-motion: reduce) {
+            .platform-track { animation: none; flex-wrap: wrap; justify-content: center; }
+          }
+        `}</style>
+        <div className="platform-marquee relative mx-auto mt-12 max-w-6xl overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] py-5 text-center" aria-labelledby="platform-logos-label" role="region" data-reveal>
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-zinc-950 via-zinc-950/80 to-transparent" />
+          <p id="platform-logos-label" className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-500">We improve the platforms your customers already use</p>
+          <div className="platform-track flex w-max items-center gap-8 px-8">
+            {[...platformLogos, ...platformLogos].map((logo, index) => (
+              <span
+                key={`${logo.name}-${index}`}
+                aria-label={logo.name}
+                className="inline-flex h-11 shrink-0 items-center gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.03] px-5"
+              >
+                <span className={`flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/[0.06] p-1 ${logo.glow}`}>
+                  <Image src={logo.logo} alt="" width={24} height={24} className="h-full w-full object-contain" aria-hidden="true" />
+                </span>
+                <span className="text-base font-black tracking-tight text-zinc-300 md:text-lg">{logo.name}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
         {/* Trust / value strip */}
-        <div className="relative mx-auto mt-14 grid max-w-6xl gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3 lg:mt-16" data-reveal-list>
+        <div className="relative mx-auto mt-6 grid max-w-6xl gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3" data-reveal-list>
           {[
             { title: "Clearer messaging", desc: "Visitors instantly understand what you do and who it's for." },
             { title: "Stronger trust", desc: "Consistent, credible touchpoints that make you easy to believe." },
@@ -362,37 +391,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Relabeled, secondary platform strip: accurate, not an endorsement. */}
-          <style>{`
-            @keyframes platform-marquee {
-              from { transform: translateX(0); }
-              to { transform: translateX(-50%); }
-            }
-            .platform-track { animation: platform-marquee 38s linear infinite; }
-            .platform-marquee:hover .platform-track { animation-play-state: paused; }
-            @media (prefers-reduced-motion: reduce) {
-              .platform-track { animation: none; flex-wrap: wrap; justify-content: center; }
-            }
-          `}</style>
-          <div className="platform-marquee relative mx-auto mt-12 max-w-6xl overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] py-5 text-center" aria-labelledby="platform-logos-label" role="region" data-reveal>
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-zinc-950 via-zinc-950/80 to-transparent" />
-            <p id="platform-logos-label" className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-500">We improve the platforms your customers already use</p>
-            <div className="platform-track flex w-max items-center gap-8 px-8">
-              {[...platformLogos, ...platformLogos].map((logo, index) => (
-                <span
-                  key={`${logo.name}-${index}`}
-                  aria-label={logo.name}
-                  className="inline-flex h-11 shrink-0 items-center gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.03] px-5"
-                >
-                  <span className={`flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/[0.06] p-1 ${logo.glow}`}>
-                    <Image src={logo.logo} alt="" width={24} height={24} className="h-full w-full object-contain" aria-hidden="true" />
-                  </span>
-                  <span className="text-base font-black tracking-tight text-zinc-300 md:text-lg">{logo.name}</span>
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
