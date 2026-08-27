@@ -30,10 +30,28 @@ body {
     #09090b;
   background-attachment: fixed;
   color: #f4f4f5;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* Display face for homepage editorial headings (Fraunces via next/font). */
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* Homepage-only calm surface: covers the sitewide cyan/fuchsia body wash. */
+.cozy-home {
+  background:
+    radial-gradient(920px 460px at 18% -8%, rgba(212, 160, 84, 0.09) 0%, transparent 58%),
+    radial-gradient(780px 420px at 88% 8%, rgba(201, 162, 39, 0.05) 0%, transparent 55%),
+    #09090b;
+}
+
+.cozy-home .cozy-hero {
+  background:
+    radial-gradient(720px 380px at 30% 0%, rgba(212, 160, 84, 0.07) 0%, transparent 62%);
 }
 
 /* ---- A-tier accessibility & finish ---- */
@@ -70,14 +88,46 @@ body {
   background-clip: padding-box;
 }
 
-/* Reusable brand text gradient (matches headline/logo treatment). */
+/* Brand accent text — warm gold (no rainbow animation). */
 .cozy-gradient-text {
-  background-image: linear-gradient(100deg, #22d3ee, #3b82f6, #d946ef, #22d3ee);
-  background-size: 220% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: cozyGradientFlow 7s linear infinite;
+  background-image: none;
+  color: #d4a054;
+  -webkit-text-fill-color: #d4a054;
+  animation: none;
+}
+
+
+/* Homepage accent utilities */
+.cozy-accent { color: #d4a054; }
+.cozy-eyebrow {
+  color: #c9a227;
+  letter-spacing: 0.22em;
+}
+.cozy-btn-primary {
+  background-color: #d4a054;
+  color: #1a1408;
+}
+.cozy-btn-primary:hover {
+  background-color: #e0b56a;
+}
+.cozy-numeral {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  color: #d4a054;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+
+/* Homepage audit form: solid gold submit, no rainbow gradient. */
+.cozy-home form button[type="submit"] {
+  background-image: none;
+  background-color: #d4a054;
+  color: #1a1408;
+  box-shadow: none;
+}
+.cozy-home form button[type="submit"]:hover:not(:disabled) {
+  background-color: #e0b56a;
 }
 
 /* ---- Homepage motion system ---- */
@@ -105,7 +155,7 @@ body {
   aspect-ratio: 1;
   border-radius: 999px;
   filter: blur(72px);
-  opacity: 0.2;
+  opacity: 0.08;
   will-change: transform;
 }
 
@@ -147,7 +197,7 @@ body {
 
 .hero-showcase {
   overflow: hidden;
-  animation: cozyFloat 6s ease-in-out infinite;
+  /* No float — it fights the video play control. */
 }
 
 .hero-showcase::after {
@@ -155,7 +205,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(420px circle at var(--glow-x) var(--glow-y), rgba(34, 211, 238, 0.15), transparent 42%);
+  background: radial-gradient(420px circle at var(--glow-x) var(--glow-y), rgba(212, 160, 84, 0.1), transparent 42%);
   opacity: 0;
   transition: opacity 220ms ease;
 }
@@ -170,10 +220,10 @@ body {
 
 .motion-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(28px) scale(0.985);
+  transform: translateY(16px);
   transition:
-    opacity 700ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1),
-    transform 700ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1);
+    opacity 650ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1),
+    transform 650ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 .motion-ready [data-reveal].is-visible {
@@ -187,8 +237,8 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
   .motion-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 24px 60px -32px rgba(34, 211, 238, 0.55);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px -28px rgba(0, 0, 0, 0.55);
   }
 }
 
@@ -209,13 +259,13 @@ body {
 }
 
 @keyframes cozyHeroReveal {
-  from { opacity: 0; transform: translateY(24px); filter: blur(7px); }
+  from { opacity: 0; transform: translateY(14px); filter: blur(2px); }
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @keyframes cozyVisualReveal {
-  from { opacity: 0; transform: perspective(1100px) translateY(34px) rotateX(5deg) rotateY(-7deg) scale(0.96); }
-  to { opacity: 1; transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) scale(1); }
+  from { opacity: 0; transform: perspective(1100px) translateY(18px) rotateX(2deg) rotateY(-3deg); }
+  to { opacity: 1; transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); }
 }
 
 @keyframes cozyFloat {
@@ -468,6 +518,54 @@ html.light .cozy-modal-panel {
 }
 
 /* Smooth the switch */
+
+/* ---- Homepage gold accent (light mode contrast) ---- */
+html.light .cozy-home {
+  background:
+    radial-gradient(920px 460px at 18% -8%, rgba(201, 162, 39, 0.1) 0%, transparent 58%),
+    #f6f7f9;
+}
+html.light .cozy-home .cozy-hero {
+  background:
+    radial-gradient(720px 380px at 30% 0%, rgba(201, 162, 39, 0.08) 0%, transparent 62%);
+}
+html.light .cozy-gradient-text {
+  color: #9a7320;
+  -webkit-text-fill-color: #9a7320;
+}
+html.light .cozy-accent {
+  color: #9a7320;
+}
+html.light .cozy-btn-primary {
+  background-color: #c9a227;
+  color: #1a1408;
+}
+html.light .cozy-btn-primary:hover {
+  background-color: #b8921f;
+}
+html.light .cozy-eyebrow {
+  color: #9a7320;
+}
+
+html.light .cozy-numeral { color: #9a7320; }
+html.light .text-\[\#D4A054\] { color: #9a7320; }
+html.light .text-\[\#C9A227\]\/90 { color: #9a7320; }
+html.light .text-\[\#C9A227\]\/80 { color: #9a7320; }
+html.light .hover\:text-\[\#D4A054\]:hover { color: #8a6818; }
+html.light .hover\:text-\[\#e0b56a\]:hover { color: #8a6818; }
+html.light .divide-white\/\[0\.08\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(15, 23, 42, 0.1);
+}
+html.light .cozy-home form button[type="submit"] {
+  background-image: none;
+  background-color: #c9a227;
+  color: #1a1408;
+}
+html.light .cozy-home form button[type="submit"]:hover:not(:disabled) {
+  background-color: #b8921f;
+}
+
+
 html.light body,
 html.light .bg-white\/\[0\.03\],
 html.light .bg-white\/\[0\.06\] { transition: background-color 0.2s ease, color 0.2s ease; }
