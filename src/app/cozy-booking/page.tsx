@@ -6,12 +6,14 @@ const consultationSteps = [
   "We recommend the cleanest next step, with no pressure and no confusing package pitch.",
 ];
 
-const calendlyUrl = "https://calendly.com/cozydigital-out/30min";
-const calendlyEmbedUrl = `${calendlyUrl}?hide_gdpr_banner=1&background_color=09090b&text_color=fafafa&primary_color=f59e0b`;
+const bookingUrl = "https://calendar.app.google/2hbWWV2uCPaJrqFU7";
+const bookingEmbedUrl =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0EkfUvwuAh_DKJLCkoVgBfpTnHTT7iWlBesH_Qw61Acsjg3dgqDpt4sMYiwo4I6o0NPbnAhs-d?gv=true";
 
 export const metadata: Metadata = {
   title: "Schedule a Call | Cozy Digital",
-  description: "Schedule a 30-minute Cozy Digital consultation through the embedded Calendly calendar.",
+  description:
+    "Schedule a 30-minute Cozy Digital consultation. Bookings go to Google Calendar with Google Meet.",
 };
 
 export default function CozyBookingPage() {
@@ -59,22 +61,22 @@ export default function CozyBookingPage() {
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-amber-400">Scheduling</p>
             <h2 className="text-2xl font-bold text-white">Schedule your 30-minute consultation.</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-300">
-              Choose a time that works for you and we&apos;ll talk through simple ways to improve your website, content, and online sales path.
+              Choose a time that works for you and we&apos;ll talk through simple ways to improve your website, content, and online sales path. Calls are 30 minutes on Google Meet, weekdays 9–5 CT.
             </p>
             <a
-              href={calendlyUrl}
+              href={bookingUrl}
               target="_blank"
               rel="noreferrer"
               className="mt-4 inline-flex rounded-lg border border-amber-300/30 bg-black/25 px-4 py-2 text-sm font-bold text-amber-100 transition-colors hover:bg-black/40"
             >
-              Open calendar in Calendly if the embed does not load
+              Open calendar in a new tab if the embed does not load
             </a>
           </div>
           <iframe
-            src={calendlyEmbedUrl}
+            src={bookingEmbedUrl}
             title="Schedule a Cozy Digital consultation"
             loading="eager"
-            className="h-[820px] w-full border-0 bg-zinc-950"
+            className="h-[720px] w-full border-0 bg-white"
           />
         </div>
       </section>
