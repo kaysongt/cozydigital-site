@@ -24,9 +24,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(1100px 520px at 18% -12%, rgba(34, 211, 238, 0.16) 0%, transparent 62%),
-    radial-gradient(980px 520px at 82% -14%, rgba(217, 70, 239, 0.14) 0%, transparent 60%),
-    radial-gradient(880px 420px at 50% 110%, rgba(59, 130, 246, 0.1) 0%, transparent 65%),
+    radial-gradient(1100px 520px at 18% -12%, rgba(212, 160, 84, 0.08) 0%, transparent 62%),
+    radial-gradient(980px 520px at 82% -14%, rgba(201, 162, 39, 0.05) 0%, transparent 60%),
     #09090b;
   background-attachment: fixed;
   color: #f4f4f5;
@@ -41,7 +40,7 @@ body {
   font-family: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
 }
 
-/* Homepage-only calm surface: covers the sitewide cyan/fuchsia body wash. */
+/* Homepage surface: same warm gold wash as the rest of the chrome. */
 .cozy-home {
   background:
     radial-gradient(920px 460px at 18% -8%, rgba(212, 160, 84, 0.09) 0%, transparent 58%),
@@ -58,14 +57,14 @@ body {
 
 /* Visible, on-brand focus ring for keyboard users (mouse clicks stay clean). */
 :focus-visible {
-  outline: 2px solid rgba(34, 211, 238, 0.9);
+  outline: 2px solid rgba(212, 160, 84, 0.9);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 ::selection {
-  background: rgba(34, 211, 238, 0.28);
-  color: #ffffff;
+  background: rgba(212, 160, 84, 0.32);
+  color: #1a1408;
 }
 
 /* Branded scrollbar (Chromium + Firefox). */
@@ -84,7 +83,7 @@ body {
   background-clip: padding-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 211, 238, 0.55);
+  background: rgba(212, 160, 84, 0.55);
   background-clip: padding-box;
 }
 
@@ -309,7 +308,7 @@ body {
 }
 
 .input:focus {
-  border-color: rgba(34, 211, 238, 0.75);
+  border-color: rgba(212, 160, 84, 0.75);
 }
 
 /* Skip link: hidden until focused, then floats above the sticky header. */
@@ -320,7 +319,7 @@ body {
   z-index: 200;
   border-radius: 0.75rem;
   background: #09090b;
-  border: 1px solid rgba(34, 211, 238, 0.5);
+  border: 1px solid rgba(212, 160, 84, 0.5);
   color: #fafafa;
   font-size: 0.875rem;
   font-weight: 700;
@@ -411,14 +410,13 @@ html.light {
 
 html.light body {
   background:
-    radial-gradient(1100px 520px at 18% -12%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
-    radial-gradient(980px 520px at 82% -14%, rgba(217, 70, 239, 0.1) 0%, transparent 58%),
-    radial-gradient(880px 420px at 50% 110%, rgba(59, 130, 246, 0.08) 0%, transparent 64%),
+    radial-gradient(1100px 520px at 18% -12%, rgba(212, 160, 84, 0.10) 0%, transparent 60%),
+    radial-gradient(980px 520px at 82% -14%, rgba(201, 162, 39, 0.06) 0%, transparent 58%),
     transparent;
   color: #18181b;
 }
 
-html.light ::selection { background: rgba(8, 145, 178, 0.22); color: #0b0b0c; }
+html.light ::selection { background: rgba(212, 160, 84, 0.28); color: #1a1408; }
 html.light * { scrollbar-color: rgba(113, 113, 122, 0.5) transparent; }
 
 /* ---- Surfaces ---- */
