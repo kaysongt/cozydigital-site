@@ -68,18 +68,18 @@ export default function CozyPublicFooter() {
         <div className="grid gap-10 md:grid-cols-[1.2fr_2fr]">
           <div>
             <Link href="/" className="mb-4 flex items-center gap-3">
-              <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-[#d4a054]/30 object-cover" />
-              <span className="font-display text-lg font-medium tracking-tight text-zinc-100">Cozy Digital</span>
+              <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
+              <span className="text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent">Cozy Digital</span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed">Websites, content, booking systems, automation, and search visibility for service businesses ready to build a stronger digital presence.</p>
             <div className="mt-5 flex items-center gap-4">
               {socialLinks.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="text-zinc-500 transition-colors hover:text-[#d4a054]">
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="text-zinc-500 transition-colors hover:text-cyan-300">
                   {s.icon}
                 </a>
               ))}
             </div>
-            <Link href="/free-audit/#audit-form" className="mt-6 inline-flex rounded-lg bg-[#d4a054] px-4 py-2 text-sm font-bold text-[#1a1408] hover:bg-[#e0b56a]">
+            <Link href="/free-audit/#audit-form" className="mt-6 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
               Get a Free Audit
             </Link>
           </div>

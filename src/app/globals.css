@@ -24,47 +24,30 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(1100px 520px at 18% -12%, rgba(212, 160, 84, 0.08) 0%, transparent 62%),
-    radial-gradient(980px 520px at 82% -14%, rgba(201, 162, 39, 0.05) 0%, transparent 60%),
+    radial-gradient(1100px 520px at 18% -12%, rgba(34, 211, 238, 0.16) 0%, transparent 62%),
+    radial-gradient(980px 520px at 82% -14%, rgba(217, 70, 239, 0.14) 0%, transparent 60%),
+    radial-gradient(880px 420px at 50% 110%, rgba(59, 130, 246, 0.1) 0%, transparent 65%),
     #09090b;
   background-attachment: fixed;
   color: #f4f4f5;
-  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-}
-
-/* Display face for homepage editorial headings (Fraunces via next/font). */
-.font-display {
-  font-family: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
-}
-
-/* Homepage surface: same warm gold wash as the rest of the chrome. */
-.cozy-home {
-  background:
-    radial-gradient(920px 460px at 18% -8%, rgba(212, 160, 84, 0.09) 0%, transparent 58%),
-    radial-gradient(780px 420px at 88% 8%, rgba(201, 162, 39, 0.05) 0%, transparent 55%),
-    #09090b;
-}
-
-.cozy-home .cozy-hero {
-  background:
-    radial-gradient(720px 380px at 30% 0%, rgba(212, 160, 84, 0.07) 0%, transparent 62%);
 }
 
 /* ---- A-tier accessibility & finish ---- */
 
 /* Visible, on-brand focus ring for keyboard users (mouse clicks stay clean). */
 :focus-visible {
-  outline: 2px solid rgba(212, 160, 84, 0.9);
+  outline: 2px solid rgba(34, 211, 238, 0.9);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 ::selection {
-  background: rgba(212, 160, 84, 0.32);
-  color: #1a1408;
+  background: rgba(34, 211, 238, 0.28);
+  color: #ffffff;
 }
 
 /* Branded scrollbar (Chromium + Firefox). */
@@ -83,50 +66,18 @@ body {
   background-clip: padding-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 160, 84, 0.55);
+  background: rgba(34, 211, 238, 0.55);
   background-clip: padding-box;
 }
 
-/* Brand accent text — warm gold (no rainbow animation). */
+/* Reusable brand text gradient (matches headline/logo treatment). */
 .cozy-gradient-text {
-  background-image: none;
-  color: #d4a054;
-  -webkit-text-fill-color: #d4a054;
-  animation: none;
-}
-
-
-/* Homepage accent utilities */
-.cozy-accent { color: #d4a054; }
-.cozy-eyebrow {
-  color: #c9a227;
-  letter-spacing: 0.22em;
-}
-.cozy-btn-primary {
-  background-color: #d4a054;
-  color: #1a1408;
-}
-.cozy-btn-primary:hover {
-  background-color: #e0b56a;
-}
-.cozy-numeral {
-  font-family: var(--font-display), ui-serif, Georgia, serif;
-  color: #d4a054;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-
-/* Homepage audit form: solid gold submit, no rainbow gradient. */
-.cozy-home form button[type="submit"] {
-  background-image: none;
-  background-color: #d4a054;
-  color: #1a1408;
-  box-shadow: none;
-}
-.cozy-home form button[type="submit"]:hover:not(:disabled) {
-  background-color: #e0b56a;
+  background-image: linear-gradient(100deg, #22d3ee, #3b82f6, #d946ef, #22d3ee);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cozyGradientFlow 7s linear infinite;
 }
 
 /* ---- Homepage motion system ---- */
@@ -154,7 +105,7 @@ body {
   aspect-ratio: 1;
   border-radius: 999px;
   filter: blur(72px);
-  opacity: 0.08;
+  opacity: 0.2;
   will-change: transform;
 }
 
@@ -196,7 +147,7 @@ body {
 
 .hero-showcase {
   overflow: hidden;
-  /* No float — it fights the video play control. */
+  animation: cozyFloat 6s ease-in-out infinite;
 }
 
 .hero-showcase::after {
@@ -204,7 +155,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(420px circle at var(--glow-x) var(--glow-y), rgba(212, 160, 84, 0.1), transparent 42%);
+  background: radial-gradient(420px circle at var(--glow-x) var(--glow-y), rgba(34, 211, 238, 0.15), transparent 42%);
   opacity: 0;
   transition: opacity 220ms ease;
 }
@@ -219,10 +170,10 @@ body {
 
 .motion-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(28px) scale(0.985);
   transition:
-    opacity 650ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1),
-    transform 650ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1);
+    opacity 700ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1),
+    transform 700ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 .motion-ready [data-reveal].is-visible {
@@ -236,8 +187,8 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
   .motion-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 48px -28px rgba(0, 0, 0, 0.55);
+    transform: translateY(-7px);
+    box-shadow: 0 24px 60px -32px rgba(34, 211, 238, 0.55);
   }
 }
 
@@ -258,13 +209,13 @@ body {
 }
 
 @keyframes cozyHeroReveal {
-  from { opacity: 0; transform: translateY(14px); filter: blur(2px); }
+  from { opacity: 0; transform: translateY(24px); filter: blur(7px); }
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @keyframes cozyVisualReveal {
-  from { opacity: 0; transform: perspective(1100px) translateY(18px) rotateX(2deg) rotateY(-3deg); }
-  to { opacity: 1; transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); }
+  from { opacity: 0; transform: perspective(1100px) translateY(34px) rotateX(5deg) rotateY(-7deg) scale(0.96); }
+  to { opacity: 1; transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) scale(1); }
 }
 
 @keyframes cozyFloat {
@@ -308,7 +259,7 @@ body {
 }
 
 .input:focus {
-  border-color: rgba(212, 160, 84, 0.75);
+  border-color: rgba(34, 211, 238, 0.75);
 }
 
 /* Skip link: hidden until focused, then floats above the sticky header. */
@@ -319,7 +270,7 @@ body {
   z-index: 200;
   border-radius: 0.75rem;
   background: #09090b;
-  border: 1px solid rgba(212, 160, 84, 0.5);
+  border: 1px solid rgba(34, 211, 238, 0.5);
   color: #fafafa;
   font-size: 0.875rem;
   font-weight: 700;
@@ -410,13 +361,14 @@ html.light {
 
 html.light body {
   background:
-    radial-gradient(1100px 520px at 18% -12%, rgba(212, 160, 84, 0.10) 0%, transparent 60%),
-    radial-gradient(980px 520px at 82% -14%, rgba(201, 162, 39, 0.06) 0%, transparent 58%),
+    radial-gradient(1100px 520px at 18% -12%, rgba(34, 211, 238, 0.12) 0%, transparent 60%),
+    radial-gradient(980px 520px at 82% -14%, rgba(217, 70, 239, 0.1) 0%, transparent 58%),
+    radial-gradient(880px 420px at 50% 110%, rgba(59, 130, 246, 0.08) 0%, transparent 64%),
     transparent;
   color: #18181b;
 }
 
-html.light ::selection { background: rgba(212, 160, 84, 0.28); color: #1a1408; }
+html.light ::selection { background: rgba(8, 145, 178, 0.22); color: #0b0b0c; }
 html.light * { scrollbar-color: rgba(113, 113, 122, 0.5) transparent; }
 
 /* ---- Surfaces ---- */
@@ -516,54 +468,6 @@ html.light .cozy-modal-panel {
 }
 
 /* Smooth the switch */
-
-/* ---- Homepage gold accent (light mode contrast) ---- */
-html.light .cozy-home {
-  background:
-    radial-gradient(920px 460px at 18% -8%, rgba(201, 162, 39, 0.1) 0%, transparent 58%),
-    #f6f7f9;
-}
-html.light .cozy-home .cozy-hero {
-  background:
-    radial-gradient(720px 380px at 30% 0%, rgba(201, 162, 39, 0.08) 0%, transparent 62%);
-}
-html.light .cozy-gradient-text {
-  color: #9a7320;
-  -webkit-text-fill-color: #9a7320;
-}
-html.light .cozy-accent {
-  color: #9a7320;
-}
-html.light .cozy-btn-primary {
-  background-color: #c9a227;
-  color: #1a1408;
-}
-html.light .cozy-btn-primary:hover {
-  background-color: #b8921f;
-}
-html.light .cozy-eyebrow {
-  color: #9a7320;
-}
-
-html.light .cozy-numeral { color: #9a7320; }
-html.light .text-\[\#D4A054\] { color: #9a7320; }
-html.light .text-\[\#C9A227\]\/90 { color: #9a7320; }
-html.light .text-\[\#C9A227\]\/80 { color: #9a7320; }
-html.light .hover\:text-\[\#D4A054\]:hover { color: #8a6818; }
-html.light .hover\:text-\[\#e0b56a\]:hover { color: #8a6818; }
-html.light .divide-white\/\[0\.08\] > :not([hidden]) ~ :not([hidden]) {
-  border-color: rgba(15, 23, 42, 0.1);
-}
-html.light .cozy-home form button[type="submit"] {
-  background-image: none;
-  background-color: #c9a227;
-  color: #1a1408;
-}
-html.light .cozy-home form button[type="submit"]:hover:not(:disabled) {
-  background-color: #b8921f;
-}
-
-
 html.light body,
 html.light .bg-white\/\[0\.03\],
 html.light .bg-white\/\[0\.06\] { transition: background-color 0.2s ease, color 0.2s ease; }

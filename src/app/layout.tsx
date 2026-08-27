@@ -1,6 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
 import Script from "next/script";
 import CozyPublicHeader from "@/components/cozy-public-header";
 import CozyPublicFooter from "@/components/cozy-public-footer";
@@ -9,19 +8,6 @@ import StructuredData from "@/components/structured-data";
 import SiteMotion from "@/components/site-motion";
 import MetaPixel from "@/components/meta-pixel";
 import AttributionCapture from "@/components/attribution";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  style: ["normal", "italic"],
-});
 
 const description = "Cozy Digital helps service businesses improve their websites, messaging, content, booking paths, automation, and search visibility. Request a free Digital Presence Audit.";
 const siteTitle = "Digital Presence for Service Businesses | Cozy Digital";
@@ -78,9 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
         <MetaPixel />
       </head>
-      <body
-        className={`${inter.variable} ${fraunces.variable} ${inter.className} flex min-h-screen flex-col bg-zinc-950`}
-      >
+      <body className="flex min-h-screen flex-col bg-zinc-950">
         <SiteMotion />
         <AttributionCapture />
         <a href="#main-content" className="skip-link">Skip to main content</a>
