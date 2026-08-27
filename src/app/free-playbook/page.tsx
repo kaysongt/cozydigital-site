@@ -6,7 +6,6 @@ import { useState, useRef } from "react";
 const CRM_API_URL = "https://cozy-client-hub-production.up.railway.app/api/webhook/lead";
 const HUB_WEBHOOK_SECRET = process.env.NEXT_PUBLIC_HUB_WEBHOOK_SECRET ?? "";
 const PDF_URL     = "/downloads/cozy-digital-playbook.pdf";
-const CALENDLY    = "https://calendly.com/cozydigital-out/30min";
 const TOTAL       = 6;
 
 type FormData = {
@@ -136,9 +135,7 @@ export default function FreePlaybookPage() {
               Download the Playbook
             </a>
             <a
-              href={CALENDLY}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/cozy-booking/"
               className="mt-4 block text-sm text-zinc-500 underline hover:text-zinc-800"
             >
               Book your free 30-min strategy call →

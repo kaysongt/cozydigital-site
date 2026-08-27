@@ -11,8 +11,6 @@ import { trackMetaLead } from "@/components/meta-pixel";
 const HUB_LEAD_URL =
   "https://cozy-client-hub-production.up.railway.app/api/webhook/lead";
 const HUB_WEBHOOK_SECRET = process.env.NEXT_PUBLIC_HUB_WEBHOOK_SECRET ?? "";
-const CALENDLY = "https://calendly.com/cozydigital-out/30min";
-
 type Status = "idle" | "loading" | "success" | "error";
 
 const GOALS = [
@@ -217,14 +215,12 @@ export default function AuditForm({
         </p>
         <p className="mt-4 text-sm text-zinc-400">
           Prefer to talk it through?{" "}
-          <a
-            href={CALENDLY}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/cozy-booking/"
             className="font-semibold text-cyan-300 underline underline-offset-2 hover:text-cyan-100"
           >
             Book an optional strategy call →
-          </a>
+          </Link>
         </p>
       </div>
     );
