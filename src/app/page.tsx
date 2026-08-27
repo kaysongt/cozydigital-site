@@ -121,8 +121,8 @@ const caseStudies: CaseStudy[] = [
     alt: "Homepage of the Dr. Alicia Watkins website built by Cozy Digital, introducing her therapy, coaching, and wellness brand",
     tags: ["Direct booking paths", "Course & product pages", "Retreat packages"],
     href: "https://draliciawatkins.com/",
-    accentText: "text-[#D4A054]",
-    accentBorder: "border-[#D4A054]/30",
+    accentText: "text-[#e0bd6e]",
+    accentBorder: "border-[#e0bd6e]/30",
     frameBorder: "border-white/[0.08]",
     frameBg: "bg-black",
   },
@@ -243,12 +243,12 @@ export default function HomePage() {
       <section className="cozy-hero relative overflow-hidden px-6 pb-24 pt-20 md:pb-28 md:pt-28">
         <div className="relative mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-16">
           <div data-hero-copy>
-            <p className="cozy-eyebrow mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-[#C9A227]/90">
+            <p className="cozy-eyebrow mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-400/90">
               Digital Presence for Service Businesses
             </p>
             <h1 className="font-display max-w-3xl text-4xl font-medium leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
               Make every part of your online presence{" "}
-              <span className="font-display italic text-[#D4A054]">work together.</span>
+              <span className="font-display italic text-cyan-400">work together.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-zinc-400">
               We connect your website, messaging, content, booking, follow-up, and search visibility into one clear system that helps customers trust you and take the next step.
@@ -285,10 +285,10 @@ export default function HomePage() {
               </div>
               <div className="mt-3 flex items-center justify-between gap-4 px-2 pb-1">
                 <div>
-                  <p className="cozy-eyebrow text-[10px] font-medium uppercase tracking-[0.2em] text-[#C9A227]/80">Watch first · 2 min</p>
+                  <p className="cozy-eyebrow text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-400/80">Watch first · 2 min</p>
                   <p className="mt-1 text-sm font-semibold text-white">One mismatch is enough to lose the booking.</p>
                 </div>
-                <Link href="#client-work" className="shrink-0 text-xs font-semibold text-zinc-400 transition-colors hover:text-[#D4A054]">See client work ↓</Link>
+                <Link href="#client-work" className="shrink-0 text-xs font-semibold text-zinc-400 transition-colors hover:text-cyan-400">See client work ↓</Link>
               </div>
             </div>
           </div>
@@ -349,7 +349,7 @@ export default function HomePage() {
       <section className="px-6 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="mb-14 max-w-2xl" data-reveal>
-            <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#C9A227]/90">What we improve</p>
+            <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-400/90">What we improve</p>
             <h2 className="font-display text-3xl font-medium leading-[1.1] tracking-tight text-white md:text-5xl">
               Your digital presence is more than your website.
             </h2>
@@ -380,7 +380,7 @@ export default function HomePage() {
         <div id="client-work" className="scroll-mt-16 mx-auto max-w-6xl" data-reveal>
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
-              <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#C9A227]/90">Selected Client Work</p>
+              <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-400/90">Selected Client Work</p>
               <h2 className="font-display text-3xl font-medium leading-[1.1] tracking-tight text-white md:text-5xl">
                 Clear digital homes for brands with a lot to hold.
               </h2>
@@ -503,7 +503,7 @@ export default function HomePage() {
                   <Image src="/images/client-proof/dr-alicia-scheduler.png" alt="Content planning dashboard built for Dr. Alicia" width={600} height={338} loading="lazy" className="h-full w-full object-cover object-top" />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#D4A054]">Content planning system</p>
+                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-cyan-400">Content planning system</p>
                   <h3 className="font-display mt-2 text-base font-medium tracking-tight text-white">Dr. Alicia Content Scheduler</h3>
                   <p className="mt-2 text-xs leading-5 text-zinc-400">A planning dashboard that organizes platform rhythm, post status, and next actions for ongoing content execution.</p>
                 </div>
@@ -513,7 +513,7 @@ export default function HomePage() {
                   <Image src="/images/client-proof/ak-marlowe-stats-preview.png" alt="Custom analytics tracker dashboard built for AK Marlowe" width={600} height={338} loading="lazy" className="h-full w-full object-cover object-top" />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#D4A054]">Analytics tracker</p>
+                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-cyan-400">Analytics tracker</p>
                   <h3 className="font-display mt-2 text-base font-medium tracking-tight text-white">AK Marlowe Stats Tracker</h3>
                   <p className="mt-2 text-xs leading-5 text-zinc-400">A custom tracker for logging daily snapshots, sales, ad campaigns, and platform growth in one source of truth.</p>
                 </div>
@@ -523,7 +523,7 @@ export default function HomePage() {
                   <video src="/videos/client-ad.mp4" poster="/videos/client-ad-poster.jpg" controls playsInline preload="none" className="h-full w-full object-cover" />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#D4A054]">Short-form advertisement</p>
+                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-cyan-400">Short-form advertisement</p>
                   <h3 className="font-display mt-2 text-base font-medium tracking-tight text-white">AK Marlowe Video Ad</h3>
                   <p className="mt-2 text-xs leading-5 text-zinc-400">A branded, hook-first short-form video ad produced by Cozy Digital, ready to post on Reels and Shorts.</p>
                 </div>
@@ -538,10 +538,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:items-start" data-reveal>
             <div className="lg:sticky lg:top-28">
-              <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#C9A227]/90">The system</p>
+              <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-400/90">The system</p>
               <h2 className="font-display text-3xl font-medium leading-[1.1] tracking-tight text-white md:text-5xl">
                 We improve the places where customers decide whether to{" "}
-                <span className="font-display italic text-[#D4A054]">trust you.</span>
+                <span className="font-display italic text-cyan-400">trust you.</span>
               </h2>
               <p className="mt-6 text-base leading-relaxed text-zinc-400">
                 Websites, content, booking systems, automation, local search, and AI visibility all work as parts of one connected presence, not separate projects that never quite line up.
@@ -553,11 +553,11 @@ export default function HomePage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {/* Featured AI visibility card — border + type, no gradient wash */}
-              <Link href="/ai-search/" className="group/geo relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.03] p-7 transition-colors hover:border-[#D4A054]/35 hover:bg-white/[0.05] sm:col-span-2">
-                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#D4A054]">Search &amp; AI visibility</p>
+              <Link href="/ai-search/" className="group/geo relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.03] p-7 transition-colors hover:border-cyan-400/35 hover:bg-white/[0.05] sm:col-span-2">
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-400">Search &amp; AI visibility</p>
                 <h3 className="font-display mt-2 text-lg font-medium leading-snug tracking-tight text-white md:text-xl">Help search engines and AI assistants understand, trust, and accurately describe your business</h3>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-400">We strengthen the information, structure, and trust signals that improve your business&apos;s ability to appear in search and AI-generated recommendations.</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#D4A054] transition-colors group-hover/geo:text-[#e0b56a]">Learn about AI Visibility <ArrowIcon /></span>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-400 transition-colors group-hover/geo:text-cyan-300">Learn about AI Visibility <ArrowIcon /></span>
               </Link>
 
               {improvementGroups.map((group) => (
@@ -566,7 +566,7 @@ export default function HomePage() {
                   <ul className="mt-3 space-y-2">
                     {group.items.map((item) => (
                       <li key={item} className="flex gap-2 text-xs leading-relaxed text-zinc-400">
-                        <span className="mt-0.5 text-[#D4A054]">&#x2713;</span>
+                        <span className="mt-0.5 text-cyan-400">&#x2713;</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -601,7 +601,7 @@ export default function HomePage() {
           <div className="motion-card rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-12" data-reveal>
             <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
-                <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#C9A227]/90">Free Digital Presence Audit</p>
+                <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-400/90">Free Digital Presence Audit</p>
                 <h2 className="font-display text-3xl font-medium leading-[1.1] tracking-tight text-white md:text-4xl">See what to fix first, before spending another dollar.</h2>
                 <p className="mt-5 text-base leading-relaxed text-zinc-300">
                   We&apos;ll review your website, messaging, trust signals, content, booking path, and search visibility, then identify the first three improvements we would make.
@@ -615,7 +615,7 @@ export default function HomePage() {
                       "Clear next steps, whether or not you hire Cozy Digital",
                     ].map((item) => (
                       <li key={item} className="flex gap-2.5 text-sm leading-relaxed text-zinc-200">
-                        <span className="mt-0.5 shrink-0 text-[#D4A054]">&#x2713;</span>
+                        <span className="mt-0.5 shrink-0 text-cyan-400">&#x2713;</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -632,7 +632,7 @@ export default function HomePage() {
       <section className="border-y border-white/[0.06] bg-white/[0.015] px-6 py-20 md:py-28">
         <div className="mx-auto max-w-5xl">
           <div className="mb-14 text-center">
-            <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#C9A227]/90">How it works</p>
+            <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-400/90">How it works</p>
             <h2 className="font-display text-3xl font-medium tracking-tight text-white md:text-5xl">Three simple steps.</h2>
           </div>
           <div className="grid gap-10 md:grid-cols-3 md:gap-8" data-reveal-list>
@@ -654,17 +654,17 @@ export default function HomePage() {
       <section className="border-t border-white/[0.06] px-6 py-20 md:py-28">
         <div className="mx-auto max-w-5xl" data-reveal>
           <div className="mb-12 text-center">
-            <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-[#C9A227]/90">FAQ</p>
+            <p className="cozy-eyebrow mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-400/90">FAQ</p>
             <h2 className="font-display text-3xl font-medium tracking-tight text-white md:text-5xl">Questions, answered clearly.</h2>
           </div>
           {/* Two columns: six stacked accordions ran the page long on desktop.
               items-start keeps an opened answer from stretching its neighbour. */}
           <div className="grid items-start gap-3 md:grid-cols-2">
             {faqs.map((f) => (
-              <details key={f.q} className="group rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 open:border-[#D4A054]/25 open:bg-white/[0.05]">
+              <details key={f.q} className="group rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 open:border-cyan-400/25 open:bg-white/[0.05]">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-zinc-100 marker:hidden">
                   {f.q}
-                  <span aria-hidden className="shrink-0 text-[#D4A054] transition-transform group-open:rotate-45">+</span>
+                  <span aria-hidden className="shrink-0 text-cyan-400 transition-transform group-open:rotate-45">+</span>
                 </summary>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-400">{f.a}</p>
               </details>
@@ -672,7 +672,7 @@ export default function HomePage() {
           </div>
           <p className="mt-10 text-center text-sm text-zinc-500">
             More questions?{" "}
-            <Link href="/faq/" className="font-semibold text-[#D4A054] underline underline-offset-2 hover:text-[#e0b56a]">Read the full FAQ</Link>
+            <Link href="/faq/" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">Read the full FAQ</Link>
           </p>
         </div>
       </section>
