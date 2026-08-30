@@ -19,7 +19,7 @@ const sections = [
   },
   {
     heading: "Services & pricing",
-    body: "Any prices, packages, and deliverables shown on this site are recommended starting points. Final scope and pricing are confirmed in writing before a project begins. Nothing on this site is a binding offer or contract on its own.",
+    body: "Deliverables described on this site are starting points, not fixed packages. Final scope and pricing are confirmed in writing before a project begins. Nothing on this site is a binding offer or contract on its own.",
   },
   {
     heading: "Your content",

@@ -46,7 +46,7 @@ const presencePillars = [
   },
   {
     title: "Content & social presence",
-    desc: "Content direction and reusable systems that support the business's actual offers.",
+    desc: "Content direction and reusable systems, including short-form and AI-assisted video, built around the offers the business actually sells.",
   },
   {
     title: "Booking & lead pathways",
@@ -187,7 +187,7 @@ const improvementGroups = [
   },
   {
     label: "Visibility & content",
-    items: ["Social content direction", "Local search presence", "AI visibility", "Analytics & reporting"],
+    items: ["Social content direction", "AI video & ad creative", "Local search presence", "AI visibility", "Analytics & reporting"],
   },
 ];
 
@@ -310,7 +310,7 @@ export default function HomePage() {
         <div className="platform-marquee relative mx-auto mt-16 max-w-6xl overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.015] py-5 text-center" aria-labelledby="platform-logos-label" role="region" data-reveal>
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-zinc-950 via-zinc-950/80 to-transparent" />
-          <p id="platform-logos-label" className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-500">We improve the platforms your customers already use</p>
+          <p id="platform-logos-label" className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-zinc-400">We improve the platforms your customers already use</p>
           <div className="platform-track flex w-max items-center gap-8 px-8">
             {[...platformLogos, ...platformLogos].map((logo, index) => (
               <span
@@ -401,9 +401,9 @@ export default function HomePage() {
                 priority
                 className="h-auto w-full object-cover"
               />
-              <figcaption className="border-t border-white/[0.08] px-5 py-3 text-xs text-zinc-500">
+              <figcaption className="cozy-featured-figcaption border-t px-5 py-3 text-xs">
                 {featured.caption}{" "}
-                <a href={featured.href} target="_blank" rel="noreferrer" className="font-semibold text-[#e0bd6e] underline underline-offset-2 hover:text-[#f2d495]">thekti.org</a>
+                <a href={featured.href} target="_blank" rel="noreferrer" className="cozy-figcaption-link font-semibold text-[#e0bd6e] underline underline-offset-2 hover:text-[#f2d495]">thekti.org</a>
               </figcaption>
             </figure>
 
@@ -496,7 +496,7 @@ export default function HomePage() {
 
           {/* Other client work: clearly labeled, no fabricated metrics */}
           <div className="mt-16">
-            <p className="mb-6 text-xs font-medium uppercase tracking-widest text-zinc-500">Supporting systems &amp; campaign work</p>
+            <p className="mb-6 text-xs font-medium uppercase tracking-widest text-zinc-400">Supporting systems &amp; campaign work</p>
             <div className="grid gap-5 md:grid-cols-3">
               <article className="flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
                 <div className="relative h-40 overflow-hidden bg-black">
@@ -544,7 +544,7 @@ export default function HomePage() {
                 <span className="font-display italic text-cyan-400">trust you.</span>
               </h2>
               <p className="mt-6 text-base leading-relaxed text-zinc-400">
-                Websites, content, booking systems, automation, local search, and AI visibility all work as parts of one connected presence, not separate projects that never quite line up.
+                Websites, content, video, booking systems, automation, local search, and AI visibility all work as parts of one connected presence, not separate projects that never quite line up.
               </p>
               <Link href="/services/" className="group mt-9 inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]">
                 See how we work <ArrowIcon />
@@ -607,7 +607,7 @@ export default function HomePage() {
                   We&apos;ll review your website, messaging, trust signals, content, booking path, and search visibility, then identify the first three improvements we would make.
                 </p>
                 <div className="mt-8">
-                  <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">What you&apos;ll receive</p>
+                  <p className="text-xs font-medium uppercase tracking-widest text-zinc-400">What you&apos;ll receive</p>
                   <ul className="mt-3 space-y-2.5">
                     {[
                       "Three priority improvements, ranked",

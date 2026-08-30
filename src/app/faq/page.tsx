@@ -4,13 +4,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "FAQ | Cozy Digital",
   description:
-    "Answers about Cozy Digital's websites, pricing, process, and AI search (GEO) optimization that helps service businesses get found by ChatGPT, Perplexity, and Google AI.",
+    "Answers about Cozy Digital's websites, video and content work, process, and AI search (GEO) optimization that helps service businesses get found by ChatGPT, Perplexity, and Google AI.",
   alternates: { canonical: "https://cozydigital.org/faq/" },
 };
 
 // Plain question/answer pairs. Answers are written to be self-contained and
-// quotable so answer engines can lift them directly. Every fact here is real
-// (prices, deliverables, timelines). Keep answers factual when editing.
+// quotable so answer engines can lift them directly. Every fact here is real.
+// Deliberately absent: amounts, turnaround promises, and guarantees. Plan
+// details live in the Client Hub, and quoting a number here is how the site
+// ends up contradicting it. Keep answers factual when editing.
 const faqs: { q: string; a: string }[] = [
   {
     q: "What is a Digital Presence Audit?",
@@ -42,11 +44,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How long does a typical project take?",
-    a: "It depends on scope. The full build is designed to launch within about 90 days, while smaller improvements to an existing site are faster. We confirm the timeline with you after the audit and kickoff, so you always know what to expect.",
+    a: "It depends on the scope and on how quickly we can get content and decisions back from you. A single landing page moves fast; a full site with booking and follow-up wired in takes longer. We agree the timeline with you after the audit and kickoff, before any work starts.",
   },
   {
     q: "Will I be locked into a long-term contract?",
-    a: "No. The one-time build is a single project you own when it's done. The monthly retainer is month-to-month with no long-term contract, so you can scale up or pause as your needs change.",
+    a: "No. Project work is a defined scope with a clear end, and you own what we build when it's done. Ongoing support runs month to month with no long-term contract, so you can scale up or pause as your needs change.",
   },
   {
     q: "What happens after I request an audit?",
@@ -54,7 +56,15 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does working with Cozy Digital cost?",
-    a: "The one-time Full Build Package is $3,400 and you own everything when it's done. The Monthly Retainer is $1,000 per month for ongoing support with no long-term contract. The free audit helps determine which option fits, without turning into a high-pressure sales call.",
+    a: "It depends on what you actually need, so there is no single number to quote here. Current plans and what each one includes live in the Cozy Digital Client Hub, and we confirm scope and price with you in writing before any work begins. If you are not sure what you need yet, the free audit is the place to start.",
+  },
+  {
+    q: "Where do I find your plans and my account?",
+    a: "Both live in the Cozy Digital Client Hub. Anyone can look through the plans there, and businesses already working with us sign in to the same place to see their content, progress, and reports. There is a Client Hub link in the site header and in the footer of every page.",
+  },
+  {
+    q: "Do you make video?",
+    a: "Yes. We produce short-form vertical video for Reels, Shorts, and paid placements: the hook, the cuts, the captions, and the on-brand look. We use AI tools where they genuinely save time and edit the rest by hand. There is an example ad on our homepage under the client work section.",
   },
 ];
 
@@ -81,7 +91,7 @@ export default function FaqPage() {
           <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">FAQ</p>
           <h1 className="text-4xl font-black text-white md:text-5xl">Questions, answered clearly.</h1>
           <p className="mt-4 leading-relaxed text-zinc-400">
-            Straight answers about the free audit, pricing, process, and how we help service businesses build a stronger digital presence, from their website to search and AI visibility.
+            Straight answers about the free audit, how projects actually run, and how we help service businesses build a stronger digital presence, from their website and video to search and AI visibility.
           </p>
         </div>
 

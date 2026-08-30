@@ -106,7 +106,7 @@ export default function AiSearchPage() {
       <section className="px-6 pb-4">
         <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-            <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">Traditional SEO</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-zinc-400">Traditional SEO</p>
             <p className="mt-3 text-sm leading-relaxed text-zinc-400">Optimizes to rank your page in a list of links. The customer still has to click, compare, and choose.</p>
           </div>
           <div className="rounded-2xl border border-cyan-300/25 bg-cyan-500/[0.05] p-6">
@@ -127,7 +127,7 @@ export default function AiSearchPage() {
             {deliverables.map((item) => (
               <div key={item.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-colors hover:border-cyan-400/20 hover:bg-white/[0.06]">
                 <h3 className="text-sm font-black leading-snug text-white">{item.title}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-400">{item.desc}</p>
               </div>
             ))}
           </div>

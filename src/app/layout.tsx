@@ -23,6 +23,10 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
 });
 
+// The GA4 property for the public marketing site, provided by the site owner.
+// This is the only measurement ID the site should ever report to.
+const GA_MEASUREMENT_ID = "G-QJ7R8893NF";
+
 const description = "Cozy Digital helps service businesses improve their websites, messaging, content, booking paths, automation, and search visibility. Request a free Digital Presence Audit.";
 const siteTitle = "Digital Presence for Service Businesses | Cozy Digital";
 
@@ -64,16 +68,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <StructuredData />
+        {/* GA4. The root layout renders once per document, so declaring the tag
+            here is what keeps it from being injected twice. next/script
+            de-duplicates by `id` and holds the loader until after hydration, so
+            analytics never blocks first paint. Both the loader URL and the
+            config call read GA_MEASUREMENT_ID, so the two can't drift apart. */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-M5PYPZ1GSJ"
+          id="ga4-loader"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="ga4-config" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-M5PYPZ1GSJ');
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
         <MetaPixel />

@@ -17,9 +17,9 @@ function ArrowIcon() {
   );
 }
 
-// How we actually operate. Each of these is backed by something real on the
-// site: the pricing page's ownership and no-contract terms, or the way the
-// two founders split analysis and build. Don't add aspirational ones.
+// How we actually operate. Each of these is backed by something real: the
+// ownership and no-contract terms we hold ourselves to, or the way the two
+// founders split analysis and build. Don't add aspirational ones.
 const principles = [
   {
     label: "Analysis before design",
@@ -35,7 +35,7 @@ const principles = [
   },
   {
     label: "You own what we build",
-    body: "You own all of it when we're done, and the monthly retainer has no long-term contract. Stay because it's working, not because you're locked in.",
+    body: "You own all of it when we're done, and ongoing support runs month to month. Stay because it's working, not because you're locked in.",
   },
 ];
 

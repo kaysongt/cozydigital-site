@@ -7,10 +7,10 @@ Public static marketing site for [Cozy Digital](https://www.cozydigital.org) —
 This repo contains **only the public-facing marketing pages** of the Cozy Digital site. No sensitive data, no private routes, no API keys, no server-side logic, no database connections.
 
 ### Pages included
-- `/` — Homepage (hero, capabilities, pricing, CTA)
+- `/` — Homepage (hero, capabilities, client work, CTA)
 - - `/services` — Services overview
   - - `/process` — How it works (audit, map, build, launch)
-    - - `/pricing` — Package pricing
+    - - `/pricing` — Standalone static redirect to the Client Hub, where plans now live
       - - `/about` — About Cozy Digital
         - - `/cozy-booking` — Booking page (links to Calendly)
           - - `/free-audit` — Free first-impression audit page
@@ -31,6 +31,8 @@ This repo contains **only the public-facing marketing pages** of the Cozy Digita
                         ```
 
                         Open [http://localhost:3000](http://localhost:3000).
+
+                        `/pricing/` is intentionally served from `public/pricing/index.html`, not the App Router. It uses an immediate meta refresh plus a visible fallback link, so the redirect works without JavaScript. The redirect is excluded from the sitemap and may omit site analytics.
 
                         ## Deployment
 

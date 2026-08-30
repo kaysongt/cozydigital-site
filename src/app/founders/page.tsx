@@ -149,7 +149,7 @@ export default function FoundersPage() {
         {/* What that structure gets you */}
         <div className="relative mx-auto mt-20 grid max-w-6xl gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3 lg:mt-24" data-reveal-list>
           {promises.map((p) => (
-            <div key={p.title} className="motion-card bg-zinc-950 p-5 text-left sm:p-6" data-reveal>
+            <div key={p.title} className="cozy-promise-card motion-card bg-zinc-950 p-5 text-left sm:p-6" data-reveal>
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-500/10 text-cyan-400">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.4}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
               </div>
@@ -221,7 +221,7 @@ export default function FoundersPage() {
 
                   <div className="space-y-9">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500">
+                      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-400">
                         What {person.name.split(" ")[0]} owns
                       </p>
                       <ul className="mt-4 space-y-3">
@@ -235,7 +235,7 @@ export default function FoundersPage() {
                     </div>
 
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500">
+                      <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-400">
                         Education & training
                       </p>
                       <div className="mt-4 space-y-4">
@@ -253,7 +253,7 @@ export default function FoundersPage() {
 
                 {/* Track record */}
                 <div className="mt-11 border-t border-white/[0.08] pt-9">
-                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500">Track record</p>
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-400">Track record</p>
                   <ol className="mt-6 space-y-6">
                     {person.timeline.map((job) => (
                       <li key={`${job.org}-${job.period}`} className="relative flex gap-5 pl-1">
@@ -264,7 +264,7 @@ export default function FoundersPage() {
                         <div className="min-w-0 flex-1 pb-1">
                           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                             <p className="text-sm font-black text-white">{job.role}</p>
-                            <p className="shrink-0 text-[11px] font-bold uppercase tracking-wide text-zinc-500">{job.period}</p>
+                            <p className="shrink-0 text-[11px] font-bold uppercase tracking-wide text-zinc-400">{job.period}</p>
                           </div>
                           <p className="mt-0.5 text-xs font-semibold text-zinc-400">{job.org}</p>
                           <p className="mt-2 text-sm leading-relaxed text-zinc-400">{job.detail}</p>
@@ -276,7 +276,7 @@ export default function FoundersPage() {
 
                 {/* Toolkit */}
                 <div className="mt-11 border-t border-white/[0.08] pt-9">
-                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500">Toolkit</p>
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-400">Toolkit</p>
                   <div className="mt-6 grid gap-6 sm:grid-cols-3">
                     {person.toolkit.map((group) => (
                       <div key={group.label}>
@@ -298,7 +298,7 @@ export default function FoundersPage() {
 
                 {/* Selected work */}
                 <div className="mt-11 border-t border-white/[0.08] pt-9">
-                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500">
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-400">
                     Selected work & recognition
                   </p>
                   <div className="mt-6 grid gap-4 sm:grid-cols-2" data-reveal-list>
@@ -341,7 +341,7 @@ export default function FoundersPage() {
                 data-reveal
               >
                 <div className="flex items-center justify-between gap-3">
-                  <span className="text-[11px] font-black tracking-widest text-zinc-600">
+                  <span className="text-[11px] font-black tracking-widest text-zinc-400">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider ${accentChip[stage.accent]}`}>

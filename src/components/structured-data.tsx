@@ -6,6 +6,12 @@
  * markup to understand *what* Cozy Digital is, what it offers, and whether to
  * cite it. Every value here is factual, with no invented stats, reviews, or
  * contact details. Add those only when they are real.
+ *
+ * Service offers here carry no `price`. Plan pricing for client work lives in
+ * the Client Hub, and duplicating an amount in schema is how a site ends up
+ * quoting a number it no longer honours. The AI Academy course is the one
+ * exception: it has a single fixed price sold through Stripe on /ai-academy/,
+ * and the two must always match.
  */
 
 const baseUrl = "https://cozydigital.org";
@@ -18,7 +24,7 @@ const organization = {
   logo: `${baseUrl}/brand/cozy-digital-logo.jpg`,
   image: `${baseUrl}/og-image.png`,
   description:
-    "Cozy Digital helps service businesses improve their overall digital presence: websites and landing pages, brand messaging, content and social presence, booking and lead systems, follow-up and automation, local search and AI visibility, and analytics. AI search (GEO) optimization is offered as one part of that complete system.",
+    "Cozy Digital helps service businesses improve their overall digital presence: websites and landing pages, brand messaging, content and social presence, short-form and AI-assisted video, booking and lead systems, follow-up and automation, local search and AI visibility, and analytics. AI search (GEO) optimization is offered as one part of that complete system.",
   slogan: "Improve how customers find you, understand you, trust you, and take action online.",
   sameAs: [
     "https://www.instagram.com/cozydig1tal/",
@@ -32,6 +38,9 @@ const organization = {
     "AI search visibility",
     "AI training for small businesses",
     "Content strategy",
+    "Short-form video and ad creative",
+    "AI-assisted video production",
+    "Marketing automation",
     "Lead generation systems",
   ],
   areaServed: { "@type": "Place", name: "United States" },
@@ -49,7 +58,7 @@ const organization = {
     },
     {
       "@type": "Offer",
-      price: "30.00",
+      price: "149.00",
       priceCurrency: "USD",
       itemOffered: {
         "@type": "Course",
@@ -64,23 +73,31 @@ const organization = {
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: "Full Build Package",
+        name: "Website Design and Ongoing Care",
         description:
-          "A custom 5-page website plus landing page, direct booking system, Google Business Profile and local SEO setup, social branding, automated follow-up, and an analytics dashboard, built to launch in 90 days.",
+          "Custom websites and landing pages for service businesses, plus ongoing edits, updates, and maintenance so the site stays current after launch.",
+        url: `${baseUrl}/services/`,
       },
-      price: "3400",
-      priceCurrency: "USD",
     },
     {
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: "Monthly Retainer",
+        name: "AI Video and Ad Creative",
         description:
-          "Ongoing website maintenance, local SEO and Google Profile management, 8 social posts per month, ad management, and a monthly analytics report and strategy call. No long-term contract.",
+          "Short-form vertical video for Reels, Shorts, and paid placements, produced with a mix of AI tooling and hands-on editing: hooks, cuts, captions, and on-brand art direction.",
+        url: `${baseUrl}/services/`,
       },
-      price: "1000",
-      priceCurrency: "USD",
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Automation and Follow-Up Systems",
+        description:
+          "Booking, intake, reminders, and follow-up connected into one workflow so inquiries are answered without manual chasing.",
+        url: `${baseUrl}/services/`,
+      },
     },
   ],
 };

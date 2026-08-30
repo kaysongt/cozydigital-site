@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 // Post-purchase delivery page. Stripe redirects buyers here after a successful
-// $30 payment. It is intentionally kept out of the nav and sitemap and is
+// course payment ($149, set on the Stripe Buy Button, see /ai-academy/). It is intentionally kept out of the nav and sitemap and is
 // noindex'd + robots-disallowed so it is not discoverable, but note it is still
 // a public URL, so the real protection is that COURSE_FILE_URL below is an
 // UNLISTED cloud link (Google Drive / Dropbox) that is NOT committed to this

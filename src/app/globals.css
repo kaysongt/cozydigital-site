@@ -217,17 +217,12 @@ body {
   animation: cozyFloatCard 5.5s 800ms ease-in-out infinite;
 }
 
-.motion-ready [data-reveal] {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 650ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1),
-    transform 650ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.75, 0.2, 1);
-}
-
+/* Core page content stays visible even if observers or JavaScript fail.
+   Motion is decorative; it must never gate access to a section. */
+.motion-ready [data-reveal],
 .motion-ready [data-reveal].is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: none;
 }
 
 .motion-card {
@@ -543,6 +538,38 @@ html.light .cozy-btn-primary:hover {
 }
 html.light .cozy-eyebrow {
   color: #0e7490;
+}
+/* The featured-work caption uses an explicit palette in both themes so its
+   inherited figure surface cannot invert without its foregrounds. */
+.cozy-featured-figcaption {
+  background-color: #12274a;
+  border-color: rgba(242, 212, 149, 0.28);
+  color: #e7eaf0;
+}
+.cozy-figcaption-link,
+.cozy-figcaption-link:hover {
+  color: #f2d495;
+}
+html.light .cozy-featured-figcaption {
+  background-color: #fff8e7;
+  border-color: #d8c79e;
+  color: #12274a;
+}
+html.light .cozy-figcaption-link,
+html.light .cozy-figcaption-link:hover {
+  color: #6b3f00;
+}
+
+/* Promise cards need a real light surface because bg-zinc-950 is otherwise
+   transparent in light mode. Keep their text tied to that surface. */
+html.light .cozy-promise-card {
+  background-color: #ffffff;
+}
+html.light .cozy-promise-card h2 {
+  color: #18181b;
+}
+html.light .cozy-promise-card p {
+  color: #52525b;
 }
 
 html.light .cozy-numeral { color: #0891b2; }

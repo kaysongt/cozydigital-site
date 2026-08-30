@@ -3,25 +3,38 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "@/components/theme-toggle";
+import {
+  CLIENT_HUB_LABEL,
+  CLIENT_HUB_NEW_TAB_HINT,
+  CLIENT_HUB_REL,
+  CLIENT_HUB_URL,
+} from "@/lib/client-hub";
 
 // `alsoActiveFor` keeps a tab highlighted on sibling pages it doesn't link to.
 // About points straight at Meet the Founders, but /about/ is still reachable
 // from the footer and from the founders page, so the tab lights up on both.
+//
+// `external` marks a link that leaves the site. The Client Hub sits last, next
+// to the buttons, because that's where people look for a portal — and it reads
+// in cyan with a small break-out arrow so it's obviously a different kind of
+// destination than the marketing tabs beside it.
 const navLinks: Array<{
   label: string;
   href: string;
   alsoActiveFor?: string[];
+  external?: boolean;
 }> = [
   { label: "Services", href: "/services/" },
   { label: "Client Work", href: "/#client-work" },
   { label: "AI Visibility", href: "/ai-search/" },
   { label: "AI Academy", href: "/ai-academy/" },
   { label: "About", href: "/founders/", alsoActiveFor: ["/about/"] },
+  { label: CLIENT_HUB_LABEL, href: CLIENT_HUB_URL, external: true },
 ];
 
-const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/pricing", "/about", "/founders", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
+const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/about", "/founders", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
 
 function matchesPath(pathname: string, href: string) {
   const clean = href.replace(/\/$/, "");
@@ -30,22 +43,46 @@ function matchesPath(pathname: string, href: string) {
 
 function isActiveLink(
   pathname: string | null,
-  link: { href: string; alsoActiveFor?: string[] }
+  link: { href: string; alsoActiveFor?: string[]; external?: boolean }
 ) {
-  if (!pathname || link.href.includes("#")) return false;
+  if (!pathname || link.external || link.href.includes("#")) return false;
   return (
     matchesPath(pathname, link.href) ||
     (link.alsoActiveFor ?? []).some((p) => matchesPath(pathname, p))
   );
 }
 
+// Arrow leaving a box: the usual shorthand for "this opens somewhere else".
+function ExternalIcon() {
+  return (
+    <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H18v4.5M17.5 6.5L11 13M16 14.5V18H6V8h3.5" />
+    </svg>
+  );
+}
+
 export default function CozyPublicHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
 
   const show = publicPrefixes.some((p) =>
     p === "/" ? pathname === "/" : pathname === p || pathname?.startsWith(`${p}/`)
@@ -58,14 +95,34 @@ export default function CozyPublicHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/95 backdrop-blur">
       <div className="mx-auto grid min-h-[62px] max-w-7xl grid-cols-[1fr_auto] items-center gap-2 px-4 lg:grid-cols-[1fr_auto_1fr] lg:gap-4 lg:px-7">
+        {/* The wordmark waits for xl. At lg the six tabs and two buttons already
+            fill the bar, and a half-clipped "Cozy Dig…" looks worse than the
+            mark on its own. */}
         <Link href="/" className="flex min-w-0 items-center gap-3 text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent md:text-xl">
           <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
-          <span className="hidden truncate lg:inline">Cozy Digital</span>
+          <span className="hidden truncate xl:inline">Cozy Digital</span>
         </Link>
 
-        <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-10 2xl:gap-14" aria-label="Main navigation">
+        <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-8 2xl:gap-12" aria-label="Main navigation">
           {navLinks.map((link) => {
             const active = isActiveLink(pathname, link);
+
+            if (link.external) {
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel={CLIENT_HUB_REL}
+                  className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-cyan-200 transition-colors hover:text-cyan-100"
+                >
+                  {link.label}
+                  <ExternalIcon />
+                  <span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span>
+                </a>
+              );
+            }
+
             return (
               <Link
                 key={link.href}
@@ -110,9 +167,11 @@ export default function CozyPublicHeader() {
           </Link>
 
           <button
+            ref={menuButtonRef}
             className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 text-zinc-300 hover:text-white lg:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMobileOpen((v) => !v)}
           >
             {mobileOpen ? (
@@ -125,10 +184,29 @@ export default function CozyPublicHeader() {
       </div>
 
       {mobileOpen && (
-        <nav aria-label="Mobile navigation" className="border-t border-white/10 bg-black/98 px-5 pb-5 pt-3 lg:hidden">
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-white/10 bg-black/98 px-5 pb-5 pt-3 lg:hidden">
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => {
               const active = isActiveLink(pathname, link);
+
+              if (link.external) {
+                return (
+                  <li key={link.href} className="mt-1">
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel={CLIENT_HUB_REL}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-2 rounded-lg border border-cyan-300/25 bg-cyan-500/10 px-3 py-3 text-sm font-semibold text-cyan-100 transition-colors hover:bg-cyan-500/15"
+                    >
+                      {link.label}
+                      <ExternalIcon />
+                      <span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span>
+                    </a>
+                  </li>
+                );
+              }
+
               return (
                 <li key={link.href}>
                   <Link

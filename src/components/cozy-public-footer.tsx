@@ -1,7 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  CLIENT_HUB_LABEL,
+  CLIENT_HUB_NEW_TAB_HINT,
+  CLIENT_HUB_REL,
+  CLIENT_HUB_URL,
+} from "@/lib/client-hub";
 
-const footerNavGroups = [
+// `external` links leave the site, so they render as a plain <a> with a
+// break-out arrow rather than a next/link.
+const footerNavGroups: {
+  heading: string;
+  links: { label: string; href: string; external?: boolean }[];
+}[] = [
   {
     heading: "Explore",
     links: [
@@ -9,6 +20,7 @@ const footerNavGroups = [
       { label: "Client Work", href: "/#client-work" },
       { label: "AI Visibility", href: "/ai-search/" },
       { label: "AI Academy", href: "/ai-academy/" },
+      { label: CLIENT_HUB_LABEL, href: CLIENT_HUB_URL, external: true },
       { label: "About", href: "/about/" },
       { label: "Meet the Founders", href: "/founders/" },
       { label: "FAQ", href: "/faq/" },
@@ -61,6 +73,14 @@ const socialLinks = [
   },
 ];
 
+function ExternalIcon() {
+  return (
+    <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H18v4.5M17.5 6.5L11 13M16 14.5V18H6V8h3.5" />
+    </svg>
+  );
+}
+
 export default function CozyPublicFooter() {
   return (
     <footer className="border-t border-white/[0.08] bg-zinc-950 px-6 py-14 text-zinc-400">
@@ -71,7 +91,7 @@ export default function CozyPublicFooter() {
               <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
               <span className="text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent">Cozy Digital</span>
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed">Websites, content, booking systems, automation, and search visibility for service businesses ready to build a stronger digital presence.</p>
+            <p className="max-w-xs text-sm leading-relaxed">Websites, content, video, booking systems, automation, and search visibility for service businesses ready to build a stronger digital presence.</p>
             <div className="mt-5 flex items-center gap-4">
               {socialLinks.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="text-zinc-500 transition-colors hover:text-cyan-300">
@@ -87,22 +107,37 @@ export default function CozyPublicFooter() {
           <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {footerNavGroups.map((group) => (
               <div key={group.heading}>
-                <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-zinc-500">{group.heading}</p>
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-zinc-400">{group.heading}</p>
                 <ul className="flex flex-col gap-3">
-                  {group.links.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className="text-sm text-zinc-400 transition-colors hover:text-zinc-100">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {group.links.map((link) =>
+                    link.external ? (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel={CLIENT_HUB_REL}
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-100"
+                        >
+                          {link.label}
+                          <ExternalIcon />
+                          <span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span>
+                        </a>
+                      </li>
+                    ) : (
+                      <li key={link.href}>
+                        <Link href={link.href} className="text-sm text-zinc-400 transition-colors hover:text-zinc-100">
+                          {link.label}
+                        </Link>
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
             ))}
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-white/[0.06] pt-6 text-xs text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-2 border-t border-white/[0.06] pt-6 text-xs text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Cozy Digital. All rights reserved.</p>
           <p>No long-term contracts. Clear deliverables. Work you own.</p>
         </div>
