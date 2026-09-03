@@ -99,7 +99,7 @@ export default function CozyPublicHeader() {
             fill the bar, and a half-clipped "Cozy Dig…" looks worse than the
             mark on its own. */}
         <Link href="/" className="flex min-w-0 items-center gap-3 text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent md:text-xl">
-          <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
+          <Image src="/brand/cozy-digital-logo.png" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
           <span className="hidden truncate xl:inline">Cozy Digital</span>
         </Link>
 

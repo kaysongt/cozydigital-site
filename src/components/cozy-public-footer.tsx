@@ -88,7 +88,7 @@ export default function CozyPublicFooter() {
         <div className="grid gap-10 md:grid-cols-[1.2fr_2fr]">
           <div>
             <Link href="/" className="mb-4 flex items-center gap-3">
-              <Image src="/brand/cozy-digital-logo.jpg" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
+              <Image src="/brand/cozy-digital-logo.png" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
               <span className="text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent">Cozy Digital</span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed">Websites, content, video, booking systems, automation, and search visibility for service businesses ready to build a stronger digital presence.</p>

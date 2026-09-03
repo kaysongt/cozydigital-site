@@ -21,7 +21,7 @@ const organization = {
   "@id": `${baseUrl}/#organization`,
   name: "Cozy Digital",
   url: baseUrl,
-  logo: `${baseUrl}/brand/cozy-digital-logo.jpg`,
+  logo: `${baseUrl}/brand/cozy-digital-logo.png`,
   image: `${baseUrl}/og-image.png`,
   description:
     "Cozy Digital helps service businesses improve their overall digital presence: websites and landing pages, brand messaging, content and social presence, short-form and AI-assisted video, booking and lead systems, follow-up and automation, local search and AI visibility, and analytics. AI search (GEO) optimization is offered as one part of that complete system.",
