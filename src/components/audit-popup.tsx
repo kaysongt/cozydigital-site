@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 //  - the course purchase flow, so nothing competes with the Buy button / delivery page
 //  - pages that already embed the full audit form (homepage + the audit page),
 //    where a popup of the same form would be redundant.
-const SUPPRESSED_PREFIXES = ["/ai-academy", "/academy-access", "/free-audit", "/"];
+const SUPPRESSED_PREFIXES = ["/courses", "/ai-academy", "/academy-access", "/free-audit", "/"];
 
 // Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
 const HUB_LEAD_URL =
