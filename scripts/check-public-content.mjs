@@ -35,7 +35,11 @@ function walk(dir, test) {
   return found;
 }
 
-const rel = (f) => relative(ROOT, f);
+// Normalised to forward slashes: every path literal below is written that way,
+// and on Windows relative() hands back backslashes, which silently emptied the
+// allowlist lookups and the out/academy skip so the check failed on files it
+// was meant to exempt.
+const rel = (f) => relative(ROOT, f).split("\\").join("/");
 const read = (f) => readFileSync(f, "utf8");
 const occurrences = (text, pattern) => text.match(pattern)?.length ?? 0;
 
@@ -49,10 +53,11 @@ const sourceFiles = walk(SRC, (n) => n.endsWith(".ts") || n.endsWith(".tsx"));
 //    an amount in this repo is either stale or about to be. The exceptions are
 //    real, checked, and deliberately narrow.
 const ALLOWED_AMOUNTS = {
-  // The AI Academy course has one fixed price, sold through a live Stripe
-  // button on the page itself. Schema in structured-data.tsx must match it.
-  "src/app/ai-academy/page.tsx": ["$149"],
-  "src/app/academy-access/page.tsx": ["$149"],
+  // The course has one fixed price, sold through a live Stripe button on
+  // /courses/. structured-data.tsx must match it, and so must the Buy Button
+  // in Stripe, which is what actually charges.
+  "src/app/courses/page.tsx": ["$30"],
+  "src/app/academy-access/page.tsx": ["$30"],
   // A founder's résumé: transaction volume they reconcile, not a Cozy price.
   "src/data/founders.ts": ["$20,000"],
 };
