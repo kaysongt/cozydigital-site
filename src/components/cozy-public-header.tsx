@@ -26,11 +26,11 @@ const navLinks: Array<{
   alsoActiveFor?: string[];
   external?: boolean;
 }> = [
-  { label: "Services", href: "/services/" },
   { label: "Client Work", href: "/#client-work" },
-  { label: "AI Visibility", href: "/ai-search/" },
+  { label: "Services", href: "/services/" },
   { label: "Courses", href: "/courses/", alsoActiveFor: ["/ai-academy/"] },
   { label: "About", href: "/founders/", alsoActiveFor: ["/about/"] },
+  { label: "Free Playbook", href: "/free-playbook/" },
   { label: CLIENT_HUB_LABEL, href: CLIENT_HUB_URL, external: true },
 ];
 
@@ -90,7 +90,6 @@ export default function CozyPublicHeader() {
   if (!show) return null;
 
   const isAudit = pathname === "/free-audit" || pathname === "/free-audit/";
-  const isPlaybook = pathname === "/free-playbook" || pathname === "/free-playbook/";
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/95 backdrop-blur">
@@ -100,11 +99,11 @@ export default function CozyPublicHeader() {
             mark on its own. */}
         <Link href="/" className="flex min-w-0 items-center gap-3 text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent md:text-xl">
           <Image src="/brand/cozy-digital-logo.png" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
-          <span className="hidden truncate xl:inline">Cozy Digital</span>
+          <span className="truncate">Cozy Digital</span>
         </Link>
 
         <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-8 2xl:gap-12" aria-label="Main navigation">
-          {navLinks.map((link) => {
+          {navLinks.filter((link) => !link.external).map((link) => {
             const active = isActiveLink(pathname, link);
 
             if (link.external) {
@@ -139,19 +138,22 @@ export default function CozyPublicHeader() {
         </nav>
 
         <div className="flex items-center justify-end gap-2 md:gap-3">
-          <ThemeToggle className="hidden lg:flex" />
-          <Link
-            href="/free-playbook/"
-            className={`whitespace-nowrap rounded-lg border px-2.5 py-2.5 text-xs font-black transition-colors min-[390px]:px-3 lg:px-4 lg:py-3 lg:text-sm ${
-              isPlaybook
-                ? "border-amber-300/60 bg-amber-500/15 text-amber-100"
-                : "border-amber-300/30 bg-amber-500/10 text-amber-200 hover:border-amber-300/50 hover:bg-amber-500/15 hover:text-amber-100"
-            }`}
-            aria-current={isPlaybook ? "page" : undefined}
+          {/* The hub is where a client signs in, not a page about the studio,
+              so it sits with the actions rather than among the section tabs. */}
+          <a
+            href={CLIENT_HUB_URL}
+            target="_blank"
+            rel={CLIENT_HUB_REL}
+            className="hidden items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-cyan-200 transition-colors hover:text-cyan-100 lg:inline-flex"
           >
-            <span className="xl:hidden">Playbook</span>
-            <span className="hidden xl:inline">Get the Free Playbook</span>
-          </Link>
+            {CLIENT_HUB_LABEL}
+            <ExternalIcon />
+            <span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span>
+          </a>
+          <ThemeToggle className="hidden lg:flex" />
+          {/* The playbook is a nav tab now, so it no longer needs a second
+              button competing with the audit CTA. One primary action in the
+              bar reads as a primary action. */}
           {/* Anchored so the click lands on the form itself rather than the
               top of the page — the form is what the CTA promises. */}
           <Link
