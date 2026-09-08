@@ -446,9 +446,13 @@ export default function HomePage() {
                 className={`motion-card flex flex-col overflow-hidden rounded-2xl border ${project.frameBorder} bg-white/[0.03]`}
                 data-reveal
               >
-                {/* A wide strip off the top of the screenshot. A portrait slot
-                    beside the text cropped these 4:3 captures to nonsense. */}
-                <div className={`relative h-44 overflow-hidden ${project.frameBg}`}>
+                {/* A wide slice off the top of the screenshot. A portrait slot
+                    beside the text cropped these 4:3 captures to nonsense, but a
+                    fixed 176px strip was worse: it cut every hero headline in
+                    half, so the grid read "Heal. Grow. Transform with Dr." and
+                    "Resources to" sliced through the letterforms. An aspect
+                    scales the slice with the card, so the headline survives. */}
+                <div className={`relative aspect-[16/10] overflow-hidden ${project.frameBg}`}>
                   <Image
                     src={project.image}
                     alt={project.alt}
