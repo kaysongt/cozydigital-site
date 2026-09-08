@@ -19,7 +19,7 @@ const footerNavGroups: {
       { label: "Services", href: "/services/" },
       { label: "Client Work", href: "/#client-work" },
       { label: "AI Visibility", href: "/ai-search/" },
-      { label: "AI Academy", href: "/ai-academy/" },
+      { label: "Courses", href: "/courses/" },
       { label: CLIENT_HUB_LABEL, href: CLIENT_HUB_URL, external: true },
       { label: "About", href: "/about/" },
       { label: "Meet the Founders", href: "/founders/" },

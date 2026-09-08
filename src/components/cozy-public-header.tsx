@@ -29,12 +29,12 @@ const navLinks: Array<{
   { label: "Services", href: "/services/" },
   { label: "Client Work", href: "/#client-work" },
   { label: "AI Visibility", href: "/ai-search/" },
-  { label: "AI Academy", href: "/ai-academy/" },
+  { label: "Courses", href: "/courses/", alsoActiveFor: ["/ai-academy/"] },
   { label: "About", href: "/founders/", alsoActiveFor: ["/about/"] },
   { label: CLIENT_HUB_LABEL, href: CLIENT_HUB_URL, external: true },
 ];
 
-const publicPrefixes = ["/", "/services", "/ai-search", "/ai-academy", "/academy-access", "/about", "/founders", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
+const publicPrefixes = ["/", "/services", "/ai-search", "/courses", "/ai-academy", "/academy-access", "/about", "/founders", "/faq", "/cozy-booking", "/free-audit", "/blog", "/free-playbook", "/privacy", "/terms"];
 
 function matchesPath(pathname: string, href: string) {
   const clean = href.replace(/\/$/, "");

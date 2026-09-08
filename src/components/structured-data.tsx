@@ -10,7 +10,7 @@
  * Service offers here carry no `price`. Plan pricing for client work lives in
  * the Client Hub, and duplicating an amount in schema is how a site ends up
  * quoting a number it no longer honours. The AI Academy course is the one
- * exception: it has a single fixed price sold through Stripe on /ai-academy/,
+ * exception: it has a single fixed price sold through Stripe on /courses/,
  * and the two must always match.
  */
 
@@ -58,14 +58,14 @@ const organization = {
     },
     {
       "@type": "Offer",
-      price: "149.00",
+      price: "30.00",
       priceCurrency: "USD",
       itemOffered: {
         "@type": "Course",
         name: "The AI Advantage Blueprint",
         description:
           "Cozy Digital AI Academy's flagship course: a practical, self-paced AI implementation course for small business owners. Nine interactive modules and a built-in workbook covering an AI opportunity audit, prompting, marketing, customer communication, operations, no-code automations, privacy and compliance (HIPAA-aware), and a 30-day implementation plan.",
-        url: `${baseUrl}/ai-academy/`,
+        url: `${baseUrl}/courses/`,
         provider: { "@id": `${baseUrl}/#organization` },
       },
     },
