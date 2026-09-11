@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#b6c5bd"/><stop offset="1" stop-color="#e5e4d6"/></linearGradient><linearGradient id="wall"><stop stop-color="#eee5d5"/><stop offset="1" stop-color="#b9ad95"/></linearGradient><linearGradient id="glass"><stop stop-color="#1d3734"/><stop offset="1" stop-color="#567366"/></linearGradient><linearGradient id="ground" x2="0" y2="1"><stop stop-color="#9f9c78"/><stop offset="1" stop-color="#4b6251"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-opacity=".2"/></filter></defs>
+<rect width="1200" height="800" fill="#f1efe7"/>
+<g fill="#25342c" font-family="Arial,sans-serif"><text x="48" y="56" font-size="27" font-weight="700" letter-spacing="-1">FORM / SPACE</text><text x="560" y="52" font-size="14">Our approach</text><text x="705" y="52" font-size="14">Selected spaces</text><text x="869" y="52" font-size="14">The practice</text><rect x="1010" y="23" width="146" height="46" rx="23" fill="none" stroke="#25342c"/><text x="1037" y="52" font-size="14">Let’s talk ↗</text></g>
+<path d="M48 92H1152" stroke="#c7cbbf"/>
+<text x="50" y="140" font-family="Arial,sans-serif" font-size="12" fill="#4c6455" letter-spacing="3">ARCHITECTURE FOR THE WAY YOU LIVE</text>
+<g font-family="Georgia,serif" font-size="87" fill="#26372d" letter-spacing="-5"><text x="44" y="240">Less ordinary.</text><text x="44" y="328" font-style="italic">More belonging.</text></g>
+<g font-family="Arial,sans-serif" fill="#4c5b50" font-size="16"><text x="855" y="223">Thoughtful homes.</text><text x="855" y="248">Extraordinary everyday living.</text><text x="855" y="299" fill="#26372d">Explore our spaces ↗</text><path d="M855 312H1090" stroke="#87937d"/></g>
+<rect x="48" y="370" width="1104" height="345" fill="url(#sky)"/>
+<circle cx="930" cy="439" r="92" fill="#ecebdc" opacity=".6"/>
+<path d="M48 620Q230 565 450 598T800 581T1152 550V715H48Z" fill="url(#ground)"/>
+<path d="M200 656L381 512L938 558L1070 715H142Z" fill="#bdbaa0"/>
+<g filter="url(#shadow)"><path d="M310 498L773 463L1002 516L529 565Z" fill="#e9e1cc"/><path d="M310 498L529 565V670L310 591Z" fill="#b4ab95"/><path d="M529 565L1002 516V632L529 670Z" fill="url(#wall)"/><path d="M567 566L962 529V618L567 650Z" fill="url(#glass)"/><path d="M660 557V642M756 548V634M857 538V626" stroke="#d0c5a9" stroke-width="6"/><path d="M430 502V418L750 396L853 427V478L773 463Z" fill="url(#wall)"/><path d="M430 418L535 448V518L430 488Z" fill="#c0b398"/><path d="M535 448L853 427V478L535 510Z" fill="#e4dac4"/><path d="M558 456L819 438V475L558 500Z" fill="url(#glass)"/><path d="M602 453V495M658 449V489M714 445V484M770 441V478" stroke="#d0c5a9" stroke-width="4"/></g>
+<g fill="#314f3d"><path d="M112 620L144 404L180 623Z"/><path d="M164 638L202 444L244 643Z"/><path d="M1035 603L1064 394L1098 604Z"/><path d="M1090 612L1115 457L1149 624Z"/></g>
+<rect x="73" y="649" width="225" height="42" rx="21" fill="#f1efe7"/><text x="92" y="676" font-family="Arial,sans-serif" font-size="13" fill="#26372d">01 / The Stillwater Residence ↗</text>
+<g font-family="Arial,sans-serif" fill="#34483a" font-size="13"><text x="48" y="762">Considered from every angle.</text><text x="850" y="762">RESIDENTIAL / INTERIORS / SPACES</text></g>
+</svg>
