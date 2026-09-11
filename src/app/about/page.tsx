@@ -23,19 +23,19 @@ function ArrowIcon() {
 const principles = [
   {
     label: "Analysis before design",
-    body: "We map how your customers and staff actually move through booking, intake, and follow-up before anyone opens a design file.",
+    body: "We work through your booking, intake, and follow-up with you before deciding what to build.",
   },
   {
-    label: "One connected presence",
-    body: "Websites, content, booking, automation, and search visibility should work together, not as separate projects that never line up.",
+    label: "Details carried through",
+    body: "Your website, video, and customer emails should sound like the same business. We keep the services, contact details, and visual direction consistent.",
   },
   {
     label: "Tested before handoff",
-    body: "Integrations get run through their normal and error paths, documented, and fixed where the logic doesn't hold, before you're the one finding out.",
+    body: "We test forms, payments, bookings, and connected tools, including what happens when something goes wrong. Any issues we find go back into the work before handoff.",
   },
   {
     label: "You own what we build",
-    body: "You own all of it when we're done, and ongoing support runs month to month. Stay because it's working, not because you're locked in.",
+    body: "The completed work is yours. Ongoing support is available month to month, with the scope agreed before we begin.",
   },
 ];
 
@@ -58,7 +58,7 @@ const shipped: { name: string; kind: string; detail: string; href?: string; stat
     name: "Lavar Scott",
     kind: "Motorsport",
     detail: "A NASCAR driver's sponsorship deck rebuilt as a website: his story, audience, community work, and partnership packages in one place brands can act on.",
-    status: "Launching ahead of the 2026 season",
+    status: "Website concept",
   },
   {
     name: "KingsWord Training Institute",
@@ -90,7 +90,7 @@ export default function AboutPage() {
             <span className="cozy-gradient-text">builds and tests its own work.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
-            Cozy Digital helps service businesses improve how customers find them, understand them, trust them, and take action online: the whole digital presence, not just one piece of it.
+            We&apos;re Quincy and Kayson. We design websites, produce AI video, and connect the booking and follow-up tools businesses use every day.
           </p>
         </div>
       </section>
@@ -101,21 +101,21 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" data-reveal>
             <div className="space-y-5 text-base leading-relaxed text-zinc-400">
               <p>
-                That means the website and the messaging, but also the content, the booking path, the follow-up, local search, and AI visibility. Those touchpoints either add up to one credible experience or they quietly work against each other.
+                Some projects start with a website. Others start with a video idea or a booking process that needs fixing. We help you define the work, agree on the scope, and take it through production.
               </p>
               <p>
-                We work with service businesses, local brands, and creators who know something is off but can&apos;t pinpoint exactly what to fix. Instead of a strategy deck, we review the touchpoints a customer actually sees, then connect them.
+                We work with service businesses, local brands, and creators. You speak directly with us, review work as it develops, and know who to contact when you need an update.
               </p>
             </div>
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-7">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">The work is practical</p>
               <ul className="mt-5 space-y-3">
                 {[
-                  "Clearer pages and stronger messaging",
-                  "Smoother booking and lead intake",
-                  "Content that supports the real offer",
-                  "Follow-up that doesn't drop leads",
-                  "Every touchpoint pointing to the same next step",
+                  "Website design and development",
+                  "AI video for ads and social content",
+                  "Booking forms and lead intake",
+                  "Customer emails and follow-up",
+                  "Site maintenance and search information",
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm leading-relaxed text-zinc-300">
                     <span className="mt-0.5 shrink-0 text-cyan-400">&#x2713;</span>
@@ -143,13 +143,13 @@ export default function AboutPage() {
               <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-400">2024</p>
               <h3 className="mt-3 text-lg font-black text-white">Quincy started building.</h3>
               <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-                Quincy founded Cozy Digital in 2024 while finishing a Computer Science degree and working his university&apos;s front-line IT support desk. The premise was simple: small businesses needed websites that actually worked, and he could ship them end to end, from design and hosting through domains, campaigns, and the maintenance afterward.
+                Quincy founded Cozy Digital in 2024 while studying Computer Science and working his university&apos;s IT support desk. He took on the full website process, from design and development to domains, hosting, campaigns, and maintenance.
               </p>
             </div>
 
             <div className="motion-card rounded-2xl border border-fuchsia-300/20 bg-fuchsia-500/[0.06] p-7" data-reveal>
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fuchsia-300">November 2025</p>
-              <h3 className="mt-3 text-lg font-black text-white">Kayson changed how we work.</h3>
+              <h3 className="mt-3 text-lg font-black text-white">Kayson joined the studio.</h3>
               <p className="mt-4 text-sm leading-relaxed text-zinc-300">
                 Kayson joined as the second founder after two years at Sibel Health supporting healthcare applications and connected medical devices, investigating bad production data with Python and SQL, running UI and API testing, and tracking defects to resolution. He brought that discipline with him.
               </p>
@@ -158,7 +158,7 @@ export default function AboutPage() {
 
           <div className="mt-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-7" data-reveal>
             <p className="text-base leading-relaxed text-zinc-300">
-              That&apos;s the part that makes the studio unusual for its size. Nothing gets designed before the workflow behind it is mapped, and nothing gets handed over before it&apos;s been tested on the paths that break. Most small agencies are one generalist doing everything. We split it: analysis and validation on one side, build and growth on the other, with both of us on every project.
+              Quincy handles design and development. Kayson maps the customer workflow and tests the finished system. We review the work together, so the pages and the tools behind them are part of the same project.
             </p>
             <Link
               href="/founders/"
@@ -177,7 +177,7 @@ export default function AboutPage() {
           <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">How we work</p>
             <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
-              Four things we don&apos;t bend on.
+              How we approach your project.
             </h2>
           </div>
 
@@ -207,7 +207,7 @@ export default function AboutPage() {
           <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">What we&apos;ve shipped</p>
             <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
-              Brands with a lot to hold, given one clear home.
+              A few of the projects we&apos;ve worked on.
             </h2>
           </div>
 

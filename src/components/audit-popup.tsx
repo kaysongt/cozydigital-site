@@ -108,23 +108,22 @@ export default function AuditPopup() {
           onClick={dismiss}
           className="absolute right-5 top-5 flex flex-col items-center rounded-xl border border-white/15 bg-white/[0.04] px-4 py-1.5 text-center leading-tight hover:bg-white/[0.09] transition"
         >
-          <span className="text-[9px] font-black uppercase tracking-[0.18em] text-zinc-400">No pressure</span>
-          <span className="text-xs font-bold text-zinc-200">Close it anytime</span>
+          <span className="text-xs font-bold text-zinc-200">Close</span>
         </button>
 
         {status === "success" ? (
           <div className="py-10 text-center">
             <p className="text-3xl">✅</p>
             <h2 className="mt-3 text-2xl font-black text-white">Audit request sent!</h2>
-            <p className="mt-2 text-sm text-zinc-400">We&apos;ll review your presence and send back your first three improvements. Closing in a moment…</p>
+            <p className="mt-2 text-sm text-zinc-400">We&apos;ll review your links and email three changes we would make first.</p>
           </div>
         ) : (
           <>
             <h2 className="max-w-sm text-3xl font-black leading-tight text-white md:text-4xl">
-              Want a free Digital Presence Audit?
+              Get a free website review.
             </h2>
             <p className="mt-2 max-w-lg text-sm leading-relaxed text-zinc-400">
-              Drop your details and we&apos;ll review your website, messaging, content, booking path, and search visibility, then send back the first three improvements we&apos;d make.
+              Share your website or social profile. We&apos;ll check the pages, content, booking, and search information, then email our recommendations.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-3">

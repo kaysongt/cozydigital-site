@@ -26,9 +26,9 @@ export default function FounderTrust() {
             Meet the people behind the work.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-400">
-            Cozy Digital is a two-founder studio. You work directly with the
-            people building your website, content, and booking systems, not a
-            rotating account team.
+            Work directly with Quincy and Kayson on your website, video, and
+            booking systems. We plan the work with you, build it, and stay
+            involved through launch.
           </p>
         </div>
 

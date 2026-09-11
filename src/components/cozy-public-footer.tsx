@@ -91,7 +91,7 @@ export default function CozyPublicFooter() {
               <Image src="/brand/cozy-digital-logo.png" alt="Cozy Digital logo" width={34} height={34} className="h-9 w-9 rounded-md border border-cyan-300/25 object-cover" />
               <span className="text-lg font-black tracking-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-fuchsia-300 bg-clip-text text-transparent">Cozy Digital</span>
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed">Websites, content, video, booking systems, automation, and search visibility for service businesses ready to build a stronger digital presence.</p>
+            <p className="max-w-xs text-sm leading-relaxed">Website design and AI video production for businesses, brands, and creators. Made by Quincy and Kayson.</p>
             <div className="mt-5 flex items-center gap-4">
               {socialLinks.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="text-zinc-500 transition-colors hover:text-cyan-300">
@@ -139,7 +139,7 @@ export default function CozyPublicFooter() {
 
         <div className="mt-10 flex flex-col gap-2 border-t border-white/[0.06] pt-6 text-xs text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Cozy Digital. All rights reserved.</p>
-          <p>No long-term contracts. Clear deliverables. Work you own.</p>
+          <p>Project work and monthly support. Work directly with the founders.</p>
         </div>
       </div>
     </footer>

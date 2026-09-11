@@ -449,8 +449,7 @@ export default function AuditForm({
           onChange={e => set("phone", e.target.value)}
         />
         <p className="mt-1.5 text-xs leading-relaxed text-zinc-500">
-          Adding a number usually means we get your audit back to you the same
-          day instead of playing email tag.
+          Add a phone number if you would like us to call about your audit.
         </p>
       </div>
 

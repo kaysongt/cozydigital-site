@@ -7,7 +7,6 @@ const designs = [
   { title: "Form / Space", category: "Architecture · Design concept", image: "/images/concepts/form-space.svg", alt: "Architecture website concept with oversized editorial typography and a sculptural modern home" },
   { title: "Dew Theory", category: "Beauty & wellness · Design concept", image: "/images/concepts/dew-theory.svg", alt: "Skincare ecommerce website concept with a citrus palette and sculptural skincare bottles" },
   { title: "Orbit", category: "Technology · Design concept", image: "/images/concepts/orbit.svg", alt: "Technology website concept with electric violet typography, an orbital graphic, and a sleek product dashboard" },
-  { title: "KingsWord Training Institute", category: "Education · Client work", image: "/images/client-proof/kti-site.jpg", alt: "KingsWord Training Institute website built by Cozy Digital" },
   { title: "Dr. Alicia Watkins", category: "Wellness · Client work", image: "/images/client-proof/dr-alicia-site.png", alt: "Dr. Alicia Watkins wellness website built by Cozy Digital" },
   { title: "Dear Pastor’s Wife", category: "Community · Client work", image: "/images/client-proof/dear-pastors-wife-site.png", alt: "Dear Pastor's Wife ministry website built by Cozy Digital" },
 ];
@@ -56,7 +55,7 @@ export default function DesignCarousel() {
     <div ref={container} className="design-carousel" role="region" aria-roledescription="carousel" aria-label="Website design showcase"
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
-      <div className="design-carousel-heading"><span>Imagine what yours could look like.</span><span aria-hidden="true">↙</span></div>
+      <div className="design-carousel-heading"><span>Selected design studies</span><span aria-hidden="true">↙</span></div>
       <div className="design-carousel-stack">
         <div className="design-stack-sheet design-stack-sheet-back" aria-hidden="true" />
         <div className="design-stack-sheet design-stack-sheet-front" aria-hidden="true" />
@@ -78,7 +77,7 @@ export default function DesignCarousel() {
           <button type="button" onClick={() => select(active + 1)} aria-label="Next design">→</button>
         </div>
       </div>
-      <p className="design-carousel-note">Original concepts + real client work. Your brand could be next.</p>
+      <p className="design-carousel-note">Concept designs and client websites.</p>
     </div>
   );
 }

@@ -113,7 +113,7 @@ export default function FreePlaybookPage() {
         <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-400">Free Resource</p>
         <h1 className="text-4xl font-black text-white md:text-5xl">Get the Booking-Ready Brand Playbook</h1>
         <p className="mx-auto mt-4 max-w-xl text-zinc-400">
-          Answer a few quick questions and we&apos;ll send you the playbook instantly, then you can book a free 30-min strategy call.
+          Answer a few questions about your business, then download the PDF. You can also book a free 30-minute call to discuss your site.
         </p>
       </div>
 
@@ -124,7 +124,7 @@ export default function FreePlaybookPage() {
             <h2 className="text-2xl font-bold text-zinc-900">You&apos;re all set!</h2>
             <p className="mt-2 text-sm text-zinc-500">
               Your free <strong>Booking-Ready Brand Playbook</strong> is ready.<br />
-              Then grab a spot. The strategy call is free.
+              Download it below and save a copy.
             </p>
             <a
               href={PDF_URL}
@@ -168,7 +168,7 @@ export default function FreePlaybookPage() {
             {step === 1 && (
               <>
                 <h2 className="text-2xl font-bold text-zinc-900">What&apos;s your name?</h2>
-                <p className="mt-1 mb-5 text-sm text-zinc-500">Let&apos;s get acquainted.</p>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Your first name is fine.</p>
                 <input className={inputClass} type="text" placeholder="Jane Smith" value={form.name}
                   onChange={(e) => set("name", e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && next()} />
@@ -180,7 +180,7 @@ export default function FreePlaybookPage() {
             {step === 2 && (
               <>
                 <h2 className="text-2xl font-bold text-zinc-900">How can we reach you?</h2>
-                <p className="mt-1 mb-5 text-sm text-zinc-500">We&apos;ll send the playbook here.</p>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Your contact email. The PDF download opens after the questions.</p>
                 <input className={inputClass} type="email" placeholder="jane@yourcompany.com" value={form.email}
                   onChange={(e) => set("email", e.target.value)} />
                 <input className={`${inputClass} mt-3`} type="tel" placeholder="Phone (optional)" value={form.phone}
@@ -218,7 +218,7 @@ export default function FreePlaybookPage() {
             {step === 5 && (
               <>
                 <h2 className="text-2xl font-bold text-zinc-900">How happy are you with your current online presence?</h2>
-                <p className="mt-1 mb-5 text-sm text-zinc-500">Be honest. That&apos;s what the call is for.</p>
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Choose the answer closest to your experience.</p>
                 <div className="flex flex-col gap-2">
                   {choices.czQ2.map((c) => (
                     <button key={c} className={choiceClass(form.onlinePresenceSatisfaction === c)}
@@ -265,7 +265,7 @@ export default function FreePlaybookPage() {
             </div>
           </>
         )}
-        <p className="mt-5 text-center text-xs text-zinc-300">We respect your privacy. No spam, ever.</p>
+        <p className="mt-5 text-center text-xs text-zinc-500">Read how we use your details in our <a href="/privacy/" className="underline">privacy policy</a>.</p>
       </div>
     </main>
   );

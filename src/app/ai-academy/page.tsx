@@ -19,7 +19,7 @@ const TARGET = "https://cozydigital.org/courses/";
 export const metadata: Metadata = {
   title: "The AI Advantage Blueprint has moved to Courses | Cozy Digital",
   description:
-    "The Cozy Digital AI Academy course now lives at /courses/, alongside the AI video work.",
+    "Find The AI Advantage Blueprint and AI Video Prompt Boss on the Cozy Digital courses page.",
   alternates: { canonical: TARGET },
   // Keep the old URL out of the index now that /courses/ is the real page,
   // while still following through to it.
@@ -41,9 +41,8 @@ export default function AiAcademyMoved() {
           This page is now under Courses
         </h1>
         <p className="mt-4 text-base leading-relaxed text-zinc-400">
-          The AI Advantage Blueprint moved to{" "}
-          <span className="text-zinc-200">/courses/</span>, where the AI video
-          work sits alongside it.
+          Find The AI Advantage Blueprint and AI Video Prompt Boss on our
+          courses page.
         </p>
         <Link
           href="/courses/"

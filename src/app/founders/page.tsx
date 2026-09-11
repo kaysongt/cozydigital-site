@@ -6,7 +6,7 @@ import { founders, workSplit, type FounderAccent } from "@/data/founders";
 export const metadata: Metadata = {
   title: "Meet the Founders | Cozy Digital",
   description:
-    "Cozy Digital is run by its two founders. Quincy builds and deploys the work; Kayson maps the workflows and tests what ships. Meet the people you'd actually be working with.",
+    "Meet Quincy and Kayson, the founders of Cozy Digital. Work directly with us on website design, video production, and the systems behind your business.",
   alternates: { canonical: "https://cozydigital.org/founders/" },
   openGraph: {
     title: "Meet the Founders | Cozy Digital",
@@ -68,16 +68,16 @@ function ArrowIcon() {
 
 const promises = [
   {
-    title: "Two people, not a handoff",
-    desc: "The person who scopes your project and the person who builds it are the only two people on the call. Nothing gets lost in translation to an account team.",
+    title: "Direct contact",
+    desc: "You work with Quincy and Kayson from the first conversation through delivery. We agree the scope with you and review the work together.",
   },
   {
     title: "Analysis before design",
-    desc: "We map how your customers and staff actually move through booking, intake, and follow-up before anyone opens a design file.",
+    desc: "We work through your booking, intake, and follow-up with you before deciding what to build.",
   },
   {
     title: "Tested, then handed over",
-    desc: "Integrations get run through their normal and error paths, documented, and fixed where the logic doesn't hold. Then the site is yours.",
+    desc: "We check forms, bookings, and connected tools, document how they work, and resolve the issues we find before handoff.",
   },
 ];
 
@@ -100,11 +100,11 @@ export default function FoundersPage() {
           <div data-hero-copy>
             <p className="mb-5 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">Meet the Founders</p>
             <h1 className="max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl">
-              You&apos;ll be working with{" "}
-              <span className="cozy-gradient-text">the two people who build it.</span>
+              Meet Quincy{" "}
+              <span className="cozy-gradient-text">and Kayson.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
-              Cozy Digital is a two-founder studio. One of us writes the code, ships the sites, and runs the campaigns. The other maps the workflow, configures the systems, and tests them before they touch a customer. There is no third layer.
+              We run Cozy Digital together, working on websites, video campaigns, and the booking and follow-up systems behind them. Here is our background and the work each of us handles.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link href="/cozy-booking/" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-7 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
@@ -326,10 +326,10 @@ export default function FoundersPage() {
           <div className="mb-12 max-w-2xl" data-reveal>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.25em] text-cyan-400">How we split the work</p>
             <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
-              Two skill sets, one pass through your project.
+              Who handles each part of your project.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-zinc-400">
-              Most small studios are one generalist doing everything, or a large agency where nobody owns the whole picture. We split it down the middle: analysis and validation on one side, build and growth on the other, with both of us on every project.
+              Quincy leads design, development, and campaigns. Kayson handles workflow planning, integrations, and testing. We review the project together at each stage.
             </p>
           </div>
 
@@ -360,10 +360,10 @@ export default function FoundersPage() {
       <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center" data-reveal>
           <h2 className="text-3xl font-black leading-[1.1] text-white md:text-4xl">
-            Bring us the thing that isn&apos;t working.
+            Tell us about your project.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-zinc-400">
-            Send your website or social link and we&apos;ll review it the way a first-time customer would, then send back the first three improvements we&apos;d make, whether or not you hire us.
+            Send your current website or a social profile for a free review. If you have a new project in mind, book a call and talk it through with us.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
             <Link href="/free-audit/#audit-form" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-7 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">

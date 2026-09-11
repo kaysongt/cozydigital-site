@@ -61,7 +61,7 @@ export default function CozyBookingPage() {
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-amber-400">Scheduling</p>
             <h2 className="text-2xl font-bold text-white">Schedule your 30-minute consultation.</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-300">
-              Choose a time that works for you and we&apos;ll talk through simple ways to improve your website, content, and online sales path. Calls are 30 minutes on Google Meet, weekdays 9–5 CT.
+              Choose a time that works for you and we&apos;ll talk through your website or video project. Calls are 30 minutes on Google Meet, weekdays from 9 a.m. to 5 p.m. CT.
             </p>
             <a
               href={bookingUrl}

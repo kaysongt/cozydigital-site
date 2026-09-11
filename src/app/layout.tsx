@@ -1,5 +1,6 @@
 import "./globals.css";
 import "./studio.css";
+import "./future.css";
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import Script from "next/script";
@@ -28,8 +29,8 @@ const fraunces = Fraunces({
 // This is the only measurement ID the site should ever report to.
 const GA_MEASUREMENT_ID = "G-QJ7R8893NF";
 
-const description = "Cozy Digital helps service businesses improve their websites, messaging, content, booking paths, automation, and search visibility. Request a free Digital Presence Audit.";
-const siteTitle = "Digital Presence for Service Businesses | Cozy Digital";
+const description = "Website design, development, and AI video production by Quincy and Kayson. Explore the work and talk directly with the founders of Cozy Digital.";
+const siteTitle = "Website Design & AI Video | Cozy Digital";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cozydigital.org"),
@@ -100,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MetaPixel />
       </head>
       <body
-        className={`${inter.variable} ${fraunces.variable} ${inter.className} flex min-h-screen flex-col bg-zinc-950`}
+        className={`${inter.variable} ${fraunces.variable} ${inter.className} future-site flex min-h-screen flex-col bg-zinc-950`}
       >
         <SiteMotion />
         <AttributionCapture />

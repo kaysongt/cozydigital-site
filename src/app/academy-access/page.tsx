@@ -40,10 +40,10 @@ export default function AcademyAccessPage() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <p className="text-xs font-bold uppercase tracking-widest text-fuchsia-300">Payment received, you&apos;re in</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-fuchsia-300">Your course access</p>
           <h1 className="mt-3 text-3xl font-black text-white md:text-4xl">Welcome to the AI Academy.</h1>
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-zinc-300">
-            Thanks for grabbing <strong className="text-white">The AI Advantage Blueprint</strong>. Open your course below. It runs right in your browser. Bookmark this page, or save the file to keep it forever.
+            Open <strong className="text-white">The AI Advantage Blueprint</strong> below. The course runs in your browser. Save the file to your device and bookmark this page for later.
           </p>
 
           <a
@@ -67,7 +67,7 @@ export default function AcademyAccessPage() {
           </div>
 
           <p className="mt-6 text-xs text-zinc-500">
-            Trouble with the download? Email us and we&apos;ll get you sorted.
+            If the file does not open, contact us for help with your download.
           </p>
         </div>
 

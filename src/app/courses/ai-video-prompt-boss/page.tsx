@@ -4,9 +4,9 @@ import PromptBossPage from "@/components/prompt-boss-page";
 const checkoutUrl = "https://buy.stripe.com/dRmaEQaJ59Yudu5b8ga7C03";
 export const metadata: Metadata = {
   title: "AI Video Prompt Boss | 120 Prompts & Director's Playbook | Cozy Digital",
-  description: "Stop guessing. Start directing. Get the 70-page AI video PDF course with 120 prompts, 14 cheat sheets and word banks, 3 storyboards, and an AI Director master prompt. $30, one time.",
+  description: "Plan your next video with the 70-page PDF playbook by Cozy Digital. Includes 120 prompts, 14 cheat sheets and word banks, 3 storyboards, and an AI Director master prompt. $30, one time.",
   alternates: { canonical: "https://cozydigital.org/courses/ai-video-prompt-boss/" },
-  openGraph: { title: "AI Video Prompt Boss — Stop guessing. Start directing.", description: "120 prompts. 14 cheat sheets and word banks. 3 storyboards. One practical PDF playbook for $30.", url: "https://cozydigital.org/courses/ai-video-prompt-boss/", images: [{ url: "/courses/ai-video-prompt-boss-cover.png", width: 773, height: 1000, alt: "AI Video Prompt Boss by Cozy Digital" }] },
+  openGraph: { title: "AI Video Prompt Boss | Cozy Digital", description: "120 prompts, 14 cheat sheets and word banks, and 3 storyboards. A PDF playbook for $30.", url: "https://cozydigital.org/courses/ai-video-prompt-boss/", images: [{ url: "/courses/ai-video-prompt-boss-cover.png", width: 773, height: 1000, alt: "AI Video Prompt Boss by Cozy Digital" }] },
   twitter: { card: "summary_large_image", title: "AI Video Prompt Boss | Cozy Digital", description: "A practical 70-page AI video PDF playbook. $30, one time.", images: ["/courses/ai-video-prompt-boss-cover.png"] },
 };
 export default function Page() {

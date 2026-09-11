@@ -50,7 +50,7 @@ export const founders: Founder[] = [
     initials: "Q",
     accent: "cyan",
     short:
-      "Builds and deploys the client work end to end: sites, hosting, ad campaigns, and the internal tools the studio runs on.",
+      "Designs and builds websites, directs video campaigns, and manages hosting and the studio's internal tools.",
     bio: [
       "Quincy started Cozy Digital in 2024 and still writes the code. He designs, builds, and deploys client websites end to end, including hosting, domain setup, and post-launch maintenance, then plans and runs the paid social and search campaigns that point traffic at them.",
       "He also builds the tools the studio runs on: Shadow Leads, an in-house lead-tracking CRM deployed on cloud infrastructure, and the Cozy Client Hub, a client-facing content scheduler and advertising strategy workspace. Alongside the agency he's a Computer Science senior and a student technician on his university's front-line IT support desk.",
@@ -138,10 +138,10 @@ export const founders: Founder[] = [
     initials: "K",
     accent: "fuchsia",
     short:
-      "Maps the workflow before anything gets built, then tests what ships: requirements, integrations, data validation, and reporting.",
+      "Plans booking and customer workflows, connects the tools behind them, and tests the finished work.",
     bio: [
       "Kayson is a business applications and data analyst who came to Cozy Digital from healthcare technology. At Sibel Health he supported healthcare applications and connected medical devices, using Python and SQL to investigate missing, duplicate, and anomalous records and running UI, API, functional, and regression testing against expected requirements.",
-      "At Cozy Digital he does the part most agencies skip: analyzing how a client's customers and staff actually move through a process, defining the functional requirements, and only then translating them into booking, scheduling, lead-intake, and follow-up configurations. Then he tests the normal and the error paths, documents what the system is supposed to do, and fixes the logic that doesn't hold up.",
+      "At Cozy Digital, Kayson works with clients to map how customers and staff use booking, scheduling, lead intake, and follow-up. He turns those requirements into connected workflows, tests successful and failed submissions, and documents how the system works.",
     ],
     owns: [
       "Client workflow and user-needs analysis, requirements gathering, and process mapping",
@@ -233,7 +233,7 @@ export const workSplit = [
     stage: "Understand",
     lead: "Kayson",
     accent: "fuchsia" as FounderAccent,
-    detail: "Workflow and user-needs analysis, requirements, and process mapping before a single page is designed.",
+    detail: "Work through your customer process, requirements, and priorities before design begins.",
   },
   {
     stage: "Build",
@@ -263,6 +263,6 @@ export const workSplit = [
     stage: "Support",
     lead: "Quincy",
     accent: "cyan" as FounderAccent,
-    detail: "Post-launch maintenance, hosting, and the in-house CRM and client hub that keep leads from going cold.",
+    detail: "Website maintenance, hosting, and support for the CRM and client hub after launch.",
   },
 ];

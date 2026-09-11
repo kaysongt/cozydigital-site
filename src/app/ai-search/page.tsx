@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Search Visibility (GEO) | Cozy Digital",
   description:
-    "Get your business found and recommended by AI search like ChatGPT, Perplexity, and Google AI Overviews. Cozy Digital builds the structured data, answer content, and trust signals that make answer engines cite you.",
+    "Cozy Digital reviews your business information, website structure, and crawler access, then checks how search engines and AI assistants describe your services.",
   alternates: { canonical: "https://cozydigital.org/ai-search/" },
 };
 
@@ -20,28 +20,28 @@ function ArrowIcon() {
 // piece of work, so the page stays honest and also reads as a deliverables list.
 const deliverables = [
   {
-    title: "Structured data the machines can read",
-    desc: "Schema.org markup that tells answer engines exactly what your business is, what you offer, and how to contact you. This is the layer most sites are missing entirely.",
+    title: "Structured business data",
+    desc: "Schema.org markup for your business, services, and contact details, checked against the information on your pages.",
   },
   {
-    title: "Answer content built to be quoted",
-    desc: "Clear, self-contained FAQ and answer blocks written the way AI lifts them. When a customer asks a question, your wording is what the assistant repeats.",
+    title: "Answers to customer questions",
+    desc: "Service descriptions and FAQs that explain what you do, who you work with, and how to get started.",
   },
   {
     title: "Consistent business identity",
-    desc: "Matching name, services, and details across your site, Google profile, and social platforms so AI trusts that it is all the same business.",
+    desc: "Matching names, services, and contact details across your website, Google profile, and social platforms.",
   },
   {
-    title: "Trust signals that earn the citation",
-    desc: "Real reviews, client work, and credibility markers surfaced in a format answer engines weigh when deciding who to recommend.",
+    title: "Reviews and work examples",
+    desc: "Your customer reviews, completed projects, and team information placed where visitors can find them.",
   },
   {
-    title: "Crawler access done right",
-    desc: "Robots and sitemap rules that explicitly welcome the AI crawlers behind ChatGPT, Perplexity, and Gemini instead of accidentally blocking them.",
+    title: "Crawler and sitemap checks",
+    desc: "We review robots rules, indexing settings, and your sitemap for anything that could prevent search tools from reading public pages.",
   },
   {
     title: "A check on what AI says about you",
-    desc: "We test how today's assistants describe your business, find where you are invisible or wrong, and fix the gaps.",
+    desc: "We record how assistants describe your business, flag missing or incorrect details, and identify information we can improve on your site.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function AiSearchPage() {
     provider: { "@id": "https://cozydigital.org/#organization" },
     areaServed: { "@type": "Place", name: "United States" },
     description:
-      "Generative Engine Optimization for service businesses: structured data, quotable answer content, consistent business identity, and trust signals that make AI answer engines like ChatGPT, Perplexity, and Google AI Overviews recommend you.",
+      "Search visibility work for service businesses, including structured data, service descriptions, consistent business details, crawler access, and checks of how AI assistants describe the business.",
     url: "https://cozydigital.org/ai-search/",
   };
 
@@ -72,11 +72,11 @@ export default function AiSearchPage() {
         <div className="relative mx-auto max-w-3xl text-center">
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">AI Visibility · GEO</p>
           <h1 className="text-4xl font-black leading-[1.02] text-white md:text-6xl">
-            Be easier for search and{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">AI to recommend.</span>
+            Help search tools{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">understand your business.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
-            Your customers are asking ChatGPT, Perplexity, and Google AI for recommendations. We strengthen the information, structure, and trust signals that improve your business&apos;s ability to appear in those answers, as one part of your overall digital presence.
+            We check what your website says about your business and how search tools interpret it. Then we improve the pages, listings, and technical details that need attention.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link href="/free-audit/#audit-form" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-9 py-4 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
@@ -93,10 +93,10 @@ export default function AiSearchPage() {
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10">
             <h2 className="text-2xl font-black text-white md:text-3xl">What is GEO?</h2>
             <p className="mt-4 leading-relaxed text-zinc-300">
-              GEO, or Generative Engine Optimization, is the practice of making a business easy for AI answer engines to understand, trust, and cite. Where traditional SEO works to rank a page in a list of links, GEO works to get your business named inside the AI-generated answer itself.
+              GEO stands for Generative Engine Optimization. It describes work intended to help AI search tools understand and reference a business. Much of that work overlaps with maintaining a useful, accessible website: accurate information, descriptive pages, and visible examples of your work.
             </p>
             <p className="mt-4 leading-relaxed text-zinc-400">
-              A growing share of searches now end with an AI answer instead of ten blue links. If your site gives those engines nothing structured to read and nothing clear to quote, you simply do not appear in the recommendation, no matter how good your business is.
+              We can improve the information your business publishes and check how it appears in search. Search providers decide which sources to include, so a particular ranking, mention, or recommendation cannot be guaranteed.
             </p>
           </div>
         </div>
@@ -107,11 +107,11 @@ export default function AiSearchPage() {
         <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-zinc-400">Traditional SEO</p>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-400">Optimizes to rank your page in a list of links. The customer still has to click, compare, and choose.</p>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-400">Reviews the content and technical details that help search engines discover and index your pages.</p>
           </div>
           <div className="rounded-2xl border border-cyan-300/25 bg-cyan-500/[0.05] p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-cyan-300">GEO with Cozy Digital</p>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-300">Builds the structure and trust signals that improve your chances of being named inside the AI answer itself.</p>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-300">Also checks how AI assistants describe your services and whether your published information needs updating.</p>
           </div>
         </div>
       </section>
@@ -121,7 +121,7 @@ export default function AiSearchPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">What we do</p>
-            <h2 className="text-3xl font-black text-white md:text-4xl">The work that gets you cited</h2>
+            <h2 className="text-3xl font-black text-white md:text-4xl">What we review and update</h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {deliverables.map((item) => (
@@ -137,12 +137,12 @@ export default function AiSearchPage() {
       {/* PROOF / META */}
       <section className="px-6 pb-16">
         <div className="mx-auto max-w-3xl rounded-3xl border border-cyan-300/20 bg-cyan-500/[0.06] p-8 text-center md:p-10">
-          <h2 className="text-2xl font-black text-white md:text-3xl">This site is the demo.</h2>
+          <h2 className="text-2xl font-black text-white md:text-3xl">See the details on our own site.</h2>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-zinc-300">
-            Cozydigital.org runs the same GEO setup we build for clients: structured data, quotable answers, and clean crawler access. We do not sell AI search visibility from a site that ignores it.
+            Our site includes service descriptions, founder profiles, client work, FAQs, and structured data. These are the same kinds of details we review with clients.
           </p>
           <Link href="/faq/" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors hover:text-cyan-100">
-            See our own answer content <ArrowIcon />
+            Read our FAQs <ArrowIcon />
           </Link>
         </div>
       </section>

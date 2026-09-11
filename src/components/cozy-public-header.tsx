@@ -39,7 +39,7 @@ export default function CozyPublicHeader() {
         <div className="studio-nav-actions">
           <a className="studio-hub" href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL}>{CLIENT_HUB_LABEL} <span aria-hidden="true">↗</span><span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span></a>
           <ThemeToggle className="studio-theme" />
-          <Link href="/free-audit/#audit-form" className="studio-button">Free audit <span aria-hidden="true">↗</span></Link>
+          <Link href="/cozy-booking/" className="studio-button">Start a project <span aria-hidden="true">↗</span></Link>
           <button ref={menuButtonRef} type="button" className="studio-menu-button" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(!mobileOpen)}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d={mobileOpen ? "M6 6L18 18M6 18L18 6" : "M4 7H20M4 12H20M4 17H20"} /></svg></button>
         </div>
       </div>

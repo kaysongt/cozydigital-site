@@ -18,7 +18,7 @@ export default function ThankYouPage() {
 
         <h1 className="text-4xl font-black text-white md:text-5xl">Your playbook is ready.</h1>
         <p className="mx-auto mt-4 max-w-md text-zinc-400">
-          Check your inbox. We sent it there too so you always have it. Click below to download it now.
+          Download the PDF below and save a copy to your device.
         </p>
 
         <div className="mt-10">
@@ -29,14 +29,14 @@ export default function ThankYouPage() {
           >
             <span>⬇</span> Download The Playbook
           </a>
-          <p className="mt-3 text-xs text-zinc-600">PDF · Free · No strings attached</p>
+          <p className="mt-3 text-xs text-zinc-600">Free PDF download</p>
         </div>
 
         <div className="mt-14 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-8">
           <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">What&apos;s next</p>
-          <h2 className="text-2xl font-black text-white">Want us to do it with you?</h2>
+          <h2 className="text-2xl font-black text-white">Talk through your website with us.</h2>
           <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-zinc-400">
-            The playbook gives you the framework. A free consultation gives you the exact steps for <em>your</em> specific site, content, and booking path.
+            Bring your site and your questions to a free call. We can look at the pages, content, and booking process with you.
           </p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link

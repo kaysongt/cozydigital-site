@@ -4,7 +4,7 @@ import AuditForm from "@/components/audit-form";
 export const metadata: Metadata = {
   title: "Free Digital Presence Audit | Cozy Digital",
   description:
-    "Request a free Digital Presence Audit from Cozy Digital. We review your website, messaging, trust signals, content, booking path, and search visibility, then identify the first three improvements we'd make.",
+    "Send Cozy Digital your website or social profile for a free review. We check the pages, content, booking, and search information, then recommend three changes to make first.",
   alternates: { canonical: "https://cozydigital.org/free-audit/" },
 };
 
@@ -14,12 +14,12 @@ const auditCovers = [
     desc: "Does a first-time visitor understand what you do and who it's for within seconds?",
   },
   {
-    label: "Trust signals",
-    desc: "Can a visitor find the credibility signals they need before deciding to contact you?",
+    label: "Reviews & past work",
+    desc: "Can a visitor see your experience, reviews, and examples before deciding to contact you?",
   },
   {
-    label: "Booking & conversion path",
-    desc: "Is there one obvious next step, or competing buttons pulling attention in different directions?",
+    label: "Booking & inquiries",
+    desc: "How easy is it to ask a question, book an appointment, or buy?",
   },
   {
     label: "Content & search visibility",
@@ -31,16 +31,16 @@ const deliverables = [
   {
     n: "01",
     title: "Three priority improvements",
-    desc: "Ranked by impact, not by what is easiest for us to sell you.",
+    desc: "Three changes we would make first, with a reason for each.",
   },
   {
     n: "02",
-    title: "Your biggest trust or conversion gaps",
-    desc: "The specific moments where visitors hesitate, and why.",
+    title: "Pages that need attention",
+    desc: "Missing information, confusing steps, and issues we find as we use the site.",
   },
   {
     n: "03",
-    title: "Clear next steps, no obligation",
+    title: "Recommendations you can use",
     desc: "Yours to act on with us, with someone else, or on your own.",
   },
 ];
@@ -96,10 +96,9 @@ export default function FreeAuditPage() {
             .
           </h1>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-zinc-400">
-            We&apos;ll review your website, messaging, trust signals, content,
-            booking path, and search visibility, then identify the first three
-            improvements we would make. You leave with clear next steps whether
-            or not you hire us.
+            Send us your website or social profile. We&apos;ll review your pages,
+            content, booking, and search information, then send back three
+            changes we would make first. The review is free.
           </p>
         </div>
 
