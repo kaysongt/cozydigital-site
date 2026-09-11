@@ -1,3 +1,4 @@
+import PromptBossPromo from "@/components/prompt-boss-promo";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -480,6 +481,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <PromptBossPromo />
 
       {/* TEAM */}
       <FounderTrust />

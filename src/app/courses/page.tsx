@@ -1,3 +1,4 @@
+import PromptBossPromo from "@/components/prompt-boss-promo";
 import Link from "next/link";
 import Script from "next/script";
 import type { Metadata } from "next";
@@ -122,6 +123,8 @@ export default function CoursesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
       />
       <Script src="https://js.stripe.com/v3/buy-button.js" async strategy="afterInteractive" />
+
+      <PromptBossPromo />
 
       {/* HERO */}
       <section className="relative overflow-hidden px-6 pt-20 pb-16 md:pt-28 md:pb-20">

@@ -53,6 +53,9 @@ const sourceFiles = walk(SRC, (n) => n.endsWith(".ts") || n.endsWith(".tsx"));
 //    an amount in this repo is either stale or about to be. The exceptions are
 //    real, checked, and deliberately narrow.
 const ALLOWED_AMOUNTS = {
+  "src/components/prompt-boss-page.tsx": ["$30"],
+  "src/components/prompt-boss-promo.tsx": ["$30"],
+  "src/app/courses/ai-video-prompt-boss/page.tsx": ["$30"],
   // The course has one fixed price, sold through a live Stripe button on
   // /courses/. structured-data.tsx must match it, and so must the Buy Button
   // in Stripe, which is what actually charges.
