@@ -7,7 +7,8 @@ import ThemeToggle from "@/components/theme-toggle";
 import { CLIENT_HUB_LABEL, CLIENT_HUB_NEW_TAB_HINT, CLIENT_HUB_REL, CLIENT_HUB_URL } from "@/lib/client-hub";
 
 const links = [
-  { label: "Our work", href: "/#client-work" },
+  { label: "Websites", href: "/#client-work" },
+  { label: "AI Video", href: "/#ai-video" },
   { label: "Services", href: "/services/" },
   { label: "The studio", href: "/founders/" },
   { label: "Courses", href: "/courses/" },

@@ -8,9 +8,9 @@ import AuditForm from "@/components/audit-form";
 import FounderTrust from "@/components/founder-trust";
 
 export const metadata: Metadata = {
-  title: "Digital Presence for Service Businesses | Cozy Digital",
+  title: "Website Building & AI Video Production | Cozy Digital",
   description:
-    "Cozy Digital helps service businesses improve their websites, messaging, content, booking paths, automation, and search visibility. Request a free Digital Presence Audit.",
+    "Custom website building and AI video production for service businesses. Explore websites, video ads, product stories, and brand films, with content and automation support.",
   alternates: { canonical: "https://cozydigital.org/" },
 };
 
@@ -29,8 +29,8 @@ const presencePillars = [
     desc: "Clear, mobile-friendly pages that explain the offer and guide visitors toward action.",
   },
   {
-    title: "Messaging & brand clarity",
-    desc: "Stronger headlines, service descriptions, calls to action, and brand consistency.",
+    title: "AI video generation & production",
+    desc: "Concepts, scripts, AI-generated scenes, and edited ads or brand films shaped around your offer.",
   },
   {
     title: "Content & social presence",
@@ -196,8 +196,8 @@ const faqs = [
     a: "Not necessarily. In many cases we improve the site you already have. The audit helps determine whether small fixes, a rebuild, or something in between makes the most sense.",
   },
   {
-    q: "Do you also handle content and social media?",
-    a: "Yes. Content direction, reusable templates, and a posting rhythm that supports your actual offers are part of the digital-presence system, alongside your website and booking paths.",
+    q: "Can I hire you just for AI video?",
+    a: "Yes. AI video production and website building are standalone services. Bring a product, campaign, or story and we can plan the script, generated scenes, edit, and formats without a website project.",
   },
   {
     q: "What is AI visibility?",
@@ -213,6 +213,22 @@ export default function HomePage() {
   return (
     <main className="cozy-home min-h-screen bg-zinc-950 text-zinc-100">
       <StudioHero />
+
+      <section id="ai-video" className="scroll-mt-24 border-y border-white/10 px-6 py-20 md:py-28" aria-labelledby="ai-video-heading">
+        <div className="mx-auto max-w-6xl">
+          <p className="cozy-eyebrow text-xs uppercase tracking-[0.22em] text-cyan-400">AI video generation &amp; production</p>
+          <h2 id="ai-video-heading" className="font-display mt-4 text-3xl text-white md:text-5xl">Your idea. Directed, generated, and edited.</h2>
+          <div className="mt-10 grid items-center gap-10 md:grid-cols-2">
+            <video src="/videos/client-ad.mp4" poster="/videos/client-ad-poster.jpg" controls playsInline preload="none" aria-label="Short-form advertisement produced for a client campaign" className="aspect-video w-full rounded-2xl bg-black object-contain" />
+            <div><p className="text-lg leading-8 text-zinc-300">We create AI video ads, product stories, and brand films for the places your customers watch. Bring an offer or an idea; we shape the hook, script, visual direction, and final edit.</p>
+              <ul className="mt-6 space-y-3 text-zinc-400"><li>Concept and script built around your message</li><li>AI-generated scenes with editing and captions</li><li>Vertical, square, or widescreen versions agreed for your campaign</li></ul>
+              <p className="mt-5 text-sm text-zinc-400">Length, versions, and revision rounds are agreed before production.</p>
+              <Link href="/cozy-booking/" className="studio-button mt-7 inline-flex">Plan an AI video <span aria-hidden="true">↗</span></Link>
+              <a href="https://cozy-client-hub-production.up.railway.app/#ai-video" target="_blank" rel="noopener noreferrer" className="mt-5 block text-sm text-cyan-400 underline">Watch more AI video work</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* SELECTED CLIENT WORK */}
       <section className="studio-work border-y border-white/[0.06] px-6 py-20 md:py-28">

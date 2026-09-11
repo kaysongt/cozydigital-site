@@ -24,6 +24,11 @@ const capabilities = [
     body: "Most sites we take on say too much or too little. We rebuild the pages around the few things someone needs to know before they'll book, buy, or pick up the phone, and we make sure it holds together on a phone.",
   },
   {
+    label: "AI video & ad creative",
+    title: "Short-form video without the production week",
+    body: "Vertical video built for Reels, Shorts, and paid placements — the hook, the cuts, the captions, the on-brand look. We use AI tools where they genuinely save time and edit the rest by hand. Explore the AI video showcase on our homepage.",
+  },
+  {
     label: "Ongoing website care",
     title: "Someone whose job it is to keep it current",
     body: "Hours change, staff change, offers change. We handle the edits and the small fixes so your site doesn't quietly drift a year out of date while you're busy running the business.",
@@ -32,11 +37,6 @@ const capabilities = [
     label: "Content & marketing support",
     title: "A rhythm you can actually keep",
     body: "Post ideas, captions, email, and reusable templates in your brand. We'd rather help you publish steadily than hand over a one-week burst that dies the moment things get busy.",
-  },
-  {
-    label: "AI video & ad creative",
-    title: "Short-form video without the production week",
-    body: "Vertical video built for Reels, Shorts, and paid placements — the hook, the cuts, the captions, the on-brand look. We use AI tools where they genuinely save time and edit the rest by hand. There's an example on our homepage.",
   },
   {
     label: "Search & AI visibility",
@@ -74,9 +74,9 @@ export default function ServicesPage() {
         {/* Header */}
         <div className="mb-16 text-center">
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-cyan-400">Services</p>
-          <h1 className="text-4xl font-black text-white md:text-5xl">How we help.</h1>
+          <h1 className="text-4xl font-black text-white md:text-5xl">Website building. AI video production.</h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-zinc-400">
-            Everyone arrives from a different place. Some businesses need a site built from nothing; others have one that just needs to stop losing people halfway down the page. Here is the work we take on. Start anywhere, and we&apos;ll say so if something else should come first.
+            Two lead services, one creative team. Build a website, create an AI video campaign, or bring both together. Each is available on its own, with content, site care, and automation when you need them.
           </p>
         </div>
 

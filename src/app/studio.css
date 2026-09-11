@@ -109,3 +109,11 @@ html.light { --studio-bg:#f4f7fb; --studio-panel:#ffffff; --studio-ink:#132239; 
 .design-carousel-note { margin-top:13px; color:var(--studio-muted); font-size:.75rem; line-height:1.6; }
 @media(max-width:480px) { .design-carousel-heading { margin-bottom:25px; font-size:.8125rem; } .design-carousel-dots button { width:24px; } .design-carousel-caption h2 { font-size:1.125rem; } .design-carousel-controls { gap:4px; } .design-carousel-buttons { gap:4px; } .design-carousel-buttons button { min-width:40px; } }
 @media(prefers-reduced-motion:reduce) { .design-carousel-slide { transition:none; transform:none; } .design-carousel-dots button span { transition:none; } }
+
+/* Give the two lead services equal room in the first showcase. */
+.studio-hero-balanced { grid-template-columns:1fr; min-height:0; gap:40px; padding-top:40px; }
+.studio-hero-balanced .studio-copy h1 { font-size:clamp(2.8rem,5.4vw,4.8rem); line-height:1.06; margin-block:18px; }
+.studio-hero-balanced .studio-intro { max-width:780px; }
+.studio-lead-media { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:36px; }
+.studio-lead-media>figure { margin-top:58px; }
+@media(max-width:800px) { .studio-lead-media { grid-template-columns:1fr; } .studio-lead-media>figure { margin-top:0; } }
