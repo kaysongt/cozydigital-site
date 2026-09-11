@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./studio.css";
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import Script from "next/script";
