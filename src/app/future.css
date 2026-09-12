@@ -5,7 +5,7 @@
   --studio-ink: #edf0ed;
   --studio-muted: #a0a6a2;
   --studio-line: #ffffff22;
-  --studio-accent: #c5fa6a;
+  --studio-accent: #67e8f9;
 }
 html.light {
   --studio-bg: #f0f1ed;
@@ -13,7 +13,7 @@ html.light {
   --studio-ink: #141813;
   --studio-muted: #596157;
   --studio-line: #1d28192b;
-  --studio-accent: #436b0c;
+  --studio-accent: #0e7490;
 }
 body.future-site {
   background: var(--studio-bg);
@@ -33,7 +33,7 @@ body.future-site {
 }
 .future-site ::selection {
   color: #08090b;
-  background: #c5fa6a;
+  background: #67e8f9;
 }
 .future-site :is(.cozy-accent, [class*="text-cyan"], [class*="text-fuchsia"]) {
   color: var(--studio-accent);
@@ -109,9 +109,9 @@ html.light .future-home {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #c5fa6a;
+  background: #67e8f9;
   margin-right: 9px;
-  box-shadow: 0 0 14px #c5fa6a66;
+  box-shadow: 0 0 14px #67e8f966;
 }
 .future-hero {
   position: relative;
@@ -155,7 +155,11 @@ html.light .future-home {
   max-width: 1100px;
 }
 .future-hero h1 span {
-  color: #c5fa6a;
+  color: #67e8f9;
+  background: linear-gradient(110deg, #d8b4fe 0%, #a5b4fc 42%, #67e8f9 85%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .future-hero-bottom {
   display: flex;
@@ -205,8 +209,8 @@ html.light .future-home {
   transform: translateY(-2px);
 }
 .future-hero .future-button:hover {
-  background: #c5fa6a;
-  border-color: #c5fa6a;
+  background: #67e8f9;
+  border-color: #67e8f9;
   color: #08090b;
 }
 .future-button > span {
@@ -526,9 +530,9 @@ html.light .future-home {
   height: 22px;
 }
 .selected-film-start:hover .selected-film-play {
-  background: #c5fa6a;
+  background: #67e8f9;
   color: #08090b;
-  border-color: #c5fa6a;
+  border-color: #67e8f9;
 }
 .selected-film-caption {
   display: grid;

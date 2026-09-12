@@ -81,20 +81,20 @@ const questions = [
 
 export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
   const button =
-    "inline-flex items-center justify-center rounded-lg bg-[#c5fa6a] px-7 py-4 text-base font-bold text-[#172012] transition hover:bg-[#ddffa2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c5fa6a]";
+    "inline-flex items-center justify-center rounded-lg bg-[#67e8f9] px-7 py-4 text-base font-bold text-[#172012] transition hover:bg-[#a5f3fc] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#67e8f9]";
   return (
     <main className="min-h-screen bg-[#08090b] text-[#edf0ed]">
       <div className="mx-auto max-w-6xl px-6 py-7">
         <a
           href={homeUrl}
-          className="text-xs uppercase tracking-[.2em] text-[#c5fa6a]"
+          className="text-xs uppercase tracking-[.2em] text-[#67e8f9]"
         >
           Cozy Digital / The director&apos;s playbook
         </a>
       </div>
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-8 md:grid-cols-[1.15fr_1fr] md:pt-16">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[.25em] text-[#c5fa6a]">
+          <p className="text-xs font-semibold uppercase tracking-[.25em] text-[#67e8f9]">
             AI Video Prompt Boss · 2026 edition
           </p>
           <h1
@@ -107,7 +107,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
           >
             Plan the shot.
             <br />
-            <em className="not-italic text-[#c5fa6a]">Direct the details.</em>
+            <em className="not-italic text-[#67e8f9]">Direct the details.</em>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-[#a9b0aa]">
             Choose your subject, camera, lighting, and sound before you
@@ -135,7 +135,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
             AI tools and generation credits sold separately.
           </p>
         </div>
-        <div className="mx-auto w-full max-w-sm rotate-[2deg] rounded-sm border border-[#c5fa6a]/30 shadow-[0_30px_80px_rgba(0,0,0,.5)]">
+        <div className="mx-auto w-full max-w-sm rotate-[2deg] rounded-sm border border-[#67e8f9]/30 shadow-[0_30px_80px_rgba(0,0,0,.5)]">
           <img
             src="/courses/ai-video-prompt-boss-cover.png"
             width="773"
@@ -147,7 +147,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
         </div>
       </section>
       <section
-        className="border-y border-[#c5fa6a]/20 bg-[#141619]"
+        className="border-y border-[#67e8f9]/20 bg-[#141619]"
         aria-label="What you get"
       >
         <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-10 md:grid-cols-4">
@@ -160,7 +160,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
             <div key={label}>
               <dt className="text-xs text-[#a9b0aa]">{label}</dt>
               <dd
-                className="mt-2 text-4xl text-[#c5fa6a]"
+                className="mt-2 text-4xl text-[#67e8f9]"
                 style={{
                   fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
                   fontWeight: 500,
@@ -174,7 +174,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
         </dl>
       </section>
       <section className="mx-auto max-w-6xl px-6 py-20" id="inside">
-        <p className="text-xs uppercase tracking-[.2em] text-[#c5fa6a]">
+        <p className="text-xs uppercase tracking-[.2em] text-[#67e8f9]">
           Inside the playbook
         </p>
         <h2
@@ -193,9 +193,9 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
           {chapters.map(([number, title, copy]) => (
             <article
               key={number}
-              className="rounded-2xl border border-[#c5fa6a]/15 bg-[#141619] p-6"
+              className="rounded-2xl border border-[#67e8f9]/15 bg-[#141619] p-6"
             >
-              <span className="text-xs tracking-widest text-[#c5fa6a]">
+              <span className="text-xs tracking-widest text-[#67e8f9]">
                 {number}
               </span>
               <h3 className="mt-3 text-xl font-semibold">{title}</h3>
@@ -204,9 +204,9 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
           ))}
         </div>
       </section>
-      <section className="border-y border-[#c5fa6a]/20 bg-[#141619] px-6 py-16">
+      <section className="border-y border-[#67e8f9]/20 bg-[#141619] px-6 py-16">
         <div className="mx-auto max-w-6xl">
-          <p className="text-xs uppercase tracking-[.2em] text-[#c5fa6a]">
+          <p className="text-xs uppercase tracking-[.2em] text-[#67e8f9]">
             The B.O.S.S. formula
           </p>
           <h2
@@ -231,7 +231,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
               ],
             ].map(([letter, title, copy]) => (
               <div key={title}>
-                <span className="text-4xl text-[#c5fa6a]">{letter}</span>
+                <span className="text-4xl text-[#67e8f9]">{letter}</span>
                 <h3 className="mt-3 font-semibold">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-[#a9b0aa]">{copy}</p>
               </div>
@@ -266,7 +266,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
             ],
           ].map(([title, copy]) => (
             <div key={title}>
-              <h3 className="text-lg font-semibold text-[#c5fa6a]">{title}</h3>
+              <h3 className="text-lg font-semibold text-[#67e8f9]">{title}</h3>
               <p className="mt-3 text-sm leading-7 text-[#a9b0aa]">{copy}</p>
             </div>
           ))}
@@ -284,7 +284,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
           About the download
         </h2>
         {questions.map(([question, answer]) => (
-          <details key={question} className="border-b border-[#c5fa6a]/20 py-5">
+          <details key={question} className="border-b border-[#67e8f9]/20 py-5">
             <summary className="cursor-pointer font-semibold">
               {question}
             </summary>
@@ -292,8 +292,8 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
           </details>
         ))}
       </section>
-      <section className="border-t border-[#c5fa6a]/20 bg-[#141619] px-6 py-20 text-center">
-        <p className="text-xs uppercase tracking-[.2em] text-[#c5fa6a]">
+      <section className="border-t border-[#67e8f9]/20 bg-[#141619] px-6 py-20 text-center">
+        <p className="text-xs uppercase tracking-[.2em] text-[#67e8f9]">
           AI Video Prompt Boss
         </p>
         <h2

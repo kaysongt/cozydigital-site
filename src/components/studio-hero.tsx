@@ -6,7 +6,7 @@ export default function StudioHero() {
     <section className="future-hero" aria-labelledby="studio-heading">
       <Image
         className="future-hero-art"
-        src="/images/studio/chrome-loop.png"
+        src="/images/studio/cozy-loops.png"
         alt=""
         fill
         priority

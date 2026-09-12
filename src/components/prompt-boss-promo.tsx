@@ -1,7 +1,7 @@
 export default function PromptBossPromo() {
   return (
     <section
-      className="border-y border-[#c5fa6a]/20 bg-[#141619] px-6 py-16"
+      className="border-y border-[#67e8f9]/20 bg-[#141619] px-6 py-16"
       aria-labelledby="prompt-boss-promo-title"
     >
       <div className="mx-auto grid max-w-5xl items-center gap-8 sm:grid-cols-[140px_1fr]">
@@ -14,7 +14,7 @@ export default function PromptBossPromo() {
           className="mx-auto w-28 rotate-[-3deg] rounded-sm shadow-xl sm:w-36"
         />
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[.2em] text-[#c5fa6a]">
+          <p className="text-xs font-semibold uppercase tracking-[.2em] text-[#67e8f9]">
             From Cozy Digital · PDF course
           </p>
           <h2
@@ -30,7 +30,7 @@ export default function PromptBossPromo() {
           </p>
           <a
             href="/courses/ai-video-prompt-boss/"
-            className="mt-6 inline-flex rounded-lg bg-[#c5fa6a] px-6 py-3 text-sm font-bold text-[#172012] hover:bg-[#ddffa2]"
+            className="mt-6 inline-flex rounded-lg bg-[#67e8f9] px-6 py-3 text-sm font-bold text-[#172012] hover:bg-[#a5f3fc]"
           >
             Explore the playbook · $30{" "}
             <span className="ml-3" aria-hidden="true">
