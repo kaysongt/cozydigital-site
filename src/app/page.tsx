@@ -6,6 +6,7 @@ import AuditForm from "@/components/audit-form";
 import FounderTrust from "@/components/founder-trust";
 import PromptBossPromo from "@/components/prompt-boss-promo";
 import DesignCarousel from "@/components/design-carousel";
+import SelectedFilms from "@/components/selected-films";
 
 export const metadata: Metadata = {
   title: "Website Design & AI Video | Cozy Digital",
@@ -131,10 +132,10 @@ export default function HomePage() {
           <a className="future-lead" href="#ai-video">
             <div className="future-lead-media">
               <Image
-                src="/videos/client-ad-poster.jpg"
-                alt="Frame from a Cozy Digital client video advertisement"
-                width={1200}
-                height={900}
+                src="/videos/selected-work/boardroom-drama.jpg"
+                alt="A woman in green at a bar in The Deal, a Cozy Digital film"
+                width={1920}
+                height={1080}
                 sizes="(min-width: 800px) 50vw, 100vw"
               />
               <span className="future-play" aria-hidden="true">
@@ -165,25 +166,12 @@ export default function HomePage() {
           <p className="future-label">01 / MOTION</p>
           <h2 id="video-heading">Videos we’ve made.</h2>
           <p>
-            Product spots, social ads, and brand films. We write the concept,
-            direct the scenes, and edit the finished piece.
+            Narrative shorts, social comedy, and episodic stories. Watch four
+            films from our portfolio, then talk to us about your own project.
           </p>
         </div>
-        <div className="future-film-grid">
-          <figure className="future-film">
-            <video
-              src="/videos/client-ad.mp4"
-              poster="/videos/client-ad-poster.jpg"
-              controls
-              playsInline
-              preload="none"
-              aria-label="AK Marlowe video advertisement produced by Cozy Digital"
-            />
-            <figcaption>
-              <span>AK Marlowe</span>
-              <span>Short-form advertisement</span>
-            </figcaption>
-          </figure>
+        <SelectedFilms />
+        <div className="future-film-process">
           <div className="future-film-notes">
             <p className="future-label">FROM BRIEF TO FINAL CUT</p>
             <ol>
@@ -221,11 +209,11 @@ export default function HomePage() {
             </Link>
             <a
               className="future-text-link"
-              href="https://cozy-client-hub-production.up.railway.app/#ai-video"
+              href="https://cozy-client-hub-production.up.railway.app/login"
               target="_blank"
               rel="noopener noreferrer"
             >
-              More films in the hub ↗
+              Start a request in the hub ↗
             </a>
           </div>
         </div>

@@ -464,6 +464,198 @@ html.light .future-home {
 .future-film-notes > .future-text-link {
   display: block;
 }
+.selected-films {
+  min-width: 0;
+  color: var(--studio-ink);
+}
+.selected-film-feature {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--studio-line);
+  border-radius: 10px;
+  background: var(--studio-panel);
+}
+.selected-film-stage {
+  position: relative;
+  height: clamp(220px, 50vw, 600px);
+  background: #030405;
+  scroll-margin-top: 95px;
+}
+.selected-film-stage-portrait {
+  height: clamp(380px, 70vh, 520px);
+}
+.selected-film-stage :is(video, img),
+.selected-film-start {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.selected-film-start {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.selected-film-start:focus-visible {
+  outline-offset: -5px;
+}
+.selected-film-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 23px;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  border: 1px solid #ffffff55;
+  border-radius: 4px;
+  background: #08090bba;
+  color: #edf0ed;
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.selected-film-play svg {
+  width: 22px;
+  height: 22px;
+}
+.selected-film-start:hover .selected-film-play {
+  background: #c5fa6a;
+  color: #08090b;
+  border-color: #c5fa6a;
+}
+.selected-film-caption {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+  padding: 25px 28px;
+  border-top: 1px solid var(--studio-line);
+}
+.selected-film-category {
+  display: block;
+  color: var(--studio-muted);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.selected-film-caption h3 {
+  margin: 7px 0 0;
+  font-size: clamp(23px, 3vw, 34px);
+  font-weight: 500;
+  line-height: 1.1;
+}
+.selected-film-caption > p {
+  color: var(--studio-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.selected-film-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+}
+.selected-film-list li {
+  min-width: 0;
+}
+.selected-film-choice {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--studio-line);
+  border-radius: 6px;
+  background: var(--studio-panel);
+  color: var(--studio-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.selected-film-choice:is(:hover, [aria-pressed="true"]) {
+  border-color: var(--studio-accent);
+}
+.selected-film-thumbnail {
+  display: block;
+  position: relative;
+  aspect-ratio: 16/10;
+  background: #030405;
+}
+.selected-film-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.selected-film-number,
+.selected-film-duration {
+  position: absolute;
+  top: 9px;
+  padding: 3px 6px;
+  border: 1px solid #ffffff22;
+  border-radius: 3px;
+  background: #08090bd9;
+  color: #edf0ed;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.selected-film-number {
+  left: 9px;
+}
+.selected-film-duration {
+  right: 9px;
+}
+.selected-film-choice-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  min-height: 135px;
+  padding: 16px;
+}
+.selected-film-choice-copy strong {
+  display: block;
+  margin: 7px 0 14px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+.selected-film-watch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  color: var(--studio-accent);
+  font-size: 11px;
+}
+.selected-film-watch svg {
+  width: 13px;
+  height: 13px;
+}
+.future-film-process {
+  padding-top: 42px;
+}
+.future-film-process ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-bottom: 20px;
+}
+.future-film-process .future-text-link {
+  display: inline-block;
+  margin-left: 25px;
+}
 .future-project-grid {
   row-gap: 50px;
 }
@@ -672,6 +864,30 @@ html.light .future-home form button[type="submit"] {
   }
 }
 @media (max-width: 760px) {
+  .selected-film-caption {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+  }
+  .selected-film-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .selected-film-choice-copy {
+    padding: 13px;
+    min-height: 137px;
+  }
+  .selected-film-choice-copy strong {
+    font-size: 16px;
+  }
+  .future-film-process ol {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .future-film-process .future-text-link {
+    display: block;
+    margin-left: 0;
+  }
   .future-hero {
     min-height: 0;
   }

@@ -2,8 +2,7 @@ import PromptBossPromo from "@/components/prompt-boss-promo";
 import Link from "next/link";
 import Script from "next/script";
 import type { Metadata } from "next";
-import { AiVideoReel } from "@/components/ai-video-reel";
-import { REEL_SHOTS } from "@/data/ai-video-reel";
+import SelectedFilms from "@/components/selected-films";
 
 export const metadata: Metadata = {
   title: "Courses & Playbooks | Cozy Digital",
@@ -308,19 +307,19 @@ export default function CoursesPage() {
           <div className="mx-auto max-w-2xl text-center">
             <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-cyan-300">AI video work</p>
             <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
-              Shots we have produced
+              Films from our studio
             </h2>
             <p className="mx-auto mt-4 text-base leading-relaxed text-zinc-400">
-              Scenes directed and generated in house, then cut by hand. Sound is
-              on, so pick one when you are ready to listen.
+              Four examples from our video portfolio: a narrative short, social
+              comedy, a series episode, and a horror short. Choose a film to watch.
             </p>
           </div>
           <div className="mt-10">
-            <AiVideoReel shots={REEL_SHOTS} />
+            <SelectedFilms />
           </div>
           <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-zinc-600">
-            Produced by Cozy Digital for client campaigns. Scope, length, and the
-            number of versions are agreed per project before production starts.
+            Looking for a video for your business? We agree the concept, length,
+            formats, and revisions with you before production starts.
           </p>
         </div>
       </section>
