@@ -132,10 +132,10 @@ export default function HomePage() {
           <a className="future-lead" href="#ai-video">
             <div className="future-lead-media">
               <Image
-                src="/videos/selected-work/boardroom-drama.jpg"
-                alt="A woman in green at a bar in The Deal, a Cozy Digital film"
-                width={1920}
-                height={1080}
+                src="/videos/selected-work/subscription-car.jpg"
+                alt="Dr. Boyce beside a red sports car in a Cozy Digital client film"
+                width={1080}
+                height={1920}
                 sizes="(min-width: 800px) 50vw, 100vw"
               />
               <span className="future-play" aria-hidden="true">
@@ -163,11 +163,13 @@ export default function HomePage() {
         aria-labelledby="video-heading"
       >
         <div className="future-section-head">
-          <p className="future-label">01 / MOTION</p>
-          <h2 id="video-heading">Videos we’ve made.</h2>
+          <p className="future-label">01 / AI VIDEO · CLIENT WORK</p>
+          <h2 id="video-heading">Dr. Boyce Watkins.</h2>
           <p>
-            Narrative shorts, social comedy, and episodic stories. Watch four
-            films from our portfolio, then talk to us about your own project.
+            Money, habits, and history, told through film. Explore six pieces
+            of client work for Dr. Boyce Watkins, from quick social comedy
+            to cinematic storytelling. Our team shapes the script, scenes,
+            and final edit.
           </p>
         </div>
         <SelectedFilms />

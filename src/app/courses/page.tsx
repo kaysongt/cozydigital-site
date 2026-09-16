@@ -307,11 +307,11 @@ export default function CoursesPage() {
           <div className="mx-auto max-w-2xl text-center">
             <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-cyan-300">AI video work</p>
             <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
-              Films from our studio
+              Client work for Dr. Boyce Watkins
             </h2>
             <p className="mx-auto mt-4 text-base leading-relaxed text-zinc-400">
-              Four examples from our video portfolio: a narrative short, social
-              comedy, a series episode, and a horror short. Choose a film to watch.
+              Six films from our studio, spanning social comedy, financial
+              storytelling, and historical dramatization. Choose a film to watch.
             </p>
           </div>
           <div className="mt-10">
