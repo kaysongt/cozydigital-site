@@ -199,6 +199,29 @@ if (!existsSync(OUT)) {
   if (!/video/i.test(read(join(OUT, "index.html")))) {
     fail("out/index.html no longer mentions video.");
   }
+
+  // 11. Homepage hybrid FAQ: keep the four curated questions, then Lamp.
+  const home = read(join(OUT, "index.html"));
+  const curatedFaqs = [
+    "Can I book just a website or a video?",
+    "Who will I work with?",
+    "What should I send you?",
+    "What happens after launch?",
+  ];
+  for (const question of curatedFaqs) {
+    if (!home.includes(question)) {
+      fail(`out/index.html is missing curated FAQ "${question}".`);
+    }
+  }
+  if (!home.includes("Ask anything else")) {
+    fail("out/index.html is missing the Ask anything else block.");
+  }
+  if (!home.includes("Lamp")) {
+    fail("out/index.html is missing the Lamp helper name.");
+  }
+  if (/foggy/i.test(home)) {
+    fail("out/index.html mentions Foggy, which is not the helper name.");
+  }
 }
 
 // ---------------------------------------------------------------------------
