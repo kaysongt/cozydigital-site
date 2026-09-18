@@ -7,6 +7,7 @@ import FounderTrust from "@/components/founder-trust";
 import PromptBossPromo from "@/components/prompt-boss-promo";
 import DesignCarousel from "@/components/design-carousel";
 import SelectedFilms from "@/components/selected-films";
+import AskLamp from "@/components/ask-lamp";
 
 export const metadata: Metadata = {
   title: "Website Design & AI Video | Cozy Digital",
@@ -349,6 +350,7 @@ export default function HomePage() {
               <p>{a}</p>
             </details>
           ))}
+          <AskLamp />
         </div>
       </section>
       <section className="future-close">

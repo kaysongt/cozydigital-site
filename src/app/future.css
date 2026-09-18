@@ -818,6 +818,95 @@ html.light .future-home form button[type="submit"] {
   line-height: 1.8;
   margin-top: 18px;
 }
+.ask-lamp {
+  border-top: 1px solid var(--studio-line);
+  padding: 23px 0 0;
+}
+.ask-lamp-title {
+  margin-top: 10px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.ask-lamp-hint {
+  color: var(--studio-muted);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+.ask-lamp-form {
+  margin-top: 18px;
+}
+.ask-lamp-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--studio-muted);
+  margin-bottom: 10px;
+}
+.ask-lamp-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+.ask-lamp-row input {
+  flex: 1;
+  min-width: 0;
+  min-height: 49px;
+  border: 1px solid var(--studio-line);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  padding: 12px 16px;
+  font-size: 15px;
+}
+.ask-lamp-row input::placeholder {
+  color: var(--studio-muted);
+  opacity: 0.8;
+}
+.ask-lamp-row button {
+  flex-shrink: 0;
+  min-height: 49px;
+  padding: 12px 22px;
+  border: 1px solid var(--studio-accent);
+  border-radius: 4px;
+  background: var(--studio-accent);
+  color: var(--studio-bg);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ask-lamp-row button:hover {
+  background: var(--studio-ink);
+  border-color: var(--studio-ink);
+  color: var(--studio-bg);
+}
+.ask-lamp-answer {
+  min-height: 1.5em;
+  margin-top: 18px;
+}
+.ask-lamp-answer > p,
+.ask-lamp-answer .ask-lamp-links {
+  color: var(--studio-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.ask-lamp-credit {
+  color: var(--studio-accent) !important;
+  font-size: 12px !important;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.ask-lamp-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 14px;
+}
 .future-home > section.future-close {
   padding: 90px 4%;
   background: var(--studio-accent);
@@ -989,6 +1078,9 @@ html.light .future-home form button[type="submit"] {
 @media (max-width: 420px) {
   .future-actions {
     gap: 8px;
+  }
+  .ask-lamp-row {
+    flex-direction: column;
   }
   .future-hero .future-button {
     min-width: 0;

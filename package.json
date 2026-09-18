@@ -7,7 +7,7 @@
     "build": "next build && npm run check:public",
     "start": "next start",
     "lint": "next lint",
-    "check:public": "node scripts/check-public-content.mjs"
+    "check:public": "node scripts/check-public-content.mjs && node --experimental-strip-types --no-warnings --import ./scripts/register-ts-ext.mjs scripts/check-ask-site.ts"
   },
   "dependencies": {
     "next": "15.5.24",
