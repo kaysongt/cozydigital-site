@@ -39,12 +39,15 @@ export default function CozyPublicHeader() {
         <div className="studio-nav-actions">
           <a className="studio-hub" href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL}>{CLIENT_HUB_LABEL} <span aria-hidden="true">↗</span><span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span></a>
           <ThemeToggle className="studio-theme" />
-          <Link href="/cozy-booking/" className="studio-button">Start a project <span aria-hidden="true">↗</span></Link>
+          <Link href="/cozy-booking/" className="studio-nav-call">Book a 30-min call</Link>
+          <Link href="/free-audit/#audit-form" className="studio-button">Free audit <span aria-hidden="true">↗</span></Link>
           <button ref={menuButtonRef} type="button" className="studio-menu-button" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(!mobileOpen)}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d={mobileOpen ? "M6 6L18 18M6 18L18 6" : "M4 7H20M4 12H20M4 17H20"} /></svg></button>
         </div>
       </div>
       {mobileOpen && <nav id="mobile-navigation" className="studio-mobile-nav" aria-label="Mobile navigation">
         {links.map(link => <Link key={link.href} href={link.href} aria-current={active(link.href) ? "page" : undefined} onClick={() => setMobileOpen(false)}>{link.label}</Link>)}
+        <Link href="/free-audit/#audit-form" onClick={() => setMobileOpen(false)}>Get the free audit</Link>
+        <Link href="/cozy-booking/" onClick={() => setMobileOpen(false)}>Book a 30-min call</Link>
         <a href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL} onClick={() => setMobileOpen(false)}>{CLIENT_HUB_LABEL} ↗<span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span></a>
         <div className="mt-5 flex items-center justify-between"><span>Appearance</span><ThemeToggle /></div>
       </nav>}

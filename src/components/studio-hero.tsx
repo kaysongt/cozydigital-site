@@ -29,11 +29,11 @@ export default function StudioHero() {
               Design, development, and production by Quincy and Kayson.
             </p>
             <div className="future-actions">
-              <Link href="#client-work" className="future-button">
-                Website work <span aria-hidden="true">↗</span>
+              <Link href="/free-audit/#audit-form" className="future-button">
+                Get the free audit <span aria-hidden="true">↗</span>
               </Link>
-              <Link href="#ai-video" className="future-button">
-                Video work <span aria-hidden="true">↗</span>
+              <Link href="/cozy-booking/" className="future-button future-button-quiet">
+                Book a 30-min call <span aria-hidden="true">↗</span>
               </Link>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function StudioHero() {
       <div className="future-hero-index">
         <span>WEB DESIGN &amp; DEVELOPMENT</span>
         <span>AI VIDEO &amp; CAMPAIGNS</span>
-        <a href="/cozy-booking/">Tell us about your project ↗</a>
+        <a href="#ai-video">See AI video work ↗</a>
       </div>
     </section>
   );

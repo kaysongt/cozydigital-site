@@ -118,37 +118,67 @@ export default function ServicesPage() {
           </Link>
         </div>
 
-        {/* Client Hub — where plans and account access live now */}
-        <div className="mt-6 flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-white/[0.03] px-8 py-7 text-center sm:flex-row sm:text-left">
-          <div className="flex-1">
-            <p className="text-sm font-black text-white">Looking for plans?</p>
-            <p className="mt-1 text-sm text-zinc-400">
-              Compare plans, buy credits, and manage your project in the {CLIENT_HUB_LABEL}.
+        {/* Growth and Scale name the monthly social set. Prices stay in the Hub. */}
+        <div className="mt-6 rounded-3xl border border-white/10 bg-white/[0.03] px-8 py-7">
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">
+            Growth &amp; Scale · Social &amp; content
+          </p>
+          <h2 className="mt-2 text-2xl font-black text-white">Each month</h2>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-100">
+            8 social-ready AI cuts + 4 carousels + caption pack + 1 campaign reel / month
+          </p>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["8", "Social-ready AI cuts"],
+              ["4", "Carousels"],
+              ["1", "Caption pack"],
+              ["1", "Campaign reel"],
+            ].map(([count, label]) => (
+              <li key={label} className="rounded-xl border border-white/10 px-4 py-3">
+                <span className="text-xs font-black tracking-[0.14em] text-cyan-300">{count}</span>
+                <p className="mt-1 text-sm font-bold text-white">{label}</p>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-xl text-sm leading-relaxed text-zinc-400">
+              The monthly set on Growth and Scale. Compare plans and manage a project in the {CLIENT_HUB_LABEL}.
             </p>
+            <a
+              href={CLIENT_HUB_URL}
+              target="_blank"
+              rel={CLIENT_HUB_REL}
+              className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
+            >
+              Open the {CLIENT_HUB_LABEL}
+              <ExternalIcon />
+              <span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span>
+            </a>
           </div>
-          <a
-            href={CLIENT_HUB_URL}
-            target="_blank"
-            rel={CLIENT_HUB_REL}
-            className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
-          >
-            Open the {CLIENT_HUB_LABEL}
-            <ExternalIcon />
-            <span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span>
-          </a>
         </div>
 
         {/* Talk it through */}
         <div className="mt-14 text-center">
-          <h2 className="text-2xl font-black text-white md:text-3xl">Tell us what you have in mind.</h2>
+          <h2 className="text-2xl font-black text-white md:text-3xl">Start with the free audit.</h2>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-zinc-400">
-            Book a free 30-minute call with us. Bring your current site, a reference you like, or an idea you want to work through.
+            Send your website or social profile. A 30-minute call is there if you want to talk it through.
           </p>
-          <Link
-            href="/cozy-booking/"
-            className="group mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-3.5 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 transition-all hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
-          >
-            Schedule a Call <ArrowIcon />
+          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="/free-audit/#audit-form"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-8 py-3.5 text-sm font-bold text-white shadow-xl shadow-cyan-900/25 transition-all hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500"
+            >
+              Get the free audit <ArrowIcon />
+            </Link>
+            <Link
+              href="/cozy-booking/"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/[0.06]"
+            >
+              Book a 30-min call
+            </Link>
+          </div>
+          <Link href="/#ai-video" className="mt-5 inline-flex text-sm font-bold text-zinc-400 underline decoration-white/20 underline-offset-4 hover:text-cyan-200">
+            See AI video work
           </Link>
         </div>
 
