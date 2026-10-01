@@ -23,9 +23,8 @@ export const metadata: Metadata = {
 };
 const filmCount = SELECTED_FILMS.length;
 
-// Proof lines only repeat work already published here or on the live project:
-// the Boyce film list, Dr. Alicia's consultation path, and KingsWord's 32-course
-// dashboard (about page, confirmed on thekti.org). No performance claims.
+// Proof lines only repeat work already published here: the Boyce film list
+// and Dr. Alicia's live booking path. No performance claims.
 const projects: {
   id: string;
   name: string;
@@ -54,16 +53,6 @@ const projects: {
     image: "/images/client-proof/dear-pastors-wife-site.png",
     copy: "A home for resources, events, speaking, and giving, organized around the people the ministry serves.",
     href: "https://dearpastorswife.org/",
-    status: "Visit website",
-  },
-  {
-    id: "kingsword",
-    name: "KingsWord Training Institute",
-    type: "Christian education",
-    proof: "32 courses · student dashboard",
-    image: "/images/client-proof/kti-site.jpg",
-    copy: "A biblical studies certificate with enrollment, payment, and a dashboard that opens each module on schedule.",
-    href: "https://thekti.org/",
     status: "Visit website",
   },
   {
@@ -122,13 +111,6 @@ const niches: {
     href: "/#essential-massage",
     cta: "Essential Massage by Mesha",
     external: false,
-  },
-  {
-    name: "Coaches",
-    sentence: "Private coaching offered on the same live site as therapy and retreats.",
-    href: "https://draliciawatkins.com/",
-    cta: "Dr. Alicia Watkins",
-    external: true,
   },
 ];
 
