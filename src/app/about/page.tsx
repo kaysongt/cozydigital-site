@@ -61,12 +61,6 @@ const shipped: { name: string; kind: string; detail: string; href?: string; stat
     status: "Website concept",
   },
   {
-    name: "KingsWord Training Institute",
-    kind: "Christian education",
-    detail: "A 32-course biblical studies certificate taken online end to end: curriculum, enrollment, payment, and a student dashboard that opens each module on schedule.",
-    href: "https://thekti.org/",
-  },
-  {
     name: "Essential Massage by Mesha",
     kind: "Massage therapy",
     detail: "A massage practice moved off a rented booking platform onto a site it owns, with the full service menu, studio, and reviews in one place.",

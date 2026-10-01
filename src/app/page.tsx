@@ -7,6 +7,13 @@ import FounderTrust from "@/components/founder-trust";
 import PromptBossPromo from "@/components/prompt-boss-promo";
 import DesignCarousel from "@/components/design-carousel";
 import SelectedFilms from "@/components/selected-films";
+import { SELECTED_FILMS } from "@/data/selected-films";
+import {
+  CLIENT_HUB_LABEL,
+  CLIENT_HUB_NEW_TAB_HINT,
+  CLIENT_HUB_REL,
+  CLIENT_HUB_URL,
+} from "@/lib/client-hub";
 
 export const metadata: Metadata = {
   title: "Website Design & AI Video | Cozy Digital",
@@ -14,39 +21,104 @@ export const metadata: Metadata = {
     "Website design, development, and AI video production by Quincy and Kayson. View our work and talk directly with the founders of Cozy Digital.",
   alternates: { canonical: "https://cozydigital.org/" },
 };
-const projects = [
+const filmCount = SELECTED_FILMS.length;
+
+// Proof lines only repeat work already published here: the Boyce film list
+// and Dr. Alicia's live booking path. No performance claims.
+const projects: {
+  id: string;
+  name: string;
+  type: string;
+  proof: string;
+  image: string;
+  copy: string;
+  href: string | null;
+  status: string;
+}[] = [
   {
+    id: "dr-alicia-watkins",
     name: "Dr. Alicia Watkins",
     type: "Therapy & wellness",
+    proof: "Booking path live",
     image: "/images/client-proof/dr-alicia-site.png",
     copy: "Therapy, coaching, courses, and retreats brought together with direct booking and product pages.",
     href: "https://draliciawatkins.com/",
     status: "Visit website",
   },
   {
+    id: "dear-pastors-wife",
     name: "Dear Pastor’s Wife",
     type: "Ministry & community",
+    proof: "Resources, events, speaking, and giving",
     image: "/images/client-proof/dear-pastors-wife-site.png",
     copy: "A home for resources, events, speaking, and giving, organized around the people the ministry serves.",
     href: "https://dearpastorswife.org/",
     status: "Visit website",
   },
   {
+    id: "lavar-scott",
     name: "Lavar Scott",
     type: "Motorsport",
+    proof: "Sponsorship site in development",
     image: "/images/client-proof/lavar-scott-site.png",
     copy: "A partnership website with the driver’s story, audience, and sponsorship opportunities.",
     href: null,
     status: "In development",
   },
   {
+    id: "essential-massage",
     name: "Essential Massage by Mesha",
     type: "Massage therapy",
+    proof: "Booking still being connected",
     image: "/images/client-proof/mesha-massage-site.jpg",
     copy: "A dedicated website for the practice’s services, studio, and booking experience.",
     href: null,
     status: "Booking setup in progress",
   },
+];
+
+const niches: {
+  name: string;
+  sentence: string;
+  href: string;
+  cta: string;
+  external: boolean;
+}[] = [
+  {
+    name: "Therapy & wellness",
+    sentence: "Therapy, courses, retreats, and a consultation path on one live site.",
+    href: "https://draliciawatkins.com/",
+    cta: "Dr. Alicia Watkins",
+    external: true,
+  },
+  {
+    name: "Ministries",
+    sentence: "Resources, events, speaking, and giving, gathered for the people the ministry serves.",
+    href: "https://dearpastorswife.org/",
+    cta: "Dear Pastor’s Wife",
+    external: true,
+  },
+  {
+    name: "Creators & athletes",
+    sentence: `${filmCount} films for Dr. Boyce Watkins are on this site, with a NASCAR sponsorship site still in development.`,
+    href: "/#ai-video",
+    cta: "Dr. Boyce Watkins films",
+    external: false,
+  },
+  {
+    name: "Local service",
+    sentence: "A massage practice’s services and studio, with booking still being connected.",
+    href: "/#essential-massage",
+    cta: "Essential Massage by Mesha",
+    external: false,
+  },
+];
+
+const monthlyDeliverable = [
+  ["8", "Social-ready AI cuts"],
+  ["4", "Carousels"],
+  ["1", "Caption pack"],
+  ["1", "Campaign reel"],
 ];
 const services = [
   [
@@ -92,6 +164,37 @@ export default function HomePage() {
   return (
     <main className="cozy-home future-home">
       <StudioHero />
+      <section className="future-niches" aria-labelledby="niches-heading">
+        <div className="future-niches-inner">
+          <p className="future-label" id="niches-heading">
+            Who we build for
+          </p>
+          <ul className="future-niche-list">
+            {niches.map((niche) => {
+              const body = (
+                <>
+                  <strong>{niche.name}</strong>
+                  <p>{niche.sentence}</p>
+                  <small>
+                    {niche.cta} <span aria-hidden="true">↗</span>
+                  </small>
+                </>
+              );
+              return (
+                <li key={niche.name}>
+                  {niche.external ? (
+                    <a href={niche.href} target="_blank" rel="noreferrer">
+                      {body}
+                    </a>
+                  ) : (
+                    <Link href={niche.href}>{body}</Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
       <section
         className="future-section future-work"
         aria-labelledby="selected-heading"
@@ -146,6 +249,9 @@ export default function HomePage() {
               <span>
                 <small>DIRECTION / PRODUCTION</small>
                 <strong>AI video</strong>
+                <em className="future-lead-proof">
+                  {filmCount} films · Dr. Boyce Watkins
+                </em>
               </span>
               <span className="future-arrow" aria-hidden="true">
                 ↗
@@ -166,10 +272,11 @@ export default function HomePage() {
           <p className="future-label">01 / AI VIDEO · CLIENT WORK</p>
           <h2 id="video-heading">Dr. Boyce Watkins.</h2>
           <p>
-            Money, habits, and history, told through film. Explore six pieces
-            of client work for Dr. Boyce Watkins, from quick social comedy
-            to cinematic storytelling. Our team shapes the script, scenes,
-            and final edit.
+            <span className="future-proof-stat">{filmCount} films</span>
+            Money, habits, and history, told through film. These are the
+            pieces selected for Dr. Boyce Watkins, from quick social comedy
+            to longer storytelling. Our team shapes the script, scenes, and
+            final edit.
           </p>
         </div>
         <SelectedFilms />
@@ -235,7 +342,7 @@ export default function HomePage() {
         </div>
         <div className="future-project-grid">
           {projects.map((project) => (
-            <article key={project.name} className="future-project">
+            <article key={project.name} id={project.id} className="future-project">
               <div className="future-project-image">
                 <Image
                   src={project.image}
@@ -252,6 +359,7 @@ export default function HomePage() {
                 </span>
               </div>
               <h3>{project.name}</h3>
+              <p className="future-project-proof">{project.proof}</p>
               <p>{project.copy}</p>
               {project.href ? (
                 <a
@@ -304,6 +412,36 @@ export default function HomePage() {
             </article>
           ))}
         </div>
+      </section>
+      <section
+        id="social-content"
+        className="future-section future-month"
+        aria-labelledby="social-heading"
+      >
+        <div className="future-section-head">
+          <p className="future-label">GROWTH &amp; SCALE</p>
+          <h2 id="social-heading">
+            Social &amp; content,
+            <br />
+            each month.
+          </h2>
+          <p>
+            8 social-ready AI cuts + 4 carousels + caption pack + 1 campaign
+            reel / month. The monthly set on Growth and Scale.{" "}
+            <a href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL}>
+              Compare plans in the {CLIENT_HUB_LABEL}
+              <span className="sr-only"> {CLIENT_HUB_NEW_TAB_HINT}</span>
+            </a>.
+          </p>
+        </div>
+        <ol className="future-month-set">
+          {monthlyDeliverable.map(([count, label]) => (
+            <li key={label}>
+              <span>{count}</span>
+              <strong>{label}</strong>
+            </li>
+          ))}
+        </ol>
       </section>
       <div className="future-course">
         <PromptBossPromo />
@@ -358,9 +496,14 @@ export default function HomePage() {
           <br />
           we making?
         </h2>
-        <Link href="/cozy-booking/" className="future-button">
-          Talk to us <span aria-hidden="true">↗</span>
-        </Link>
+        <div className="future-close-actions">
+          <Link href="/free-audit/#audit-form" className="future-button">
+            Get the free audit <span aria-hidden="true">↗</span>
+          </Link>
+          <Link href="/cozy-booking/" className="future-button future-button-quiet">
+            Book a 30-min call <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
       </section>
     </main>
   );
