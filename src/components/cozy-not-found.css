@@ -1,0 +1,117 @@
+/* A bespoke 404, built with native CSS and canvas. Design variance 9 / motion 6 / density 2.
+   Existing Cozy Digital brand: Inter, charcoal, cyan, and violet artwork.
+   Layers: world 0; content 1; skip link 3. Buttons use one full-pill radius. */
+@font-face{font-family:Cozy Inter;src:url('/images/not-found/inter-latin.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+.cozy404{color-scheme:dark;--bg:#080e14;--ink:#edf0ed;--muted:#c1ccce;--accent:#67e8f9;--line:rgba(224,245,248,.24)}
+.cozy404 *{box-sizing:border-box}
+.cozy404{background:var(--bg);scroll-behavior:smooth}
+.cozy404{margin:0;background:var(--bg);color:var(--ink);font-family:'Cozy Inter',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.cozy404 button,.cozy404 a{-webkit-tap-highlight-color:transparent}
+.cozy404 a{color:inherit;text-decoration:none}
+.cozy404 button{font:inherit;color:inherit}
+.cozy404 button:focus-visible,.cozy404 a:focus-visible{outline:2px solid var(--accent);outline-offset:7px}
+.cozy404 button{cursor:pointer}
+.cozy404 button[hidden]{display:none!important}
+.cozy404 ::selection{background:var(--accent);color:var(--bg)}
+.cozy404 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.cozy404 .skip-link{position:fixed;top:12px;left:12px;transform:translateY(-160%);z-index:3;padding:14px 22px;background:var(--accent);color:var(--bg);border-radius:30px}
+.cozy404 .skip-link:focus{transform:none}
+.cozy404 .world{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;background:var(--bg)}
+.cozy404 .landscape{position:absolute;inset:-1.7%;transform:translate3d(0,0,0);transform-origin:74% 43%;will-change:transform}
+.cozy404 .landscape img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.cozy404 #particles{position:absolute;width:100%;height:100%;inset:0}
+.cozy404 .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,10,15,.68) 0%,rgba(4,10,15,.32) 37%,transparent 64%),linear-gradient(0deg,rgba(3,9,14,.85),transparent 25%,transparent 80%,rgba(3,9,14,.58))}
+.cozy404 .page{position:relative;z-index:1;max-width:1920px;margin:auto;min-height:100svh;min-height:100dvh;padding:0 clamp(24px,4.8vw,96px);display:flex;flex-direction:column}
+.cozy404 .header{height:80px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-shrink:0}
+.cozy404 .brand{display:inline-flex;align-items:center;gap:12px;white-space:nowrap;font-size:23px;font-weight:650;letter-spacing:-1px}
+.cozy404 .brand img{border-radius:50%;width:42px;height:42px}
+.cozy404 .brand-light{font-weight:420}
+.cozy404 .brand-period{color:var(--accent)}
+.cozy404 nav{display:flex;align-items:center;gap:34px;font-size:13px;font-weight:450}
+.cozy404 .nav-link{padding:14px 0;color:#e1e8e9;transition:color .2s}
+.cozy404 .nav-link:hover,.cozy404 .work-link:hover{color:var(--accent)}
+.cozy404 .nav-link span{margin-left:6px}
+.cozy404 .contact-link{border:1px solid rgba(232,244,247,.42);border-radius:100px;padding:13px 22px;display:flex;align-items:center;gap:26px;transition:background .25s,border-color .25s}
+.cozy404 .contact-link:hover{background:rgba(103,232,249,.1);border-color:var(--accent)}
+.cozy404 .main{flex:1;position:relative;display:flex;align-items:center;padding:28px 0 64px;min-height:490px}
+.cozy404 .copy{max-width:660px;padding-bottom:7px}
+.cozy404 .eyebrow{font-family:'Cozy Inter',Arial,sans-serif;font-size:10px;letter-spacing:2.1px;font-weight:500;display:flex;gap:15px;align-items:center;margin:0 0 31px;color:#ced9dd}
+.cozy404 .error-code{font-size:14px;color:var(--accent);letter-spacing:1.2px;font-variant-numeric:tabular-nums}
+.cozy404 .eyebrow-line{width:30px;height:1px;background:#71868e}
+.cozy404 h1{font-size:clamp(64px,6.45vw,106px);line-height:1.055;letter-spacing:-.062em;font-weight:470;margin:0 0 28px;text-wrap:balance}
+.cozy404 h1>span{color:var(--accent)}
+.cozy404 .description{font-size:clamp(15px,1.2vw,18px);line-height:1.65;color:var(--muted);font-weight:380;margin:0 0 34px;letter-spacing:-.2px}
+.cozy404 .actions{display:flex;align-items:center;gap:30px}
+.cozy404 .home-button{background:var(--accent);color:#07171c;padding:18px 27px;border-radius:100px;display:inline-flex;align-items:center;gap:20px;font-size:14px;font-weight:580;white-space:nowrap;box-shadow:0 4px 22px rgba(2,23,28,.16);transition:transform .25s,background .25s,box-shadow .25s}
+.cozy404 .home-button>span{font-size:21px;line-height:1;transition:transform .25s}
+.cozy404 .home-button:hover{background:#a1f2fb;transform:translateY(-3px);box-shadow:0 8px 30px rgba(57,179,200,.16)}
+.cozy404 .home-button:hover>span{transform:translate(-2px,-2px)}
+.cozy404 .home-button:active,.cozy404 .contact-link:active,.cozy404 .nudge:active{transform:scale(.97)}
+.cozy404 .work-link{font-size:13px;display:inline-flex;gap:19px;align-items:center;white-space:nowrap;padding:18px 0;transition:color .2s}
+.cozy404 .work-link span{font-size:18px;transition:transform .25s}
+.cozy404 .work-link:hover span{transform:translate(2px,-2px)}
+.cozy404 .nudge{position:absolute;left:72.5%;bottom:15%;border:0;background:rgba(5,20,29,.58);border-radius:50px;padding:8px 16px 8px 8px;font-size:11px;color:#effbfd;display:flex;align-items:center;gap:9px;backdrop-filter:blur(12px);white-space:nowrap;transition:background .2s,transform .2s}
+.cozy404 .nudge-symbol{height:28px;width:28px;display:grid;place-items:center;border:1px solid rgba(198,244,253,.45);border-radius:50%;font-size:18px}
+.cozy404 .nudge:hover{background:rgba(5,20,29,.87);transform:translateY(-2px)}
+.cozy404 .footer{height:78px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#c1ced2;font-size:11px}
+.cozy404 .footer p{margin:0}
+.cozy404 .footer-note{font-weight:380}
+.cozy404 .motion-button{display:inline-flex;align-items:center;gap:9px;border:0;background:transparent;padding:14px 0 14px 14px;font-size:11px;min-width:112px;justify-content:flex-end}
+.cozy404 .motion-button:hover{color:var(--accent)}
+.cozy404 .motion-mark{display:flex;gap:3px;align-items:center;height:14px}
+.cozy404 .motion-mark i{height:7px;width:2px;background:currentColor;display:block}
+.cozy404 .motion-mark i:nth-child(2){height:13px}
+.cozy404 .motion-mark i:nth-child(3){height:10px}
+.cozy404[data-motion="paused"] .motion-mark i{height:3px}
+@media(prefers-reduced-transparency:reduce){.cozy404 .nudge{background:#122733;backdrop-filter:none}}
+@media(prefers-color-scheme:light){.cozy404{--ink:#f4f9f8;--muted:#d1dcdf}.cozy404 .scrim{background:linear-gradient(90deg,rgba(4,10,15,.76),rgba(4,10,15,.4) 38%,transparent 65%),linear-gradient(0deg,rgba(3,9,14,.88),transparent 27%,transparent 80%,rgba(3,9,14,.62))}}
+@media(min-width:1600px){.cozy404 .header{height:80px}.cozy404 .main{padding-bottom:86px}.cozy404 .nudge{bottom:16%}}
+@media(min-width:768px) and (max-height:740px){.cozy404 .header{height:80px}.cozy404 .main{min-height:420px;padding:16px 0 32px}.cozy404 h1{font-size:clamp(58px,6vw,90px)}.cozy404 .eyebrow{margin-bottom:23px}.cozy404 .footer{height:62px}.cozy404 .description{margin-bottom:26px}}
+@media(min-width:768px) and (max-width:1023px){.cozy404 h1{font-size:65px}.cozy404 .copy{max-width:490px}.cozy404 .header{height:80px}.cozy404 nav{gap:22px}.cozy404 .nudge{left:auto;right:2%}.cozy404 .scrim{background:linear-gradient(90deg,rgba(4,10,15,.86),rgba(4,10,15,.44) 48%,transparent 82%),linear-gradient(0deg,rgba(3,9,14,.9),transparent 26%)}.cozy404 .landscape img{object-position:56% center}}
+@media(max-width:767px){
+ .cozy404 .page{padding:0 24px;min-height:100svh;min-height:100dvh}
+ .cozy404 .header{height:82px;gap:16px;align-items:center}
+ .cozy404 .brand{font-size:19px;letter-spacing:-.8px;gap:8px}.cozy404 .brand img{width:34px;height:34px}
+ .cozy404 nav{gap:0}.cozy404 .nav-link{display:none}.cozy404 .contact-link{font-size:11px;padding:10px 15px;gap:14px}
+ .cozy404 .world{position:absolute;inset:0 0 auto;height:620px;max-height:82svh}
+ .cozy404 .landscape{inset:0;bottom:0}.cozy404 .landscape img{object-position:81% 50%}
+ .cozy404 .scrim{background:linear-gradient(0deg,var(--bg) 0%,rgba(8,14,20,.96) 11%,rgba(8,14,20,.57) 30%,rgba(8,14,20,.04) 54%,rgba(8,14,20,.18) 76%,rgba(8,14,20,.78) 100%)}
+ .cozy404 .main{display:block;flex:1;min-height:0;padding:clamp(225px,34svh,340px) 0 22px}
+ .cozy404 .copy{max-width:520px;padding:0}
+ .cozy404 .eyebrow{font-size:9px;letter-spacing:1.6px;gap:12px;margin:0 0 19px}.cozy404 .error-code{font-size:12px}.cozy404 .eyebrow-line{width:22px}
+ .cozy404 h1{font-size:clamp(48px,12.6vw,80px);letter-spacing:-.062em;line-height:1.05;margin:0 0 19px}
+ .cozy404 .description{font-size:14px;line-height:1.6;max-width:320px;margin:0 0 24px}.cozy404 .desktop-break{display:none}
+ .cozy404 .actions{gap:23px}.cozy404 .home-button{padding:16px 22px;font-size:12px;gap:15px}.cozy404 .home-button>span{font-size:18px}.cozy404 .work-link{font-size:12px;gap:10px}
+ .cozy404 .nudge{left:auto;right:0;bottom:auto;top:clamp(169px,26svh,267px);font-size:10px;padding:5px 11px 5px 5px}.cozy404 .nudge-symbol{height:23px;width:23px;font-size:14px}
+ .cozy404 .footer{height:64px;font-size:10px;align-items:center;gap:12px}.cozy404 .footer-note{display:none}.cozy404 .motion-button{font-size:10px;min-width:103px}
+}
+@media(max-width:359px){.cozy404 .page{padding:0 19px}.cozy404 .brand{font-size:17px}.cozy404 .brand img{width:30px;height:30px}.cozy404 .contact-link{padding:10px 12px;gap:10px}.cozy404 .actions{gap:20px}.cozy404 .home-button{padding:15px 18px;gap:10px}.cozy404 .work-link{gap:8px}}
+@media(prefers-reduced-motion:no-preference){
+ .cozy404 .copy>*{animation:arrive 850ms cubic-bezier(.2,.8,.2,1) both}
+ .cozy404 .copy>:nth-child(2){animation-delay:70ms}.cozy404 .copy>:nth-child(3){animation-delay:150ms}.cozy404 .copy>:nth-child(4){animation-delay:230ms}
+ @keyframes arrive{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+}
+@media(prefers-reduced-motion:reduce){.cozy404{scroll-behavior:auto}.cozy404 *,.cozy404 *::before,.cozy404 *::after{animation:none!important;transition:none!important}.cozy404 .landscape{will-change:auto}}
+
+@media(max-width:767px) and (max-height:740px){.cozy404 .header{height:72px}.cozy404 .main{padding-top:180px}.cozy404 .world{height:500px}.cozy404 .nudge{top:130px}.cozy404 .footer{height:58px}}
+
+/* The error code is the primary visual identifier on every screen. */
+.cozy404 .copy > .error-code { display:block; font-size:clamp(144px,16vw,240px); font-weight:650; letter-spacing:-.085em; line-height:.85; color:var(--accent); margin:0 0 24px; text-shadow:0 2px 28px rgba(4,10,15,.5); }
+.cozy404 .copy h1 { font-size:clamp(40px,4vw,64px); line-height:1.08; margin-bottom:20px; }
+.cozy404 .copy .description { margin-bottom:26px; }
+.cozy404 .main { padding-top:24px; padding-bottom:32px; }
+@media(min-width:768px) and (max-height:740px){ .cozy404 .copy > .error-code { font-size:150px; margin-bottom:18px; } .cozy404 .copy h1 { font-size:42px; } .cozy404 .main { padding-top:14px; padding-bottom:18px; } }
+@media(max-width:767px){ .cozy404 .main { padding-top:170px; padding-bottom:22px; } .cozy404 .copy > .error-code { font-size:clamp(120px,35vw,168px); margin-bottom:18px; } .cozy404 .copy h1 { font-size:clamp(40px,11vw,56px); margin-bottom:17px; } .cozy404 .nudge { top:112px; } }
+@media(max-width:767px) and (max-height:740px){ .cozy404 .main { padding-top:130px; } .cozy404 .copy > .error-code { font-size:112px; margin-bottom:16px; } .cozy404 .copy h1 { font-size:38px; } .cozy404 .copy .description { margin-bottom:20px; } .cozy404 .nudge { top:80px; } }
+
+/* Hide only the normal page chrome while this error document is mounted.
+   :has also applies before hydration, and stops matching on navigation home. */
+body:has(.cozy404) > header,
+body:has(.cozy404) > footer,
+body:has(.cozy404) > .skip-link,
+body:has(.cozy404) > [role="dialog"] { display:none; }
+.cozy404 { position:relative; isolation:isolate; min-height:100dvh; line-height:normal; }
+.cozy404 .world { position:absolute; }
+.cozy404 .footer { background:transparent; border:0; }
+.cozy404 h1 { font-family:'Cozy Inter',Arial,sans-serif; }
+.cozy404 .nudge-symbol { line-height:1; }
