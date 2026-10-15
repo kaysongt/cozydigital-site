@@ -32,3 +32,7 @@ Targeted addition to the existing site; existing routes, navigation, analytics a
 Run `npx tsc --noEmit`, `npm run build` (includes `check:public`) and browser checks at phone and desktop widths. Check disclosures with keyboard and pointer, links/back navigation, disabled checkout and no horizontal overflow. The existing package's `lint` command uses `next lint`, which is not a configured lint setup for this Next version; do not count it as a passing lint run.
 
 Branch preview build succeeded on Vercel for the first draft commit. The preview is protected by Vercel sign-in, so cloud-browser visual QA remains blocked; no screenshot is claimed.
+
+## Purchaser identity disclosure
+
+The draft landing page now explains before checkout and in the FAQ that the purchase email and Google sign-in email must match, and that a fresh Google sign-in is required. Do not enable checkout until that exact flow passes integration tests. Existing generic Hub sessions and a receipt/return link alone must not establish entitlement. Do not advertise all-email password recovery as a working course-access method. No OAuth scopes or persistent permissions are changed by this storefront copy.

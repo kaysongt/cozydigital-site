@@ -34,8 +34,11 @@ assert.match(html, /planned/);
 assert.match(html, /Six exercises/);
 assert.match(html, /Eight reusable templates/);
 assert.match(html, /Your final project/);
+assert.match(html, /same Google email at checkout/);
+assert.match(html, /sign in with Google again to verify your email/);
+assert.match(html, /Access instructions will be confirmed before checkout opens/);
 assert.match(html, /not live screen recordings/);
-assert.equal((html.match(/<summary/g) || []).length, 12);
+assert.equal((html.match(/<summary/g) || []).length, 13);
 assert.ok(!/href="https:\/\/(?:buy|checkout)\.stripe\.com/.test(html));
 for (const term of ["Lavar", "Block Family", "If You Love Me", "3h36", "office hours", "lifetime access"])
   assert.ok(!html.includes(term), `Unexpected private or unsupported claim: ${term}`);

@@ -26,7 +26,8 @@ export default function CozyVideoCoursePage() {
           <p className={styles.price}>${course.launchPrice}<span>USD / one time</span></p>
           <p className={styles.saving}>50% off the planned ${course.plannedRegularPrice} regular price</p>
           <p className={styles.offerCopy}>A focused look at the choices that shape a shot, a scene, and a connected story.</p>
-          {checkout ? <a className={styles.button} href={checkout}>Get the course · ${course.launchPrice}</a> : <><button className={styles.disabled} disabled>Enrollment opens soon</button><p className={styles.note}>Course preview only. Checkout is not open yet.</p></>}
+          <p className={styles.note} id="purchase-email-notice">Use the same Google email at checkout and when signing in to the Hub. You may be asked to sign in with Google again to verify your email.</p>
+          {checkout ? <a aria-describedby="purchase-email-notice" className={styles.button} href={checkout}>Get the course · ${course.launchPrice}</a> : <><button className={styles.disabled} disabled>Enrollment opens soon</button><p className={styles.note}>Course preview only. Checkout is not open yet.</p></>}
         </aside>
       </section>
 
@@ -65,6 +66,7 @@ export default function CozyVideoCoursePage() {
         <h2 id="questions-title">Before you enroll</h2>
         <details><summary>Who is this for?</summary><p>Creators and small business owners who want to understand the planning and review decisions behind an AI video project.</p></details>
         <details><summary>What is the launch price?</summary><p>${course.launchPrice} USD as a one-time purchase. That is 50% off the planned ${course.plannedRegularPrice} regular price. The regular price is a planned future price, not a claim about a previous selling price. Any applicable taxes will be shown at checkout. Checkout is currently closed.</p></details>
+        <details><summary>How will I access my purchase?</summary><p>When enrollment opens, use the same Google email at checkout and when signing in to the Hub. You may be asked to sign in with Google again to verify your email. Access instructions will be confirmed before checkout opens.</p></details>
         <details><summary>Are AI tools or generation credits included?</summary><p>Tool subscriptions, generation credits, and any Hub subscription are separate from this course. Check each provider&apos;s costs and usage terms before creating.</p></details>
         <details><summary>Is this AI Video Prompt Boss?</summary><p>No. This is a separate video course. <Link href="/courses/ai-video-prompt-boss/">AI Video Prompt Boss</Link> is the written PDF playbook. <Link href="/courses/">The AI Advantage Blueprint</Link> is the separate business AI course.</p></details>
         <details><summary>Will I get the same results as the examples?</summary><p>Results vary with your tools, references, prompts, and editing. No specific creative, business, or income result is guaranteed.</p></details>
