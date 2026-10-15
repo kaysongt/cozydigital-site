@@ -21,12 +21,19 @@ export const cozyVideoCourse = {
   ],
 } as const;
 
-/** Fail closed: an unverified or missing checkout must never become a buy link. */
-export function getCozyVideoCheckout(): string | null {
-  if (!cozyVideoCourse.salesEnabled || !cozyVideoCourse.checkoutUrl) return null;
+/** Only the canonical Hub sales page may receive the buyer. */
+export function validateCozyVideoCheckout(value: string): string | null {
   try {
-    const url = new URL(cozyVideoCourse.checkoutUrl);
-    if (url.protocol !== "https:" || url.hostname !== "cozy-client-hub-production.up.railway.app") return null;
+    const url = new URL(value);
+    if (url.protocol !== "https:" || url.hostname !== "hub.cozydigital.org" ||
+        url.port || url.username || url.password || url.search || url.hash ||
+        url.pathname !== "/courses/cozy-ai-video-course/") return null;
     return url.href;
   } catch { return null; }
+}
+
+/** Fail closed: a missing or unverified checkout must never become a buy link. */
+export function getCozyVideoCheckout(): string | null {
+  if (!cozyVideoCourse.salesEnabled || !cozyVideoCourse.checkoutUrl) return null;
+  return validateCozyVideoCheckout(cozyVideoCourse.checkoutUrl);
 }

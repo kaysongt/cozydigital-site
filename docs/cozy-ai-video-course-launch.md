@@ -20,7 +20,7 @@ Do not merge or deploy until the owner confirms the product identity and the fol
 - Upload lessons to paid-only storage and verify access after a confirmed purchase.
 - Verify Stripe product identity, USD 7500 one-time price, visible taxes/refund policy, and server-side fulfillment. No payment link exists in this draft.
 - Run a successful approved end-to-end checkout test, including return, delayed payment, repeat visits, and unpaid access denial.
-- Confirm the real Hub checkout route. Set `checkoutUrl` in `src/data/cozy-ai-video-course.ts` only to that verified route, then enable `salesEnabled`. This flag is presentation only; the Hub must enforce authorization.
+- The canonical Hub sales route is `https://hub.cozydigital.org/courses/cozy-ai-video-course/`; its checkout action remains disabled in the Hub draft. Verify it end to end before enabling. Set `checkoutUrl` in `src/data/cozy-ai-video-course.ts` only to that verified route, then enable `salesEnabled`. This flag is presentation only; the Hub must enforce authorization.
 - Update the FAQ's checkout status, remove noindex, add the landing page to the sitemap, and rerun all checks when enrollment opens.
 - Add a public video excerpt/poster only after it has been explicitly cleared for marketing. None is assumed from the private lessons.
 
@@ -29,3 +29,5 @@ Do not merge or deploy until the owner confirms the product identity and the fol
 Targeted addition to the existing site; existing routes, navigation, analytics and legal pages are preserved. A restrained editorial layout, single dark theme, existing cyan brand accent, native disclosure controls and visible keyboard focus support desktop and phone screens. No new dependency is required.
 
 Run `npx tsc --noEmit`, `npm run build` (includes `check:public`) and browser checks at phone and desktop widths. Check disclosures with keyboard and pointer, links/back navigation, disabled checkout and no horizontal overflow. The existing package's `lint` command uses `next lint`, which is not a configured lint setup for this Next version; do not count it as a passing lint run.
+
+Branch preview build succeeded on Vercel for the first draft commit. The preview is protected by Vercel sign-in, so cloud-browser visual QA remains blocked; no screenshot is claimed.
