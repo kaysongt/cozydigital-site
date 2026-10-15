@@ -39,4 +39,6 @@ The current static export passes the production build, public-content checks, co
 
 ## Purchaser identity disclosure
 
+Final Railway readback on October 15 lists `STRIPE_SECRET_KEY` and no staged patch. The earlier missing-key configuration blocker is resolved; no credential value was fetched or configured by this storefront work. Protected lesson delivery, 12-month expiry and real sandbox payment/refund tests remain required. No enrollment is enabled by the key's presence alone.
+
 The draft landing page now explains before checkout and in the FAQ that the purchase email and Google sign-in email must match, and that a fresh Google sign-in is required. Do not enable checkout until that exact flow passes integration tests. Existing generic Hub sessions and a receipt/return link alone must not establish entitlement. Do not advertise all-email password recovery as a working course-access method. No OAuth scopes or persistent permissions are changed by this storefront copy.
