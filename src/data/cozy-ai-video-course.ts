@@ -6,6 +6,8 @@ export const cozyVideoCourse = {
   launchPrice: 75,
   plannedRegularPrice: 150,
   currency: "USD",
+  accessMonths: 12,
+  refundPolicy: "Requests reviewed case by case; applicable consumer rights are unaffected.",
   // Flip only after the approved product, $75 Stripe checkout and paid-only
   // delivery have passed end-to-end QA. This is not a security boundary.
   salesEnabled: false,

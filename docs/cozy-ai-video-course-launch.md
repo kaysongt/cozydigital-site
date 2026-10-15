@@ -4,7 +4,7 @@ Draft landing route: `/courses/cozy-ai-video-course/`. Product ID: `cozy-ai-vide
 
 ## What this change does
 
-- Adds a distinct, responsive charcoal/cyan course landing page and course-index listing.
+- Adds a distinct, responsive cream/navy course landing page with a teal accent and course-index listing.
 - Shows a factual seven-part curriculum outline with native expandable previews and a practical planning exercise.
 - Clearly identifies the format as narrated production case studies, not live software screen recordings.
 - Advertises $75 USD one-time launch pricing, 50% off a **planned** $150 regular price; no historical-price claim or artificial expiry.
@@ -25,13 +25,17 @@ Do not merge or deploy until the owner confirms the product identity and the fol
 - Update the FAQ's checkout status, remove noindex, add the landing page to the sitemap, and rerun all checks when enrollment opens.
 - Add a public video excerpt/poster only after it has been explicitly cleared for marketing. None is assumed from the private lessons.
 
+## Confirmed purchase terms — 15 October 2026
+
+The owner selected 12 months of lesson access from confirmed payment and case-by-case refund review, with applicable consumer rights unaffected. Both storefronts disclose these terms before purchase. The protected delivery implementation must enforce the 12-month period; storefront copy alone does not implement expiry.
+
 ## Design and verification
 
-Targeted addition to the existing site; existing routes, navigation, analytics and legal pages are preserved. A restrained editorial layout, single dark theme, existing cyan brand accent, native disclosure controls and visible keyboard focus support desktop and phone screens. No new dependency is required.
+Targeted addition to the existing site; existing routes, navigation, analytics and legal pages are preserved. The course surface uses a light editorial layout, navy type, cream background and teal accent. Native disclosures and a three-step interactive shot-planning preview use visible focus and reduced-motion support. No new production dependency is required. Only one offer panel is boxed; the rest uses open sections and horizontal rules.
 
 Run `npx tsc --noEmit`, `npm run build` (includes `check:public`) and browser checks at phone and desktop widths. Check disclosures with keyboard and pointer, links/back navigation, disabled checkout and no horizontal overflow. The existing package's `lint` command uses `next lint`, which is not a configured lint setup for this Next version; do not count it as a passing lint run.
 
-Branch preview build succeeded on Vercel for the first draft commit. The preview is protected by Vercel sign-in, so cloud-browser visual QA remains blocked; no screenshot is claimed.
+The current static export passes the production build, public-content checks, course-offer assertions, and TypeScript check. Local Chromium browser checks pass at 375, 390, 768, 1024, 1440 and 1920 pixels: no document overflow or JavaScript errors; planning-step buttons, keyboard activation, curriculum disclosures and the closed checkout work. Desktop and phone captures were visually inspected. This is local storefront QA, not payment fulfillment or signed-in Hub integration evidence.
 
 ## Purchaser identity disclosure
 
