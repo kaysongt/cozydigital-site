@@ -1,0 +1,27 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+const { cozyVideoCourse: course, getCozyVideoCheckout } = await import("../src/data/cozy-ai-video-course.ts");
+assert.equal(course.id, "cozy-ai-video-course");
+assert.equal(course.launchPrice, 75);
+assert.equal(course.plannedRegularPrice, 150);
+assert.equal(course.launchPrice / course.plannedRegularPrice, 0.5);
+assert.equal(course.currency, "USD");
+assert.equal(course.curriculum.length, 7);
+assert.equal(course.salesEnabled, false, "Enrollment remains gated until launch QA");
+assert.equal(getCozyVideoCheckout(), null);
+const html = read("out/courses/cozy-ai-video-course/index.html");
+assert.match(html, /noindex/);
+assert.match(html, /disabled=""/);
+assert.match(html, /Enrollment opens soon/);
+assert.match(html, /planned/);
+assert.match(html, /not live screen recordings/);
+assert.equal((html.match(/<summary/g) || []).length, 12);
+assert.ok(!/href="https:\/\/(?:buy|checkout)\.stripe\.com/.test(html));
+for (const term of ["Lavar", "Block Family", "If You Love Me", "3h36", "office hours", "lifetime access"])
+  assert.ok(!html.includes(term), `Unexpected private or unsupported claim: ${term}`);
+const index = read("out/courses/index.html");
+assert.match(index, /\/courses\/cozy-ai-video-course\//);
+assert.match(index, /AI Video Prompt Boss/);
+assert.match(index, /The AI Advantage Blueprint/);
+console.log("PASS: premium-course offer, content boundaries, catalog, and checkout gate");

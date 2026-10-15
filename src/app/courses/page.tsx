@@ -1,3 +1,4 @@
+import CozyVideoCoursePromo from "@/components/cozy-video-course-promo";
 import PromptBossPromo from "@/components/prompt-boss-promo";
 import Link from "next/link";
 import Script from "next/script";
@@ -7,7 +8,7 @@ import SelectedFilms from "@/components/selected-films";
 export const metadata: Metadata = {
   title: "Courses & Playbooks | Cozy Digital",
   description:
-    "Explore AI Video Prompt Boss and The AI Advantage Blueprint by Cozy Digital. Prompts, worksheets, and lessons for video production and everyday business tasks.",
+    "Explore the Cozy AI Video Course, AI Video Prompt Boss, and The AI Advantage Blueprint by Cozy Digital. Prompts, worksheets, and lessons for video production and everyday business tasks.",
   alternates: { canonical: "https://cozydigital.org/courses/" },
 };
 
@@ -123,6 +124,7 @@ export default function CoursesPage() {
       />
       <Script src="https://js.stripe.com/v3/buy-button.js" async strategy="afterInteractive" />
 
+      <CozyVideoCoursePromo />
       <PromptBossPromo />
 
       {/* HERO */}
@@ -333,3 +335,4 @@ export default function CoursesPage() {
     </main>
   );
 }
+
