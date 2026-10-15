@@ -1,0 +1,116 @@
+@font-face { font-family:"Manrope"; src:url("/fonts/manrope-latin-400-normal.woff2") format("woff2"); font-weight:400; font-display:swap }
+@font-face { font-family:"Manrope"; src:url("/fonts/manrope-latin-500-normal.woff2") format("woff2"); font-weight:500; font-display:swap }
+@font-face { font-family:"Manrope"; src:url("/fonts/manrope-latin-600-normal.woff2") format("woff2"); font-weight:600; font-display:swap }
+@font-face { font-family:"Manrope"; src:url("/fonts/manrope-latin-700-normal.woff2") format("woff2"); font-weight:700; font-display:swap }
+@font-face { font-family:"Space Grotesk"; src:url("/fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); font-weight:500; font-display:swap }
+@font-face { font-family:"Space Grotesk"; src:url("/fonts/space-grotesk-latin-600-normal.woff2") format("woff2"); font-weight:600; font-display:swap }
+@font-face { font-family:"Space Grotesk"; src:url("/fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); font-weight:700; font-display:swap }
+.page {
+  --ink:#102b36; --muted:#48616a; --accent:#075e72; --line:#c9d6d6;
+  color-scheme:light; background:#f7f7f1; color:var(--ink); min-height:100dvh;
+  font-family:"Manrope",ui-sans-serif,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.page * { box-sizing:border-box }
+.page ::selection { background:#a5e5e8; color:var(--ink) }
+.wrap { max-width:1264px; margin:0 auto; padding-inline:48px }
+.page a,.page button,.page summary { -webkit-tap-highlight-color:transparent }
+.page a:focus-visible,.page button:focus-visible,.page summary:focus-visible { outline:3px solid var(--accent); outline-offset:6px }
+.courseNav { display:flex; justify-content:space-between; align-items:center; gap:20px; padding-block:24px; font-size:13px; border-bottom:1px solid var(--line) }
+.courseNav a { color:var(--ink); text-decoration:none; min-height:44px; display:inline-flex; align-items:center; gap:20px }
+.courseNav a:hover,.end a:hover { text-decoration:underline; text-underline-offset:5px }
+.hero { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(300px,.8fr); gap:72px; align-items:center; padding-block:82px 76px }
+.eyebrow { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:700; line-height:1.6 }
+.page h1 { font-size:clamp(48px,5.25vw,76px); line-height:1.04; letter-spacing:-.065em; font-weight:500; margin:28px 0; text-wrap:balance }
+.page h1 span { color:var(--accent); text-decoration:underline; text-decoration-color:#c9a8df; text-decoration-thickness:3px; text-underline-offset:8px }
+.page h1,.page h2,.page h3,.price { font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif }
+.lead { max-width:495px; font-size:18px; line-height:1.75; color:var(--muted); margin-bottom:30px }
+.button { display:inline-flex; justify-content:center; align-items:center; gap:24px; min-height:52px; padding:15px 23px; background:var(--ink); color:white; border-radius:3px; font-size:14px; font-weight:600; text-decoration:none; transition:background .2s,transform .2s }
+.button:hover { background:var(--accent); transform:translateY(-2px) }
+.heroNote { color:var(--muted); font-size:12px; margin:20px 0 0; line-height:1.6 }
+.offer { border-top:3px solid var(--accent); padding:30px; background:white; box-shadow:0 12px 40px #133c4210 }
+.offerTitle { font-size:16px; font-weight:600; margin:0 0 24px }
+.price { font-size:76px; line-height:1; letter-spacing:-.065em; margin:0 }
+.price span { display:block; margin-top:12px; font-size:13px; letter-spacing:0; color:var(--muted) }
+.saving { color:var(--accent); font-size:13px; font-weight:600; line-height:1.65; margin:20px 0 }
+.offerCopy { font-size:15px; color:var(--muted); line-height:1.75; margin:0 0 22px }
+.included { list-style:none; padding:0; margin:0 0 22px; font-size:13px; line-height:1.6 }
+.included li { padding:9px 0; border-top:1px solid #e5ebea }
+.included li::before { content:"↗"; color:var(--accent); margin-right:12px }
+.disabled { border:1px solid #a4b5b7; border-radius:3px; min-height:52px; padding:15px; width:100%; color:#48616a; background:#e9eeed; font-size:14px; font-weight:600; cursor:not-allowed }
+.note { font-size:12px; color:var(--muted); line-height:1.75; margin:14px 0 0 }
+.offer .note + .button,.offer .note + .disabled { margin-top:18px }
+.overview { display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); padding-block:24px; gap:24px }
+.overview p { display:flex; flex-direction:column; gap:6px; margin:0 }
+.overview strong { font-size:18px; font-weight:500 }
+.overview span { font-size:13px; color:var(--muted) }
+.page h2 { font-size:clamp(32px,3.6vw,48px); font-weight:500; letter-spacing:-.05em; line-height:1.13; margin:0; text-wrap:balance }
+.previewSection,.intro,.exercise { display:grid; grid-template-columns:1fr 1fr; gap:88px; padding-block:80px }
+.previewSection { align-items:center }
+.previewSection h2 { margin-top:24px }
+.sectionCopy { max-width:590px; font-size:16px; line-height:1.8; color:var(--muted); margin:22px 0 34px }
+.preview { min-width:0 }
+.stepControls { display:flex; border-bottom:1px solid var(--line) }
+.stepControls button { flex:1; border:0; border-bottom:2px solid transparent; padding:18px 8px; background:transparent; cursor:pointer; color:var(--muted); font:inherit; font-size:13px; min-height:52px; transition:color .2s,border-color .2s }
+.stepControls button span { display:inline-block; margin-right:8px; font-size:10px }
+.stepControls button[aria-pressed="true"] { color:var(--accent); border-color:var(--accent); font-weight:600 }
+.stepControls button:hover { color:var(--ink) }
+.previewPanel { min-height:350px; padding:32px; background:#e7eeea }
+.sheetLabel { color:var(--accent); font-size:10px; letter-spacing:.15em; text-transform:uppercase; margin:0 0 24px }
+.previewPanel h3 { font-size:27px; font-weight:500; letter-spacing:-.04em; line-height:1.2; margin:0 0 18px }
+.previewPrompt { color:var(--muted); font-size:13px; line-height:1.6 }
+.previewPanel blockquote { font-size:20px; letter-spacing:-.02em; line-height:1.55; margin:22px 0; padding-left:18px; border-left:2px solid #37909b }
+.previewDetail { color:var(--muted); font-size:13px; line-height:1.7 }
+.previewCaption { font-size:11px; line-height:1.6; color:var(--muted); margin:14px 0 0 }
+.intro { border-top:1px solid var(--line); padding-block:64px }
+.intro p,.exercise p { font-size:16px; line-height:1.8; color:var(--muted); margin:0 0 18px }
+.curriculum { padding-block:24px 80px; scroll-margin-top:90px }
+.lessons { border-top:1px solid var(--line) }
+.lesson { border-bottom:1px solid var(--line) }
+.lesson summary { list-style:none; display:flex; gap:24px; align-items:center; cursor:pointer; padding:25px 0; font-size:21px; font-weight:500; min-height:74px }
+.lesson summary::-webkit-details-marker { display:none }
+.lessonNumber { color:var(--accent); font-size:12px; font-variant-numeric:tabular-nums }
+.plus { margin-left:auto; color:var(--accent); font-size:26px; transition:transform .2s }
+.lesson[open] .plus { transform:rotate(45deg) }
+.lessonBody { margin-left:42px; max-width:690px; padding-bottom:28px; color:var(--muted); font-size:16px; line-height:1.8 }
+.lessonBody h3 { color:var(--ink); font-size:12px; font-weight:700; letter-spacing:.04em; margin:20px 0 6px }
+.lessonBody p { margin:0 }
+.exercise { border-block:1px solid var(--line); padding-block:64px }
+.exercise h2 { margin:24px 0 }
+.exercise ol { padding:0; list-style:none; counter-reset:steps }
+.exercise li { counter-increment:steps; position:relative; padding-left:44px; margin-bottom:30px }
+.exercise li::before { content:"0" counter(steps); position:absolute; left:0; top:4px; color:var(--accent); font-size:11px }
+.exercise strong { display:block; font-size:19px; font-weight:500; margin-bottom:10px }
+.exercise li span { color:var(--muted); font-size:15px; line-height:1.8 }
+.workbook { padding-block:80px 16px }
+.workbookColumns { display:grid; grid-template-columns:1fr 1fr; gap:36px; margin:28px 0 }
+.workbook h3 { font-size:20px; font-weight:500; color:var(--ink); margin-bottom:20px }
+.workbook ul { padding-left:19px; color:var(--muted); font-size:15px; line-height:2.1 }
+.workbook strong { color:var(--ink); font-weight:600 }
+.faq { padding-block:60px 80px }
+.faq h2 { margin-bottom:30px }
+.faq details { border-bottom:1px solid var(--line); padding-block:22px }
+.faq summary { cursor:pointer; font-size:17px; min-height:28px }
+.faq p { max-width:790px; color:var(--muted); line-height:1.8; font-size:15px; margin:18px 0 0 }
+.faq a { color:var(--accent); text-decoration:underline; text-underline-offset:4px }
+.end { display:flex; align-items:center; justify-content:space-between; gap:25px; border-top:1px solid var(--line); padding-block:28px; font-size:13px }
+.end a { color:var(--accent); min-height:44px; display:inline-flex; align-items:center }
+@media(max-width:1000px) {
+  .hero { gap:36px } .wrap { padding-inline:32px } .page h1 { font-size:58px }
+  .previewSection,.intro,.exercise { gap:40px }
+}
+@media(max-width:760px) {
+  .wrap { padding-inline:22px } .courseNav { font-size:11px; gap:12px; padding-block:12px }
+  .hero { grid-template-columns:1fr; gap:40px; padding-block:48px }
+  .page h1 { font-size:clamp(42px,9vw,62px) } .lead { font-size:17px } .offer { padding:26px }
+  .overview { gap:12px } .overview strong { font-size:16px } .overview span { font-size:11px; line-height:1.6 }
+  .previewSection,.intro,.exercise { grid-template-columns:1fr; gap:28px; padding-block:48px }
+  .previewPanel { padding:26px; min-height:380px } .stepControls button { font-size:12px }
+  .stepControls button span { margin-right:5px } .curriculum,.faq { padding-block:44px }
+  .lesson summary { font-size:18px; gap:16px } .lessonBody { margin-left:30px; font-size:15px }
+  .workbook { padding-block:48px 0 } .workbookColumns { grid-template-columns:1fr; gap:12px }
+  .end { align-items:flex-start; flex-direction:column; gap:8px } .button { white-space:normal; text-align:center }
+}
+@media(prefers-reduced-motion:reduce) {
+  .button,.plus,.stepControls button { transition:none } .button:hover { transform:none }
+}

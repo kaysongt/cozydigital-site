@@ -53,6 +53,9 @@ const sourceFiles = walk(SRC, (n) => n.endsWith(".ts") || n.endsWith(".tsx"));
 //    an amount in this repo is either stale or about to be. The exceptions are
 //    real, checked, and deliberately narrow.
 const ALLOWED_AMOUNTS = {
+  // Separate video-course launch offer; checkout remains disabled pending QA.
+  "src/app/courses/cozy-ai-video-course/page.tsx": ["$75"],
+  "src/data/cozy-ai-video-course.ts": ["$75"],
   "src/components/prompt-boss-page.tsx": ["$30"],
   "src/components/prompt-boss-promo.tsx": ["$30"],
   "src/app/courses/ai-video-prompt-boss/page.tsx": ["$30"],
@@ -128,7 +131,10 @@ if (!existsSync(OUT)) {
   for (const page of pages) {
     const html = read(page);
     for (const amount of RETIRED_SERVICE_AMOUNTS) {
-      if (html.includes(amount)) fail(`${rel(page)}: rendered retired service price "${amount}".`);
+      const isCourseRegularPrice = amount === "$150" && [
+        "out/courses/index.html", "out/courses/cozy-ai-video-course/index.html",
+      ].includes(rel(page)) && /planned/.test(html);
+      if (html.includes(amount) && !isCourseRegularPrice) fail(`${rel(page)}: rendered retired service price "${amount}".`);
     }
   }
 
@@ -211,3 +217,4 @@ if (failures.length) {
 }
 
 console.log("✓ public content check passed");
+
