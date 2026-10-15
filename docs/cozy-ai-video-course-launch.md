@@ -15,6 +15,7 @@ Draft landing route: `/courses/cozy-ai-video-course/`. Product ID: `cozy-ai-vide
 
 Do not merge or deploy until the owner confirms the product identity and the following checks pass:
 
+- Complete the real Hub walkthroughs required by the original course scope, OR obtain the owner's explicit approval for a reduced case-study package. The current approximately 24-minute case-study inventory is not approval to change the product scope. Do not promise future extras, dates, or delivery that have not been approved.
 - Listen to the complete seven-video set and verify the student workbook.
 - Confirm rights to distribute all course examples and final student-facing labels.
 - Upload lessons to paid-only storage and verify access after a confirmed purchase.
