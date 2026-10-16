@@ -114,3 +114,23 @@
 @media(prefers-reduced-motion:reduce) {
   .button,.plus,.stepControls button { transition:none } .button:hover { transform:none }
 }
+
+/* Public course intro: native controls, no autoplay or video preload. */
+.heroLinks { display:flex; align-items:center; flex-wrap:wrap; gap:12px 24px }
+.curriculumLink { display:inline-flex; align-items:center; gap:10px; min-height:44px; color:var(--accent); font-size:14px; text-decoration:underline; text-underline-offset:4px }
+.introFilm { padding-bottom:64px; scroll-margin-top:96px }
+.introFilmHeading { display:flex; justify-content:space-between; align-items:flex-end; gap:32px; margin-bottom:26px }
+.introFilmHeading h2 { max-width:650px; margin-top:16px }
+.introFilmHeading > p { flex:0 1 340px; margin:0; color:var(--muted); font-size:14px; line-height:1.75 }
+.introVideo { display:block; width:100%; height:auto; aspect-ratio:16 / 9; object-fit:contain; background:#f8f7f2; border:1px solid var(--line); border-radius:3px }
+.introVideo:focus-visible { outline:3px solid var(--accent); outline-offset:5px }
+.introFilmFoot { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 24px; margin-top:10px; color:var(--muted); font-size:12px; line-height:1.6 }
+.introFilmFoot p { margin:0 }
+.introFilmFoot > div { display:flex; flex-wrap:wrap; gap:8px 24px }
+.introFilmFoot a { display:inline-flex; align-items:center; gap:8px; min-height:44px; color:var(--accent); text-decoration:underline; text-underline-offset:4px }
+@media(max-width:760px) {
+  .introFilm { padding-bottom:40px }
+  .introFilmHeading { display:block; margin-bottom:20px }
+  .introFilmHeading > p { margin-top:18px; max-width:600px }
+  .introFilmFoot { align-items:flex-start }
+}
