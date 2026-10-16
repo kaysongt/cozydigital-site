@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle({ className = "" }: { className?: string }) {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
   const [mounted, setMounted] = useState(false);
 
   // Sync from the class the no-flash script already set on <html>.

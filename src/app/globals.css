@@ -458,22 +458,22 @@ html.light .text-zinc-100,
 html.light .text-zinc-200 { color: #27272a; }
 html.light .text-zinc-300 { color: #3f3f46; }
 html.light .text-zinc-400 { color: #52525b; }
-html.light .text-zinc-500 { color: #6b6b73; }
-html.light .text-zinc-600 { color: #7c7c85; }
+html.light .text-zinc-500 { color: #55555e; }
+html.light .text-zinc-600 { color: #55555e; }
 html.light .hover\:text-white:hover,
 html.light .hover\:text-zinc-100:hover,
 html.light .hover\:text-zinc-200:hover { color: #18181b; }
 
 /* ---- Accent text darkened for contrast on white ---- */
-html.light .text-cyan-400 { color: #0891b2; }
+html.light .text-cyan-400 { color: #075c70; }
 html.light .text-cyan-300,
-html.light .text-cyan-200 { color: #0e7490; }
+html.light .text-cyan-200 { color: #075c70; }
 html.light .text-cyan-100 { color: #155e75; }
 html.light .text-fuchsia-300 { color: #a21caf; }
-html.light .text-fuchsia-200 { color: #9333a8; }
+html.light .text-fuchsia-200 { color: #7b218e; }
 html.light .text-fuchsia-100 { color: #86198f; }
 html.light .text-amber-300,
-html.light .text-amber-400 { color: #b45309; }
+html.light .text-amber-400 { color: #8b3e08; }
 html.light .text-amber-100 { color: #92400e; }
 
 /* ---- Gradient TEXT that was near-white (platform logo names) ---- */
@@ -588,3 +588,17 @@ html.light .cozy-home form button[type="submit"]:hover:not(:disabled) {
 html.light body,
 html.light .bg-white\/\[0\.03\],
 html.light .bg-white\/\[0\.06\] { transition: background-color 0.2s ease, color 0.2s ease; }
+
+/* Pale surfaces paired with the light theme's darker text. */
+html.light .bg-zinc-900\/40,
+html.light .bg-black\/25,
+html.light .bg-black\/30 { background-color: rgba(15, 23, 42, 0.035); }
+html.light .hover\:bg-black\/40:hover { background-color: rgba(15, 23, 42, 0.075); }
+html.light .text-red-300 { color: #a8192e; }
+
+/* Native modal: hidden until showModal(), trapped focus, reachable on phones. */
+.audit-popup { width: min(100% - 2rem, 48rem); max-height: calc(100dvh - 2rem); padding: 0; border: 0; background: transparent; overflow-y: auto; color: var(--studio-ink); }
+.audit-popup::backdrop { background: #08111ab3; }
+.audit-popup .cozy-modal-panel { border-radius: 12px; }
+.audit-popup .audit-submit { background: #075c70; color: #fff; }
+.audit-popup .audit-submit:hover { background: #06495a; }

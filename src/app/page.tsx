@@ -318,7 +318,7 @@ export default function HomePage() {
             </Link>
             <a
               className="future-text-link"
-              href="https://cozy-client-hub-production.up.railway.app/login"
+              href="https://hub.cozydigital.org/login"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -428,7 +428,7 @@ export default function HomePage() {
           <p>
             8 social-ready AI cuts + 4 carousels + caption pack + 1 campaign
             reel / month. The monthly set on Growth and Scale.{" "}
-            <a href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL}>
+            <a className="underline underline-offset-4" href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL}>
               Compare plans in the {CLIENT_HUB_LABEL}
               <span className="sr-only"> {CLIENT_HUB_NEW_TAB_HINT}</span>
             </a>.
