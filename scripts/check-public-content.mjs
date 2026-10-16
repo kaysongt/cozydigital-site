@@ -19,7 +19,7 @@ const SRC = join(ROOT, "src");
 const PUBLIC = join(ROOT, "public");
 const OUT = join(ROOT, "out");
 
-const CLIENT_HUB_URL = "https://cozy-client-hub-production.up.railway.app/";
+const CLIENT_HUB_URL = "https://hub.cozydigital.org/";
 const GA_MEASUREMENT_ID = "G-QJ7R8893NF";
 
 const failures = [];
@@ -143,16 +143,16 @@ if (!existsSync(OUT)) {
   if (!existsSync(pricing)) fail("out/pricing/index.html is missing — the old link would 404.");
   else {
     const html = read(pricing);
-    if (!/<meta\s+http-equiv=["']refresh["']\s+content=["']0;\s*url=https:\/\/cozy-client-hub-production\.up\.railway\.app\/["']\s*\/?>/i.test(html)) {
+    if (!/<meta\s+http-equiv=["']refresh["']\s+content=["']0;\s*url=https:\/\/hub\.cozydigital\.org\/["']\s*\/?>/i.test(html)) {
       fail("out/pricing/index.html is missing an immediate meta refresh to the Client Hub.");
     }
-    if (!/<link\s+rel=["']canonical["']\s+href=["']https:\/\/cozy-client-hub-production\.up\.railway\.app\/["']\s*\/?>/i.test(html)) {
+    if (!/<link\s+rel=["']canonical["']\s+href=["']https:\/\/hub\.cozydigital\.org\/["']\s*\/?>/i.test(html)) {
       fail("out/pricing/index.html is missing the Client Hub canonical URL.");
     }
     if (!/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex[^"']*["']\s*\/?>/i.test(html)) {
       fail("out/pricing/index.html is missing robots noindex.");
     }
-    if (!/<a\s+[^>]*href=["']https:\/\/cozy-client-hub-production\.up\.railway\.app\/["'][^>]*>[^<]+<\/a>/i.test(html)) {
+    if (!/<a\s+[^>]*href=["']https:\/\/hub\.cozydigital\.org\/["'][^>]*>[^<]+<\/a>/i.test(html)) {
       fail("out/pricing/index.html is missing a visible Client Hub fallback link.");
     }
   }

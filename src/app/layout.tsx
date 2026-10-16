@@ -70,13 +70,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="light" suppressHydrationWarning>
       <head>
-        {/* Apply saved/system theme before paint to avoid a flash. */}
+        {/* Start in daylight; preserve an explicitly saved dark preference before paint. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}if(t==='light'){document.documentElement.classList.add('light');}}catch(e){}})();",
+              "(function(){try{document.documentElement.classList.toggle('light',localStorage.getItem('theme')!=='dark');}catch(e){}})();",
           }}
         />
         <StructuredData />

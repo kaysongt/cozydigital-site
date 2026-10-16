@@ -1,7 +1,6 @@
 import CozyVideoCoursePromo from "@/components/cozy-video-course-promo";
 import PromptBossPromo from "@/components/prompt-boss-promo";
 import Link from "next/link";
-import Script from "next/script";
 import type { Metadata } from "next";
 import SelectedFilms from "@/components/selected-films";
 
@@ -12,22 +11,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://cozydigital.org/courses/" },
 };
 
-// Embedded Stripe Buy Button. The publishable key is meant to be public (safe to
-// commit). The button's PRICE and its post-payment redirect to /academy-access are
-// configured on the Buy Button / payment link in the Stripe dashboard.
-//
-// PRICE below is display copy only -- it does not set what anyone is charged.
-// The amount actually taken comes from the Buy Button in Stripe, so the two can
-// drift apart silently and show a customer one number while charging another.
-// Change them together, and treat Stripe as the one that matters.
-const STRIPE_BUY_BUTTON_ID = "buy_btn_1TqLCc2etPpEo8U8DutPjiOT";
-const STRIPE_PUBLISHABLE_KEY =
-  "pk_live_51Tq3Fv2etPpEo8U8TMW9LBCNsSH30mQms7x7uwguVts8c7QUr1DbOVnIdNaPTiy2AiI60BBPpk1qtojNHhwhk8WO001TBLkUS2";
+// Existing, active one-time payment link verified against Stripe on 2026-10-16.
+// The hosted checkout remains authoritative for price and applicable taxes.
+const BLUEPRINT_CHECKOUT_URL = "https://buy.stripe.com/28E3cobN96Mi2Pr1xGa7C02";
 const PRICE = "$30";
-
-// Rendered via dangerouslySetInnerHTML so the <stripe-buy-button> custom element
-// doesn't need JSX typings; buy-button.js upgrades it once loaded.
-const buyButtonHtml = `<stripe-buy-button buy-button-id="${STRIPE_BUY_BUTTON_ID}" publishable-key="${STRIPE_PUBLISHABLE_KEY}"></stripe-buy-button>`;
 
 function ArrowIcon() {
   return (
@@ -122,7 +109,6 @@ export default function CoursesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
       />
-      <Script src="https://js.stripe.com/v3/buy-button.js" async strategy="afterInteractive" />
 
       <CozyVideoCoursePromo />
       <PromptBossPromo />
@@ -274,7 +260,12 @@ export default function CoursesPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex justify-center" dangerouslySetInnerHTML={{ __html: buyButtonHtml }} />
+            <div className="mt-8 flex justify-center">
+              <a href={BLUEPRINT_CHECKOUT_URL} className="studio-button">
+                Get the AI Advantage Blueprint · {PRICE} <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <p className="mt-3 text-xs text-zinc-500">Secure Stripe checkout. Applicable tax calculated at checkout.</p>
             <p className="mt-5 text-xs leading-relaxed text-zinc-500">
               14-day guarantee: do the work, and if it doesn&apos;t earn its keep, email us for a refund and keep the workbook.
             </p>

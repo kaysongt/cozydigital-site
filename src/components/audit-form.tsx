@@ -1,5 +1,7 @@
 "use client";
 
+import { HUB_LEAD_URL } from "@/lib/client-hub";
+
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { formatAttribution, readAttribution } from "@/components/attribution";
@@ -8,8 +10,7 @@ import { trackMetaLead } from "@/components/meta-pixel";
 // Cozy Client Hub lead intake. Submissions appear in the admin CRM Leads view.
 // Shared by the homepage and the /free-audit page so every "Free Digital
 // Presence Audit" entry point sends the same, consistent lead.
-const HUB_LEAD_URL =
-  "https://cozy-client-hub-production.up.railway.app/api/webhook/lead";
+
 const HUB_WEBHOOK_SECRET = process.env.NEXT_PUBLIC_HUB_WEBHOOK_SECRET ?? "";
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -173,7 +174,7 @@ export default function AuditForm({
   function Err({ name }: { name: keyof Fields }) {
     if (!errors[name]) return null;
     return (
-      <p className="mt-1.5 text-xs font-medium text-red-300">{errors[name]}</p>
+      <p id={`audit-${name}-error`} className="mt-1.5 text-xs font-medium text-red-300">{errors[name]}</p>
     );
   }
 
@@ -262,6 +263,8 @@ export default function AuditForm({
             type="text"
             autoComplete="name"
             placeholder="Your name"
+            aria-required="true"
+            aria-describedby={errors.name ? "audit-name-error" : undefined}
             aria-invalid={!!errors.name}
             value={form.name}
             onChange={e => set("name", e.target.value)}
@@ -279,6 +282,8 @@ export default function AuditForm({
             type="email"
             autoComplete="email"
             placeholder="you@business.com"
+            aria-required="true"
+            aria-describedby={errors.email ? "audit-email-error" : undefined}
             aria-invalid={!!errors.email}
             value={form.email}
             onChange={e => set("email", e.target.value)}
@@ -298,7 +303,9 @@ export default function AuditForm({
           type="text"
           inputMode="url"
           placeholder="yourbusiness.com"
-          aria-invalid={!!errors.website}
+          aria-required="true"
+            aria-describedby={errors.website ? "audit-website-error" : undefined}
+            aria-invalid={!!errors.website}
           value={form.website}
           onChange={e => set("website", e.target.value)}
         />
@@ -319,7 +326,9 @@ export default function AuditForm({
           type="text"
           maxLength={140}
           placeholder="One line, e.g. Residential cleaning for busy families in Atlanta"
-          aria-invalid={!!errors.business}
+          aria-required="true"
+            aria-describedby={errors.business ? "audit-business-error" : undefined}
+            aria-invalid={!!errors.business}
           value={form.business}
           onChange={e => set("business", e.target.value)}
         />
@@ -341,6 +350,8 @@ export default function AuditForm({
             id="audit-goal"
             name="goal"
             className={`${field("goal")} appearance-none pr-11 ${form.goal ? "" : "text-zinc-500"}`}
+            aria-required="true"
+            aria-describedby={errors.goal ? "audit-goal-error" : undefined}
             aria-invalid={!!errors.goal}
             value={form.goal}
             onChange={e => set("goal", e.target.value)}
@@ -369,7 +380,9 @@ export default function AuditForm({
           name="frustration"
           className={`${field("frustration")} min-h-[90px] resize-none`}
           placeholder="Nobody finds us, the site looks dated, leads go quiet…"
-          aria-invalid={!!errors.frustration}
+          aria-required="true"
+            aria-describedby={errors.frustration ? "audit-frustration-error" : undefined}
+            aria-invalid={!!errors.frustration}
           value={form.frustration}
           onChange={e => set("frustration", e.target.value)}
         />
@@ -387,7 +400,9 @@ export default function AuditForm({
               id="audit-handled"
               name="handledBy"
               className={`${field("handledBy")} appearance-none pr-11 ${form.handledBy ? "" : "text-zinc-500"}`}
-              aria-invalid={!!errors.handledBy}
+              aria-required="true"
+            aria-describedby={errors.handledBy ? "audit-handledBy-error" : undefined}
+            aria-invalid={!!errors.handledBy}
               value={form.handledBy}
               onChange={e => set("handledBy", e.target.value)}
             >
@@ -414,7 +429,9 @@ export default function AuditForm({
               id="audit-timeline"
               name="timeline"
               className={`${field("timeline")} appearance-none pr-11 ${form.timeline ? "" : "text-zinc-500"}`}
-              aria-invalid={!!errors.timeline}
+              aria-required="true"
+            aria-describedby={errors.timeline ? "audit-timeline-error" : undefined}
+            aria-invalid={!!errors.timeline}
               value={form.timeline}
               onChange={e => set("timeline", e.target.value)}
             >

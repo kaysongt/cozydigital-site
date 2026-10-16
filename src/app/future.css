@@ -13,7 +13,7 @@ html.light {
   --studio-ink: #141813;
   --studio-muted: #596157;
   --studio-line: #1d28192b;
-  --studio-accent: #0e7490;
+  --studio-accent: #075c70;
 }
 body.future-site {
   background: var(--studio-bg);
@@ -1213,3 +1213,13 @@ html.light .future-home form button[type="submit"] {
     animation: none !important;
   }
 }
+
+/* The promo appears on both the home page and course index. Its foregrounds
+   must follow the surface instead of assuming the section is always dark. */
+.prompt-boss-promo { background: var(--studio-panel); border-color: var(--studio-line); }
+.prompt-boss-promo h2 { color: var(--studio-ink); }
+.prompt-boss-promo .promo-eyebrow { color: var(--studio-accent); }
+.prompt-boss-promo .promo-copy { color: var(--studio-muted); }
+
+/* Small supporting text stays readable for saved dark-mode preferences. */
+html:not(.light) .future-site :is(.text-zinc-500, .text-zinc-600) { color: var(--studio-muted); }
