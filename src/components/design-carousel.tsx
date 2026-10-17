@@ -7,7 +7,7 @@ const designs = [
   { title: "Form / Space", category: "Architecture · Design concept", image: "/images/concepts/form-space.svg", alt: "Architecture website concept with oversized editorial typography and a sculptural modern home" },
   { title: "Dew Theory", category: "Beauty & wellness · Design concept", image: "/images/concepts/dew-theory.svg", alt: "Skincare ecommerce website concept with a citrus palette and sculptural skincare bottles" },
   { title: "Orbit", category: "Technology · Design concept", image: "/images/concepts/orbit.svg", alt: "Technology website concept with electric violet typography, an orbital graphic, and a sleek product dashboard" },
-  { title: "Dr. Alicia Watkins", category: "Wellness · Client work", image: "/images/client-proof/dr-alicia-site.png", alt: "Dr. Alicia Watkins wellness website built by Cozy Digital" },
+  { title: "Dr. Alicia Watkins", category: "Wellness · Client work", image: "/images/client-proof/dr-alicia-homepage-2026-10-17.webp", alt: "Dr. Alicia Watkins live homepage with her yellow-sweater portrait and Desert BLOOM retreat" },
   { title: "Dear Pastor’s Wife", category: "Community · Client work", image: "/images/client-proof/dear-pastors-wife-site.png", alt: "Dear Pastor's Wife ministry website built by Cozy Digital" },
 ];
 
