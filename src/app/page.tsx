@@ -40,7 +40,7 @@ const projects: {
     name: "Dr. Alicia Watkins",
     type: "Therapy & wellness",
     proof: "Booking path live",
-    image: "/images/client-proof/dr-alicia-site.png",
+    image: "/images/client-proof/dr-alicia-homepage-2026-10-17.webp",
     copy: "Therapy, coaching, courses, and retreats brought together with direct booking and product pages.",
     href: "https://draliciawatkins.com/",
     status: "Visit website",
@@ -69,11 +69,11 @@ const projects: {
     id: "essential-massage",
     name: "Essential Massage by Mesha",
     type: "Massage therapy",
-    proof: "Booking still being connected",
-    image: "/images/client-proof/mesha-massage-site.jpg",
-    copy: "A dedicated website for the practice’s services, studio, and booking experience.",
-    href: null,
-    status: "Booking setup in progress",
+    proof: "Appointment requests live",
+    image: "/images/client-proof/mesha-homepage-2026-10-17.webp",
+    copy: "Services, studio details, and appointment requests by text, with each appointment confirmed personally by Mesha.",
+    href: "https://elvinlearning.github.io/MeshaMassage/",
+    status: "Visit website",
   },
 ];
 
@@ -215,8 +215,8 @@ export default function HomePage() {
           <a className="future-lead" href="#client-work">
             <div className="future-lead-media">
               <Image
-                src="/images/client-proof/dr-alicia-site.png"
-                alt="Dr. Alicia Watkins website by Cozy Digital"
+                src="/images/client-proof/dr-alicia-homepage-2026-10-17.webp"
+                alt="Dr. Alicia Watkins live homepage with her yellow-sweater portrait and Desert BLOOM retreat"
                 width={1200}
                 height={900}
                 sizes="(min-width: 800px) 50vw, 100vw"
@@ -346,7 +346,7 @@ export default function HomePage() {
               <div className="future-project-image">
                 <Image
                   src={project.image}
-                  alt={`${project.name} website built by Cozy Digital`}
+                  alt={`${project.name} website homepage built by Cozy Digital`}
                   width={1200}
                   height={900}
                   sizes="(min-width: 800px) 50vw, 100vw"
