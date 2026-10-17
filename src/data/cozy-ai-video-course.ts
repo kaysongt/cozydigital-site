@@ -11,9 +11,12 @@ export const cozyVideoCourse = {
   // Flip only after the approved product, $75 Stripe checkout and paid-only
   // delivery have passed end-to-end QA. This is not a security boundary.
   salesEnabled: false,
-  checkoutUrl: "",
+  checkoutUrl: "https://hub.cozydigital.org/courses/cozy-ai-video-course/",
+  lessonCount: 6,
+  lessonRuntime: "20 minutes, 50 seconds",
+  workbookPages: 13,
+  orientation: { title: "Start with a production plan", description: "Use the course introduction to frame your audience, purpose, format, and the moment your film needs to land." },
   curriculum: [
-    { title: "Start with a production plan", description: "An introduction to the decisions behind an AI video project.", practice: "Write a brief: audience, purpose, format, and the moment your film needs to land." },
     { title: "Prepare your workspace", description: "An account-preparation case study before production begins.", practice: "Check your tool access, references, usage rights, and generation budget." },
     { title: "Direct a fashion try-on", description: "A narrated case study in planning a fashion sequence.", practice: "Define the outfit and character details that must stay consistent between shots." },
     { title: "Build a dialogue scene", description: "A narrated case study in character-led drama.", practice: "Map who speaks, what changes in the scene, and which shot carries each beat." },
