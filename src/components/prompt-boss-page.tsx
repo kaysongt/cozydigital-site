@@ -71,7 +71,7 @@ const questions = [
   ],
   [
     "How do I receive it?",
-    "After payment, you will return to the Cozy Digital hub to download the PDF once Stripe confirms your purchase. Save the PDF and bookmark your private access page.",
+    "After payment, you return to the Cozy Digital Hub. Continue with the Google account that uses your checkout email and the PDF is ready to download. Sign in the same way any time to download it again.",
   ],
   [
     "Is there a subscription?",
@@ -314,7 +314,7 @@ export default function PromptBossPage({ checkoutUrl, homeUrl = "/" }: Props) {
           Get AI Video Prompt Boss · $30
         </a>
         <p className="mt-4 text-xs text-[#9aa09c]">
-          Secure Stripe checkout. Applicable tax shown before payment.
+          Secure Stripe checkout. Applicable tax shown before payment. To download, continue with Google using your checkout email.
         </p>
       </section>
     </main>

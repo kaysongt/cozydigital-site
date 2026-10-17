@@ -265,7 +265,7 @@ export default function CoursesPage() {
                 Get the AI Advantage Blueprint · {PRICE} <span aria-hidden="true">↗</span>
               </a>
             </div>
-            <p className="mt-3 text-xs text-zinc-500">Secure Stripe checkout. Applicable tax calculated at checkout.</p>
+            <p className="mt-3 text-xs text-zinc-500">Secure Stripe checkout. Applicable tax calculated at checkout. After paying, continue with the Google account that matches your checkout email to download.</p>
             <p className="mt-5 text-xs leading-relaxed text-zinc-500">
               14-day guarantee: do the work, and if it doesn&apos;t earn its keep, email us for a refund and keep the workbook.
             </p>
