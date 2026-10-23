@@ -1,0 +1,84 @@
+name: Webinar live smoke check
+
+on:
+  push:
+    branches: [qa/webinar-live-20261022]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install isolated browser tooling
+        run: |
+          mkdir -p /tmp/webinar-live-qa
+          cd /tmp/webinar-live-qa
+          npm init -y >/dev/null
+          npm install --save-exact playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Verify the deployed page and one explicitly labelled test signup
+        working-directory: /tmp/webinar-live-qa
+        run: |
+          mkdir -p results
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { writeFile } from 'node:fs/promises';
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch();
+          const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+          // Do not count this acceptance check as a marketing visit or conversion.
+          await context.route(/google-analytics\.com|googletagmanager\.com|connect\.facebook\.net|facebook\.com\/tr/, route => route.abort());
+          const page = await context.newPage();
+          const report = { pageLoaded: false, formAccepted: false, liveSubmission: true, crmReadback: false, emailDeliveryTested: false, testLeadLabel: 'WEBINAR QA - EXCLUDE', notes: 'One test lead only; not a real registration. Exclude from invitations and do not contact.' };
+          try {
+            const response = await page.goto('https://cozydigital.org/courses/cozy-ai-video-course/?utm_source=qa&utm_medium=internal&utm_campaign=webinar_live_smoke&qa=' + Date.now(), { waitUntil: 'networkidle', timeout: 45000 });
+            assert.equal(response.status(), 200);
+            await page.locator('#webinar-title').waitFor({ timeout: 30000 });
+            assert.match(await page.locator('#webinar-title').innerText(), /Less guessing/);
+            await page.waitForFunction(() => {
+              const button = document.querySelector('#webinar-register button[type="submit"]');
+              return button && !button.disabled;
+            });
+            report.pageLoaded = true;
+            await page.screenshot({ path: 'results/live-desktop.png' });
+            await page.locator('#webinar-name').fill('WEBINAR QA - EXCLUDE');
+            await page.locator('#webinar-email').fill('out+webinar-qa-20261022@cozydigital.org');
+            await page.locator('#webinar-goal').fill('QA / TEST ONLY for the webinar page build on October 22, 2026. Exclude from the invite list. Do not contact. Not a real customer registration.');
+            assert.equal(await page.locator('#webinar-marketing').isChecked(), false);
+            const savedResponse = page.waitForResponse(r => r.url() === 'https://hub.cozydigital.org/api/webhook/lead' && r.request().method() === 'POST', { timeout: 25000 });
+            await page.locator('#webinar-register button[type="submit"]').click();
+            const saved = await savedResponse;
+            report.httpStatus = saved.status();
+            const result = await saved.json();
+            assert.equal(saved.status(), 200);
+            assert.equal(result.ok, true);
+            await page.locator('#webinar-register [role="status"]').waitFor();
+            assert.match(await page.locator('#webinar-register').innerText(), /signup has been saved/);
+            report.formAccepted = true;
+            await page.locator('#webinar-register').screenshot({ path: 'results/live-confirmation.png' });
+            await page.setViewportSize({ width: 390, height: 844 });
+            await page.evaluate(() => window.scrollTo(0, 0));
+            await page.screenshot({ path: 'results/live-mobile.png' });
+          } catch (error) {
+            report.error = String(error);
+            await page.screenshot({ path: 'results/live-error.png' }).catch(() => {});
+            throw error;
+          } finally {
+            await writeFile('results/live-result.json', JSON.stringify(report, null, 2));
+            console.log(JSON.stringify(report));
+            await browser.close();
+          }
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: webinar-live-qa
+          path: /tmp/webinar-live-qa/results/
+          retention-days: 7
