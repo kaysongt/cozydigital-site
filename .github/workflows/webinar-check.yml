@@ -1,0 +1,65 @@
+name: Webinar page checks
+
+on:
+  push:
+    branches: [feat/webinar-registration-20261022]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/app/courses/cozy-ai-video-course/**'
+      - 'scripts/test-webinar.mjs'
+      - '.github/workflows/webinar-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: webinar-qa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  webinar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - name: Build and run existing public-site guardrails
+        run: npm run build
+        env:
+          NEXT_PUBLIC_HUB_WEBHOOK_SECRET: ${{ secrets.NEXT_PUBLIC_HUB_WEBHOOK_SECRET || vars.NEXT_PUBLIC_HUB_WEBHOOK_SECRET }}
+      - name: Install browser test tooling (not a production dependency)
+        run: |
+          npm install --no-save --package-lock=false playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Test signup UX with mocked API responses
+        run: |
+          python3 -m http.server 4173 --directory out >/tmp/webinar-static-server.log 2>&1 &
+          for attempt in $(seq 1 20); do curl --silent --fail http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          node scripts/test-webinar.mjs
+      - name: Verify production intake validation without creating an attendee
+        env:
+          PUBLIC_INTAKE_KEY: ${{ secrets.NEXT_PUBLIC_HUB_WEBHOOK_SECRET || vars.NEXT_PUBLIC_HUB_WEBHOOK_SECRET }}
+        run: |
+          node --input-type=module <<'NODE'
+          const headers = { 'Content-Type': 'application/json', Origin: 'https://cozydigital.org' };
+          if (process.env.PUBLIC_INTAKE_KEY) headers['x-webhook-secret'] = process.env.PUBLIC_INTAKE_KEY;
+          const response = await fetch('https://hub.cozydigital.org/api/webhook/lead', {
+            method: 'POST', headers, signal: AbortSignal.timeout(15000),
+            body: JSON.stringify({ email: 'intentionally-invalid', name: 'WEBINAR QA - validation only', leadSource: 'Webinar QA - no attendee', hp: '' })
+          });
+          const allowed = response.headers.get('access-control-allow-origin');
+          const body = await response.json().catch(() => ({}));
+          console.log(JSON.stringify({ status: response.status, corsOrigin: allowed, rejectsInvalidEmail: response.status === 400 && /email/i.test(body.error || ''), attendeeCreated: false }));
+          if (response.status !== 400 || !/email/i.test(body.error || '') || !['*', 'https://cozydigital.org'].includes(allowed)) process.exit(1);
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: webinar-qa
+          path: webinar-qa/
+          retention-days: 14

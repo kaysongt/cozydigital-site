@@ -4,10 +4,11 @@ import { cozyVideoCourse as course, getCozyVideoCheckout } from "@/data/cozy-ai-
 import styles from "./course.module.css";
 import IntroFilm from "./IntroFilm";
 import CoursePreview from "./preview";
+import WebinarLanding from "./WebinarLanding";
 
 export const metadata: Metadata = {
-  title: "Cozy AI Video Course | Cozy Digital",
-  description: "Explore narrated AI video production case studies, from the first brief to shot continuity and review. Preview the course and $75 USD launch offer.",
+  title: "Free AI Video Webinar + Course | Cozy Digital",
+  description: "Join Quincy and Kayson’s free AI video webinar invite list. Explore practical production examples, shot planning, and review. Date to be announced; optional paid course available separately.",
   alternates: { canonical: "https://cozydigital.org/courses/cozy-ai-video-course/" },
   robots: { index: false, follow: true }, // Remove only after launch readiness review.
 };
@@ -16,11 +17,12 @@ export default function CozyVideoCoursePage() {
   const checkout = getCozyVideoCheckout();
   return (
     <main className={styles.page}>
-      <div className={`${styles.wrap} ${styles.courseNav}`}><Link href="/courses/">Cozy Digital / Learning</Link><a href="#curriculum">The curriculum <span aria-hidden="true">↓</span></a></div>
-      <section className={`${styles.wrap} ${styles.hero}`}>
+      <WebinarLanding />
+      <div className={`${styles.wrap} ${styles.courseNav}`}><Link href="/courses/">Cozy Digital / Optional paid course</Link><a href="#curriculum">The curriculum <span aria-hidden="true">↓</span></a></div>
+      <section id="paid-course" className={`${styles.wrap} ${styles.hero}`} style={{ scrollMarginTop: 96 }}>
         <div>
-          <p className={styles.eyebrow}>The Cozy Digital production course</p>
-          <h1>A good film starts<br /><span>before you generate.</span></h1>
+          <p className={styles.eyebrow}>The Cozy Digital production course · Separate from the free webinar</p>
+          <h2>A good film starts<br /><span>before you generate.</span></h2>
           <p className={styles.lead}>Explore the production decisions behind AI video through narrated case studies and practical planning exercises.</p>
           <div className={styles.heroLinks}><a className={styles.button} href="#course-intro">Watch the intro <span aria-hidden="true">▶</span></a><a className={styles.curriculumLink} href="#curriculum">Explore the course <span aria-hidden="true">↓</span></a></div>
           <p className={styles.heroNote}>Your idea. A clearer brief. A more considered film.</p>
