@@ -31,6 +31,7 @@ const footerNavGroups: {
     links: [
       { label: "Free Digital Presence Audit", href: "/free-audit/" },
       { label: "Free Playbook", href: "/free-playbook/" },
+      { label: "Cozy Notes", href: "/newsletter/" },
       { label: "Schedule a Call", href: "/cozy-booking/" },
     ],
   },
