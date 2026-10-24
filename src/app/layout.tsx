@@ -6,7 +6,6 @@ import { Fraunces, Inter } from "next/font/google";
 import Script from "next/script";
 import CozyPublicHeader from "@/components/cozy-public-header";
 import CozyPublicFooter from "@/components/cozy-public-footer";
-import AuditPopup from "@/components/audit-popup";
 import StructuredData from "@/components/structured-data";
 import SiteMotion from "@/components/site-motion";
 import MetaPixel from "@/components/meta-pixel";
@@ -109,7 +108,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CozyPublicHeader />
         <div id="main-content" className="flex-1">{children}</div>
         <CozyPublicFooter />
-        <AuditPopup />
       </body>
     </html>
   );
