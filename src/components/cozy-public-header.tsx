@@ -37,10 +37,11 @@ export default function CozyPublicHeader() {
         <Link href="/" className="studio-nav-brand"><Image src="/brand/cozy-digital-logo.png" alt="" width={34} height={34} /><span>Cozy Digital<span className="cozy-accent">.</span></span></Link>
         <nav className="studio-nav-links" aria-label="Main navigation">{links.map(link => <Link key={link.href} href={link.href} aria-current={active(link.href) ? "page" : undefined}>{link.label}</Link>)}</nav>
         <div className="studio-nav-actions">
-          <a className="studio-hub" href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL}>{CLIENT_HUB_LABEL} <span aria-hidden="true">↗</span><span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span></a>
-          <ThemeToggle className="studio-theme" />
-          <Link href="/cozy-booking/" className="studio-nav-call">Book a 30-min call</Link>
-          <Link href="/free-audit/#audit-form" className="studio-button">Free audit <span aria-hidden="true">↗</span></Link>
+          <div className="studio-nav-utilities">
+            <a className="studio-hub" href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL}>{CLIENT_HUB_LABEL}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg><span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span></a>
+            <ThemeToggle className="studio-theme" />
+          </div>
+          <Link href="/cozy-booking/" className="studio-button studio-nav-primary">Let’s talk<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></Link>
           <button ref={menuButtonRef} type="button" className="studio-menu-button" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(!mobileOpen)}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d={mobileOpen ? "M6 6L18 18M6 18L18 6" : "M4 7H20M4 12H20M4 17H20"} /></svg></button>
         </div>
       </div>
