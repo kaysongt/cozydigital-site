@@ -1,6 +1,6 @@
 # Cozy Digital newsletter setup
 
-Prepared October 24, 2026. **Not activated**: Google Apps Script sign-in was blocked by a rejected password. No email or test signup was sent, and production intake still uses the existing Hub CRM.
+Prepared October 24, 2026. **Not activated**: Google Apps Script sign-in was blocked by a rejected password. No newsletter or confirmation email was sent. Production intake still uses the existing Hub CRM. Two clearly labeled, non-deliverable internal QA submissions were accepted through the live API; browser submission still needs verification after a stale site build produced an error.
 
 ## What is ready
 
@@ -37,7 +37,7 @@ This draft has not been sent or scheduled.
 
 `node scripts/test-workspace-newsletter.mjs` tests the backend with Google services mocked. `npm run build` checks the static site. Neither proves Google authorization, mail delivery, sender authentication or browser delivery through Google’s redirect.
 
-Validation on October 24: all 18 backend checks passed; production builds passed with the endpoint absent and with a syntactically valid test endpoint. Browser automation could not run because the browser runtime was unavailable. Live Google deployment, browser submission and email receipt remain activation checks.
+Validation on October 24: all 19 backend checks passed; production builds passed with the endpoint absent and with a syntactically valid test endpoint. Local browser automation was unavailable. A later cloud-browser check loaded an older asset and reported an unconfirmed signup; the current public API accepted a matching test payload. The Railway connector returned `Unknown tool` errors after reconnection, so service diagnostics remain blocked. Confirmation pages now use Google’s supported viewport API and top-level navigation for iframe-hosted forms. Live Google deployment, browser submission and email receipt remain activation checks.
 
 Initial caps: 100 public submissions/day and 50 confirmation messages/day, plus Google’s account quota. These deliberately limit confirmation abuse; review expected demand before increasing them. This is a pilot setup, not a bulk-mail platform. Domain SPF/DKIM/DMARC and the Workspace plan have not been verified in this session. No DNS records, authentication settings or existing client lists were changed.
 
