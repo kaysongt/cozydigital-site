@@ -107,6 +107,7 @@ export default function AuditForm({
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (status === "loading") return;
     if (!validate()) return;
     setStatus("loading");
 
@@ -135,6 +136,7 @@ export default function AuditForm({
     try {
       const res = await fetch(HUB_LEAD_URL, {
         method: "POST",
+        signal: AbortSignal.timeout(18000),
         headers: {
           "Content-Type": "application/json",
           ...(HUB_WEBHOOK_SECRET ? { "x-webhook-secret": HUB_WEBHOOK_SECRET } : {}),
@@ -149,7 +151,8 @@ export default function AuditForm({
           hp: hpRef.current?.value ?? "",
         }),
       });
-      if (!res.ok) throw new Error();
+      const result = await res.json().catch(() => null);
+      if (!res.ok || result?.ok !== true) throw new Error();
       // Only a genuinely saved lead counts as a conversion.
       trackMetaLead();
       setStatus("success");

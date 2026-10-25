@@ -10,7 +10,7 @@
     "check:public": "node scripts/check-public-content.mjs"
   },
   "dependencies": {
-    "next": "15.5.24",
+    "next": "15.5.28",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -19,6 +19,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "playwright": "1.60.0",
     "postcss": "8.5.26",
     "tailwindcss": "^4",
     "typescript": "^5"
@@ -26,6 +27,6 @@
   "overrides": {
     "postcss": "8.5.26",
     "nanoid": "3.3.18",
-    "sharp": "0.35.4"
+    "sharp": "0.35.5"
   }
 }

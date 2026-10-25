@@ -325,39 +325,6 @@ body {
   top: 1rem;
 }
 
-.cozy-popup-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(6px);
-  animation: cozyFadeIn 180ms ease-out;
-}
-
-.cozy-popup-panel {
-  position: relative;
-  width: 100%;
-  max-width: 56rem;
-  animation: cozyPopIn 220ms ease-out;
-}
-
-.cozy-popup-close {
-  position: absolute;
-  top: 0.6rem;
-  right: 0.8rem;
-  z-index: 2;
-  border: 0;
-  background: transparent;
-  color: #fafafa;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
 @keyframes socialScroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -369,22 +336,6 @@ body {
 
 .social-row:hover .social-track-fwd {
   animation-play-state: paused;
-}
-
-@keyframes cozyFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes cozyPopIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 /* ============================================================
@@ -502,14 +453,6 @@ html.light .platform-logo-name {
   -webkit-text-fill-color: #27272a;
 }
 
-/* ---- Modal panel uses bg-zinc-950, which light mode remaps to transparent
-   for page sections. The popup needs a real solid surface so it stays visible. */
-html.light .cozy-modal-panel {
-  background-color: #ffffff;
-  border-color: rgba(15, 23, 42, 0.12);
-  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
-}
-
 /* Smooth the switch */
 
 /* ---- Homepage brand accent (light mode contrast) ---- */
@@ -595,10 +538,3 @@ html.light .bg-black\/25,
 html.light .bg-black\/30 { background-color: rgba(15, 23, 42, 0.035); }
 html.light .hover\:bg-black\/40:hover { background-color: rgba(15, 23, 42, 0.075); }
 html.light .text-red-300 { color: #a8192e; }
-
-/* Native modal: hidden until showModal(), trapped focus, reachable on phones. */
-.audit-popup { width: min(100% - 2rem, 48rem); max-height: calc(100dvh - 2rem); padding: 0; border: 0; background: transparent; overflow-y: auto; color: var(--studio-ink); }
-.audit-popup::backdrop { background: #08111ab3; }
-.audit-popup .cozy-modal-panel { border-radius: 12px; }
-.audit-popup .audit-submit { background: #075c70; color: #fff; }
-.audit-popup .audit-submit:hover { background: #06495a; }

@@ -55,11 +55,12 @@ export default function FreePlaybookPage() {
   }
 
   function next() {
+    if (sending) return;
     if (step === 1 && !form.name.trim()) {
       setErrors({ name: "Please enter your name." }); return;
     }
     if (step === 2) {
-      if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
         setErrors({ email: "Please enter a valid email." }); return;
       }
     }
@@ -68,33 +69,40 @@ export default function FreePlaybookPage() {
   }
 
   async function submit() {
+    if (sending) return;
     setSending(true);
+    setErrors({});
     try {
       const notes = [
         `How they get clients now: ${form.howGettingClients || "Not provided"}`,
         `Online presence satisfaction: ${form.onlinePresenceSatisfaction || "Not provided"}`,
         `Leads per month: ${form.leadsPerMonth || "Not provided"}`,
       ].join("\n");
-      await fetch(CRM_API_URL, {
+      const response = await fetch(CRM_API_URL, {
         method: "POST",
+        signal: AbortSignal.timeout(18000),
         headers: {
           "Content-Type": "application/json",
           ...(HUB_WEBHOOK_SECRET ? { "x-webhook-secret": HUB_WEBHOOK_SECRET } : {}),
         },
         body: JSON.stringify({
           leadSource: "Free Playbook",
-          name: form.name,
-          email: form.email,
+          name: form.name.trim(),
+          email: form.email.trim(),
           phone: form.phone || undefined,
           businessName: form.company || undefined,
           notes,
           hp: hpRef.current?.value ?? "",
         }),
       });
-    } catch (_) { /* still show thank-you */ }
-    setSending(false);
-    setDone(true);
-    setTimeout(() => window.open(PDF_URL, "_blank"), 600);
+      const result = await response.json().catch(() => null);
+      if (!response.ok || result?.ok !== true) throw new Error();
+      setDone(true);
+    } catch {
+      setErrors({ submit: "We couldn’t save your details. Your answers are still here; please try again." });
+    } finally {
+      setSending(false);
+    }
   }
 
   const inputClass =
@@ -118,6 +126,7 @@ export default function FreePlaybookPage() {
       </div>
 
       <div className="mx-auto max-w-lg rounded-2xl bg-white p-8 shadow-2xl">
+        <noscript><p className="mb-6 text-sm text-zinc-900">The questions need JavaScript. You can still <a className="underline" href={PDF_URL} download>download the free playbook</a> or <a className="underline" href="/cozy-booking/">book a call</a>.</p></noscript>
         {done ? (
           <div className="text-center py-6">
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-zinc-100 text-3xl">🎉</div>
@@ -169,7 +178,7 @@ export default function FreePlaybookPage() {
               <>
                 <h2 className="text-2xl font-bold text-zinc-900">What&apos;s your name?</h2>
                 <p className="mt-1 mb-5 text-sm text-zinc-500">Your first name is fine.</p>
-                <input className={inputClass} type="text" placeholder="Jane Smith" value={form.name}
+                <input className={inputClass} type="text" aria-label="Your name" autoComplete="name" maxLength={255} placeholder="Jane Smith" value={form.name}
                   onChange={(e) => set("name", e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && next()} />
                 {errors.name && <p className="mt-2 text-xs text-red-500">{errors.name}</p>}
@@ -180,10 +189,10 @@ export default function FreePlaybookPage() {
             {step === 2 && (
               <>
                 <h2 className="text-2xl font-bold text-zinc-900">How can we reach you?</h2>
-                <p className="mt-1 mb-5 text-sm text-zinc-500">Your contact email. The PDF download opens after the questions.</p>
-                <input className={inputClass} type="email" placeholder="jane@yourcompany.com" value={form.email}
+                <p className="mt-1 mb-5 text-sm text-zinc-500">Your contact email. The PDF download is available after the questions.</p>
+                <input className={inputClass} type="email" aria-label="Email address" autoComplete="email" maxLength={320} placeholder="jane@yourcompany.com" value={form.email}
                   onChange={(e) => set("email", e.target.value)} />
-                <input className={`${inputClass} mt-3`} type="tel" placeholder="Phone (optional)" value={form.phone}
+                <input className={`${inputClass} mt-3`} type="tel" aria-label="Phone (optional)" autoComplete="tel" maxLength={20} placeholder="Phone (optional)" value={form.phone}
                   onChange={(e) => set("phone", e.target.value)} />
                 {errors.email && <p className="mt-2 text-xs text-red-500">{errors.email}</p>}
               </>
@@ -194,7 +203,7 @@ export default function FreePlaybookPage() {
               <>
                 <h2 className="text-2xl font-bold text-zinc-900">What&apos;s your business called?</h2>
                 <p className="mt-1 mb-5 text-sm text-zinc-500">Optional. Helps us tailor the call.</p>
-                <input className={inputClass} type="text" placeholder="Your Business LLC" value={form.company}
+                <input className={inputClass} type="text" aria-label="Business name (optional)" autoComplete="organization" maxLength={255} placeholder="Your Business LLC" value={form.company}
                   onChange={(e) => set("company", e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && next()} />
               </>
@@ -243,9 +252,10 @@ export default function FreePlaybookPage() {
             )}
 
             {/* Nav */}
+            {errors.submit && <p role="alert" className="mt-5 text-sm text-red-700">{errors.submit} <a href={PDF_URL} className="underline" download>Download the free playbook here</a> if you need it now.</p>}
             <div className="mt-6 flex items-center justify-between gap-3">
               {step > 1 ? (
-                <button onClick={() => setStep((s) => s - 1)}
+                <button disabled={sending} onClick={() => setStep((s) => s - 1)}
                   className="px-4 py-3 text-sm text-zinc-400 hover:text-zinc-900 transition">
                   ← Back
                 </button>

@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - run: npm install
+      - run: npm ci
       # NEXT_PUBLIC_* values are inlined at build time, so the Meta Pixel id has
       # to be present here or the deployed site ships without a pixel. A pixel id
       # is public (it appears in page source), so a repo variable is the right
@@ -46,6 +46,14 @@ jobs:
           NEXT_PUBLIC_NEWSLETTER_ENDPOINT: ${{ vars.NEXT_PUBLIC_NEWSLETTER_ENDPOINT }}
           NEXT_PUBLIC_META_PIXEL_ID: ${{ vars.NEXT_PUBLIC_META_PIXEL_ID || secrets.NEXT_PUBLIC_META_PIXEL_ID }}
           NEXT_PUBLIC_HUB_WEBHOOK_SECRET: ${{ secrets.NEXT_PUBLIC_HUB_WEBHOOK_SECRET || vars.NEXT_PUBLIC_HUB_WEBHOOK_SECRET }}
+      - name: Install browser for functional checks
+        run: npx playwright install --with-deps chromium
+      - name: Verify pages, navigation, and form behavior before publishing
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory out >/tmp/site-check-server.log 2>&1 &
+          for attempt in $(seq 1 20); do curl --silent --fail http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          node scripts/test-site.mjs
+          node scripts/test-webinar.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
