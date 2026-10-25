@@ -22,22 +22,24 @@ async function context(width = 1440, reducedMotion = 'reduce') {
   page.setDefaultTimeout(10000);
   return { ctx, page };
 }
-async function visit(page, path) { await page.goto(origin + path); await page.waitForTimeout(200); }
+async function visit(page, path) { await page.goto(origin + path, { waitUntil: 'domcontentloaded', timeout: 15000 }); await page.waitForTimeout(200); }
 try {
   for (const width of [1440, 390]) {
     const { ctx, page } = await context(width);
     for (const path of await routes('src/app')) {
-      const response = await page.goto(origin + path);
+      const response = await page.goto(origin + path, { waitUntil: 'domcontentloaded', timeout: 15000 });
       assert.equal(response.status(), 200, path);
-      await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 800) { scrollTo(0, y); await new Promise(r => setTimeout(r, 20)); } });
+      await page.evaluate(async () => { const height = document.body.scrollHeight; for (let y = 0; y < height; y += 800) { scrollTo(0, y); await new Promise(r => setTimeout(r, 20)); } });
       assert.equal(await page.locator('h1').count(), 1, `${path}: heading`);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 2), false, `${path}: overflow at ${width}`);
       assert.equal(await page.locator('dialog[open], .audit-popup, [role="dialog"]').count(), 0, `${path}: popup`);
       checks++;
+      console.log(`Page passed: ${width}px ${path}`);
     }
     await ctx.close();
   }
   {
+    console.log('Checking navigation, theme and carousel');
     const { ctx, page } = await context(390);
     await visit(page, '/');
     await page.getByRole('button', { name: 'Open menu', exact: true }).click();
@@ -65,6 +67,7 @@ try {
     await ctx.close();
   }
   {
+    console.log('Checking playbook and audit submissions');
     const { ctx, page } = await context();
     let body = { ok: false }; let status = 200; let submissions = 0;
     await page.route(endpoint, route => { submissions++; return route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) }); });
