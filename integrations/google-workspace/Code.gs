@@ -40,7 +40,7 @@ function budget_(kind,limit) {
 }
 function escape_(v) { return String(v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
 function page_(title,body) {
-  return HtmlService.createHtmlOutput('<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>'+escape_(title)+' | Cozy Digital</title></head><body style="background:#faf7ef;color:#102737;font-family:Arial,sans-serif;max-width:42rem;margin:10vh auto;padding:24px;line-height:1.65"><p>COZY DIGITAL</p><h1>'+escape_(title)+'</h1>'+body+'<p><a href="https://cozydigital.org/">Back to Cozy Digital</a></p></body></html>');
+  return HtmlService.createHtmlOutput('<!doctype html><html lang="en"><head><base target="_top"><title>'+escape_(title)+' | Cozy Digital</title></head><body style="background:#faf7ef;color:#102737;font-family:Arial,sans-serif;max-width:42rem;margin:10vh auto;padding:24px;line-height:1.65"><p>COZY DIGITAL</p><h1>'+escape_(title)+'</h1>'+body+'<p><a href="https://cozydigital.org/" rel="noreferrer">Back to Cozy Digital</a></p></body></html>').addMetaTag('viewport','width=device-width, initial-scale=1').setTitle(title+' | Cozy Digital');
 }
 function result_(p,value) {
   if(p.format==='json') return ContentService.createTextOutput(JSON.stringify(value)).setMimeType(ContentService.MimeType.JSON);
