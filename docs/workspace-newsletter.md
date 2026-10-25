@@ -1,5 +1,7 @@
 # Cozy Digital newsletter setup
 
+Update October 25: Webinar signup now always saves to the hub. The hub exports its deduplicated registration list to the Webinar registrations Sheet tab every five minutes. `NEXT_PUBLIC_NEWSLETTER_ENDPOINT` now only controls the separate newsletter page; it does not reroute webinar signups. Two real historical registrations were copied into the Webinar registrations tab. Automated exports require the Sheets API enabled for the configured service account. The older rollout notes below describe the original, unactivated Apps Script plan.
+
 Prepared October 24, 2026. **Not activated**: Google Apps Script sign-in was blocked by a rejected password. No newsletter or confirmation email was sent. Production intake still uses the existing Hub CRM. Two clearly labeled, non-deliverable internal QA submissions were accepted through the live API; browser submission still needs verification after a stale site build produced an error.
 
 ## What is ready
@@ -16,7 +18,7 @@ Prepared October 24, 2026. **Not activated**: Google Apps Script sign-in was blo
 2. Set Script Properties: `SPREADSHEET_ID` to the private workbook ID, then create a web-app deployment that executes as the owner and permits visitor submissions. Keep the Sheet private. Review the Sheets, send-mail and identity permissions before authorizing. Do not change organization sharing policies to force deployment.
 3. Set `WEB_APP_URL` to the deployment `/exec` URL, then run `setup()`. It validates headers and sender; it sends nothing.
 4. With an explicitly approved internal test address, verify signup → confirmation email → pending row → POST confirmation → subscribed row → export → unsubscribe → removed from export. Verify GET link previews do not change consent. Verify webinar-only registration sends no newsletter confirmation and a mail failure retains webinar registration while reporting newsletter retry.
-5. Set repository variable `NEXT_PUBLIC_NEWSLETTER_ENDPOINT` to the verified `/exec` URL and deploy this branch through the normal Pages release workflow. This switches **only webinar registration** to the Workspace sheet. Audit/playbook forms continue using the Hub CRM. Confirm real browser cross-origin behavior; opaque responses are not proof of success.
+5. Set repository variable `NEXT_PUBLIC_NEWSLETTER_ENDPOINT` to the verified `/exec` URL and deploy this branch through the normal Pages release workflow. This activates the separate newsletter page; webinar registration continues through the hub. Audit/playbook forms continue using the Hub CRM. Confirm real browser cross-origin behavior; opaque responses are not proof of success.
 6. Verify a signup from the published website and the Sheet readback. Confirm receipt using the test mailbox. Re-test mobile validation and failures.
 
 Until the endpoint is configured, existing webinar intake is unchanged and the newsletter page displays an email fallback. Do not enable an unverified endpoint. The new Sheet begins empty; historical Hub leads were not copied. Only migrate people with documented newsletter consent. Webinar-only contacts remain event-only.

@@ -19,8 +19,8 @@ The generic Hub intake endpoint does NOT send confirmation emails or reminders. 
 
 ## First pilot workflow
 
-1. In the Hub admin CRM Leads view, filter leadSource for `AI Video Webinar`.
-2. Separate test submissions (notes containing QA / TEST) from real registrations. Deduplicate by normalized email when exporting; generic intake does not enforce event-specific deduplication.
+1. Open Hub admin → People → Webinar signups. The list groups registrations by normalized email and shows Google Sheet sync status.
+2. Explicit internal QA entries are excluded automatically. Repeated submissions update the displayed registration; the raw intake history stays in the CRM. The hub retries Sheet sync every five minutes, with manual Sync now available to admins.
 3. Use `Optional marketing consent: no` contacts only for this webinar's requested details, not unrelated newsletters.
 4. Confirm date/time/timezone, viewing platform/link, final program and Q&A format.
 5. Send event details and joining instructions. Verify receipt and playback with a small internal group before Boyce promotes the event broadly.
@@ -34,3 +34,7 @@ The untagged printed QR remains valid. Do not label every untagged visitor as a 
 ## QA
 
 `node scripts/test-webinar.mjs` runs browser/UI and request-contract tests against a local static build on port 4173. API replies are mocked; those checks do not prove production persistence or email delivery. Screenshots and JSON results are uploaded by Webinar page checks. A separate production intake validation check exercises an invalid address only (no attendee created), with the same public build-time intake value. A real saved signup and CRM readback remain distinct acceptance checks.
+
+## Sheet export
+
+The hub owns webinar persistence and export. `NEXT_PUBLIC_NEWSLETTER_ENDPOINT` cannot bypass the hub. The seven-column Webinar registrations tab receives event registration data only; neither Subscribers nor Mail merge audience is changed. A requested marketing checkbox is not a confirmed newsletter subscription. The hub uses RAW cell values, email matching, and a database lock to make retried exports safe.

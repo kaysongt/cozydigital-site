@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { NEWSLETTER_ENDPOINT } from "@/lib/newsletter";
 import { HUB_LEAD_URL } from "@/lib/client-hub";
 import { readAttribution, formatAttribution, type Attribution } from "@/components/attribution";
 import { trackMetaLead } from "@/components/meta-pixel";
@@ -29,7 +28,6 @@ export default function WebinarLanding() {
   const [ready, setReady] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
-  const [newsletterState, setNewsletterState] = useState("");
   const requestId = useRef("");
   const busy = useRef(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -83,19 +81,18 @@ export default function WebinarLanding() {
 
     try {
       if (!requestId.current) requestId.current = crypto.randomUUID();
-      const workspaceBody = new URLSearchParams({ action: "webinar", format: "json", name, email, goal, marketing: marketing ? "yes" : "no", source, request_id: requestId.current, company_url: honeypot });
-      const response = await fetch(NEWSLETTER_ENDPOINT || HUB_LEAD_URL, {
+      const response = await fetch(HUB_LEAD_URL, {
         method: "POST",
         credentials: "omit",
         signal: controller.signal,
-        headers: NEWSLETTER_ENDPOINT ? {} : {
+        headers: {
           "Content-Type": "application/json",
           ...(PUBLIC_INTAKE_KEY ? { "x-webhook-secret": PUBLIC_INTAKE_KEY } : {}),
         },
-        body: NEWSLETTER_ENDPOINT ? workspaceBody : JSON.stringify({
+        body: JSON.stringify({
           name: name.slice(0, 255), email: email.slice(0, 320),
           leadSource: `AI Video Webinar · ${source}`,
-          notes, hp: "",
+          notes: `${notes}\nRequest ID: ${requestId.current}`, hp: "",
         }),
       });
       const result: unknown = await response.json().catch(() => null);
@@ -104,7 +101,6 @@ export default function WebinarLanding() {
         throw new Error("We could not confirm your signup. Your details are still here. Please try again or email us below.");
       }
       // The server confirms persistence, not email delivery. Never claim an email was sent.
-      if (NEWSLETTER_ENDPOINT && "newsletter" in result && typeof result.newsletter === "string") setNewsletterState(result.newsletter);
       setStatus("success");
       try {
         trackMetaLead();
@@ -154,7 +150,6 @@ export default function WebinarLanding() {
               <span className={styles.successMark} aria-hidden="true">✓</span>
               <h2 id="signup-title">You’re on the list.</h2>
               <p>Your webinar signup has been saved. The Cozy Digital team will email the confirmed date and viewing link when they’re ready.</p>
-              <p className={styles.finePrint}>{newsletterState === "confirmation_required" ? "For optional Cozy Notes emails, check your inbox for a confirmation link if you have not already confirmed." : newsletterState === "pending_retry" ? <>Your webinar registration is saved, but newsletter confirmation needs another try. <a href="/newsletter/">Join Cozy Notes here.</a></> : ""}</p>
               <p className={styles.finePrint}>The date is not confirmed yet. This is not a paid course enrollment.</p>
               <a className={styles.submit} href="#webinar-program">Explore the session <span aria-hidden="true">↓</span></a>
             </div>
@@ -173,7 +168,7 @@ export default function WebinarLanding() {
                 <label className={styles.checkbox} htmlFor="webinar-marketing"><input id="webinar-marketing" name="marketing" type="checkbox" value="yes" /><span>Also send me occasional Cozy Digital tips and offers. <em>Optional.</em></span></label>
                 {status === "error" && <div ref={statusRef} className={styles.error} tabIndex={-1} role="alert">{error}</div>}
                 <button className={styles.submit} type="submit" disabled={!ready || status === "sending"}>{status === "sending" ? "Saving your signup…" : "Join the free webinar list"}<span aria-hidden="true">↗</span></button>
-                <p className={styles.finePrint}>By signing up, you agree to receive details about this webinar. Other marketing is optional.{NEWSLETTER_ENDPOINT ? " Confirm the separate email link to join Cozy Notes. Unsubscribe anytime." : ""} No purchase, account, or generation credits required.</p>
+                <p className={styles.finePrint}>By signing up, you agree to receive details about this webinar. Other marketing is optional. No purchase, account, or generation credits required.</p>
                 <noscript><p className={styles.finePrint}>The form needs JavaScript. <a href="mailto:out@cozydigital.org?subject=Free%20AI%20video%20webinar%20signup">Email us to join the webinar list instead.</a></p></noscript>
               </form>
             </>
