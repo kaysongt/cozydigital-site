@@ -84,3 +84,74 @@
 @media(max-width:760px) { .nav,.hero,.promise,.program,.faq,.courseDivider { width:calc(100% - 40px); } .nav { min-height:76px; } .nav .wordmark { font-size:23px; } .nav>div { gap:12px; } .nav>div>a:first-child { display:none; } .hero { grid-template-columns:1fr; gap:36px; padding-block:38px 42px; } .webinar .headline { font-size:clamp(44px,11.5vw,70px); } .webinar .eyebrow { margin-bottom:20px; font-size:10px; } .lead { font-size:19px; } .description { font-size:14px; } .hosts { margin-block:23px 19px; } .sessionFacts { gap:7px 12px; font-size:11px; } .sessionFacts span+span::before { margin-right:12px; } .previewLink { margin-top:18px; } .signup { padding:24px; } .promise { justify-content:flex-start; gap:12px 21px; } .promise p { flex-basis:100%; } .promise>span { font-size:11px; } .program,.faq { grid-template-columns:1fr; gap:32px; padding-block:45px; } .programIntro>p:not(.eyebrow) { max-width:100%; } .programRows article { gap:20px; } .webinar .programRows h3 { font-size:21px; } .courseDivider { align-items:flex-start; flex-direction:column; gap:8px; padding:24px; } .cardTop { font-size:8px; } }
 @media(max-width:360px) { .signup { padding:19px; } .webinar .signup h2 { font-size:28px; } .sessionFacts { column-gap:9px; } .sessionFacts span+span::before { margin-right:9px; } }
 @media(prefers-reduced-motion:reduce) { .webinar .submit { transition:none; } }
+
+/* Conversion refresh: event details, a short promise, real video, one action. */
+.nav { min-height:60px; gap:18px; }
+.nav p { display:flex; align-items:center; flex-wrap:wrap; gap:5px 16px; margin:0; font-size:12px; line-height:1.5; }
+.nav p strong { color:var(--web-accent); font-weight:700; }
+.nav p time { color:var(--web-muted); }
+.nav>a { flex-shrink:0; gap:10px; font-size:12px; }
+.hero { grid-template-columns:minmax(0,1fr) minmax(0,1.08fr); gap:48px; padding-block:44px 40px; align-items:center; }
+.webinar .eyebrow { margin:0 0 16px; font-size:11px; }
+.webinar .headline { font-size:clamp(38px,4.1vw,60px); margin:0 0 20px; letter-spacing:-.055em; line-height:1.08; }
+.webinar .headline span { text-decoration:none; }
+.lead { font-size:17px; line-height:1.65; color:var(--web-muted); max-width:460px; margin:0 0 26px; }
+.webinar .heroCta { display:inline-flex; justify-content:center; align-items:center; gap:28px; padding:15px 23px; min-height:52px; background:var(--web-accent); color:#fff; border-radius:8px; font-size:14px; font-weight:700; text-decoration:none; white-space:nowrap; }
+.webinar .heroCta:hover { background:#104453; }
+.heroCta:active,.submit:active { transform:translateY(1px); }
+.promise { padding-block:20px; }
+.promise p { font-size:16px; }
+.registration { width:min(1168px,calc(100% - 96px)); margin:auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.9fr); gap:88px; align-items:center; padding-block:64px; }
+.registrationCopy h2 { max-width:480px; font-size:clamp(28px,3vw,40px); line-height:1.18; letter-spacing:-.045em; }
+.registrationCopy>p:not(.sessionDate):not(.sessionNote) { max-width:455px; font-size:15px; line-height:1.8; margin:24px 0; color:var(--web-muted); }
+.takeaways { list-style:none; margin:24px 0; padding:0; display:grid; gap:14px; }
+.takeaways li { position:relative; padding-left:24px; font-size:14px; line-height:1.6; }
+.takeaways li::before { content:"✓"; position:absolute; left:0; color:var(--web-accent); font-weight:700; }
+.sessionDate { margin:28px 0 10px; font-size:15px; line-height:1.65; }
+.sessionDate strong { font-family:"Space Grotesk",sans-serif; font-size:25px; font-weight:500; }
+.sessionNote { max-width:350px; color:var(--web-muted); font-size:12px; line-height:1.7; margin:0; }
+.signup { border-radius:8px; padding:26px 28px; scroll-margin-top:100px; }
+.cardTop { margin-bottom:18px; }
+.webinar .signup h2 { font-size:30px; }
+.cardIntro { margin-bottom:18px; }
+.signup input:not([type="checkbox"]),.signup textarea,.webinar .submit { border-radius:8px; }
+.optionalGoal { margin-top:18px; }
+.optionalGoal summary { color:var(--web-accent); font-size:12px; line-height:1.6; cursor:pointer; padding-block:6px; }
+.optionalGoal summary span { color:var(--web-muted); font-weight:400; }
+.optionalGoal label { font-size:11px; }
+.webinar .submit { justify-content:center; gap:24px; font-size:14px; }
+.webinar .submit:focus-visible { outline-color:var(--web-accent); }
+.finePrint { font-size:11px; }
+.program { padding-block:60px; border-top:1px solid var(--web-line); }
+.programIntro>p:not(.eyebrow) { max-width:430px; }
+.programRows article { display:block; }
+.programRows p { margin-bottom:10px; }
+.faq { padding-block:44px 56px; }
+.courseDivider { border-radius:8px; }
+@media(max-width:1050px) {
+  .registration { width:calc(100% - 64px); gap:40px; }
+  .hero { gap:28px; grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+  .webinar .headline { font-size:clamp(34px,4.2vw,46px); }
+  .lead { font-size:15px; }
+}
+@media(max-width:760px) {
+  .nav { min-height:58px; }
+  .nav p { display:block; font-size:11px; }
+  .nav p time { display:block; margin-top:3px; }
+  .nav>a { font-size:11px; }
+  .hero { grid-template-columns:1fr; gap:24px; padding-block:28px 28px; }
+  .webinar .eyebrow { font-size:10px; margin-bottom:12px; }
+  .webinar .headline { font-size:clamp(32px,9.2vw,53px); margin-bottom:14px; line-height:1.08; }
+  .lead { max-width:550px; font-size:14px; line-height:1.6; margin-bottom:18px; }
+  .webinar .heroCta { min-height:48px; padding:13px 20px; font-size:13px; }
+  .promise { gap:8px 16px; padding-block:18px; }
+  .promise p { font-size:15px; }
+  .promise>span { font-size:11px; }
+  .registration { width:calc(100% - 40px); grid-template-columns:1fr; gap:28px; padding-block:36px; }
+  .registrationCopy { display:none; }
+  .signup { padding:24px; }
+  .program,.faq { padding-block:36px; }
+  .webinar .program h2,.webinar .faq h2 { font-size:32px; }
+  .programIntro>p:not(.eyebrow) { margin-block:18px; }
+}
+@media(max-width:360px) { .signup { padding:20px; } .hero { gap:20px; } }

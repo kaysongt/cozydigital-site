@@ -25,7 +25,7 @@
 .page h1 span { color:var(--accent); text-decoration:underline; text-decoration-color:#c9a8df; text-decoration-thickness:3px; text-underline-offset:8px }
 .page h1,.page h2,.page h3,.price { font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif }
 .lead { max-width:495px; font-size:18px; line-height:1.75; color:var(--muted); margin-bottom:30px }
-.button { display:inline-flex; justify-content:center; align-items:center; gap:24px; min-height:52px; padding:15px 23px; background:var(--ink); color:white; border-radius:3px; font-size:14px; font-weight:600; text-decoration:none; transition:background .2s,transform .2s }
+.button { display:inline-flex; justify-content:center; align-items:center; gap:24px; min-height:52px; padding:15px 23px; background:var(--ink); color:white; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:background .2s,transform .2s }
 .button:hover { background:var(--accent); transform:translateY(-2px) }
 .heroNote { color:var(--muted); font-size:12px; margin:20px 0 0; line-height:1.6 }
 .offer { border-top:3px solid var(--accent); padding:30px; background:white; box-shadow:0 12px 40px #133c4210 }
@@ -37,7 +37,7 @@
 .included { list-style:none; padding:0; margin:0 0 22px; font-size:13px; line-height:1.6 }
 .included li { padding:9px 0; border-top:1px solid #e5ebea }
 .included li::before { content:"↗"; color:var(--accent); margin-right:12px }
-.disabled { border:1px solid #a4b5b7; border-radius:3px; min-height:52px; padding:15px; width:100%; color:#48616a; background:#e9eeed; font-size:14px; font-weight:600; cursor:not-allowed }
+.disabled { border:1px solid #a4b5b7; border-radius:8px; min-height:52px; padding:15px; width:100%; color:#48616a; background:#e9eeed; font-size:14px; font-weight:600; cursor:not-allowed }
 .note { font-size:12px; color:var(--muted); line-height:1.75; margin:14px 0 0 }
 .offer .note + .button,.offer .note + .disabled { margin-top:18px }
 .overview { display:grid; grid-template-columns:repeat(3,1fr); border-block:1px solid var(--line); padding-block:24px; gap:24px }
@@ -122,7 +122,7 @@
 .introFilmHeading { display:flex; justify-content:space-between; align-items:flex-end; gap:32px; margin-bottom:26px }
 .introFilmHeading h2 { max-width:650px; margin-top:16px }
 .introFilmHeading > p { flex:0 1 340px; margin:0; color:var(--muted); font-size:14px; line-height:1.75 }
-.introVideo { display:block; width:100%; height:auto; aspect-ratio:16 / 9; object-fit:contain; background:#f8f7f2; border:1px solid var(--line); border-radius:3px }
+.introVideo { display:block; width:100%; height:auto; aspect-ratio:16 / 9; object-fit:contain; background:#f8f7f2; border:1px solid var(--line); border-radius:8px }
 .introVideo:focus-visible { outline:3px solid var(--accent); outline-offset:5px }
 .introFilmFoot { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 24px; margin-top:10px; color:var(--muted); font-size:12px; line-height:1.6 }
 .introFilmFoot p { margin:0 }
@@ -133,4 +133,29 @@
   .introFilmHeading { display:block; margin-bottom:20px }
   .introFilmHeading > p { margin-top:18px; max-width:600px }
   .introFilmFoot { align-items:flex-start }
+}
+
+/* The existing intro is now the hero visual, before the registration form. */
+.heroFilm { min-width:0; margin:0; scroll-margin-top:100px; }
+.videoFrame { position:relative; border-radius:8px; overflow:hidden; background:#e7eeea; }
+.videoFrame .introVideo { border:0; border-radius:8px; background:#e7eeea; }
+.playIntro { position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; gap:12px; padding:0 18px 28px; border:0; cursor:pointer; background:linear-gradient(transparent 45%,#102b3680); color:#fff; font:inherit; }
+.playIntro>span:first-child { display:grid; place-items:center; width:48px; height:48px; border:1px solid #ffffff90; border-radius:50%; background:#075e72; font-size:17px; padding-left:3px; }
+.playIntro>span:last-child { align-self:flex-end; display:flex; flex-direction:column; gap:3px; text-align:left; padding:7px 11px; background:#102b36; border-radius:5px; font-size:14px; font-weight:700; line-height:1.3; }
+.playIntro small { font-size:11px; font-weight:400; }
+.playIntro:hover>span:first-child { background:#104453; }
+.page .playIntro:focus-visible { outline:3px solid #fff; outline-offset:-6px; }
+.heroFilmCaption { padding-top:16px; }
+.page .heroFilmCaption h2 { font-size:19px; font-weight:600; line-height:1.35; letter-spacing:-.03em; margin:0 0 5px; }
+.heroFilmCaption p { margin:0; color:var(--muted); font-size:12px; line-height:1.65; }
+.heroFilmCaption a { display:inline-flex; align-items:center; min-height:32px; color:var(--accent); font-size:11px; text-decoration:underline; text-underline-offset:3px; }
+@media(max-width:760px) {
+  .heroFilmCaption { padding-top:11px; }
+  .page .heroFilmCaption h2 { font-size:17px; }
+  .heroFilmCaption p { font-size:11px; }
+  .playIntro { padding-bottom:20px; }
+}
+@media(prefers-reduced-motion:no-preference) {
+  .playIntro>span:first-child { transition:transform .18s,background .18s; }
+  .playIntro:hover>span:first-child { transform:scale(1.06); }
 }

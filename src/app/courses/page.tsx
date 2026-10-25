@@ -7,7 +7,7 @@ import SelectedFilms from "@/components/selected-films";
 export const metadata: Metadata = {
   title: "Courses & Playbooks | Cozy Digital",
   description:
-    "Explore the Cozy AI Video Course, AI Video Prompt Boss, and The AI Advantage Blueprint by Cozy Digital. Prompts, worksheets, and lessons for video production and everyday business tasks.",
+    "Explore AI Video Creator Lab, AI Video Prompt Boss, and The AI Advantage Blueprint by Cozy Digital. Prompts, worksheets, and lessons for video production and everyday business tasks.",
   alternates: { canonical: "https://cozydigital.org/courses/" },
 };
 

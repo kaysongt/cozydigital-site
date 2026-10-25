@@ -1,6 +1,6 @@
 # Free AI video webinar registration
 
-The printed-card destination remains https://cozydigital.org/courses/cozy-ai-video-course/ . The new webinar section appears before the separate paid course. Paid pricing, checkout gating, access terms, and lesson access are unchanged.
+The printed-card destination remains https://cozydigital.org/courses/cozy-ai-video-course/ . The webinar opens with the public 40-second intro and a clear signup action before the separate paid course, now named AI Video Creator Lab. Paid pricing, checkout gating, access terms, and lesson access are unchanged.
 
 ## What this release does
 
@@ -11,9 +11,13 @@ The printed-card destination remains https://cozydigital.org/courses/cozy-ai-vid
 - Sends an existing Meta Lead event and a GA4 generate_lead event with form_id=ai_video_webinar only after confirmed persistence. Analytics failures do not change successful signup state.
 - Uses the existing public course intro as a teaching-style preview. Does not publish private Drive files, raw meeting recordings, full paid lessons, or new video access links.
 
-## Current event state: invite list, NOT a scheduled seat
+## Current event: Wednesday, October 28, 2026 at 8 p.m. Central
 
-No event date, time, meeting link, or approved full webinar player has been supplied. Public copy says date to be announced. Do not add a countdown, calendar invite, seat limit, live claim, or replay promise until verified.
+The owner supplied Wednesday at 8 p.m. on October 25; the page uses the account's America/Chicago timezone. The shared event record is `src/data/cozy-ai-video-webinar.ts`, starting at `2026-10-28T20:00:00-05:00`.
+
+The public course is named **AI Video Creator Lab** and the headline is **Make AI videos that stop the scroll.** The existing 40-second public intro is in the first panel, before the form, with native playback controls and a poster extracted from that same film. There is no autoplay or video preload. Paid lesson access stays separate.
+
+The webinar is hosted live by Quincy and Kayson, with prerecorded production examples. A joining URL has not yet been supplied; the page says the team will email joining instructions before the session. There is no claim that a confirmation email has already been sent, no invented seat limit, and no replay promise. Refresh the schedule and copy after this pilot before promoting a new session.
 
 The generic Hub intake endpoint does NOT send confirmation emails or reminders. This release does not claim otherwise. The on-page saved state is immediate; the team must send the confirmed schedule/viewing link to the webinar list. Do not describe email automation as delivered.
 
@@ -22,7 +26,7 @@ The generic Hub intake endpoint does NOT send confirmation emails or reminders. 
 1. Open Hub admin → People → Webinar signups. The list groups registrations by normalized email and shows Google Sheet sync status.
 2. Explicit internal QA entries are excluded automatically. Repeated submissions update the displayed registration; the raw intake history stays in the CRM. The hub retries Sheet sync every five minutes, with manual Sync now available to admins.
 3. Use `Optional marketing consent: no` contacts only for this webinar's requested details, not unrelated newsletters.
-4. Confirm date/time/timezone, viewing platform/link, final program and Q&A format.
+4. Confirm the viewing platform/link and final program; send the scheduled Wednesday, October 28 at 8 p.m. Central details. If a different timezone was intended, update the shared event record and page metadata before distribution.
 5. Send event details and joining instructions. Verify receipt and playback with a small internal group before Boyce promotes the event broadly.
 6. Compare tagged registrations with actual attendance and purchases. Signup events alone do not measure attendance or paid conversion.
 
@@ -38,3 +42,13 @@ The untagged printed QR remains valid. Do not label every untagged visitor as a 
 ## Sheet export
 
 The hub owns webinar persistence and export. `NEXT_PUBLIC_NEWSLETTER_ENDPOINT` cannot bypass the hub. The seven-column Webinar registrations tab receives event registration data only; neither Subscribers nor Mail merge audience is changed. A requested marketing checkbox is not a confirmed newsletter subscription. The hub uses RAW cell values, email matching, and a database lock to make retried exports safe.
+
+## Conversion refresh, October 25
+
+- First panel: the new headline, real video intro, one `Save my seat` action, and scheduled date/time.
+- The optional creation-goal field is inside a disclosure. Existing field names, order, consent wording, intake API, retry ID, and validation stay intact.
+- Existing `generate_lead` and Meta Lead events fire only after the Hub confirms `{ok:true}`. `form_id` and `lead_type` remain stable; `webinar_id` identifies this session.
+- Added fixed-label GA events: `webinar_cta_click` (hero/program), `webinar_form_start`, `webinar_signup_error`, `webinar_intro_start`, `webinar_intro_progress` (25/50/75), and `webinar_intro_complete`. These carry no names, emails, goals, or full URLs. Intro engagement is not live-webinar attendance.
+- Existing CI covers mocked registration success/error, consent, attribution, no-JavaScript fallback, responsive overflow, intro placement, and event details in the saved notes. A live real-person signup and email delivery still need separate confirmation.
+
+Design read: preserve the existing Cozy Digital teal, Manrope/Space Grotesk type, and light course surface; use the existing Next.js/native CSS stack. DESIGN_VARIANCE 6, MOTION_INTENSITY 3, VISUAL_DENSITY 4. The change puts evidence and an action in the first viewport, keeps the canonical route, and avoids new dependencies.

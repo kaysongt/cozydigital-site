@@ -1,7 +1,7 @@
 /** Public marketing copy only. Never put lesson URLs or access tokens here. */
 export const cozyVideoCourse = {
   id: "cozy-ai-video-course",
-  title: "Cozy AI Video Course",
+  title: "AI Video Creator Lab",
   path: "/courses/cozy-ai-video-course/",
   launchPrice: 75,
   plannedRegularPrice: 150,

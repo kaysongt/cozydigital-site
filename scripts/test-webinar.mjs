@@ -47,7 +47,13 @@ try {
   await mock(page, 200, { ok: true }, captured);
   await visit(page, "?utm_source=boyce&utm_medium=show&utm_campaign=ai_video_webinar");
   assert.equal(await page.locator("h1").count(), 1);
-  assert.match(await page.locator("h1").innerText(), /Less guessing/);
+  assert.match(await page.locator("h1").innerText(), /Make AI videos/);
+  const intro = await page.locator("#course-intro").boundingBox();
+  const signup = await page.locator("#webinar-register").boundingBox();
+  assert.ok(intro.y < signup.y, "Intro must appear before the registration form");
+  assert.ok(intro.y + intro.height < 1000, "Desktop intro must be in the first viewport");
+  assert.match(await page.locator('[aria-label="Webinar navigation"]').innerText(), /Oct 28.*8 p.m. CT/);
+  assert.equal(await page.locator("#course-intro video").count(), 1);
   assert.equal(await page.locator("#webinar-marketing").isChecked(), false);
   assert.equal(await page.locator('button:has-text("Enrollment opens soon")').isDisabled(), true);
   assert.ok((await page.locator("#paid-course").innerText()).includes("$75"));
@@ -57,6 +63,7 @@ try {
   await page.locator('#webinar-register button[type="submit"]').click();
   assert.equal(captured.length, 0);
   await fill(page);
+  await page.getByText("Add a question or video idea", { exact: false }).click();
   await page.locator("#webinar-goal").fill("A product video for my business");
   await page.evaluate(() => {
     window.__webinarEvents = [];
@@ -70,6 +77,8 @@ try {
   assert.match(captured[0].notes, /Optional marketing consent: no/);
   assert.match(captured[0].notes, /utm_campaign=ai_video_webinar/);
   assert.match(captured[0].notes, /Event contact consent: yes/);
+  assert.match(captured[0].notes, /Starts at: 2026-10-28T20:00:00-05:00/);
+  assert.match(await page.locator('#webinar-register [role="status"]').innerText(), /October 28.*8 p.m. Central/);
   assert.ok(!(await page.locator('#webinar-register [role="status"]').innerText()).includes("email has been sent"));
   const events = await page.evaluate(() => window.__webinarEvents);
   assert.equal(events.filter(e => e[1] === "generate_lead").length, 1);
@@ -99,7 +108,11 @@ try {
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), `Horizontal overflow at ${width}px`);
     const box = await page.locator("#webinar-register").boundingBox();
     assert.ok(box.x >= 0 && box.x + box.width <= width + 1, `Form clipped at ${width}px`);
-    if (width === 390) await page.screenshot({ path: "webinar-qa/mobile.png", fullPage: true });
+    if (width === 390) {
+      const video = await page.locator("#course-intro video").boundingBox();
+      assert.ok(video.y + video.height <= 844, "Mobile intro video must fit in the first viewport");
+      await page.screenshot({ path: "webinar-qa/mobile.png", fullPage: true });
+    }
     assert.deepEqual(errors, []);
     checks.push(`Responsive layout ${width}px: no page overflow or clipped signup card`);
     await ctx.close();

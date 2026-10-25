@@ -2,13 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { cozyVideoCourse as course, getCozyVideoCheckout } from "@/data/cozy-ai-video-course";
 import styles from "./course.module.css";
-import IntroFilm from "./IntroFilm";
 import CoursePreview from "./preview";
 import WebinarLanding from "./WebinarLanding";
 
 export const metadata: Metadata = {
-  title: "Free AI Video Webinar + Course | Cozy Digital",
-  description: "Join Quincy and Kayson’s free AI video webinar invite list. Explore practical production examples, shot planning, and review. Date to be announced; optional paid course available separately.",
+  title: "AI Video Creator Lab | Free Live Webinar October 28 | Cozy Digital",
+  description: "Make AI videos that stop the scroll. Watch the 40-second intro and join Quincy and Kayson live on Wednesday, October 28 at 8 p.m. Central. Free registration.",
+  openGraph: {
+    title: "AI Video Creator Lab | Free Live Webinar",
+    description: "Make AI videos that stop the scroll. Join Quincy and Kayson on Wednesday, October 28 at 8 p.m. Central.",
+    url: "https://cozydigital.org/courses/cozy-ai-video-course/",
+    type: "website",
+    images: [{ url: "/courses/cozy-ai-video-course/intro-film-preview.jpg", width: 1280, height: 720, alt: "Cozy Digital AI video course preview" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Video Creator Lab | Free Live Webinar",
+    description: "Wednesday, October 28 at 8 p.m. Central. Learn to plan, direct, and review your AI videos with Quincy and Kayson.",
+    images: ["/courses/cozy-ai-video-course/intro-film-preview.jpg"],
+  },
   alternates: { canonical: "https://cozydigital.org/courses/cozy-ai-video-course/" },
   robots: { index: false, follow: true }, // Remove only after launch readiness review.
 };
@@ -21,24 +33,22 @@ export default function CozyVideoCoursePage() {
       <div className={`${styles.wrap} ${styles.courseNav}`}><Link href="/courses/">Cozy Digital / Optional paid course</Link><a href="#curriculum">The curriculum <span aria-hidden="true">↓</span></a></div>
       <section id="paid-course" className={`${styles.wrap} ${styles.hero}`} style={{ scrollMarginTop: 96 }}>
         <div>
-          <p className={styles.eyebrow}>The Cozy Digital production course · Separate from the free webinar</p>
-          <h2>A good film starts<br /><span>before you generate.</span></h2>
-          <p className={styles.lead}>Explore the production decisions behind AI video through narrated case studies and practical planning exercises.</p>
+          <p className={styles.eyebrow}>Your next step after the free webinar</p>
+          <h2>{course.title}</h2>
+          <p className={styles.lead}>Build your AI video skills with six narrated lessons, real production examples, and templates for your next project.</p>
           <div className={styles.heroLinks}><a className={styles.button} href="#course-intro">Watch the intro <span aria-hidden="true">▶</span></a><a className={styles.curriculumLink} href="#curriculum">Explore the course <span aria-hidden="true">↓</span></a></div>
-          <p className={styles.heroNote}>Your idea. A clearer brief. A more considered film.</p>
+          <p className={styles.heroNote}>Go at your pace. Put each lesson to work on your own idea.</p>
         </div>
         <aside className={styles.offer} aria-labelledby="offer-title">
           <p id="offer-title" className={styles.offerTitle}>{course.title}</p>
           <p className={styles.price}>${course.launchPrice}<span>USD / one time · {course.accessMonths} months of access</span></p>
           <p className={styles.saving}>50% off the planned ${course.plannedRegularPrice} regular price</p>
-          <p className={styles.offerCopy}>A focused look at the choices that shape a shot, a scene, and a connected story.</p>
+          <p className={styles.offerCopy}>Learn how to plan a scene, keep shots consistent, and review your video before you publish.</p>
           <ul className={styles.included}><li>{course.lessonCount} narrated case-study lessons · {course.lessonRuntime}</li><li>{course.workbookPages}-page PDF workbook with six exercises</li><li>Eight planning templates included in the workbook</li></ul>
           <p className={styles.note} id="purchase-email-notice">Use the same Google email at checkout and when signing in to the Hub. You may be asked to sign in with Google again to verify your email.</p>
           {checkout ? <a aria-describedby="purchase-email-notice" className={styles.button} href={checkout}>Get the course · ${course.launchPrice}</a> : <><button className={styles.disabled} disabled>Enrollment opens soon</button><p className={styles.note}>Course preview only. Checkout is not open yet.</p></>}
         </aside>
       </section>
-
-      <IntroFilm />
 
       <div className={`${styles.wrap} ${styles.overview}`} aria-label="Course format"><p><strong>Watch</strong><span>Understand the decisions</span></p><p><strong>Plan</strong><span>Make the brief your own</span></p><p><strong>Review</strong><span>Know what to keep and fix</span></p></div>
       <section className={`${styles.wrap} ${styles.previewSection}`} aria-labelledby="preview-title"><div><p className={styles.eyebrow}>Try the approach</p><h2 id="preview-title">One shot.<br />Three better questions.</h2><p className={styles.sectionCopy}>A small planning exercise from the course. Choose a step to see how a loose idea becomes a useful shot brief.</p></div><CoursePreview /></section>
