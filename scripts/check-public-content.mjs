@@ -132,7 +132,7 @@ if (!existsSync(OUT)) {
     const html = read(page);
     for (const amount of RETIRED_SERVICE_AMOUNTS) {
       const isCourseRegularPrice = amount === "$150" && [
-        "out/courses/index.html", "out/courses/cozy-ai-video-course/index.html",
+        "out/courses/index.html", "out/courses/cozy-ai-video-course/index.html", "out/webinar/thank-you/index.html",
       ].includes(rel(page)) && /planned/.test(html);
       if (html.includes(amount) && !isCourseRegularPrice) fail(`${rel(page)}: rendered retired service price "${amount}".`);
     }

@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cozy Digital//AI Video Workshop//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ai-video-creator-lab-2026-10-28@cozydigital.org
+DTSTAMP:20261026T000000Z
+DTSTART:20261029T010000Z
+DTEND:20261029T020000Z
+SUMMARY:From Idea to AI Video | Cozy Digital free workshop
+DESCRIPTION:Live with Quincy + Kayson. Joining link by email.\nLive atten
+ dees receive the 13-page AI Shot Planning Workbook.\nOne-hour calendar h
+ old; session length may vary.
+LOCATION:Online; joining link by email
+URL:https://cozydigital.org/courses/cozy-ai-video-course/
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Cozy Digital AI video workshop starts in 30 minutes.
+END:VALARM
+END:VEVENT
+END:VCALENDAR

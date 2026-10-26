@@ -1,4 +1,4 @@
-.webinar { --web-ink:#102b36; --web-muted:#48616a; --web-accent:#075e72; --web-line:#c9d6d6; color:var(--web-ink); background:#f7f7f1; overflow:clip; }
+.webinar { --web-ink:#102b36; --web-muted:#48616a; --web-accent:#075e72; --web-line:#c9d6d6; --ink:var(--web-ink); --muted:var(--web-muted); --accent:var(--web-accent); color:var(--web-ink); background:#f7f7f1; overflow:clip; }
 .webinar * { box-sizing:border-box; }
 .webinar a { color:inherit; }
 .nav,.hero,.promise,.program,.faq,.courseDivider { width:min(1168px,calc(100% - 96px)); margin-inline:auto; }
@@ -155,3 +155,53 @@
   .programIntro>p:not(.eyebrow) { margin-block:18px; }
 }
 @media(max-width:360px) { .signup { padding:20px; } .hero { gap:20px; } }
+
+/* Registration refresh: countdown and acknowledgement are the motivated motion. */
+.countdown { width:min(1168px,calc(100% - 96px)); margin:auto; display:flex; align-items:center; gap:28px; padding:22px 0; border-block:1px solid var(--web-line); }
+.countdown>p { margin:0; font-weight:700; font-size:14px; }
+.countdown>span { margin-left:auto; color:var(--web-muted); font-size:13px; }
+.clock { display:flex; gap:22px; }
+.clock>span { display:grid; gap:2px; text-align:center; min-width:42px; }
+.clock strong { font-family:"Space Grotesk",sans-serif; font-size:30px; line-height:1.1; font-weight:500; font-variant-numeric:tabular-nums; color:var(--web-accent); }
+.clock small { color:var(--web-muted); font-size:10px; }
+.bonus { display:flex; align-items:center; gap:12px; margin:20px 0 14px; padding:15px; background:#eaf3ef; border-radius:8px; }
+.bonus>span { font-size:25px; }
+.bonus p { margin:0; font-size:12px; line-height:1.7; color:var(--web-ink); }
+.bonus strong { display:block; font-size:13px; }
+.hostSection { width:min(1168px,calc(100% - 96px)); margin:auto; padding:56px 0; border-top:1px solid var(--web-line); }
+.webinar .hostSection h2 { margin:0 0 18px; font-size:clamp(28px,3vw,40px); font-weight:500; line-height:1.2; letter-spacing:-.04em; }
+.hostSection>p { max-width:670px; color:var(--web-muted); font-size:15px; line-height:1.8; }
+.hostGrid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin:32px 0 20px; }
+.hostGrid article { display:flex; align-items:flex-start; gap:20px; }
+.hostGrid img { flex-shrink:0; width:100px; height:100px; object-fit:cover; border-radius:50%; }
+.hostGrid h3 { margin:0 0 5px; font-size:24px; font-weight:600; }
+.hostGrid strong { font-size:12px; color:var(--web-accent); }
+.hostGrid p { color:var(--web-muted); font-size:13px; line-height:1.8; margin:10px 0 0; }
+.hostSection>a { display:inline-flex; align-items:center; gap:20px; min-height:44px; color:var(--web-accent); font-size:13px; font-weight:700; text-underline-offset:5px; }
+.webinar a:focus-visible,.webinar summary:focus-visible { outline:3px solid var(--web-accent); outline-offset:5px; }
+.srOnly { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.signup input[type="hidden"] { display:none; }
+.heroCta,.submit { transition:background .18s,transform .18s; }
+@media(max-width:1050px) { .countdown,.hostSection { width:calc(100% - 64px); } .hostGrid { gap:26px; } }
+@media(max-width:760px) {
+  .countdown,.hostSection { width:calc(100% - 40px); }
+  .countdown { flex-wrap:wrap; justify-content:space-between; gap:12px; padding:18px 0; }
+  .countdown>span { margin:0; width:100%; font-size:12px; }
+  .clock { gap:14px; } .clock>span { min-width:32px; } .clock strong { font-size:25px; }
+  .registrationCopy { display:block; order:2; }
+  .registrationCopy>p:first-of-type,.sessionDate,.sessionNote { display:none; }
+  .registrationCopy h2 { font-size:28px; margin:10px 0 20px; }
+  .registration { gap:30px; }
+  .hostSection { padding:36px 0; }
+  .hostGrid { grid-template-columns:1fr; gap:28px; }
+  .hostGrid img { width:80px; height:80px; }
+}
+/* Preserve the site-wide theme toggle without changing the campaign palette. */
+:global(html:not(.light)) .webinar { --web-ink:#eef6f5; --web-muted:#b5cbcf; --web-accent:#8cd9d6; --web-line:#385159; background:#132b34; }
+:global(html:not(.light)) .signup { background:#1c3740; border-color:#44616a; }
+:global(html:not(.light)) .signup input:not([type="checkbox"]),:global(html:not(.light)) .signup textarea { background:#132b34; color:var(--web-ink); border-color:#69868e; }
+:global(html:not(.light)) .signup input::placeholder,:global(html:not(.light)) .signup textarea::placeholder { color:#a9c1c6; }
+:global(html:not(.light)) .webinar .heroCta,:global(html:not(.light)) .webinar .submit { background:#8cd9d6; color:#132b34; }
+:global(html:not(.light)) .webinar .heroCta:hover,:global(html:not(.light)) .webinar .submit:hover { background:#b1eeeb; }
+:global(html:not(.light)) .bonus { background:#24464d; }
+@media(prefers-reduced-motion:reduce) { .heroCta,.submit { transition:none; } }

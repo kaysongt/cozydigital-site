@@ -5,7 +5,8 @@ import { HUB_LEAD_URL } from "@/lib/client-hub";
 import { readAttribution, formatAttribution, type Attribution } from "@/components/attribution";
 import { trackMetaLead } from "@/components/meta-pixel";
 import { cozyVideoWebinar as webinar } from "@/data/cozy-ai-video-webinar";
-import { cozyVideoCourse as course } from "@/data/cozy-ai-video-course";
+import { useRouter } from "next/navigation";
+import Countdown from "./Countdown";
 import { trackWebinarEvent } from "@/lib/webinar-analytics";
 import IntroFilm from "./IntroFilm";
 import styles from "./webinar.module.css";
@@ -29,7 +30,7 @@ function currentAttribution(): Attribution {
 }
 
 export default function WebinarLanding() {
-  const [ready, setReady] = useState(false);
+  const router = useRouter();
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const requestId = useRef("");
@@ -40,7 +41,6 @@ export default function WebinarLanding() {
   const formStarted = useRef(false);
 
   useEffect(() => {
-    setReady(true);
     return () => requestRef.current?.abort();
   }, []);
 
@@ -111,10 +111,12 @@ export default function WebinarLanding() {
       }
       // The server confirms persistence, not email delivery. Never claim an email was sent.
       setStatus("success");
+      try { sessionStorage.setItem(`webinar-confirmed:${webinar.id}`, "yes"); } catch { /* The URL fragment also supports storage-disabled browsers. */ }
       try {
         trackMetaLead();
         trackWebinarEvent("generate_lead", { lead_type: "webinar_interest" });
       } catch { /* A blocked analytics script must never undo a saved signup. */ }
+      router.push(`${webinar.thankYouPath}#registered`);
     } catch (cause) {
       trackWebinarEvent("webinar_signup_error", { error_type: controller.signal.aborted ? "timeout" : "request_failed" });
       setStatus("error");
@@ -131,37 +133,34 @@ export default function WebinarLanding() {
   return (
     <section className={styles.webinar} aria-labelledby="webinar-title">
       <nav className={styles.nav} aria-label="Webinar navigation">
-        <p><strong>Free live webinar</strong><time dateTime={webinar.startsAt}>{webinar.shortDate} at {webinar.shortTime}</time></p>
+        <p><strong>Free live workshop</strong><time dateTime={webinar.startsAt}>{webinar.shortDate} at {webinar.shortTime}</time></p>
         <a href="#webinar-program">The session <span aria-hidden="true">↓</span></a>
       </nav>
 
       <div className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>{webinar.title}</p>
-          <h1 id="webinar-title" className={styles.headline}>Make AI videos<br /><span>that stop the scroll.</span></h1>
-          <p className={styles.lead}>Learn to turn your ideas into product videos, creator content, and short films. Start with our free live webinar.</p>
+          <h1 id="webinar-title" className={styles.headline}>Turn one idea<br /><span>into an AI video.</span></h1>
+          <p className={styles.lead}>Plan shots, keep characters consistent, and review product videos and short films with Quincy + Kayson.</p>
           <a className={styles.heroCta} href="#webinar-register" onClick={() => trackWebinarEvent("webinar_cta_click", { placement: "hero" })}>Save my seat <span aria-hidden="true">↗</span></a>
         </div>
         <IntroFilm compact />
       </div>
 
-      <div className={styles.promise}><p>Your idea can be the next project.</p><span>Product videos</span><span>Creator content</span><span>Short films</span></div>
+      <Countdown />
 
       <div className={styles.registration}>
         <div className={styles.registrationCopy}>
-          <h2>Bring the idea.<br />We’ll show you how to plan it.</h2>
+          <h2>Leave with a plan<br />you can actually use.</h2>
           <p>Stuck on what to prompt, which shots you need, or why your clips don’t match? See how we work through those choices.</p>
           <ul className={styles.takeaways}>
-            <li>Turn a rough idea into a usable shot plan.</li>
-            <li>Keep characters, outfits, and settings consistent.</li>
-            <li>Spot what to fix before sharing your video.</li>
+            <li>A three-step framework to turn your idea into a shot plan.</li>
+            <li>A reference checklist for consistent faces, outfits, and lighting.</li>
+            <li>A review checklist to catch continuity errors before you publish.</li>
           </ul>
           <div className={styles.hosts}>
-            <div className={styles.portraits}>
-              <img src="/brand/team/quincy.png" width="56" height="56" alt="Quincy" loading="lazy" />
-              <img src="/brand/team/kayson.png" width="56" height="56" alt="Kayson" loading="lazy" />
-            </div>
-            <p><strong>Hosted by Quincy + Kayson</strong><span>The creators behind Cozy Digital</span></p>
+            <div className={styles.portraits}><img src="/brand/team/quincy.png" width="56" height="56" alt="Quincy" loading="lazy" /><img src="/brand/team/kayson.png" width="56" height="56" alt="Kayson" loading="lazy" /></div>
+            <p><strong>Quincy + Kayson, Cozy Digital founders</strong><span>The studio behind AI films for Dr. Boyce Watkins</span></p>
           </div>
           <p className={styles.sessionDate}><time dateTime={webinar.startsAt}>{webinar.date}<br /><strong>{webinar.time}</strong></time></p>
           <p className={styles.sessionNote}>Join online. Beginner friendly. No paid tools needed to attend.</p>
@@ -181,9 +180,11 @@ export default function WebinarLanding() {
             <>
               <h2 id="signup-title">Save my seat</h2>
               <p className={styles.cardIntro}>Join us {webinar.shortDate} at {webinar.shortTime}. Enter your name and email for the joining link.</p>
-              <form ref={formRef} onSubmit={submit} aria-busy={status === "sending"} onFocusCapture={() => {
+              <form ref={formRef} action="https://hub.cozydigital.org/api/webhook/webinar-register" method="post" onSubmit={submit} aria-busy={status === "sending"} onFocusCapture={() => {
                 if (!formStarted.current) { formStarted.current = true; trackWebinarEvent("webinar_form_start"); }
               }}>
+                <input type="hidden" name="webhookSecret" value={PUBLIC_INTAKE_KEY} />
+                <input type="hidden" name="eventId" value={webinar.id} />
                 <label htmlFor="webinar-name">Your name</label>
                 <input id="webinar-name" name="name" autoComplete="name" required maxLength={255} placeholder="What should we call you?" />
                 <label htmlFor="webinar-email">Email address</label>
@@ -195,9 +196,10 @@ export default function WebinarLanding() {
                 <div className={styles.honeypot} aria-hidden="true"><label htmlFor="webinar-company-url">Leave this field empty</label><input id="webinar-company-url" name="company_url" tabIndex={-1} autoComplete="off" /></div>
                 <label className={styles.checkbox} htmlFor="webinar-marketing"><input id="webinar-marketing" name="marketing" type="checkbox" value="yes" /><span>Also send me occasional Cozy Digital tips and offers. <em>Optional.</em></span></label>
                 {status === "error" && <div ref={statusRef} className={styles.error} tabIndex={-1} role="alert">{error}</div>}
-                <button className={styles.submit} type="submit" disabled={!ready || status === "sending"}>{status === "sending" ? "Saving your signup…" : "Save my seat"}<span aria-hidden="true">↗</span></button>
+                <div className={styles.bonus}><span aria-hidden="true">🎁</span><p><strong>Your live-attendee bonus</strong>Join live to get our 13-page AI Shot Planning Workbook for free.</p></div>
+                <button className={styles.submit} type="submit" disabled={status === "sending"}>{status === "sending" ? "Saving your signup…" : "Save my seat"}<span aria-hidden="true">↗</span></button>
                 <p className={styles.finePrint}>By signing up, you agree to receive details about this webinar. Other marketing is optional. No purchase, account, or generation credits required.</p>
-                <noscript><p className={styles.finePrint}>The form needs JavaScript. <a href="mailto:out@cozydigital.org?subject=Free%20AI%20video%20webinar%20signup">Email us to join the webinar list instead.</a></p></noscript>
+
               </form>
             </>
           )}
@@ -214,16 +216,27 @@ export default function WebinarLanding() {
         </div>
       </section>
 
+      <section className={styles.hostSection} aria-labelledby="workshop-hosts-title">
+        <h2 id="workshop-hosts-title">Meet the people behind the projects.</h2>
+        <p>We’re Quincy and Kayson, the founders of Cozy Digital. Our studio creates AI films for Dr. Boyce Watkins and websites for small businesses.</p>
+        <div className={styles.hostGrid}>
+          <article><img src="/brand/team/quincy.png" width="112" height="112" alt="Quincy, Cozy Digital founder" loading="lazy" /><div><h3>Quincy</h3><strong>Founder &amp; Lead Developer</strong><p>Builds client websites, directs video campaigns, and develops the tools our studio uses.</p></div></article>
+          <article><img src="/brand/team/kayson.png" width="112" height="112" alt="Kayson, Cozy Digital founder" loading="lazy" /><div><h3>Kayson</h3><strong>Founder &amp; Analytics Consultant</strong><p>Connects creative projects to practical workflows and tests the details before delivery.</p></div></article>
+        </div>
+        <a href="/#ai-video" target="_blank" rel="noopener noreferrer">Watch our client films <span aria-hidden="true">↗</span><span className={styles.srOnly}> (opens in a new tab)</span></a>
+      </section>
+
       <section className={styles.faq} aria-labelledby="webinar-faq-title">
         <div><h2 id="webinar-faq-title">Before you join.</h2></div>
         <div>
           <details><summary>When is the webinar?</summary><p>{webinar.date} at {webinar.time}. It is an online live session. Register here and the Cozy Digital team will email the joining link before it begins.</p></details>
-          <details><summary>Is this the paid video course?</summary><p>The live webinar is free. {course.title}, described below, is the optional paid course with six narrated lessons and a workbook. You do not need to buy it to attend.</p></details>
+          <details><summary>Is the workshop really free?</summary><p>Yes. Register with your name and email. You do not need to buy a course or an AI subscription to attend.</p></details>
+          <details><summary>How do I get the workbook?</summary><p>Join the live session and we’ll share the 13-page AI Shot Planning Workbook during the workshop. It includes exercises and reusable planning templates.</p></details>
           <details><summary>Are the examples prerecorded?</summary><p>Quincy and Kayson will host the webinar live. The video examples and narrated case studies are prerecorded; they show our planning and review decisions, rather than every generation step. The 40-second intro above is a preview, not the webinar.</p></details>
           <details><summary>Do I need an AI tool subscription?</summary><p>No subscription or credits are required to watch. Any tools or generation credits you choose to use afterward are separate. Creative and business results vary; no income or performance outcome is promised.</p></details>
         </div>
       </section>
-      <div className={styles.courseDivider}><div><span>WANT TO GO FURTHER?</span><p>Keep learning with {course.title}.</p></div><a href="#paid-course">Course details <span aria-hidden="true">↓</span></a></div>
+
     </section>
   );
 }

@@ -7,6 +7,11 @@ on:
     branches: [main]
     paths:
       - 'src/app/courses/cozy-ai-video-course/**'
+      - 'src/app/webinar/**'
+      - 'src/data/cozy-ai-video-webinar.ts'
+      - 'src/components/signup-confetti.tsx'
+      - 'src/lib/webinar-calendar.ts'
+      - 'public/webinar/**'
       - 'scripts/test-webinar.mjs'
       - '.github/workflows/webinar-check.yml'
   workflow_dispatch:
