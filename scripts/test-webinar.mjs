@@ -164,7 +164,7 @@ try {
     let nativeBody;
     await page.route("https://hub.cozydigital.org/api/webhook/webinar-register", route => {
       nativeBody = new URLSearchParams(route.request().postData());
-      return route.fulfill({ status: 200, contentType: "text/html", body: '<h1>You’re registered</h1><p role="status">Your registration is saved.</p>' });
+      return route.fulfill({ status: 200, contentType: "text/html; charset=utf-8", body: '<h1>You’re registered</h1><p role="status">Your registration is saved.</p>' });
     });
     await fill(page);
     await page.locator('#webinar-register button[type="submit"]').click();
