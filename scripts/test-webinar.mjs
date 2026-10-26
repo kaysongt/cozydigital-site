@@ -47,7 +47,7 @@ try {
   await mock(page, 200, { ok: true }, captured);
   await visit(page, "?utm_source=boyce&utm_medium=show&utm_campaign=ai_video_webinar");
   assert.equal(await page.locator("h1").count(), 1);
-  assert.match(await page.locator("h1").innerText(), /Make AI videos/);
+  assert.match(await page.locator("h1").innerText(), /Turn one idea/);
   const intro = await page.locator("#course-intro").boundingBox();
   const signup = await page.locator("#webinar-register").boundingBox();
   assert.ok(intro.y < signup.y, "Intro must appear before the registration form");
@@ -55,9 +55,11 @@ try {
   assert.match(await page.locator('[aria-label="Webinar navigation"]').innerText(), /Oct 28.*8 p.m. CT/);
   assert.equal(await page.locator("#course-intro video").count(), 1);
   assert.equal(await page.locator("#webinar-marketing").isChecked(), false);
-  assert.equal(await page.locator('button:has-text("Enrollment opens soon")').isDisabled(), true);
-  assert.ok((await page.locator("#paid-course").innerText()).includes("$75"));
-  assert.ok((await page.locator("#paid-course").innerText()).includes("12 months"));
+  assert.equal(await page.locator("#paid-course, #curriculum").count(), 0);
+  assert.ok(!(await page.locator("main").innerText()).includes("$75"));
+  assert.equal(await page.locator("[data-signup-confetti]").count(), 0);
+  assert.ok(await page.getByText("Your live-attendee bonus", { exact: true }).isVisible());
+  assert.equal(await page.locator("#webinar-goal").isVisible(), false);
   assert.equal(await page.locator('iframe[src*="drive.google.com"], a[href*="drive.google.com"]').count(), 0);
   await page.screenshot({ path: "webinar-qa/desktop.png", fullPage: true });
   await page.locator('#webinar-register button[type="submit"]').click();
@@ -71,20 +73,32 @@ try {
     window.fbq = (...args) => window.__webinarEvents.push(args);
   });
   await page.locator('#webinar-register button[type="submit"]').click();
-  await page.locator('#webinar-register [role="status"]').waitFor();
+  await page.waitForURL("**/webinar/thank-you/**");
+  await page.getByRole("heading", { name: "You’re in. Let’s make something." }).waitFor();
   assert.equal(captured.length, 1);
   assert.equal(captured[0].leadSource, "AI Video Webinar · boyce");
   assert.match(captured[0].notes, /Optional marketing consent: no/);
   assert.match(captured[0].notes, /utm_campaign=ai_video_webinar/);
   assert.match(captured[0].notes, /Event contact consent: yes/);
   assert.match(captured[0].notes, /Starts at: 2026-10-28T20:00:00-05:00/);
-  assert.match(await page.locator('#webinar-register [role="status"]').innerText(), /October 28.*8 p.m. Central/);
-  assert.ok(!(await page.locator('#webinar-register [role="status"]').innerText()).includes("email has been sent"));
+  assert.match(await page.locator("main").innerText(), /Wednesday, October 28/);
+  assert.match(await page.locator("main").innerText(), /8 p.m. Central/);
+  assert.ok(!(await page.locator("main").innerText()).includes("email has been sent"));
+  const google = new URL(await page.getByRole("link", { name: /Google Calendar/ }).getAttribute("href"));
+  assert.equal(google.searchParams.get("dates"), "20261029T010000Z/20261029T020000Z");
+  assert.equal(google.searchParams.get("ctz"), "America/Chicago");
+  const outlook = new URL(await page.getByRole("link", { name: /Outlook/ }).getAttribute("href"));
+  assert.equal(outlook.searchParams.get("startdt"), "2026-10-29T01:00:00.000Z");
+  await page.screenshot({ path: "webinar-qa/thank-you.png", fullPage: true });
+  await page.locator("#course-preview > summary").click();
+  assert.ok((await page.locator("#paid-course").innerText()).includes("$75"));
+  assert.ok((await page.locator("#paid-course").innerText()).includes("12 months"));
+  assert.equal(await page.locator('button:has-text("Enrollment opens soon")').isDisabled(), true);
   const events = await page.evaluate(() => window.__webinarEvents);
   assert.equal(events.filter(e => e[1] === "generate_lead").length, 1);
   assert.ok(!JSON.stringify(events).includes("example.invalid"));
   assert.deepEqual(errors, []);
-  checks.push("Desktop: one heading, paid offer intact, no private embeds, optional consent unchecked, validation, tagged saved state and PII-free conversion event");
+  checks.push("Desktop: webinar-only page, collapsed optional field, live bonus, success redirect, calendar timezone, paid preview and PII-free conversion event");
   await ctx.close();
 
   for (const [status, body] of [[500, { error: "Failed" }], [200, { ok: false }], [429, { error: "Limited" }]]) {
@@ -95,6 +109,8 @@ try {
     await page.locator('#webinar-register button[type="submit"]').click();
     await page.locator('#webinar-register [role="alert"]').waitFor();
     assert.equal(await page.locator('#webinar-register [role="status"]').count(), 0);
+    assert.equal(await page.locator("[data-signup-confetti]").count(), 0);
+    assert.ok(page.url().includes(PATH));
     assert.equal(await page.locator("#webinar-email").inputValue(), "webinar-qa@example.invalid");
     assert.equal(await page.locator('#webinar-register button[type="submit"]').isEnabled(), true);
     assert.deepEqual(errors, []);
@@ -135,8 +151,50 @@ try {
   {
     const { ctx, page } = await context({ javaScriptEnabled: false });
     await page.goto(ORIGIN + PATH);
-    assert.ok(await page.locator('#webinar-register noscript a[href^="mailto:"]').isVisible());
-    checks.push("No JavaScript: visible email signup fallback");
+    const form = page.locator("#webinar-register form");
+    assert.equal(await form.getAttribute("method"), "post");
+    assert.equal(await form.getAttribute("action"), "https://hub.cozydigital.org/api/webhook/webinar-register");
+    assert.equal(await page.locator('#webinar-register button[type="submit"]').isEnabled(), true);
+    let nativeBody;
+    await page.route("https://hub.cozydigital.org/api/webhook/webinar-register", route => {
+      nativeBody = new URLSearchParams(route.request().postData());
+      return route.fulfill({ status: 200, contentType: "text/html", body: '<h1>You’re registered</h1><p role="status">Your registration is saved.</p>' });
+    });
+    await fill(page);
+    await page.locator('#webinar-register button[type="submit"]').click();
+    await page.getByRole("heading", { name: "You’re registered" }).waitFor();
+    assert.equal(nativeBody.get("name"), "Webinar QA");
+    assert.equal(nativeBody.get("email"), "webinar-qa@example.invalid");
+    assert.equal(nativeBody.get("eventId"), "ai-video-creator-lab-2026-10-28");
+    assert.equal(nativeBody.get("marketing"), null);
+    assert.ok(!page.url().includes("example.invalid"));
+    checks.push("No JavaScript: enabled native POST form, optional consent preserved, no attendee data in URL");
+    await ctx.close();
+  }
+  {
+    const { ctx, page } = await context();
+    await page.goto(ORIGIN + "/webinar/thank-you/");
+    assert.equal(await page.getByRole("heading", { name: "You’re in. Let’s make something." }).count(), 0);
+    assert.equal(await page.locator("[data-signup-confetti]").count(), 0);
+    checks.push("Direct thank-you visit does not claim registration or fire confetti");
+    await ctx.close();
+  }
+  {
+    const { ctx, page } = await context({ reducedMotion: "reduce" });
+    await mock(page, 200, { ok: true });
+    await visit(page);
+    await fill(page);
+    await page.locator('#webinar-register button[type="submit"]').click();
+    await page.waitForURL("**/webinar/thank-you/**");
+    await page.getByRole("heading", { name: "You’re in. Let’s make something." }).waitFor();
+    assert.ok(await page.evaluate(() => {
+      const canvas = document.querySelector("[data-signup-confetti]");
+      return !canvas || !canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data.some(Boolean);
+    }));
+    await page.reload();
+    await page.getByRole("heading", { name: "You’re in. Let’s make something." }).waitFor();
+    assert.equal(await page.locator("[data-signup-confetti]").count(), 0);
+    checks.push("Reduced motion skips confetti; refresh keeps confirmation without replaying celebration");
     await ctx.close();
   }
   console.log(checks.join("\n"));

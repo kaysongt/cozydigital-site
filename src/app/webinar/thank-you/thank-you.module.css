@@ -1,0 +1,34 @@
+.page { background:#f7f7f1; color:#102b36; padding:48px 0 64px; }
+.confirmation { width:min(830px,calc(100% - 40px)); margin:auto; }
+.mark { display:grid; place-items:center; width:64px; height:64px; border-radius:50%; background:#dceddf; color:#075e72; font-size:30px; margin-bottom:24px; }
+.label { color:#075e72; font-size:13px; font-weight:700; }
+.confirmation h1 { max-width:760px; font-family:"Space Grotesk",sans-serif; font-size:clamp(38px,5vw,62px); line-height:1.1; font-weight:500; letter-spacing:-.055em; margin:16px 0 22px; }
+.confirmation>p:not(.label) { color:#48616a; font-size:16px; line-height:1.8; max-width:650px; }
+.confirmation a { color:#075e72; text-underline-offset:4px; }
+.confirmation h2 { font-size:24px; font-weight:500; letter-spacing:-.035em; margin:28px 0 18px; }
+.event { display:flex; flex-wrap:wrap; align-items:center; gap:16px 40px; padding:24px 0; margin:26px 0; border-block:1px solid #c9d6d6; }
+.event time { display:grid; gap:7px; } .event strong { font-size:20px; } .event span { color:#075e72; font-size:18px; }
+.event p { color:#48616a; font-size:14px; }
+.calendar { display:flex; flex-wrap:wrap; gap:12px; }
+.calendar a { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:15px 20px; border:1px solid #075e72; border-radius:8px; min-height:50px; font-size:14px; font-weight:700; text-decoration:none; }
+.calendar a:first-child { background:#075e72; color:#fff; }
+.calendar a:hover { background:#e1efea; } .calendar a:first-child:hover { background:#104453; }
+.confirmation .note { font-size:12px; margin:14px 0 0; }
+.bonus { display:flex; gap:20px; padding:26px; margin:32px 0 20px; border-radius:12px; background:#eaf3ef; }
+.bonus>span { font-size:34px; } .bonus h2 { margin:0 0 10px; font-size:24px; } .bonus p { margin:0; font-size:14px; line-height:1.8; color:#48616a; }
+.confirmation .help { font-size:13px; overflow-wrap:anywhere; }
+.nextStep { width:min(1168px,calc(100% - 40px)); margin:40px auto 0; border:1px solid #c9d6d6; border-radius:12px; overflow:clip; }
+.nextStep>summary { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:28px; cursor:pointer; font-size:18px; font-weight:600; }
+.nextStep>summary span { color:#075e72; font-size:24px; }
+.optional { margin:0; padding:0 28px 20px; color:#48616a; font-size:14px; line-height:1.8; }
+.page a:focus-visible,.page summary:focus-visible { outline:3px solid #075e72; outline-offset:4px; }
+.srOnly { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media(max-width:600px) { .page { padding-top:30px; } .calendar { display:grid; } .bonus { padding:20px; gap:12px; } .bonus>span { font-size:26px; } .nextStep>summary { padding:20px; font-size:16px; } .event { gap:10px; } .event p { margin:0; } }
+:global(html:not(.light)) .page { background:#132b34; color:#eef6f5; }
+:global(html:not(.light)) .confirmation>p:not(.label),:global(html:not(.light)) .event p,:global(html:not(.light)) .bonus p,:global(html:not(.light)) .optional { color:#b5cbcf; }
+:global(html:not(.light)) .label,:global(html:not(.light)) .event span,:global(html:not(.light)) .confirmation a,:global(html:not(.light)) .nextStep>summary span { color:#8cd9d6; }
+:global(html:not(.light)) .calendar a { border-color:#8cd9d6; }
+:global(html:not(.light)) .calendar a:first-child { background:#8cd9d6; color:#132b34; }
+:global(html:not(.light)) .calendar a:hover { background:#24464d; }
+:global(html:not(.light)) .calendar a:first-child:hover { background:#b1eeeb; }
+:global(html:not(.light)) .bonus { background:#24464d; }
