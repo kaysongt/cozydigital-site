@@ -75,6 +75,12 @@ try {
   await page.locator('#webinar-register button[type="submit"]').click();
   await page.waitForURL("**/webinar/thank-you/**");
   await page.getByRole("heading", { name: "You’re in. Let’s make something." }).waitFor();
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector("[data-signup-confetti]");
+    return canvas && canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data.some(Boolean);
+  });
+  const confirmationHeading = await page.locator("h1").boundingBox();
+  assert.ok(confirmationHeading.y >= 0 && confirmationHeading.y < 1000, "Confirmation heading must be brought into view");
   assert.equal(captured.length, 1);
   assert.equal(captured[0].leadSource, "AI Video Webinar · boyce");
   assert.match(captured[0].notes, /Optional marketing consent: no/);

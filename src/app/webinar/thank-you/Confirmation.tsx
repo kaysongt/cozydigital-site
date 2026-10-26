@@ -19,7 +19,6 @@ export default function Confirmation() {
       try { sessionStorage.setItem(`webinar-confirmed:${webinar.id}`, "yes"); } catch { /* Optional. */ }
       // Keep refreshes and shared links from firing another celebration.
       window.history.replaceState(window.history.state, "", window.location.pathname);
-
     }
   }, []);
   useEffect(() => {
@@ -28,7 +27,7 @@ export default function Confirmation() {
     return () => window.clearTimeout(timer);
   }, [celebrate]);
 
-  return <section className={styles.confirmation} aria-labelledby="confirmation-title">
+  return <section id="registered" className={styles.confirmation} aria-labelledby="confirmation-title">
     {celebrate && <SignupConfetti />}
     <span className={styles.mark} aria-hidden="true">{confirmed ? "✓" : "↗"}</span>
     <p className={styles.label}>From Idea to AI Video / Free live workshop</p>

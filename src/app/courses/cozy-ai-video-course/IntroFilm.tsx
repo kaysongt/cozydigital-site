@@ -35,7 +35,7 @@ export default function IntroFilm({ mediaBase = "/courses/cozy-ai-video-course",
         <video
           ref={videoRef}
           className={styles.introVideo}
-          aria-label="AI Video Creator Lab introduction, 40 seconds"
+          aria-label="Cozy Digital AI video introduction, 40 seconds"
           controls
           playsInline
           preload="none"
@@ -63,7 +63,7 @@ export default function IntroFilm({ mediaBase = "/courses/cozy-ai-video-course",
           <track kind="captions" src={`${mediaBase}/intro-v1.en.vtt`} srcLang="en" label="English on-screen text" />
           Your browser cannot play this video. <a href={`${mediaBase}/intro-v1.mp4`}>Open the course intro</a>.
         </video>
-        {ready && !started && !failed && <button type="button" className={styles.playIntro} aria-label="Play 40-second course intro" onClick={() => {
+        {ready && !started && !failed && <button type="button" className={styles.playIntro} aria-label="Play 40-second intro" onClick={() => {
           const playback = videoRef.current?.play();
           playback?.catch(() => setFailed(true));
         }}><span aria-hidden="true">▶</span><span>Watch the intro <small>40 seconds</small></span></button>}
