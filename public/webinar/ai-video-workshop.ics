@@ -7,12 +7,12 @@ BEGIN:VEVENT
 UID:ai-video-creator-lab-2026-10-28@cozydigital.org
 DTSTAMP:20261028T000000Z
 DTSTART:20261106T020000Z
-DTEND:20261106T030000Z
+DTEND:20261106T033000Z
 SUMMARY:From Idea to AI Video | Cozy Digital free workshop
-DESCRIPTION:Live with Quincy + Kayson. Joining link by email.\nLive atten
- dees receive the 13-page AI Shot Planning Workbook.\nOne-hour calendar h
- old; session length may vary.
-LOCATION:Online; joining link by email
+DESCRIPTION:Live with Quincy + Kayson on Google Meet.\nRegister and find
+  joining details at https://luma.com/h5qnohwa.\nLive attendees receive
+  the 13-page AI Shot Planning Workbook.\nScheduled duration: 90 minutes.
+LOCATION:Google Meet; joining details in Luma
 URL:https://cozydigital.org/courses/cozy-ai-video-course/
 BEGIN:VALARM
 TRIGGER:-PT30M

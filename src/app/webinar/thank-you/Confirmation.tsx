@@ -40,7 +40,7 @@ export default function Confirmation() {
       <a href={outlookCalendarUrl} target="_blank" rel="noopener noreferrer">Outlook <span aria-hidden="true">↗</span><span className={styles.srOnly}> (opens in a new tab)</span></a>
       <a href={webinar.calendarPath} download="Cozy-AI-Video-Workshop.ics">Apple / iCal <span aria-hidden="true">↓</span></a>
     </div>
-    <p className={styles.note}>Calendar links reserve one hour; session length may vary. Joining details will arrive separately.</p>
+    <p className={styles.note}>The workshop runs for 90 minutes. New registrations and joining details are available on <a href={webinar.lumaEventUrl} target="_blank" rel="noopener noreferrer">Luma</a>.</p>
     <div className={styles.bonus}><span aria-hidden="true">🎁</span><div><h2>A little something for showing up.</h2><p>Join live to get your free 13-page AI Shot Planning Workbook. Bring a product, business, or story idea to plan with us.</p></div></div>
     <p className={styles.help}>Need help with your signup? <a href="mailto:out@cozydigital.org?subject=AI%20video%20webinar">out@cozydigital.org</a></p>
   </section>;
