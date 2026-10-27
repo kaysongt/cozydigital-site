@@ -37,7 +37,7 @@ export default function CozyChat() {
   useEffect(() => { if (log.current) log.current.scrollTop = log.current.scrollHeight; }, [messages, busy, open]);
   useEffect(() => () => controller.current?.abort(), []);
 
-  function closeChat() { setOpen(false); launcher.current?.focus(); }
+  function closeChat() { dialog.current?.close(); setOpen(false); launcher.current?.focus(); }
   function resetChat() {
     if (inFlight.current) return;
     setMessages(initialMessages); setInput(""); setNotice(""); inputRef.current?.focus();
