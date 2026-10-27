@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { faqQuestions } from "@/data/faq-questions";
+import { industryPages, servicePages } from "@/data/keyword-pages";
 
 // Required for static export (output: "export").
 export const dynamic = "force-static";
@@ -24,6 +25,8 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/cozy-booking/", priority: 0.5, changeFrequency: "yearly" },
   { path: "/privacy/", priority: 0.3, changeFrequency: "yearly" },
   { path: "/terms/", priority: 0.3, changeFrequency: "yearly" },
+  ...servicePages.map((p) => ({ path: `/services/${p.slug}/`, priority: 0.8, changeFrequency: "monthly" as const })),
+  ...industryPages.map((p) => ({ path: `/websites-for/${p.slug}/`, priority: 0.8, changeFrequency: "monthly" as const })),
   ...faqQuestions.map((q) => ({ path: `/faq/${q.slug}/`, priority: 0.6, changeFrequency: "monthly" as const })),
 ];
 
