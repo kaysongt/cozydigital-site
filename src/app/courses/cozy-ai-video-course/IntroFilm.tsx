@@ -69,7 +69,7 @@ export default function IntroFilm({ mediaBase = "/courses/cozy-ai-video-course",
         }}><span aria-hidden="true">▶</span><span>Watch the intro <small>40 seconds</small></span></button>}
       </div>
       <div className={styles.heroFilmCaption}>
-        {compact && <h2 id="course-intro-title">See what you could create.</h2>}
+        {compact && <h2 id="course-intro-title">See what your teachers create.</h2>}
         <a href={`${mediaBase}/intro-transcript-v1.txt`}>Read the text version</a>
         {failed && <p role="status">Having trouble playing? <a href={`${mediaBase}/intro-v1.mp4`}>Open the intro video</a>.</p>}
       </div>

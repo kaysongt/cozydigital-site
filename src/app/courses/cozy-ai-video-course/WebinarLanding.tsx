@@ -7,6 +7,7 @@ import { trackMetaLead } from "@/components/meta-pixel";
 import { cozyVideoWebinar as webinar } from "@/data/cozy-ai-video-webinar";
 import { useRouter } from "next/navigation";
 import Countdown from "./Countdown";
+import WorkshopProof from "./WorkshopProof";
 import { trackWebinarEvent } from "@/lib/webinar-analytics";
 import IntroFilm from "./IntroFilm";
 import styles from "./webinar.module.css";
@@ -140,23 +141,24 @@ export default function WebinarLanding() {
       <div className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>{webinar.title}</p>
-          <h1 id="webinar-title" className={styles.headline}>Turn one idea<br /><span>into an AI video.</span></h1>
-          <p className={styles.lead}>Plan shots, keep characters consistent, and review product videos and short films with Quincy + Kayson.</p>
+          <h1 id="webinar-title" className={styles.headline}>Become the AI creator<br /><span>people stop to watch.</span></h1>
+          <p className={styles.lead}>Tired of clips that look nothing like your idea? Learn to make AI videos you’re proud to post.</p>
           <a className={styles.heroCta} href="#webinar-register" onClick={() => trackWebinarEvent("webinar_cta_click", { placement: "hero" })}>Save my seat <span aria-hidden="true">↗</span></a>
         </div>
         <IntroFilm compact />
       </div>
 
+      <WorkshopProof />
       <Countdown />
 
       <div className={styles.registration}>
         <div className={styles.registrationCopy}>
-          <h2>Leave with a plan<br />you can actually use.</h2>
-          <p>Stuck on what to prompt, which shots you need, or why your clips don’t match? See how we work through those choices.</p>
+          <h2>Make the video<br />you pictured.</h2>
+          <p>A face changes. Two shots don’t match. More credits disappear. Learn the planning and review decisions behind videos you feel confident sharing.</p>
           <ul className={styles.takeaways}>
-            <li>A three-step framework to turn your idea into a shot plan.</li>
-            <li>A reference checklist for consistent faces, outfits, and lighting.</li>
-            <li>A review checklist to catch continuity errors before you publish.</li>
+            <li>Know what to prompt before spending credits on another guess.</li>
+            <li>Keep the same face, outfit, and lighting from shot to shot.</li>
+            <li>Spot what makes a video feel unfinished, and know what to fix.</li>
           </ul>
           <div className={styles.hosts}>
             <div className={styles.portraits}><img src="/brand/team/quincy.png" width="56" height="56" alt="Quincy" loading="lazy" /><img src="/brand/team/kayson.png" width="56" height="56" alt="Kayson" loading="lazy" /></div>
@@ -208,16 +210,16 @@ export default function WebinarLanding() {
       </div>
 
       <section id="webinar-program" className={styles.program} aria-labelledby="program-title">
-        <div className={styles.programIntro}><h2 id="program-title">A repeatable process<br />for your next video.</h2><p>We’ll walk through real projects live, using prerecorded examples to explain the creative decisions behind them.</p><a href="#webinar-register" onClick={() => trackWebinarEvent("webinar_cta_click", { placement: "program" })}>Save my seat <span aria-hidden="true">↗</span></a></div>
+        <div className={styles.programIntro}><h2 id="program-title">Build the confidence<br />to hit publish.</h2><p>Watch us break down real projects, from the first idea to the details that make the finished video work.</p><a href="#webinar-register" onClick={() => trackWebinarEvent("webinar_cta_click", { placement: "program" })}>Save my seat <span aria-hidden="true">↗</span></a></div>
         <div className={styles.programRows}>
           <article><div><h3>Plan before you spend credits.</h3><p>Decide what the viewer should see, choose useful references, and give each shot one job.</p><span className={styles.topic}>IDEA → REFERENCES → SHOT PLAN</span></div></article>
-          <article><div><h3>See how our videos come together.</h3><p>Explore try-on content, short drama, and a racing sequence. See why character, wardrobe, camera, and setting choices matter.</p><span className={styles.topic}>REAL PRODUCTION EXAMPLES</span></div></article>
+          <article><div><h3>Give people a reason to keep watching.</h3><p>Explore try-on content, short drama, and a racing sequence. See why character, wardrobe, camera, and setting choices matter.</p><span className={styles.topic}>REAL PRODUCTION EXAMPLES</span></div></article>
           <article><div><h3>Catch the details that break a scene.</h3><p>Look for continuity problems, awkward pacing, and distracting sound before calling a video finished.</p><span className={styles.topic}>REVIEW → REFINE → DELIVER</span></div></article>
         </div>
       </section>
 
       <section className={styles.hostSection} aria-labelledby="workshop-hosts-title">
-        <h2 id="workshop-hosts-title">Meet the people behind the projects.</h2>
+        <h2 id="workshop-hosts-title">Learn from the people making the films.</h2>
         <p>We’re Quincy and Kayson, the founders of Cozy Digital. Our studio creates AI films for Dr. Boyce Watkins and websites for small businesses.</p>
         <div className={styles.hostGrid}>
           <article><img src="/brand/team/quincy.png" width="112" height="112" alt="Quincy, Cozy Digital founder" loading="lazy" /><div><h3>Quincy</h3><strong>Founder &amp; Lead Developer</strong><p>Builds client websites, directs video campaigns, and develops the tools our studio uses.</p></div></article>
