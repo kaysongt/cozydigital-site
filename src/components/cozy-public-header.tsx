@@ -12,7 +12,7 @@ const links = [
   { label: "Services", href: "/services/" },
   { label: "The studio", href: "/founders/" },
   { label: "Courses", href: "/courses/" },
-  { label: "Free playbook", href: "/free-playbook/" },
+  { label: "Webinar", href: "/courses/cozy-ai-video-course/" },
 ];
 export default function CozyPublicHeader() {
   const pathname = usePathname();

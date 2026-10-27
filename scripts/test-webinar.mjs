@@ -52,7 +52,7 @@ try {
   const signup = await page.locator("#webinar-register").boundingBox();
   assert.ok(intro.y < signup.y, "Intro must appear before the registration form");
   assert.ok(intro.y + intro.height < 1000, "Desktop intro must be in the first viewport");
-  assert.match(await page.locator('[aria-label="Webinar navigation"]').innerText(), /Oct 28.*8 p.m. CT/);
+  assert.match(await page.locator('[aria-label="Webinar navigation"]').innerText(), /Nov 4.*8 p.m. CT/);
   assert.equal(await page.locator("#course-intro video").count(), 1);
   assert.equal(await page.locator("#webinar-marketing").isChecked(), false);
   assert.equal(await page.locator("#paid-course, #curriculum").count(), 0);
@@ -99,15 +99,15 @@ try {
   assert.match(captured[0].notes, /Optional marketing consent: no/);
   assert.match(captured[0].notes, /utm_campaign=ai_video_webinar/);
   assert.match(captured[0].notes, /Event contact consent: yes/);
-  assert.match(captured[0].notes, /Starts at: 2026-10-28T20:00:00-05:00/);
-  assert.match(await page.locator("main").innerText(), /Wednesday, October 28/);
+  assert.match(captured[0].notes, /Starts at: 2026-11-04T20:00:00-06:00/);
+  assert.match(await page.locator("main").innerText(), /Wednesday, November 4/);
   assert.match(await page.locator("main").innerText(), /8 p.m. Central/);
   assert.ok(!(await page.locator("main").innerText()).includes("email has been sent"));
   const google = new URL(await page.getByRole("link", { name: /Google Calendar/ }).getAttribute("href"));
-  assert.equal(google.searchParams.get("dates"), "20261029T010000Z/20261029T020000Z");
+  assert.equal(google.searchParams.get("dates"), "20261105T020000Z/20261105T030000Z");
   assert.equal(google.searchParams.get("ctz"), "America/Chicago");
   const outlook = new URL(await page.getByRole("link", { name: /Outlook/ }).getAttribute("href"));
-  assert.equal(outlook.searchParams.get("startdt"), "2026-10-29T01:00:00.000Z");
+  assert.equal(outlook.searchParams.get("startdt"), "2026-11-05T02:00:00.000Z");
   await page.screenshot({ path: "webinar-qa/thank-you.png", fullPage: true });
   await page.locator("#course-preview > summary").click();
   assert.ok((await page.locator("#paid-course").innerText()).includes("$75"));

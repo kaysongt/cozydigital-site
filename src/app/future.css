@@ -1223,3 +1223,32 @@ html.light .future-home form button[type="submit"] {
 
 /* Small supporting text stays readable for saved dark-mode preferences. */
 html:not(.light) .future-site :is(.text-zinc-500, .text-zinc-600) { color: var(--studio-muted); }
+
+.webinar-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--studio-accent);
+  color: var(--studio-bg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+.webinar-banner:hover .webinar-banner-cta {
+  text-decoration: underline;
+}
+.webinar-banner-tag {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.webinar-banner-cta {
+  font-weight: 800;
+}
