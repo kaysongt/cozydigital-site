@@ -172,7 +172,7 @@ export default function WebinarLanding() {
           {status === "success" ? (
             <div className={styles.success} ref={statusRef} tabIndex={-1} role="status" aria-live="polite">
               <span className={styles.successMark} aria-hidden="true">✓</span>
-              <h2 id="signup-title">You’re on the list for Wednesday.</h2>
+              <h2 id="signup-title">You’re on the list for Thursday.</h2>
               <p>Your signup is saved for {webinar.date} at {webinar.time}. The Cozy Digital team will email the joining link before the session.</p>
               <p className={styles.finePrint}>Keep the date handy. Signing up for this free webinar does not enroll you in the paid course.</p>
               <a className={styles.submit} href="#webinar-program">Explore the session <span aria-hidden="true">↓</span></a>
