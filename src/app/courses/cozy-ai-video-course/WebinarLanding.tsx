@@ -148,7 +148,6 @@ export default function WebinarLanding() {
         <IntroFilm compact />
       </div>
 
-      <WorkshopProof />
       <Countdown />
 
       <div className={styles.registration}>
@@ -208,6 +207,8 @@ export default function WebinarLanding() {
           <p className={styles.help}>Questions? <a href="mailto:out@cozydigital.org?subject=AI%20video%20webinar">out@cozydigital.org</a></p>
         </aside>
       </div>
+
+      <WorkshopProof />
 
       <section id="webinar-program" className={styles.program} aria-labelledby="program-title">
         <div className={styles.programIntro}><h2 id="program-title">Build the confidence<br />to hit publish.</h2><p>Watch us break down real projects, from the first idea to the details that make the finished video work.</p><a href="#webinar-register" onClick={() => trackWebinarEvent("webinar_cta_click", { placement: "program" })}>Save my seat <span aria-hidden="true">↗</span></a></div>

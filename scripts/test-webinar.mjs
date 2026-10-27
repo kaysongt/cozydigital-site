@@ -66,7 +66,7 @@ try {
   assert.equal(await proof.locator("button").count(), 3);
   assert.ok((await proof.innerText()).includes("Dr. Boyce Watkins"));
   const proofBox = await proof.boundingBox();
-  assert.ok(intro.y < proofBox.y && proofBox.y < signup.y, "Show the intro and client proof before registration");
+  assert.ok(proofBox.y >= signup.y + signup.height, "Show client proof below the registration form");
   await page.screenshot({ path: "webinar-qa/desktop.png", fullPage: true });
   await proof.getByRole("button", { name: "Watch The Subscription", exact: true }).click();
   await page.waitForFunction(() => document.querySelector("#workshop-proof video")?.currentTime > 0, null, { timeout: 20000 });
