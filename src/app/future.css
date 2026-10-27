@@ -1223,3 +1223,63 @@ html.light .future-home form button[type="submit"] {
 
 /* Small supporting text stays readable for saved dark-mode preferences. */
 html:not(.light) .future-site :is(.text-zinc-500, .text-zinc-600) { color: var(--studio-muted); }
+
+.future-webinar-strip {
+  border-bottom: 1px solid var(--studio-line);
+  background: color-mix(in srgb, var(--studio-accent) 10%, var(--studio-bg));
+}
+.future-webinar-strip-inner {
+  width: min(1440px, 92%);
+  margin: 0 auto;
+  padding: 14px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.future-webinar-strip p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+}
+.future-webinar-flag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--studio-accent);
+}
+.future-webinar-strip strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--studio-ink);
+}
+.future-webinar-strip time {
+  font-size: 14px;
+  color: var(--studio-muted);
+}
+.future-webinar-strip a {
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--studio-accent);
+  color: var(--studio-bg);
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.future-webinar-strip a:hover {
+  filter: brightness(1.08);
+}
+@media (max-width: 640px) {
+  .future-webinar-strip-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .future-webinar-strip a {
+    width: 100%;
+    text-align: center;
+  }
+}

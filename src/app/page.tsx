@@ -7,6 +7,7 @@ import FounderTrust from "@/components/founder-trust";
 import PromptBossPromo from "@/components/prompt-boss-promo";
 import DesignCarousel from "@/components/design-carousel";
 import SelectedFilms from "@/components/selected-films";
+import WebinarStrip from "@/components/webinar-strip";
 import { SELECTED_FILMS } from "@/data/selected-films";
 import {
   CLIENT_HUB_LABEL,
@@ -164,6 +165,7 @@ export default function HomePage() {
   return (
     <main className="cozy-home future-home">
       <StudioHero />
+      <WebinarStrip />
       <section className="future-niches" aria-labelledby="niches-heading">
         <div className="future-niches-inner">
           <p className="future-label" id="niches-heading">
