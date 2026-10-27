@@ -10,6 +10,7 @@ import StructuredData from "@/components/structured-data";
 import SiteMotion from "@/components/site-motion";
 import MetaPixel from "@/components/meta-pixel";
 import AttributionCapture from "@/components/attribution";
+import CozyChat from "@/components/cozy-chat";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -108,6 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CozyPublicHeader />
         <div id="main-content" className="flex-1">{children}</div>
         <CozyPublicFooter />
+        <CozyChat />
       </body>
     </html>
   );

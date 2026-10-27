@@ -12,6 +12,10 @@ const CONTACT_EMAIL = "quincy@cozydigital.org";
 
 const sections = [
   {
+    heading: "Website assistant",
+    body: "The Cozy Assistant offers automated navigation and business information, not a live conversation with our team. Common answers run in your browser. For other questions, your message and up to four recent messages may be sent through our server to OpenRouter and a free AI provider to generate an answer. Provider data handling is governed by their policies. Please do not enter passwords, payment details, or other private information. We do not save chat transcripts in our client database or send chat text to our analytics tools. Conversation text stays in page memory until you clear it or reload the page; infrastructure providers may retain standard request metadata. Chatting does not subscribe you to marketing or submit a project request.",
+  },
+  {
     heading: "What we collect",
     body: "When you request a Digital Presence Audit, download the Free Playbook, or contact us, you may share your name, business name, email address, an optional phone number, your website or social links, and any notes about what you want to improve. We also collect basic, anonymous usage data through Google Analytics, and campaign information (such as which ad or link brought you here) so we know which of our own marketing is working.",
   },

@@ -1,0 +1,49 @@
+.cozy-chat-launcher { position: fixed; z-index: 45; right: max(22px, env(safe-area-inset-right)); bottom: max(22px, env(safe-area-inset-bottom)); display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 20px; border: 1px solid #0d6375; border-radius: 18px; background: #075c70; color: #fff; box-shadow: 0 6px 24px #001c2630; cursor: pointer; font: 600 14px/1.2 var(--font-inter), sans-serif; transition: background 160ms, transform 160ms; }
+.cozy-chat-launcher:hover { background: #064454; transform: translateY(-2px); }
+.cozy-chat-panel { position: fixed; inset: auto max(22px, env(safe-area-inset-right)) max(90px, calc(env(safe-area-inset-bottom) + 78px)) auto; margin: 0; padding: 0; width: 390px; max-width: calc(100vw - 24px); height: 560px; max-height: calc(100dvh - 112px); border: 1px solid #ceddd9; border-radius: 18px; background: #f2f8f5; color: #172c29; box-shadow: 0 16px 60px #071d2638; font: 400 14px/1.55 var(--font-inter), Arial, sans-serif; overflow: hidden; }
+.cozy-chat-panel[open] { display: flex; flex-direction: column; animation: cozy-chat-enter 180ms ease-out; }
+.cozy-chat-panel::backdrop { background: #081c2610; }
+.cozy-chat-panel *, .cozy-chat-launcher { box-sizing: border-box; }
+.cozy-chat-panel button, .cozy-chat-panel input { font: inherit; }
+.cozy-chat-panel button { cursor: pointer; }
+.cozy-chat-panel :focus-visible, .cozy-chat-launcher:focus-visible { outline: 2px solid #087990; outline-offset: 3px; }
+.cozy-chat-header { display: flex; gap: 12px; align-items: center; padding: 18px 16px 18px 20px; border-bottom: 1px solid #d8e5df; background: #fafdfa; flex-shrink: 0; }
+.cozy-chat-header img { flex: 0 0 32px; border-radius: 8px; }
+.cozy-chat-header > div { flex: 1; }
+.cozy-chat-header h2 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: -.02em; color: #172c29; }
+.cozy-chat-header p { margin: 2px 0 0; font-size: 12px; color: #526862; }
+.cozy-chat-icon-button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 10px; background: transparent; color: #526862; }
+.cozy-chat-icon-button:hover { background: #e7f0eb; }
+.cozy-chat-log { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 18px; scrollbar-width: thin; min-height: 80px; }
+.cozy-chat-intro { margin: 0 0 16px; text-align: center; font-size: 11px; color: #526862; }
+.cozy-chat-message { width: fit-content; max-width: 96%; margin-bottom: 12px; border-radius: 13px; padding: 14px 15px; overflow-wrap: anywhere; }
+.cozy-chat-message p { margin: 0; white-space: pre-wrap; }
+.cozy-chat-message-assistant { background: #fff; border: 1px solid #e0eae3; border-top-left-radius: 3px; box-shadow: 0 2px 4px #16322605; }
+.cozy-chat-message-user { margin-left: auto; background: #075c70; color: #fff; border-bottom-right-radius: 3px; }
+.cozy-chat-starters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0 8px; }
+.cozy-chat-starters button { display: flex; gap: 6px; align-items: center; justify-content: space-between; padding: 10px 12px; min-height: 46px; text-align: left; background: transparent; border: 1px solid #c7dbd2; border-radius: 9px; color: #245d56; font-size: 12px; font-weight: 600; }
+.cozy-chat-starters button:hover { background: #e3efe8; }
+.cozy-chat-links { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.cozy-chat-links a { display: flex; gap: 10px; align-items: center; justify-content: space-between; min-height: 44px; padding: 8px 11px; background: #f2f7f5; border: 1px solid #d5e3dd; border-radius: 7px; color: #075c70; font-size: 13px; font-weight: 600; text-decoration: none; }
+.cozy-chat-links a:hover { background: #e4f0eb; }
+.cozy-chat-source { display: block; margin-top: 12px; color: #596c65; font-size: 11px; }
+.cozy-chat-thinking { color: #526862; font-size: 12px; padding: 5px; }
+.cozy-chat-bottom { flex-shrink: 0; background: #fafdfa; border-top: 1px solid #d8e5df; padding: 14px 18px 12px; }
+.cozy-chat-input-label { display: block; margin-bottom: 7px; color: #405c54; font-size: 12px; font-weight: 600; }
+.cozy-chat-input-wrap { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #bdcec6; border-radius: 10px; padding: 5px; }
+.cozy-chat-input-wrap:focus-within { border-color: #087990; box-shadow: 0 0 0 1px #087990; }
+.cozy-chat-input-wrap input { flex: 1; width: 0; min-width: 0; min-height: 44px; padding: 6px 8px; color: #172c29; background: transparent; border: 0; font-size: 16px; outline: none; }
+.cozy-chat-input-wrap input::placeholder { color: #697a74; font-size: 13px; }
+.cozy-chat-input-wrap input:focus-visible { outline: none; }
+.cozy-chat-input-wrap button { flex-shrink: 0; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 7px; background: #075c70; color: #fff; }
+.cozy-chat-input-wrap button:disabled { background: #e6ede9; color: #60746c; cursor: default; }
+.cozy-chat-privacy { font-size: 10px; line-height: 1.5; color: #526862; margin: 9px 0 0; }
+.cozy-chat-privacy a { color: #075c70; text-decoration: underline; text-underline-offset: 2px; }
+.cozy-chat-reset { border: 0; background: transparent; color: #526862; padding: 8px 2px 2px; min-height: 44px; text-decoration: underline; text-underline-offset: 3px; font-size: 11px !important; }
+.cozy-chat-reset:disabled { opacity: .55; cursor: default; }
+.cozy-chat-notice { color: #6d420d; margin: 0 0 10px; font-size: 12px; }
+.cozy-chat-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@keyframes cozy-chat-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (max-width: 480px) { .cozy-chat-launcher { right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); min-height: 52px; padding: 0 16px; } .cozy-chat-panel { right: 12px; bottom: max(78px, calc(env(safe-area-inset-bottom) + 66px)); max-height: calc(100dvh - 94px); width: calc(100vw - 24px); } }
+@media (max-height: 500px) { .cozy-chat-panel { bottom: 8px; max-height: calc(100dvh - 16px); } .cozy-chat-header { padding-block: 8px; } .cozy-chat-bottom { padding-block: 8px; } }
+@media (prefers-reduced-motion: reduce) { .cozy-chat-panel[open] { animation: none; } .cozy-chat-launcher { transition: none; } }

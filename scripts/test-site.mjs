@@ -111,6 +111,50 @@ try {
     checks += 2;
     await ctx.close();
   }
+  for (const width of [1440, 390]) {
+    console.log(`Checking Cozy Assistant at ${width}px`);
+    const { ctx, page } = await context(width);
+    let calls = 0;
+    let aiResponse = { mode: 'ai', text: 'We can help plan a website and video project.', links: ['booking', 'not-a-real-link'] };
+    await page.route('https://hub.cozydigital.org/api/public/chat', route => {
+      calls++;
+      return route.fulfill({ contentType: 'application/json', body: JSON.stringify(aiResponse) });
+    });
+    await visit(page, '/');
+    assert.equal(await page.locator('#cozy-chat-dialog').count(), 0, 'Chat never opens automatically');
+    await page.getByRole('button', { name: 'Open Cozy chat', exact: true }).click();
+    const dialog = page.locator('#cozy-chat-dialog');
+    await dialog.waitFor({ state: 'visible' });
+    assert.equal(await page.locator('#cozy-chat-input').evaluate(el => el === document.activeElement), true);
+    const bounds = await dialog.boundingBox();
+    assert.ok(bounds.x >= 0 && bounds.x + bounds.width <= width && bounds.y >= 0 && bounds.y + bounds.height <= 1000, 'Chat fits viewport');
+    await page.getByRole('button', { name: 'Explore services', exact: true }).click();
+    assert.match(await dialog.innerText(), /builds websites and landing pages/);
+    assert.equal(calls, 0, 'Common answers do not spend AI quota');
+    await dialog.getByRole('link', { name: 'Explore services', exact: false }).click();
+    await page.waitForURL(url => /\/services\/?$/.test(url.pathname));
+    assert.equal(await page.locator('#cozy-chat-dialog').count(), 0, 'Navigation dismisses chat');
+    await page.getByRole('button', { name: 'Open Cozy chat', exact: true }).click();
+    await page.getByLabel('What can I help you find?', { exact: true }).fill('How much does a website cost?');
+    await page.getByRole('button', { name: 'Send message', exact: true }).click();
+    assert.match(await dialog.innerText(), /confirm your price in writing/);
+    await page.getByLabel('What can I help you find?', { exact: true }).fill('Can you explain an unusual combination for my small business?');
+    await page.getByRole('button', { name: 'Send message', exact: true }).click();
+    await dialog.getByText(aiResponse.text, { exact: true }).waitFor();
+    assert.equal(calls, 1);
+    assert.equal(await dialog.locator('a[href*="not-a-real"]').count(), 0, 'Unknown AI links cannot render');
+    aiResponse = { mode: 'site' };
+    await page.getByLabel('What can I help you find?', { exact: true }).fill('Another unusual question without a matching topic');
+    await page.getByRole('button', { name: 'Send message', exact: true }).click();
+    await dialog.getByText(/I don’t have a confirmed answer/).waitFor();
+    await page.getByRole('button', { name: 'Clear conversation', exact: true }).click();
+    assert.equal(await dialog.locator('.cozy-chat-message-user').count(), 0);
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('#cozy-chat-dialog').count(), 0);
+    assert.equal(await page.getByRole('button', { name: 'Open Cozy chat', exact: true }).evaluate(el => el === document.activeElement), true);
+    checks += 10;
+    await ctx.close();
+  }
   assert.deepEqual(errors, []);
   console.log(`Passed ${checks} site checks: pages, layouts, popup removal, mobile navigation, theme, carousel, form failures and retries.`);
 } finally { await browser.close(); }
