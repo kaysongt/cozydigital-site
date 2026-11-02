@@ -1,0 +1,22 @@
+import assert from "node:assert/strict";
+import { readFileSync, existsSync } from "node:fs";
+
+const component = readFileSync("src/components/client-spotlight.tsx", "utf8");
+const page = readFileSync("src/app/page.tsx", "utf8");
+const css = readFileSync("src/components/client-spotlight.module.css", "utf8");
+assert.equal((page.match(/<ClientSpotlight \/>/g) || []).length, 1);
+assert.ok(page.indexOf("<ClientSpotlight />") < page.indexOf('className="future-section future-work"'));
+assert.match(component, /aria-labelledby="client-spotlight-heading"/);
+assert.match(component, /id="client-spotlight-heading"/);
+assert.match(component, /href="\/cozy-booking\/"/);
+assert.ok(existsSync("src/app/cozy-booking/page.tsx"));
+assert.match(component, /rel="noopener noreferrer"/);
+assert.match(component, /not an endorsement/);
+assert.match(component, /dateTime="2026-10-27"/);
+assert.match(component, /Season 1 · Episode 2/);
+assert.match(component, /We helped Dr\. Alicia Watkins land a guest appearance/);
+assert.ok(!/<(?:iframe|video)\b/.test(component), "No copied broadcast media or third-party embed");
+assert.ok(existsSync("public/images/client-proof/dr-alicia-portrait.webp"));
+assert.match(css, /@media \(max-width: 899px\)/);
+assert.match(css, /var\(--studio-accent\)/);
+console.log("Client spotlight source checks passed (structure, copy, CTA, asset, responsive styles).");
