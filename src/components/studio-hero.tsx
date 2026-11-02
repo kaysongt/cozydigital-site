@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import ClientSpotlight from "./client-spotlight";
+import styles from "./client-spotlight.module.css";
 
 export default function StudioHero() {
   return (
-    <section className="future-hero" aria-labelledby="studio-heading">
+    <section className={`future-hero ${styles.hero}`} aria-labelledby="studio-heading">
       <Image
         className="future-hero-art"
         src="/images/studio/cozy-loops.png"
@@ -13,10 +15,11 @@ export default function StudioHero() {
         sizes="100vw"
       />
       <div className="future-hero-shade" aria-hidden="true" />
-      <div className="future-hero-content">
+      <div className={`future-hero-content ${styles.heroContent}`}>
         <p className="future-label">
           <span className="future-status" /> COZY DIGITAL / INDEPENDENT STUDIO
         </p>
+        <ClientSpotlight />
         <h1 id="studio-heading">
           Websites.
           <br />
@@ -66,3 +69,4 @@ export default function StudioHero() {
     </section>
   );
 }
+

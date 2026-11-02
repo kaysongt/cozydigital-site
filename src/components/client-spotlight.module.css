@@ -1,67 +1,50 @@
-.spotlight {
+.hero:global(.future-hero) { min-height: 0; justify-content: start; }
+.heroContent:global(.future-hero-content) {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: 24px 6%;
+  padding: 32px 0;
   align-items: center;
-  gap: clamp(32px, 5vw, 88px);
 }
-.portrait {
-  align-self: stretch;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
+.heroContent > :global(.future-label) { grid-column: 1 / -1; }
+.heroContent:global(.future-hero-content) > h1 {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  font-size: clamp(4.5rem, 8.5vw, 8rem);
+}
+.heroContent > :global(.future-hero-bottom) { grid-column: 1 / -1; }
+.spotlight {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  padding: 24px 28px;
+  border: 1px solid #ffffff40;
   border-radius: 10px;
-  background: var(--studio-panel);
-  border: 1px solid var(--studio-line);
+  background: #08090be8;
+  color: #edf0ed;
 }
-.portrait img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 650px;
-  object-fit: contain;
-  object-position: bottom;
-}
-.story { min-width: 0; }
-.story h2 {
-  margin: 22px 0 26px;
-  font-size: clamp(2.5rem, 4.6vw, 4.8rem);
-  line-height: 1.06;
-}
-.story h2 span { color: var(--studio-accent); }
-.intro {
-  max-width: 36rem;
-  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-  line-height: 1.6;
-}
-.intro cite { font-style: normal; }
-.detail {
-  max-width: 33rem;
-  margin-top: 16px;
-  color: var(--studio-muted);
-  font-size: 15px;
-  line-height: 1.8;
-}
-.facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px 32px;
-  margin: 30px 0;
-  padding-top: 22px;
-  border-top: 1px solid var(--studio-line);
-}
-.facts dt { color: var(--studio-muted); font-size: 12px; }
-.facts dd { margin: 6px 0 0; font-size: 14px; }
-.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 26px; }
-.actions a { margin-top: 0; }
-.note { margin-top: 22px; max-width: 34rem; }
-@media (max-width: 899px) {
-  .spotlight { grid-template-columns: minmax(0, 1fr); }
-  .portrait img { max-height: 480px; width: auto; max-width: 100%; }
-  .story h2 { font-size: clamp(2.5rem, 7vw, 4rem); }
-}
-@media (max-width: 480px) {
-  .portrait img { max-height: 380px; }
-  .actions { align-items: stretch; flex-direction: column; }
-  .actions :global(.future-button) { gap: 16px; }
+.label { color: #67e8f9; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+.logos { display: flex; align-items: center; gap: 24px; margin: 18px 0; }
+.logos > img { display: block; object-fit: contain; width: 64px; height: 64px; flex: 0 0 auto; }
+/* Exact title viewport (55,155,910,355) in untouched official 1600x900 key art. */
+.showLogo { display: block; position: relative; overflow: hidden; width: 260px; max-width: calc(100% - 88px); aspect-ratio: 910 / 355; }
+.showLogo .showArtwork { position: absolute; width: 175.8242%; max-width: none; height: auto; left: -6.044%; top: -43.662%; }
+.spotlight h2 { font-size: clamp(1.3rem, 2.1vw, 1.9rem); line-height: 1.2; margin: 0 0 10px; }
+.copy { max-width: 28rem; font-size: 14px; line-height: 1.6; color: #d0d5d0; }
+.copy cite { font-style: normal; }
+.episode { display: inline-flex; align-items: center; gap: 20px; min-height: 44px; color: #67e8f9; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.note { margin: 2px 0 0; color: #a0a6a2; font-size: 11px; line-height: 1.5; }
+@media (max-width: 760px) {
+  .heroContent:global(.future-hero-content) { grid-template-columns: minmax(0, 1fr); padding: 20px 0 24px; gap: 18px; }
+  .spotlight { grid-column: 1; grid-row: 2; padding: 16px 18px; }
+  .heroContent:global(.future-hero-content) > h1 { grid-row: 3; margin: 0; font-size: clamp(3.4rem, 13vw, 5rem); }
+  .logos { gap: 22px; margin: 10px 0; }
+  .logos > img { width: 44px; height: 44px; }
+  .showLogo { width: 210px; max-width: calc(100% - 66px); }
+  .spotlight h2 { font-size: 21px; margin-bottom: 6px; }
+  .copy { font-size: 13px; }
+  .note { font-size: 10px; }
+  .heroContent :global(.future-actions) { margin-top: 16px; }
+  .heroContent :global(.future-intro) { font-size: 14px; line-height: 1.6; }
 }

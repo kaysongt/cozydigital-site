@@ -8,7 +8,6 @@ import FounderTrust from "@/components/founder-trust";
 import PromptBossPromo from "@/components/prompt-boss-promo";
 import DesignCarousel from "@/components/design-carousel";
 import SelectedFilms from "@/components/selected-films";
-import ClientSpotlight from "@/components/client-spotlight";
 import { SELECTED_FILMS } from "@/data/selected-films";
 import {
   CLIENT_HUB_LABEL,
@@ -198,7 +197,6 @@ export default function HomePage() {
           </ul>
         </div>
       </section>
-      <ClientSpotlight />
       <section
         className="future-section future-work"
         aria-labelledby="selected-heading"
@@ -512,4 +510,3 @@ export default function HomePage() {
     </main>
   );
 }
-

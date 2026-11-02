@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./client-spotlight.module.css";
 
 const episodeUrl =
@@ -7,52 +6,21 @@ const episodeUrl =
 
 export default function ClientSpotlight() {
   return (
-    <section
-      id="client-spotlight"
-      className={`future-section ${styles.spotlight}`}
-      aria-labelledby="client-spotlight-heading"
-    >
-      <div className={styles.portrait}>
-        <Image
-          src="/images/client-proof/dr-alicia-portrait.webp"
-          alt="Dr. Alicia Watkins smiling in a yellow sweater"
-          width={900}
-          height={1255}
-          sizes="(min-width: 900px) 38vw, 92vw"
-        />
+    <aside id="client-spotlight" className={styles.spotlight} aria-labelledby="client-spotlight-heading">
+      <p className={styles.label}>Cozy Digital client placement</p>
+      <div className={styles.logos}>
+        <Image src="/images/client-proof/bet-logo.svg" alt="BET" width={320} height={320} priority />
+        <span className={styles.showLogo}>
+          <Image className={styles.showArtwork} src="/images/client-proof/nick-cannon-night-key-art.jpg" alt="Nick Cannon @ Night" width={1600} height={900} priority />
+        </span>
       </div>
-      <div className={styles.story}>
-        <p className="future-label">Client spotlight · Media placement</p>
-        <h2 id="client-spotlight-heading">
-          Dr. Alicia Watkins.<br />
-          <span>On BET.</span>
-        </h2>
-        <p className={styles.intro}>
-          We helped Dr. Alicia Watkins land a guest appearance on BET’s
-          <cite> Nick Cannon @ Night</cite>.
-        </p>
-        <p className={styles.detail}>
-          Our client joined Nick Cannon and Natalie Nunn for a conversation
-          about dating, money, and relationships.
-        </p>
-        <dl className={styles.facts}>
-          <div><dt>Series</dt><dd>Nick Cannon @ Night</dd></div>
-          <div><dt>Episode</dt><dd>Season 1 · Episode 2</dd></div>
-          <div><dt>Aired</dt><dd><time dateTime="2026-10-27">October 27, 2026</time></dd></div>
-        </dl>
-        <div className={styles.actions}>
-          <Link href="/cozy-booking/" className="future-button">
-            Talk about your brand <span aria-hidden="true">↗</span>
-          </Link>
-          <a href={episodeUrl} className="future-text-link" target="_blank" rel="noopener noreferrer">
-            View the episode listing <span aria-hidden="true">↗</span>
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-        </div>
-        <p className={`future-fine ${styles.note}`}>
-          A client guest appearance, not an endorsement of Cozy Digital by BET.
-        </p>
-      </div>
-    </section>
+      <h2 id="client-spotlight-heading">Dr. Alicia Watkins, on BET.</h2>
+      <p className={styles.copy}>We helped our client land a guest appearance on <cite>Nick Cannon @ Night</cite>.</p>
+      <a href={episodeUrl} className={styles.episode} target="_blank" rel="noopener noreferrer">
+        See the episode <span aria-hidden="true">↗</span>
+        <span className="sr-only"> (opens in a new tab)</span>
+      </a>
+      <p className={styles.note}>Client appearance. No BET endorsement of Cozy Digital.</p>
+    </aside>
   );
 }
