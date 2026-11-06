@@ -2,14 +2,14 @@
 export const cozyVideoWebinar = {
   id: "ai-video-creator-lab-2026-10-28",
   title: "From Idea to AI Video",
-  startsAt: "2026-11-05T21:00:00-05:00",
-  date: "Thursday, November 5",
+  startsAt: "2026-11-12T21:00:00-05:00",
+  date: "Thursday, November 12",
   time: "9 p.m. Eastern / 8 p.m. Central",
-  shortDate: "Thu, Nov 5",
+  shortDate: "Thu, Nov 12",
   shortTime: "9 p.m. ET",
   timeZone: "America/New_York",
   // Match the 90-minute session published on Luma.
-  calendarEndsAt: "2026-11-05T22:30:00-05:00",
+  calendarEndsAt: "2026-11-12T22:30:00-05:00",
   calendarPath: "/webinar/ai-video-workshop.ics",
   thankYouPath: "/webinar/thank-you/",
   lumaEventSlug: "h5qnohwa",

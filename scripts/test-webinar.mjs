@@ -64,7 +64,7 @@ try {
   assert.ok(intro.y + intro.height < 1000, "Desktop intro remains in the first viewport");
   assert.ok(countdown.y + countdown.height <= signup.y, "Countdown stays above signup");
   assert.ok(proofBox.y >= signup.y + signup.height, "Client films stay below signup");
-  assert.match(await page.locator('[aria-label="Webinar navigation"]').innerText(), /Nov 5.*9 p.m. ET/);
+  assert.match(await page.locator('[aria-label="Webinar navigation"]').innerText(), /Nov 12.*9 p.m. ET/);
   assert.equal(await page.locator("#webinar-register form, #webinar-name, #webinar-email").count(), 0, "No second Hub form");
   assert.equal(await page.locator("#paid-course, #curriculum").count(), 0);
   assert.equal(await page.locator("[data-signup-confetti]").count(), 0);
@@ -179,12 +179,12 @@ try {
     assert.equal(await page.getByRole("heading", { name: "You’re in. Let’s make something." }).count(), 0);
     assert.equal(await page.locator("[data-signup-confetti]").count(), 0);
     const google = new URL(await page.getByRole("link", { name: /Google Calendar/ }).getAttribute("href"));
-    assert.equal(google.searchParams.get("dates"), "20261106T020000Z/20261106T033000Z");
+    assert.equal(google.searchParams.get("dates"), "20261113T020000Z/20261113T033000Z");
     const outlook = new URL(await page.getByRole("link", { name: /Outlook/ }).getAttribute("href"));
-    assert.equal(outlook.searchParams.get("enddt"), "2026-11-06T03:30:00.000Z");
+    assert.equal(outlook.searchParams.get("enddt"), "2026-11-13T03:30:00.000Z");
     const ics = await (await page.request.get(ORIGIN + "/webinar/ai-video-workshop.ics")).text();
-    assert.match(ics, /DTSTART:20261106T020000Z/);
-    assert.match(ics, /DTEND:20261106T033000Z/);
+    assert.match(ics, /DTSTART:20261113T020000Z/);
+    assert.match(ics, /DTEND:20261113T033000Z/);
     await page.locator("#course-preview > summary").click();
     assert.ok((await page.locator("#paid-course").innerText()).includes("$75"));
     assert.equal(await page.locator('button:has-text("Enrollment opens soon")').isDisabled(), true);
