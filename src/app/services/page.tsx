@@ -6,6 +6,7 @@ import {
   CLIENT_HUB_REL,
   CLIENT_HUB_URL,
 } from "@/lib/client-hub";
+import { industryPages, servicePages } from "@/data/keyword-pages";
 
 export const metadata: Metadata = {
   title: "Services | Cozy Digital",
@@ -102,6 +103,27 @@ export default function ServicesPage() {
             <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-400">See what we check in your pages, business listings, and structured data, including how ChatGPT, Perplexity, and Google AI describe your business.</p>
             <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-cyan-300 transition-colors group-hover:text-cyan-100">Explore AI Search <ArrowIcon /></span>
           </Link>
+        </div>
+
+        {/* Keyword landing pages: one per service and per industry we serve */}
+        <div className="mt-10 grid gap-8 sm:grid-cols-2">
+          {[
+            { heading: "Explore by service", base: "/services/", pages: servicePages },
+            { heading: "Websites by industry", base: "/websites-for/", pages: industryPages },
+          ].map((group) => (
+            <div key={group.heading}>
+              <h2 className="text-xs font-black uppercase tracking-[0.2em] text-cyan-300">{group.heading}</h2>
+              <ul className="mt-4 space-y-2">
+                {group.pages.map((p) => (
+                  <li key={p.slug}>
+                    <Link href={`${group.base}${p.slug}/`} className="text-sm font-semibold text-zinc-300 transition-colors hover:text-cyan-200">
+                      {p.h1}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Free audit callout */}

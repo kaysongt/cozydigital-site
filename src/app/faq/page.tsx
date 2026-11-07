@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { faqQuestions } from "@/data/faq-questions";
 
 export const metadata: Metadata = {
-  title: "FAQ | Cozy Digital",
+  title: "Website, AI Video & AI Search FAQ | Cozy Digital",
   description:
     "Questions about website projects, AI video production, pricing, timelines, and working with Quincy and Kayson at Cozy Digital.",
   alternates: { canonical: "https://cozydigital.org/faq/" },
@@ -109,6 +110,25 @@ export default function FaqPage() {
             </details>
           ))}
         </div>
+
+        <section className="mt-14">
+          <h2 className="text-2xl font-black text-white">Websites, video, and AI search, answered</h2>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+            Longer answers to the questions business owners ask most.
+          </p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {faqQuestions.map((q) => (
+              <li key={q.slug}>
+                <Link
+                  href={`/faq/${q.slug}/`}
+                  className="block h-full rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm font-bold text-zinc-100 transition-colors hover:border-cyan-300/30 hover:text-cyan-200"
+                >
+                  {q.question}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <div className="mt-10 rounded-2xl border border-cyan-300/20 bg-cyan-500/10 p-6 text-center">
           <p className="mb-4 text-sm text-zinc-300">Want to see what to improve first?</p>
