@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { chromium } from "playwright";
 
 const ORIGIN = process.env.WEBINAR_TEST_ORIGIN || "http://127.0.0.1:4173";
@@ -7,6 +7,8 @@ const PATH = "/courses/cozy-ai-video-course/";
 const EMBED = "https://luma.com/embed/event/h5qnohwa/simple";
 const EVENT = "https://luma.com/h5qnohwa";
 const checks = [];
+const webinarSource = await readFile(new URL("../src/data/cozy-ai-video-webinar.ts", import.meta.url), "utf8");
+const startsAt = Date.parse(webinarSource.match(/startsAt:\s*"([^"]+)"/)[1]);
 await mkdir("webinar-qa", { recursive: true });
 const browser = await chromium.launch();
 let currentPage;
@@ -29,6 +31,8 @@ async function context(options = {}, embedAvailable = true) {
     return route.abort();
   });
   const page = await ctx.newPage();
+  // Layout checks cover the upcoming state regardless of the day CI runs.
+  await page.clock.setFixedTime(new Date(startsAt - 3600000));
   currentPage = page;
   const errors = [];
   page.on("pageerror", error => errors.push(error.message));
@@ -189,6 +193,15 @@ try {
     assert.ok((await page.locator("#paid-course").innerText()).includes("$75"));
     assert.equal(await page.locator('button:has-text("Enrollment opens soon")').isDisabled(), true);
     checks.push("Legacy confirmation stays honest; calendars match 90-minute Luma event; paid preview remains separate");
+    await ctx.close();
+  }
+  {
+    const { ctx, page } = await context();
+    await page.clock.setFixedTime(new Date(startsAt + 1000));
+    await visit(page);
+    await page.getByText("This session has started.", { exact: true }).waitFor();
+    assert.equal(await page.getByLabel(/Workshop starts/).count(), 0);
+    checks.push("After the start time, the countdown gives way to the session-started message");
     await ctx.close();
   }
   console.log(checks.join("\n"));
