@@ -37,6 +37,16 @@ const projects: {
   status: string;
 }[] = [
   {
+    id: "zoe-life",
+    name: "Zoe Life",
+    type: "Faith & family",
+    proof: "Books, resources, and connection",
+    image: "/images/client-proof/zoe-life-homepage-2026-11-13.jpg",
+    copy: "A welcoming website for Tayo and Kemi Akinyemi, bringing faith-based guidance, books, articles, and videos together for individuals, couples, and families.",
+    href: "https://www.zoelifehub.com/",
+    status: "Visit website",
+  },
+  {
     id: "dr-alicia-watkins",
     name: "Dr. Alicia Watkins",
     type: "Therapy & wellness",

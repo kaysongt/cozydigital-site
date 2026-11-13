@@ -9,6 +9,7 @@ const designs = [
   { title: "Orbit", category: "Technology · Design concept", image: "/images/concepts/orbit.svg", alt: "Technology website concept with electric violet typography, an orbital graphic, and a sleek product dashboard" },
   { title: "Dr. Alicia Watkins", category: "Wellness · Client work", image: "/images/client-proof/dr-alicia-homepage-2026-10-17.webp", alt: "Dr. Alicia Watkins live homepage with her yellow-sweater portrait and Desert BLOOM retreat" },
   { title: "Dear Pastor’s Wife", category: "Community · Client work", image: "/images/client-proof/dear-pastors-wife-site.png", alt: "Dear Pastor's Wife ministry website built by Cozy Digital" },
+  { title: "Zoe Life", category: "Faith & family · Client work", image: "/images/client-proof/zoe-life-homepage-2026-11-13.jpg", alt: "Zoe Life homepage with Tayo and Kemi Akinyemi, faith-based guidance, and family resources" },
 ];
 
 export default function DesignCarousel() {
