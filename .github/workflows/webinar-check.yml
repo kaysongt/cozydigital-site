@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'src/app/page.tsx'
+      - 'src/app/courses/page.tsx'
+      - 'src/components/cozy-public-header.tsx'
+      - 'scripts/check-public-content.mjs'
       - 'src/app/courses/cozy-ai-video-course/**'
       - 'src/app/webinar/**'
       - 'src/data/cozy-ai-video-webinar.ts'
@@ -25,7 +29,8 @@ concurrency:
 
 jobs:
   webinar:
-    runs-on: ubuntu-latest
+    # The pinned Playwright version supports Ubuntu 24.04, not Ubuntu 26.04.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +46,7 @@ jobs:
         run: |
           npm install --no-save --package-lock=false playwright@1.58.2
           npx playwright install --with-deps chromium
-      - name: Test signup UX with mocked API responses
+      - name: Test Courses listing and retired workshop routes locally
         run: |
           python3 -m http.server 4173 --directory out >/tmp/webinar-static-server.log 2>&1 &
           for attempt in $(seq 1 20); do curl --silent --fail http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
