@@ -62,7 +62,8 @@ const ALLOWED_AMOUNTS = {
   // The course has one fixed price, sold through a live Stripe button on
   // /courses/. structured-data.tsx must match it, and so must the Buy Button
   // in Stripe, which is what actually charges.
-  "src/app/courses/page.tsx": ["$30"],
+  // The separate edited webinar is a fixed one-time $50 offer, not a service plan.
+  "src/app/courses/page.tsx": ["$30", "$50"],
   "src/app/academy-access/page.tsx": ["$30"],
   // A founder's résumé: transaction volume they reconcile, not a Cozy price.
   "src/data/founders.ts": ["$20,000"],
