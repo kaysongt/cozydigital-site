@@ -1,27 +1,31 @@
+import Link from "next/link";
 import type { Metadata } from "next";
-import styles from "./course.module.css";
-import WebinarLanding from "./WebinarLanding";
+import { cozyVideoCourse as course } from "@/data/cozy-ai-video-course";
 
 export const metadata: Metadata = {
-  title: "Create AI Videos People Want to Watch | Free Workshop | Cozy Digital",
-  description: "Tired of AI clips that don’t match your idea? Learn from the Cozy Digital creators behind films for Dr. Boyce Watkins. Free live workshop, November 12 at 9 p.m. Eastern.",
-  openGraph: {
-    title: "From Idea to AI Video | Free Live Workshop",
-    description: "Become the AI creator people stop to watch. See real client films and join Quincy and Kayson live on November 12 at 9 p.m. Eastern.",
-    url: "https://cozydigital.org/courses/cozy-ai-video-course/",
-    type: "website",
-    images: [{ url: "/courses/cozy-ai-video-course/intro-film-preview.jpg", width: 1280, height: 720, alt: "Cozy Digital AI video workshop preview" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "From Idea to AI Video | Free Live Workshop",
-    description: "Thursday, November 12 at 9 p.m. Eastern. Learn to plan, direct, and review your AI videos with Quincy and Kayson.",
-    images: ["/courses/cozy-ai-video-course/intro-film-preview.jpg"],
-  },
+  title: "AI Video Creator Lab | Cozy Digital",
+  description: "Explore how Cozy Digital plans, directs, and reviews AI video through six narrated case studies.",
   alternates: { canonical: "https://cozydigital.org/courses/cozy-ai-video-course/" },
-  robots: { index: false, follow: true }, // Remove only after launch readiness review.
+  robots: { index: false, follow: true },
 };
 
-export default function WebinarPage() {
-  return <main className={styles.page}><WebinarLanding /></main>;
+export default function CozyVideoCoursePage() {
+  return (
+    <main className="bg-[#101a21] px-6 py-20 text-[#eef4f5]">
+      <div className="mx-auto max-w-5xl">
+        <Link href="/courses/" className="text-sm font-semibold text-cyan-200 underline">← All courses</Link>
+        <p className="mt-10 text-xs font-semibold tracking-widest text-cyan-200">NARRATED VIDEO CASE STUDIES</p>
+        <h1 className="mt-3 text-4xl font-medium md:text-6xl">{course.title}</h1>
+        <p className="mt-5 max-w-2xl text-lg leading-8 text-[#a9b8bf]">Six case studies on how to plan, direct, and review an AI video, with a workbook to use on your own projects.</p>
+        <ul aria-label="Course curriculum" className="mt-10 grid gap-4 sm:grid-cols-2">
+          {course.curriculum.map((lesson) => (
+            <li key={lesson.title} className="rounded-xl border border-cyan-200/20 p-5">
+              <h2 className="text-lg font-semibold">{lesson.title}</h2>
+              <p className="mt-2 text-[#a9b8bf]">{lesson.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </main>
+  );
 }

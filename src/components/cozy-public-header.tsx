@@ -12,7 +12,6 @@ const links = [
   { label: "Services", href: "/services/" },
   { label: "The studio", href: "/founders/" },
   { label: "Courses", href: "/courses/" },
-  { label: "Webinar", href: "/courses/cozy-ai-video-course/" },
 ];
 export default function CozyPublicHeader() {
   const pathname = usePathname();
@@ -30,7 +29,7 @@ export default function CozyPublicHeader() {
     desktop.addEventListener("change", onResize);
     return () => { document.removeEventListener("keydown", onKey); desktop.removeEventListener("change", onResize); };
   }, [mobileOpen]);
-  const active = (href: string) => !href.includes("#") && (pathname?.replace(/\/$/, "") === href.replace(/\/$/, "") || (href === "/founders/" && pathname?.startsWith("/about")) || (href === "/courses/" && pathname?.startsWith("/ai-academy")));
+  const active = (href: string) => !href.includes("#") && (pathname?.replace(/\/$/, "") === href.replace(/\/$/, "") || (href === "/founders/" && pathname?.startsWith("/about")) || (href === "/courses/" && (pathname?.startsWith("/ai-academy") || pathname?.startsWith("/courses/"))));
   return (
     <header className="studio-nav sticky top-0 z-50 backdrop-blur-xl">
       <div className="studio-nav-inner">
