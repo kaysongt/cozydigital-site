@@ -1,0 +1,149 @@
+name: Creek Health demo QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/demos/creek-health/**'
+      - '.github/workflows/creek-health-demo-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Install pinned REA in an isolated temporary directory
+        continue-on-error: true
+        run: npm install --prefix "$RUNNER_TEMP/creek-rea" --ignore-scripts --no-audit --no-fund rea-agents@6.9.0
+      - name: Inspect public reference and verify demo
+        run: |
+          mkdir -p artifacts/creek-health
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory public >/tmp/creek-server.log 2>&1 &
+          for attempt in $(seq 1 20); do curl --silent --fail http://127.0.0.1:4173/demos/creek-health/ >/dev/null && break; sleep 1; done
+          cat > creek-health-qa.mjs <<'NODE'
+          import { chromium } from 'playwright';
+          import { mkdir, writeFile } from 'node:fs/promises';
+          import { execFile } from 'node:child_process';
+          import { promisify } from 'node:util';
+          import assert from 'node:assert/strict';
+          const exec = promisify(execFile);
+          const dir = 'artifacts/creek-health';
+          const report = { checks: [], errors: [], rea: {}, photographs: [] };
+          const check = (name, condition) => { assert.ok(condition, name); report.checks.push(name); console.log('PASS: ' + name); };
+          const context = await chromium.launchPersistentContext(process.env.RUNNER_TEMP + '/creek-qa-browser', {
+            headless: true, viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce',
+            args: ['--remote-debugging-port=9222', '--remote-debugging-address=127.0.0.1']
+          });
+          async function inspect(page, label) {
+            try {
+              const targets = await (await fetch('http://127.0.0.1:9222/json/list')).json();
+              const target = targets.find(t => t.type === 'page' && t.url === page.url());
+              if (!target) throw new Error('No matching CDP page target');
+              const executable = process.env.RUNNER_TEMP + '/creek-rea/node_modules/.bin/rea';
+              const result = await exec(executable, ['inspect-web-page', 'http://127.0.0.1:9222', target.id, '--observation-ms', '1000', '--json'], { timeout: 75000, maxBuffer: 24 * 1024 * 1024 });
+              await writeFile(dir + '/rea-' + label + '.json', result.stdout);
+              await writeFile(dir + '/rea-' + label + '-stderr.txt', result.stderr);
+              report.rea[label] = { status: 'completed', bytes: result.stdout.length, url: page.url() };
+              console.log('REA ' + label + ': completed (' + result.stdout.length + ' bytes)');
+            } catch (error) {
+              report.rea[label] = { status: 'failed', error: error.message };
+              await writeFile(dir + '/rea-' + label + '-error.txt', String(error.stdout || '') + '\n' + String(error.stderr || error.message));
+              console.log('REA ' + label + ': ' + error.message.slice(0, 500));
+            }
+          }
+          try {
+            const reference = await context.newPage();
+            try {
+              await reference.goto('https://www.comforcare.com/indiana/north-metro-indianapolis/', { waitUntil: 'domcontentloaded', timeout: 45000 });
+              await reference.waitForTimeout(3500);
+              await reference.screenshot({ path: dir + '/reference-desktop.png', fullPage: false });
+              await writeFile(dir + '/reference-outline.json', JSON.stringify(await reference.locator('h1,h2,h3').allTextContents(), null, 2));
+              await inspect(reference, 'reference');
+            } catch (error) { report.referenceError = error.message; }
+            await reference.close();
+            const page = await context.newPage();
+            page.on('pageerror', error => report.errors.push(error.message));
+            await page.goto('http://127.0.0.1:4173/demos/creek-health/', { waitUntil: 'networkidle', timeout: 45000 });
+            check('One main heading', await page.locator('h1').count() === 1);
+            check('Search indexing disabled', (await page.locator('meta[name="robots"]').getAttribute('content')).includes('noindex'));
+            check('External form submissions blocked', (await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content')).includes("form-action 'none'"));
+            await page.locator('img').evaluateAll(imgs => imgs.forEach(img => img.loading = 'eager'));
+            await page.waitForFunction(() => [...document.images].every(img => img.complete), { timeout: 30000 });
+            report.photographs = await page.locator('img').evaluateAll(imgs => imgs.map(img => ({ src: img.currentSrc, width: img.naturalWidth, height: img.naturalHeight })));
+            for (let i = 0; i < report.photographs.length; i++) check('Photograph ' + (i + 1) + ' loads', report.photographs[i].width > 0);
+            await page.screenshot({ path: dir + '/creek-health-desktop.png', fullPage: true });
+            await page.screenshot({ path: dir + '/creek-health-hero.png', fullPage: false });
+            await inspect(page, 'demo');
+            for (const width of [320, 375, 390, 640, 768, 1024, 1440, 1920]) {
+              await page.setViewportSize({ width, height: 1000 });
+              check('No overflow at ' + width + 'px', await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
+            }
+            await page.setViewportSize({ width: 1440, height: 1000 });
+            await page.locator('[data-dialog="personal"]').click();
+            check('Service dialog opens', await page.locator('#detail-dialog').evaluate(el => el.open));
+            await page.locator('#detail-cta').click();
+            check('Service choice reaches form', await page.locator('#interest').inputValue() === 'personal');
+            await page.locator('#first-name').fill('Demo');
+            await page.locator('#email').fill('demo@example.com');
+            await page.locator('#demo-submit').click();
+            check('Mock form confirmation', await page.locator('#form-success').isVisible());
+            check('Sample data cleared', await page.locator('#email').inputValue() === '');
+            await page.locator('#reset-form').click();
+            check('Form resets', await page.locator('#inquiry-form').isVisible());
+            await page.locator('#open-finder').click();
+            await page.locator('#finder-dialog [data-choice]').first().click();
+            await page.locator('#finder-dialog [data-choice="companion"]').click();
+            await page.locator('#finder-inquire').click();
+            check('Care finder populates inquiry', await page.locator('#interest').inputValue() === 'companion');
+            await page.locator('.preview-strip [data-dialog="preview"]').click();
+            check('Preview dialog avoids active request CTA', await page.locator('#detail-cta').isHidden());
+            await page.keyboard.press('Escape');
+            check('Dialog dismisses with Escape', !(await page.locator('#detail-dialog').evaluate(el => el.open)));
+            await page.locator('.faq-list summary').first().click();
+            check('FAQ expands', await page.locator('.faq-list details').first().evaluate(el => el.open));
+            await page.locator('.faq-list summary').first().click();
+            await page.setViewportSize({ width: 390, height: 844 });
+            await page.evaluate(() => window.scrollTo(0, 0));
+            await page.locator('#menu-toggle').click();
+            check('Mobile navigation opens', await page.locator('#mobile-nav').isVisible());
+            await page.locator('#mobile-nav a[href="#services"]').click();
+            check('Mobile navigation closes after selection', await page.locator('#mobile-nav').isHidden());
+            await page.locator('#mobile-finder').click();
+            check('Mobile care finder opens', await page.locator('#finder-dialog').evaluate(el => el.open));
+            await page.keyboard.press('Escape');
+            await page.waitForTimeout(150);
+            check('Focus returns to mobile care finder', await page.evaluate(() => document.activeElement.id === 'mobile-finder'));
+            await page.evaluate(() => window.scrollTo(0, 0));
+            await page.screenshot({ path: dir + '/creek-health-mobile.png', fullPage: true });
+            await page.screenshot({ path: dir + '/creek-health-mobile-hero.png', fullPage: false });
+            check('No browser JavaScript errors', report.errors.length === 0);
+            report.status = 'passed';
+          } catch (error) {
+            report.status = 'failed'; report.failure = error.stack; process.exitCode = 1; console.error(error);
+          } finally {
+            await writeFile(dir + '/qa-report.json', JSON.stringify(report, null, 2));
+            console.log(JSON.stringify(report, null, 2));
+            await context.close();
+          }
+          NODE
+          node creek-health-qa.mjs
+      - name: Retain screenshots and REA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: creek-health-demo-review
+          path: artifacts/creek-health/
+          retention-days: 7
+          if-no-files-found: warn
