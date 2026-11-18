@@ -388,6 +388,21 @@ export default function HomePage() {
             </article>
           ))}
         </div>
+        <section id="zoe-life-testimonial" className="kemi-testimonial" aria-labelledby="kemi-heading">
+          <div>
+            <p className="future-label">CLIENT TESTIMONIAL</p>
+            <h2 id="kemi-heading">Pastor Kemi Akinyemi, Zoe Life</h2>
+            <blockquote>“They did an excellent job bringing our vision to life, paying attention to the details that mattered to us while also offering thoughtful ideas and suggestions to make the website even better.”</blockquote>
+            <details>
+              <summary>Read the full testimonial</summary>
+              <p>Working with Cozy Digital on our website was a wonderful experience! They did an excellent job bringing our vision to life, paying attention to the details that mattered to us while also offering thoughtful ideas and suggestions to make the website even better.</p>
+              <p>We especially appreciated their creativity, professionalism, responsiveness, and willingness to listen and understand what we were trying to accomplish. They were intentional about making sure the website reflected our vision while sharing their expertise throughout the process.</p>
+              <p>They were also very helpful in showing us how to leverage content we had previously created to bring even more substance and value to our website through additional articles and video content. This helped us make better use of our existing resources while expanding what we could offer visitors to our website.</p>
+              <p>We are very pleased with the outcome and grateful to the Cozy Digital team for a job well done. We would gladly recommend their services to anyone looking to build a website!</p>
+            </details>
+          </div>
+          <video controls playsInline preload="none" poster="/kemi-zoe-life.jpg" src="/kemi-zoe-life.mp4" aria-label="Watch Pastor Kemi’s testimonial for Cozy Digital" />
+        </section>
         <div className="future-design-lab">
           <div>
             <p className="future-label">DESIGN STUDIES</p>

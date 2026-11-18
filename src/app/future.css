@@ -1252,3 +1252,10 @@ html:not(.light) .future-site :is(.text-zinc-500, .text-zinc-600) { color: var(-
 .webinar-banner-cta {
   font-weight: 800;
 }
+
+.kemi-testimonial { display:grid; grid-template-columns:minmax(0,1fr) minmax(180px,280px); gap:clamp(2rem,5vw,5rem); align-items:center; margin:4rem 0; }
+.kemi-testimonial blockquote { font-size:clamp(1.3rem,2.3vw,2rem); line-height:1.45; margin:1rem 0; }
+.kemi-testimonial summary { cursor:pointer; text-decoration:underline; padding:.5rem 0; }
+.kemi-testimonial details p { margin:1rem 0; max-width:70ch; }
+.kemi-testimonial video { display:block; width:100%; aspect-ratio:512/910; border-radius:1rem; background:#141414; }
+@media(max-width:680px){ .kemi-testimonial { grid-template-columns:1fr; } .kemi-testimonial video { max-width:320px; } }
