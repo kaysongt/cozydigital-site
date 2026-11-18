@@ -23,7 +23,7 @@ const footerNavGroups: {
       { label: CLIENT_HUB_LABEL, href: CLIENT_HUB_URL, external: true },
       { label: "About", href: "/about/" },
       { label: "Meet the Founders", href: "/founders/" },
-      { label: "FAQ", href: "/faq/" },
+      { label: "Website & AI Search FAQ", href: "/faq/" },
     ],
   },
   {
