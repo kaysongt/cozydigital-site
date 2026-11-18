@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import StudioHero from "@/components/studio-hero";
-import WebinarBanner from "@/components/webinar-banner";
 import AuditForm from "@/components/audit-form";
 import FounderTrust from "@/components/founder-trust";
 import PromptBossPromo from "@/components/prompt-boss-promo";
@@ -174,7 +173,6 @@ const faqs = [
 export default function HomePage() {
   return (
     <main className="cozy-home future-home">
-      <WebinarBanner />
       <StudioHero />
       <section className="future-niches" aria-labelledby="niches-heading">
         <div className="future-niches-inner">

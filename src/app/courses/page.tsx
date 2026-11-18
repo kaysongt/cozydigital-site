@@ -110,6 +110,16 @@ export default function CoursesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
       />
 
+      <section aria-labelledby="webinar-recording-title" className="border-b border-cyan-200/20 bg-[#101a21] px-6 py-12 text-[#eef4f5]">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-xs font-semibold tracking-widest text-cyan-200">EDITED WEBINAR RECORDING</p>
+          <h2 id="webinar-recording-title" className="mt-3 text-3xl font-medium">AI Video Webinar Recording</h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-[#a9b8bf]">
+            A 21½-minute edited training from Cozy Digital’s AI video webinar.
+          </p>
+          <p className="mt-3 text-sm text-[#a9b8bf]">$50 USD one-time · Not yet available for purchase</p>
+        </div>
+      </section>
       <CozyVideoCoursePromo />
       <PromptBossPromo />
 
