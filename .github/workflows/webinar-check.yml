@@ -25,7 +25,8 @@ concurrency:
 
 jobs:
   webinar:
-    runs-on: ubuntu-latest
+    # Keep the pinned Playwright browser tooling on a supported runner.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
