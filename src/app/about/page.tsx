@@ -251,7 +251,7 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-8" data-reveal>
-            <Link href="/#client-work" className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-400 transition-colors hover:text-cyan-300">
+            <Link href="/work/#client-work" className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-400 transition-colors hover:text-cyan-300">
               See the full case studies →
             </Link>
           </div>

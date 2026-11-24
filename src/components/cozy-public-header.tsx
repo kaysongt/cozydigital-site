@@ -7,14 +7,18 @@ import ThemeToggle from "@/components/theme-toggle";
 import { CLIENT_HUB_LABEL, CLIENT_HUB_NEW_TAB_HINT, CLIENT_HUB_REL, CLIENT_HUB_URL } from "@/lib/client-hub";
 
 const links = [
-  { label: "Websites", href: "/#client-work" },
-  { label: "AI Video", href: "/#ai-video" },
+  { label: "Websites", href: "/work/#client-work" },
+  { label: "AI Video", href: "/work/#ai-video" },
   { label: "Services", href: "/services/" },
   { label: "The studio", href: "/founders/" },
   { label: "Courses", href: "/courses/" },
 ];
 export default function CozyPublicHeader() {
   const pathname = usePathname();
+  const landing = pathname === "/";
+  const primaryLinks = landing
+    ? [{ label: "Work", href: "/work/" }, links[2], links[3]]
+    : links;
   const [mobileOpen, setMobileOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   useEffect(() => { setMobileOpen(false); }, [pathname]);
@@ -31,23 +35,23 @@ export default function CozyPublicHeader() {
   }, [mobileOpen]);
   const active = (href: string) => !href.includes("#") && (pathname?.replace(/\/$/, "") === href.replace(/\/$/, "") || (href === "/founders/" && pathname?.startsWith("/about")) || (href === "/courses/" && pathname?.startsWith("/ai-academy")));
   return (
-    <header className="studio-nav sticky top-0 z-50 backdrop-blur-xl">
+    <header className="studio-nav sticky top-0 z-50 backdrop-blur-xl" data-landing-header={landing || undefined}>
       <div className="studio-nav-inner">
         <Link href="/" className="studio-nav-brand"><Image src="/brand/cozy-digital-logo.png" alt="" width={34} height={34} /><span>Cozy Digital<span className="cozy-accent">.</span></span></Link>
-        <nav className="studio-nav-links" aria-label="Main navigation">{links.map(link => <Link key={link.href} href={link.href} aria-current={active(link.href) ? "page" : undefined}>{link.label}</Link>)}</nav>
+        <nav className="studio-nav-links" aria-label="Main navigation">{primaryLinks.map(link => <Link key={link.href} href={link.href} aria-current={active(link.href) ? "page" : undefined}>{link.label}</Link>)}</nav>
         <div className="studio-nav-actions">
           <div className="studio-nav-utilities">
             <a className="studio-hub" href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL}>{CLIENT_HUB_LABEL}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg><span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span></a>
             <ThemeToggle className="studio-theme" />
           </div>
-          <Link href="/cozy-booking/" className="studio-button studio-nav-primary">Let’s talk<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></Link>
+          {!landing && <Link href="/cozy-booking/" className="studio-button studio-nav-primary">Let’s talk<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></Link>}
           <button ref={menuButtonRef} type="button" className="studio-menu-button" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen(!mobileOpen)}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d={mobileOpen ? "M6 6L18 18M6 18L18 6" : "M4 7H20M4 12H20M4 17H20"} /></svg></button>
         </div>
       </div>
       {mobileOpen && <nav id="mobile-navigation" className="studio-mobile-nav" aria-label="Mobile navigation">
-        {links.map(link => <Link key={link.href} href={link.href} aria-current={active(link.href) ? "page" : undefined} onClick={() => setMobileOpen(false)}>{link.label}</Link>)}
+        {primaryLinks.map(link => <Link key={link.href} href={link.href} aria-current={active(link.href) ? "page" : undefined} onClick={() => setMobileOpen(false)}>{link.label}</Link>)}
         <Link href="/free-audit/#audit-form" onClick={() => setMobileOpen(false)}>Get the free audit</Link>
-        <Link href="/cozy-booking/" onClick={() => setMobileOpen(false)}>Book a 30-min call</Link>
+        {!landing && <Link href="/cozy-booking/" onClick={() => setMobileOpen(false)}>Book a 30-min call</Link>}
         <a href={CLIENT_HUB_URL} target="_blank" rel={CLIENT_HUB_REL} onClick={() => setMobileOpen(false)}>{CLIENT_HUB_LABEL} ↗<span className="sr-only">{CLIENT_HUB_NEW_TAB_HINT}</span></a>
         <div className="mt-5 flex items-center justify-between"><span>Appearance</span><ThemeToggle /></div>
       </nav>}

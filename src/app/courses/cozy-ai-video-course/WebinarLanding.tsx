@@ -66,7 +66,7 @@ export default function WebinarLanding() {
           <article><img src="/brand/team/quincy.png" width="112" height="112" alt="Quincy, Cozy Digital founder" loading="lazy" /><div><h3>Quincy</h3><strong>Founder &amp; Lead Developer</strong><p>Builds client websites, directs video campaigns, and develops the tools our studio uses.</p></div></article>
           <article><img src="/brand/team/kayson.png" width="112" height="112" alt="Kayson, Cozy Digital founder" loading="lazy" /><div><h3>Kayson</h3><strong>Founder &amp; Analytics Consultant</strong><p>Connects creative projects to practical workflows and tests the details before delivery.</p></div></article>
         </div>
-        <a href="/#ai-video" target="_blank" rel="noopener noreferrer">Watch our client films <span aria-hidden="true">↗</span><span className={styles.srOnly}> (opens in a new tab)</span></a>
+        <a href="/work/#ai-video" target="_blank" rel="noopener noreferrer">Watch our client films <span aria-hidden="true">↗</span><span className={styles.srOnly}> (opens in a new tab)</span></a>
       </section>
 
       <section className={styles.faq} aria-labelledby="webinar-faq-title">
