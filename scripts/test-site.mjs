@@ -11,7 +11,7 @@ async function routes(dir, prefix = '') {
   }
   return result;
 }
-const browser = await chromium.launch();
+const browser = await chromium.launch(process.env.SITE_TEST_BROWSER ? { executablePath: process.env.SITE_TEST_BROWSER } : {});
 const errors = [];
 let checks = 0;
 async function context(width = 1440, reducedMotion = 'reduce') {
@@ -38,6 +38,31 @@ try {
     }
     await ctx.close();
   }
+  for (const [width, height] of [[1440, 836], [390, 844], [320, 640]]) {
+    const { ctx, page } = await context(width);
+    await page.setViewportSize({ width, height });
+    await visit(page, '/');
+    const hero = page.locator('[data-minimal-home] section').first();
+    const cta = page.getByRole('link', { name: 'Book your free strategy call', exact: true });
+    assert.equal(await hero.locator('a, button').count(), 1, 'Only one hero action');
+    assert.equal(await cta.count(), 1);
+    assert.equal(await page.locator('.studio-nav-primary, .footer-audit-promo, .cozy-chat-launcher').filter({ visible: true }).count(), 0);
+    const box = await cta.boundingBox();
+    assert.ok(box.height >= 44 && box.y + box.height < height, 'Comfortable target above the fold');
+    assert.ok(Math.abs(box.x + box.width / 2 - width / 2) < 2, 'Centred action');
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, 'No horizontal overflow');
+    await hero.locator('img').evaluate(img => img.decode());
+    await cta.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL('**/cozy-booking/#schedule');
+    await page.locator('#schedule iframe').waitFor({ state: 'visible' });
+    assert.ok(await page.getByRole('link', { name: /Open calendar in a new tab/ }).isVisible());
+    assert.equal(await page.evaluate(() => (window.dataLayer || []).filter(entry =>
+      entry[0] === 'event' && entry[1] === 'strategy_call_click' &&
+      entry[2]?.cta_location === 'homepage_hero').length), 1, 'One intent event; no booking claim');
+    checks++;
+    await ctx.close();
+  }
   {
     console.log('Checking navigation, theme and carousel');
     const { ctx, page } = await context(390);
@@ -57,6 +82,7 @@ try {
     await page.reload();
     assert.equal(await page.locator('html').evaluate(e => e.classList.contains('light')), false);
     await page.setViewportSize({ width: 1440, height: 1000 });
+    await visit(page, '/work/#client-work');
     await page.getByRole('button', { name: 'Next design', exact: true }).click();
     assert.match(await page.locator('.design-carousel-caption').innerText(), /Dew Theory/);
     await page.getByRole('button', { name: 'Show Orbit', exact: true }).click();
@@ -120,7 +146,7 @@ try {
       calls++;
       return route.fulfill({ contentType: 'application/json', body: JSON.stringify(aiResponse) });
     });
-    await visit(page, '/');
+    await visit(page, '/about/');
     assert.equal(await page.locator('#cozy-chat-dialog').count(), 0, 'Chat never opens automatically');
     await page.getByRole('button', { name: 'Open Cozy chat', exact: true }).click();
     const dialog = page.locator('#cozy-chat-dialog');

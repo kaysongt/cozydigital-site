@@ -56,7 +56,7 @@ export default function CozyBookingPage() {
           </div>
         </div>
 
-        <div className="mt-6 overflow-hidden rounded-2xl border border-amber-400/20 bg-zinc-950 shadow-2xl shadow-amber-500/10">
+        <div id="schedule" className="mt-6 scroll-mt-24 overflow-hidden rounded-2xl border border-amber-400/20 bg-zinc-950 shadow-2xl shadow-amber-500/10">
           <div className="border-b border-white/10 bg-white/[0.04] px-6 py-5 md:px-8">
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-amber-400">Scheduling</p>
             <h2 className="text-2xl font-bold text-white">Schedule your 30-minute consultation.</h2>

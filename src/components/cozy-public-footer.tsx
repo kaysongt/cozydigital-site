@@ -17,7 +17,7 @@ const footerNavGroups: {
     heading: "Explore",
     links: [
       { label: "Services", href: "/services/" },
-      { label: "Client Work", href: "/#client-work" },
+      { label: "Client Work", href: "/work/#client-work" },
       { label: "AI Visibility", href: "/ai-search/" },
       { label: "Courses", href: "/courses/" },
       { label: CLIENT_HUB_LABEL, href: CLIENT_HUB_URL, external: true },
@@ -84,7 +84,7 @@ function ExternalIcon() {
 
 export default function CozyPublicFooter() {
   return (
-    <footer className="border-t border-white/[0.08] bg-zinc-950 px-6 py-14 text-zinc-400">
+    <footer data-public-footer className="border-t border-white/[0.08] bg-zinc-950 px-6 py-14 text-zinc-400">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 md:grid-cols-[1.2fr_2fr]">
           <div>
@@ -100,7 +100,7 @@ export default function CozyPublicFooter() {
                 </a>
               ))}
             </div>
-            <Link href="/free-audit/#audit-form" className="mt-6 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
+            <Link href="/free-audit/#audit-form" className="footer-audit-promo mt-6 inline-flex rounded-lg bg-gradient-to-r from-cyan-500 via-blue-600 to-fuchsia-600 px-4 py-2 text-sm font-bold text-white hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500">
               Get a Free Audit
             </Link>
           </div>

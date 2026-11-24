@@ -38,7 +38,7 @@ export default function CozyNotFound() {
         <p className="description">This page wandered off. Let’s get you<br className="desktop-break" /> back to something good.</p>
         <div className="actions">
           <a className="home-button" href="/"><span aria-hidden="true">↖</span>Back to home</a>
-          <a className="work-link" href="/#client-work">See our work <span aria-hidden="true">↗</span></a>
+          <a className="work-link" href="/work/#client-work">See our work <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <button id="nudge" className="nudge" type="button" aria-label="Give the floating C a nudge" hidden><span className="nudge-symbol" aria-hidden="true">↗</span><span>Give it a nudge</span></button>

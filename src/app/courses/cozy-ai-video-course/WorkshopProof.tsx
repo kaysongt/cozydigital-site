@@ -48,7 +48,7 @@ export default function WorkshopProof() {
           </li>;
         })}
       </ul>
-      <a className={styles.proofMore} href="/#ai-video" target="_blank" rel="noopener noreferrer">Watch all {SELECTED_FILMS.length} client films <span aria-hidden="true">↗</span><span className={styles.srOnly}> (opens in a new tab)</span></a>
+      <a className={styles.proofMore} href="/work/#ai-video" target="_blank" rel="noopener noreferrer">Watch all {SELECTED_FILMS.length} client films <span aria-hidden="true">↗</span><span className={styles.srOnly}> (opens in a new tab)</span></a>
     </section>
   );
 }

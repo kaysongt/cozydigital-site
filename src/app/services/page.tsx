@@ -177,7 +177,7 @@ export default function ServicesPage() {
               Book a 30-min call
             </Link>
           </div>
-          <Link href="/#ai-video" className="mt-5 inline-flex text-sm font-bold text-zinc-400 underline decoration-white/20 underline-offset-4 hover:text-cyan-200">
+          <Link href="/work/#ai-video" className="mt-5 inline-flex text-sm font-bold text-zinc-400 underline decoration-white/20 underline-offset-4 hover:text-cyan-200">
             See AI video work
           </Link>
         </div>

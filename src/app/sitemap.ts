@@ -11,6 +11,7 @@ const baseUrl = "https://cozydigital.org";
 // stub to the Client Hub, not a page we want crawled or ranked.
 const routes: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
+  { path: "/work/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/ai-search/", priority: 0.9, changeFrequency: "monthly" },
   { path: "/courses/ai-video-prompt-boss/", priority: 0.9, changeFrequency: "monthly" },

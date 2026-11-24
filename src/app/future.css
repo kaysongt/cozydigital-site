@@ -1259,3 +1259,12 @@ html:not(.light) .future-site :is(.text-zinc-500, .text-zinc-600) { color: var(-
 .kemi-testimonial details p { margin:1rem 0; max-width:70ch; }
 .kemi-testimonial video { display:block; width:100%; aspect-ratio:512/910; border-radius:1rem; background:#141414; }
 @media(max-width:680px){ .kemi-testimonial { grid-template-columns:1fr; } .kemi-testimonial video { max-width:320px; } }
+
+/* Keep utility routes available without competing with the homepage booking action. */
+body:has([data-minimal-home]) [data-public-footer] .footer-audit-promo,
+body:has([data-minimal-home]) .cozy-chat-launcher {
+  display: none;
+}
+body.future-site .studio-nav[data-landing-header] .studio-nav-inner {
+  padding-block: 12px;
+}
